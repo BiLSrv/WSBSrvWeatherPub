@@ -13,6 +13,8 @@
  */
 !(function ($) {
   $.fn.gaugeMeter = function (t) {
+	  console.log('fn.gaugeMeter function (t)',t);
+	  console.log('fn.gaugeMeter function obj(t)',JSON.parse(JSON.stringify(t)));
     var defaults = $.extend(
       {
         id: '',
@@ -42,12 +44,15 @@
       t
     );
     return this.each(function () {
+		console.log('this.each(function ()');
       function getThemeColor(e) {
+		  console.log('getThemeColor(e)',e);
         if (
           option.color !== '' &&
           option.color !== null &&
           option.color !== undefined
         ) {
+			console.log('option.color',option.color);
           return option.color;
         }
         var t = '#2C94E0';
@@ -192,6 +197,7 @@
       }
       /* The label below gauge. */
       function createLabel(t, a) {
+		  console.log('createLabel(t, a)',t,a);
         if (t.children('b').length === 0) {
           $('<b></b>')
             .appendTo(t)
@@ -204,6 +210,7 @@
       }
       /* Prepend and append text, the gauge text or percentage value. */
       function createSpanTag(t) {
+		  console.log('createSpanTag(t)',t);
         var fgcolor = '';
         if (option.animate_text_colors === true) {
           fgcolor = option.fgcolor;
@@ -219,6 +226,7 @@
         if (option.text_size > 0.5) {
           option.text_size = 0.5;
         }
+		  console.log('<span></span> t r',t,r);
         $('<span></span>')
           .appendTo(t)
           .html(r)
@@ -230,6 +238,7 @@
       }
       /* Get data attributes as options from div tag. Fall back to defaults when not exists. */
       function getDataAttr(t) {
+		  console.log('getDataAttr(t)',dataAttr);
         $.each(dataAttr, function (index, element) {
           if (t.data(element) !== undefined && t.data(element) !== null) {
             option[element] = t.data(element);
@@ -258,6 +267,7 @@
       }
       /* Draws the gauge. */
       function drawGauge(a) {
+		  console.log('drawGauge(a)',a);
         if (option.animate_gauge_colors) {
           // Set gauge color for each value change.
           option.fgcolor = getThemeColor(a * 100);
@@ -326,7 +336,8 @@
           'text',
           'text_size',
           'fill',
-          'showvalue'
+          'showvalue',
+		  'data'
         ],
         option = {},
         c = 0,
