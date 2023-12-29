@@ -436,7 +436,7 @@
         /* Initially create canvas. */
         $(b).appendTo($(this));
       }
-		console.log(option.color); 
+		console.log(option.style); 
 
       if ('Semi' === option.style) {
         k = 2 * Math.PI;
