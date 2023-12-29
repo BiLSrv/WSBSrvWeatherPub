@@ -44,15 +44,12 @@
       t
     );
     return this.each(function () {
-		console.log('this.each(function ()');
       function getThemeColor(e) {
-		  console.log('getThemeColor(e)',e);
         if (
           option.color !== '' &&
           option.color !== null &&
           option.color !== undefined
         ) {
-			console.log('option.color',option.color);
           return option.color;
         }
         var t = '#2C94E0';
@@ -439,6 +436,7 @@
         /* Initially create canvas. */
         $(b).appendTo($(this));
       }
+		console.log(option.color); 
 
       if ('Semi' === option.style) {
         k = 2 * Math.PI;
