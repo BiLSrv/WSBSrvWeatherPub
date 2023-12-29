@@ -38,6 +38,16 @@
     Width:           80%;
   }
 
+  .GaugeMeter[data-style="Full"] B{
+    Margin:          0 10%;
+    Width:           80%;
+  }
+			
+  .GaugeMeter[data-style="Arch"] B{
+    Margin:          0 10%;
+    Width:           80%;
+  }
+			
   .GaugeMeter S,
   .GaugeMeter U{
     Text-Decoration: None;
@@ -206,6 +216,6 @@
 				<script type="text/javascript">
 				$(document).ready(function () {
 					$(".GaugeMeter").gaugeMeter();
-					$('#GaugeMeter_1').gaugeMeter({ percent: 15 });
+					$('#GaugeMeter_1').gaugeMeter({style:'Arch', percent: 15 });
             	});
 				</script>
