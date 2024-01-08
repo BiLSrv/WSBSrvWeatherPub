@@ -1,11 +1,12 @@
-<!--upd2 2.5a		view-source:https://raw.githubusercontent.com/Rakosel/WSB_Server_Private_Sources/mainESP32/WSB_page_main.html		-->
+<!--upd3 2.6a		view-source:https://raw.githubusercontent.com/Rakosel/WSB_Server_Private_Sources/mainESP32/WSB_page_main.html		-->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
         <script type="text/javascript" src="https://bilsrv.github.io/WSBSrvWeatherPub/GaugeMeter.js"></script>
-		
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+		<script src="https://rawgit.com/Mikhus/canvas-gauges/master/gauge.min.js"></script>
 		<link rel="stylesheet" href="https://atuin.ru/demo/ui-slider/jquery-ui.css">
 		<link rel="stylesheet" href="https://bilsrv.github.io/WSBSrvWeatherPub/WSB_side_loaded_css.css">
 		<link rel="stylesheet" href="https://rawgit.com/Mikhus/canvas-gauges/master/fonts/fonts.css">
@@ -64,117 +65,129 @@
   </style>
 
 <br>
-
-
-				<div class="col-xs-3 mb-2 offset-lg-1 col-lg-3 offset-md-1 offset-sm-1 offset-1 col-5 col-sm-4 col-md-4 col-xl-3"><button type="button" id="btn0" class="btn btn-primary" onclick="sub_grad()">Замерить всё</button></div>
-					<div class=" offset-lg-0 col-lg-4 offset-sm-0 col-sm-5 col-6  offset-md-0 col-md-5 col-xl-3">
-						<span>Автозамер </span> 
-						<input type="checkbox" class="form-check-input  ml-1" name="autmp" id="autmp" checked>
-						<br>
-						<span>Автозапись </span> 
-						<input type="checkbox" class="form-check-input  ml-1" name="autwrtemp" id="autwrtemp" checked>
-					</div>	
-					<div class="form-group row">
-					<div class="col-3 col-xs-3 offset-xl-3 col-lg-3 offset-lg-3 offset-md-3 col-md-3">
-										<p class="h5 modal-title text-center" id="srednie">Средние значения датчиков</p>
-					<div class="row">
-					<div class="GaugeMeter" id="GaugeMeter_1" data-percent="10" data-bind="gaugeValue: Percent" data-append=" С°" data-size=100 data-width=15 data-style="Arch" data-animationstep="0"></div>
+<form>
+<div class="col-xs-3 mb-2 offset-lg-1 col-lg-3 offset-md-1 offset-sm-1 offset-1 col-5 col-sm-4 col-md-4 col-xl-3">
+<button type="button" id="btn0" class="btn btn-primary" onclick="sub_grad()">Замерить всё</button></div>
+<div class=" offset-lg-0 col-lg-4 offset-sm-0 col-sm-5 col-6 offset-md-0 col-md-5 col-xl-3">
+		<span>Автозамер <input type="checkbox" class="form-check-input  ml-1" name="autmp" id="autmp" checked></span> 
+		<span>Автозапись <input type="checkbox" class="form-check-input  ml-1" name="autwrtemp" id="autwrtemp" checked></span> 
+		
+</div>
+<div class="container row text-center">
+	<p class="h5 modal-title text-center" id="srednie">Средние значения датчиков</p>
+					<div class="col-auto">
+						<div class="GaugeMeter" id="GauAvTemp"></div>
 					</div>
-					<div class="row">
-					<div class="GaugeMeter" id="GaugeMeter_2" data-percent="10" data-bind="gaugeValue: Percent" data-append=" С°" data-size=100 data-width=15 data-style="Arch" data-animationstep="0"></div>
+					<div class="col-auto">
+						<div class="GaugeMeter" id="GauAvHum"></div>
 					</div>
-					<div class="row">
-					<div class="GaugeMeter" id="GaugeMeter_3" data-percent="10" data-bind="gaugeValue: Percent" data-append=" С°" data-size=100 data-width=15 data-style="Arch" data-animationstep="0"></div>
+					<div class="col-auto">
+						<div class="GaugeMeter" id="GauAvPress"></div>
 					</div>
+					<div class="col-auto">
+						<div class="GaugeMeter" id="GauAirQ"></div>
 					</div>
+</div>
+<div class="container row text-center">
+					<p class="h5 modal-title text-center" id="lm75">Датчик LM75_1 и Датчик LM75_2</p>			  
+					<div class="col-auto">
+					<canvas  
+					 data-type="linear-gauge"
+					 data-min-value="13"
+					 data-max-value="87"
+					 data-exact-ticks="true"
+					 data-major-ticks="13,20,38,62,80,87"
+					 data-minor-ticks="2"
+					 data-highlights="0"
+					 data-width="100"
+					 data-height="150"
+					 data-value="47"
+					></canvas>
+					<label class="form-check-label" id="lm75_t1_lbl" for="lm75_t1_chk">Зап 1: <input class="form-check-input" id="lm75_t1_chk" type="checkbox"></label>	
+	</div>
+					<div class="col-auto">
+					<canvas  
+					data-type="linear-gauge"
+					 data-min-value="13"
+					 data-max-value="87"
+					 data-exact-ticks="true"
+					 data-major-ticks="13,20,38,62,80,87"
+					 data-minor-ticks="2"
+					 data-highlights="0"
+					 data-width="100"
+					 data-height="150"
+					 data-value="47"
+					></canvas>
+					<label class="form-check-label" id="lm75_t2_lbl" for="lm75_t2_chk">Зап 2:<input class="form-check-input" id="lm75_t2_chk" type="checkbox"></label>
+	</div>
+</div>
+<div class="container row text-center">
+					<p class="h5 modal-title text-center" id="lm75">Датчик SHT35 и SHT41</p>			  
+					<div class="col-auto">
+					<canvas  
+					data-type="linear-gauge"
+					 data-min-value="13"
+					 data-max-value="87"
+					 data-exact-ticks="true"
+					 data-major-ticks="13,20,38,62,80,87"
+					 data-minor-ticks="2"
+					 data-highlights="0"
+					 data-width="100"
+					 data-height="150"
+					 data-value="47"
+					></canvas>
+					  <div class="GaugeMeter" id="GauAvHum"></div>
 					</div>
+					<div class="col-auto">
+					<canvas  
+					data-type="linear-gauge"
+					 data-min-value="13"
+					 data-max-value="87"
+					 data-exact-ticks="true"
+					 data-major-ticks="13,20,38,62,80,87"
+					 data-minor-ticks="2"
+					 data-highlights="0"
+					 data-width="100"
+					 data-height="150"
+					 data-value="47"
+					></canvas>
+						<div class="GaugeMeter" id="GauAvHum"></div>
 					</div>
-	
-				<div class="form-group row">
-					<div class="col-xs-3 offset-xl-3 col-xl-3 col-lg-3 offset-lg-3 offset-md-3 col-md-5">Влажность:</div>
-				</div>	
-				<div class="form-group row">
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Давление:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2 col-lg-3"><input type="text" class="form-control" id = "pressure" name="pressure" value="" required></div>
-				</div>	
-				<p class="h5 modal-title text-center" id="lm75">Датчик LM75_1 и Датчик LM75_2</p>			  
-				<div class="form-group row">
-					<div class="col-xs-6 col-xl-4 col-lg-3 offset-lg-1 offset-xl-1 offset-md-1 col-md-5">Температура 1 [C&deg]:</div>
-					<div class="col-xs-3 col-md-3 offset-xl-2 col-xl-2 offset-lg-2 col-lg-3">
-					<input type="text" class="form-control" id = "lm75_t1" name="lm75_t1" value="" required>
+</div>
+<div class="container row text-center">
+				<p class="h5 modal-title text-center" id="sht_35_41">Датчики BME280</p>
+					<div class="col-auto">
+					<canvas  
+					data-type="linear-gauge"
+					 data-min-value="13"
+					 data-max-value="87"
+					 data-exact-ticks="true"
+					 data-major-ticks="13,20,38,62,80,87"
+					 data-minor-ticks="2"
+					 data-highlights="0"
+					 data-width="100"
+					 data-height="150"
+					 data-value="47"
+					></canvas>
+						<div class="GaugeMeter" id="GauAvHum"></div>
 					</div>
-					<div class="col-xs-2 col-md-2 col-xl-2 col-lg-2">
-					<label class="form-check-label px-1" id="lm75_t1_lbl" for="lm75_t1_chk">Зап 1:</label>	
-					<input class="form-check-input ml-auto" id="lm75_t1_chk" type="checkbox">
+					<div class="col-auto">
+					<canvas  
+					data-type="linear-gauge"
+					 data-min-value="13"
+					 data-max-value="87"
+					 data-exact-ticks="true"
+					 data-major-ticks="13,20,38,62,80,87"
+					 data-minor-ticks="2"
+					 data-highlights="0"
+					 data-width="100"
+					 data-height="150"
+					 data-value="47"
+					></canvas>
+					  <div class="GaugeMeter" id="GauAvHum"></div>
+					<div class="GaugeMeter" id="GauAvHum"></div>
+					<div class="GaugeMeter" id="GauAvHum"></div>
 					</div>
-				</div>
-				<div class="form-group row">
-					<div class="col-xs-6 col-xl-4 col-lg-3 offset-lg-1 offset-xl-1 offset-md-1 col-md-5">Температура 2 [C&deg]:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 col-xl-2 offset-lg-2 col-lg-3"><input type="text" class="form-control" id = "lm75_t2" name="lm75_t2" value="" required></div>
-					<div class="col-xs-2 col-xl-2 col-lg-2 col-md-3">
-					<label class="form-check-label px-1" id="lm75_t2_lbl" for="lm75_t2_chk">Зап 2:</label>	
-					<input class="form-check-input ml-auto" id="lm75_t2_chk" type="checkbox">
-					</div>
-				</div>
-				<p class="h5 modal-title text-center" id="dht22">Датчик DHT22</p>	
-				<div class="form-group row">
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Температура [C&deg]:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "dht22_t"  name="dht22_t" value=""></div>
-				</div>
-				<div class="form-group row">
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Влажность:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "dht22_h" name="dht22_h" value=""></div>
-				</div>
-				<p class="h5 modal-title text-center" id="bme280">Датчик BME280_1 и BME280_2</p>
-				<div class="form-group row">
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Температура [C&deg]:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "bme280_t1" name="bme280_t1" value=""></div>
-				</div>
-				<div class="form-group row">
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Температура [C&deg]:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "bme280_t2" name="bme280_t2" value=""></div>
-				</div>
-				<div class="form-group row">
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Давление:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "bme280_p1" name="bme280_p1" value=""></div>
-				</div>
-				<div class="form-group row">
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Давление:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "bme280_p2" name="bme280_p2" value=""></div>
-				</div>				
-				<div class="form-group row">
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Влажность:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "bme280_h1" name="bme280_h1" value=""></div>
-				</div>
-				<div class="form-group row">
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Влажность:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "bme280_h2" name="bme280_h2" value=""></div>
-				</div>
-				<div class="form-group row">
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Точка росы:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "bme280_qnh1" name="bme280_qnh1" value=""></div>
-				</div>
-				<div class="form-group row">
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Точка росы:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "bme280_qnh2" name="bme280_qnh2" value=""></div>
-				</div>				
-				<div class="form-group row">
-					<div class="col-xs-6 col-md-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1">Давление над уровнем моря:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "bme280_d1" name="bme280_d1" value=""></div>
-				</div>
-				<div class="form-group row">
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-6">Давление над уровнем моря:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "bme280_d2" name="bme280_d2" value=""></div>
-				</div>				
-				<div class="form-group row">
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Высота над уровнем моря:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "bme280_alt1" name="bme280_alt1" value=""></div>
-				</div>					
-				<div class="form-group row">
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Высота над уровнем моря:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "bme280_alt2" name="bme280_alt2" value=""></div>
-				</div>
-					<p class="h5 modal-title text-center" id="sht3x">Датчик SHT30 и SHT31 (SHTx)</p>
 				<div class="form-group row">
 					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Температура [C&deg]:</div>
 				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "SHT30_t" name="SHT30_t" value=""></div>
@@ -182,40 +195,168 @@
 				<div class="form-group row">
 					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Температура [C&deg]:</div>
 				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "SHT31_t" name="SHT31_t" value=""></div>
-				</div>		
-				<div class="form-group row">
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Влажность:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "SHT30_h" name="SHT30_h" value=""></div>
-				</div>					
-				<div class="form-group row">
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Влажность:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "SHT31_h" name="SHT31_h" value=""></div>
-				</div>
-				<p class="h5 modal-title text-center" id="htu21">Датчик HTU21</p>
+				</div>	
 				<div class="form-group row">
 					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Температура [C&deg]:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "htu21_t" name="htu21_t" value=""></div>
-				</div>
+				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "SHT30_t" name="SHT30_t" value=""></div>
+				</div>					
 				<div class="form-group row">
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Влажность:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "htu21_h" name="htu21_h" value=""></div>
+					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Температура [C&deg]:</div>
+				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "SHT31_t" name="SHT31_t" value=""></div>
+				</div>	
+</div>
+	
+	
+<div class="container row text-center">
+				<p class="h5 modal-title text-center" id="sht_35_41">Датчик BME680</p>
+					<div class="col-auto">
+					<canvas  
+					data-type="linear-gauge"
+					 data-min-value="13"
+					 data-max-value="87"
+					 data-exact-ticks="true"
+					 data-major-ticks="13,20,38,62,80,87"
+					 data-minor-ticks="2"
+					 data-highlights="0"
+					 data-width="100"
+					 data-height="150"
+					 data-value="47"
+					></canvas>
+						<div class="GaugeMeter" id="GauAvHum"></div>
+					</div>
+					<div class="col-auto">
+					<div class="GaugeMeter" id="GauAvHum"></div>
+					<div class="GaugeMeter" id="GauAvHum"></div>
+					<div class="GaugeMeter" id="GauAvHum"></div>
+					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Температура [C&deg]:</div>
+					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Температура [C&deg]:</div>
+					</div>
+</div>
+	
+	
+<div class="container row text-center">
+				<p class="h5 modal-title text-center" id="sht_35_41">Датчик ENS160</p>
+					<div class="col-auto">
+					<canvas  
+					data-type="linear-gauge"
+					 data-min-value="13"
+					 data-max-value="87"
+					 data-exact-ticks="true"
+					 data-major-ticks="13,20,38,62,80,87"
+					 data-minor-ticks="2"
+					 data-highlights="0"
+					 data-width="100"
+					 data-height="150"
+					 data-value="47"
+					></canvas>
+						<div class="GaugeMeter" id="GauAvHum"></div>
+					</div>
+					<div class="col-auto">
+					<div class="GaugeMeter" id="GauAvHum"></div>
+					<div class="GaugeMeter" id="GauAvHum"></div>
+					<div class="GaugeMeter" id="GauAvHum"></div>
+					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Температура [C&deg]:</div>
+					</div>
+</div>
+<div class="container row text-center">
+				<p class="h5 modal-title text-center" id="sht_35_41">Датчик AHT21</p>
+					<div class="col-auto">
+					<canvas  
+					data-type="linear-gauge"
+					 data-min-value="13"
+					 data-max-value="87"
+					 data-exact-ticks="true"
+					 data-major-ticks="13,20,38,62,80,87"
+					 data-minor-ticks="2"
+					 data-highlights="0"
+					 data-width="100"
+					 data-height="150"
+					 data-value="47"
+					></canvas>
+						<div class="GaugeMeter" id="GauAvHum"></div>
+					</div>
+					<div class="col-auto">
+					<div class="GaugeMeter" id="GauAvHum"></div>
+					<div class="GaugeMeter" id="GauAvHum"></div>
+					<div class="GaugeMeter" id="GauAvHum"></div>
+					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Температура [C&deg]:</div>
+					</div>
+</div>
+<div class="container row text-center">
+				<p class="h5 modal-title text-center" id="sht_35_41">Датчик LPA35HW</p>
+					<div class="col-auto">
+					<canvas  
+					data-type="linear-gauge"
+					 data-min-value="13"
+					 data-max-value="87"
+					 data-exact-ticks="true"
+					 data-major-ticks="13,20,38,62,80,87"
+					 data-minor-ticks="2"
+					 data-highlights="0"
+					 data-width="100"
+					 data-height="150"
+					 data-value="47"
+					></canvas>
+					<canvas  
+					data-type="linear-gauge"
+					 data-min-value="13"
+					 data-max-value="87"
+					 data-exact-ticks="true"
+					 data-major-ticks="13,20,38,62,80,87"
+					 data-minor-ticks="2"
+					 data-highlights="0"
+					 data-width="100"
+					 data-height="150"
+					 data-value="47"
+					></canvas>
+					</div>
+					<div class="col-auto">
+					<div class="GaugeMeter" id="GauAvHum"></div>
+					<div class="GaugeMeter" id="GauAvHum"></div>
+					<div class="GaugeMeter" id="GauAvHum"></div>
+					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Температура [C&deg]:</div>
+					</div>
+</div>
+				<p class="h5 modal-title text-center" id="htu21">Датчик CJMCU</p>
+				<p class="text-primary fw-bold fs-2">НЕТ ДАННЫХ</p>
+				<p class="h5 modal-title text-center" id="sht3x">Данные АЦП</p>
+				<div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+				  <div class="progress-bar bg-success" style="width: 25%">25%</div>
 				</div>
-				<div class="form-group row">
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Давление:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "htu21_pp" name="htu21_pp" value=""></div>
+				<div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+				  <div class="progress-bar bg-info text-dark" style="width: 50%">50%</div>
 				</div>
-				<div class="form-group row">
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Точка росы:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "htu21_dew" name="htu21_dew" value=""></div>
+				<div class="progress" role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+				  <div class="progress-bar bg-warning text-dark" style="width: 75%">75%</div>
 				</div>
-				<p class="h5 modal-title text-center" id="temt">Датчик TEMT6000</p>
-				<div class="form-group row">
-				<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">ADC:</div>
-				<div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2 mb-2"><input type="text" class="form-control" id = "tm_adc" name="tm_adc" value=""></div>
+				<div class="progress" role="progressbar" aria-label="Default example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+				  <div class="progress-bar bg-danger" style="width: 100%">100%</div>
 				</div>
+				<div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+			  		<div class="progress-bar bg-success" style="width: 25%">25%</div>
+				</div>
+				<p class="h5 modal-title text-center" id="sht3x">Доступность датчиков</p>
+	    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="This top tooltip is themed via CSS variables.">
+	    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="This top tooltip is themed via CSS variables.">
+	    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="This top tooltip is themed via CSS variables.">
+	    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="This top tooltip is themed via CSS variables.">
+	    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="This top tooltip is themed via CSS variables.">
+	    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="This top tooltip is themed via CSS variables.">
+	    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="This top tooltip is themed via CSS variables.">
+	    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="This top tooltip is themed via CSS variables.">
+	    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="This top tooltip is themed via CSS variables.">
+	    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="This top tooltip is themed via CSS variables.">
+	    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="This top tooltip is themed via CSS variables.">
+	    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="This top tooltip is themed via CSS variables.">
+	    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="This top tooltip is themed via CSS variables.">
+		<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top">
+		  Tooltip on top
+		</button>
+</form>
 				<script type="text/javascript">
 				$(document).ready(function () {
-					$(".GaugeMeter").gaugeMeter();
-					$('#GaugeMeter_1').gaugeMeter({style:'Arch', percent: 15 });
+					$(".GaugeMeter").gaugeMeter({style:'Semi', percent: 15 });
+					$('#GaugeMeter_1').gaugeMeter({style:'Semi', percent: 15 });
             	});
+					
 				</script>
