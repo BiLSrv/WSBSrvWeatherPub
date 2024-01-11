@@ -74,7 +74,7 @@
 		
 </div>
 <div class="container row text-center">
-	<p class="h5 modal-title text-center" id="srednie">Средние значения датчиков</p>
+	<p class="h5 modal-title text-center">Средние значения датчиков</p>
 					<div class="col-auto">
 						<div class="GaugeMeter" id="GauAvTemp"></div>
 					</div>
@@ -89,126 +89,74 @@
 					</div>
 </div>
 <div class="container row text-center">
-					<p class="h5 modal-title text-center" id="lm75">Датчик LM75_1 и Датчик LM75_2</p>			  
+					<p class="h5 modal-title text-center">Датчик LM75_1 и Датчик LM75_2</p>			  
 					<div class="col-auto">
 					<canvas  
+					 data-id="lm75_t1"
 					 data-type="linear-gauge"
-					 data-min-value="13"
-					 data-max-value="87"
-					 data-exact-ticks="true"
-					 data-major-ticks="13,20,38,62,80,87"
-					 data-minor-ticks="2"
-					 data-highlights="0"
-					 data-width="100"
-					 data-height="150"
-					 data-value="47"
 					></canvas>
 					<label class="form-check-label" id="lm75_t1_lbl" for="lm75_t1_chk">Зап 1: <input class="form-check-input" id="lm75_t1_chk" type="checkbox"></label>	
-	</div>
+					</div>
 					<div class="col-auto">
 					<canvas  
-					data-type="linear-gauge"
-					 data-min-value="13"
-					 data-max-value="87"
-					 data-exact-ticks="true"
-					 data-major-ticks="13,20,38,62,80,87"
-					 data-minor-ticks="2"
-					 data-highlights="0"
-					 data-width="100"
-					 data-height="150"
-					 data-value="47"
+					 data-id="lm75_t2"		
+					 data-type="linear-gauge"
 					></canvas>
 					<label class="form-check-label" id="lm75_t2_lbl" for="lm75_t2_chk">Зап 2:<input class="form-check-input" id="lm75_t2_chk" type="checkbox"></label>
 	</div>
 </div>
 <div class="container row text-center">
-					<p class="h5 modal-title text-center" id="lm75">Датчик SHT35 и SHT41</p>			  
+					<p class="h5 modal-title text-center">Датчик SHT35 и SHT41</p>			  
 					<div class="col-auto">
 					<canvas  
-					data-type="linear-gauge"
-					 data-min-value="13"
-					 data-max-value="87"
-					 data-exact-ticks="true"
-					 data-major-ticks="13,20,38,62,80,87"
-					 data-minor-ticks="2"
-					 data-highlights="0"
-					 data-width="100"
-					 data-height="150"
-					 data-value="47"
+					 data-id="sht35t"		
+					 data-type="linear-gauge"
 					></canvas>
 					  <div class="GaugeMeter" id="GauAvHum"></div>
 					</div>
 					<div class="col-auto">
 					<canvas  
-					data-type="linear-gauge"
-					 data-min-value="13"
-					 data-max-value="87"
-					 data-exact-ticks="true"
-					 data-major-ticks="13,20,38,62,80,87"
-					 data-minor-ticks="2"
-					 data-highlights="0"
-					 data-width="100"
-					 data-height="150"
-					 data-value="47"
+						data-id="sht41t"
+					 	data-type="linear-gauge"
 					></canvas>
 						<div class="GaugeMeter" id="GauAvHum"></div>
 					</div>
 </div>
 <div class="container row text-center">
-				<p class="h5 modal-title text-center" id="sht_35_41">Датчики BME280</p>
+				<p class="h5 modal-title text-center">Датчики BME280</p>
 					<div class="col-auto">
 					<canvas  
+					data-id="bme280_1t"
 					data-type="linear-gauge"
-					 data-min-value="13"
-					 data-max-value="87"
-					 data-exact-ticks="true"
-					 data-major-ticks="13,20,38,62,80,87"
-					 data-minor-ticks="2"
-					 data-highlights="0"
-					 data-width="100"
-					 data-height="150"
-					 data-value="47"
 					></canvas>
-						<div class="GaugeMeter" id="GauAvHum"></div>
+						<div class="GaugeMeter" id="bme280_1h"></div>
+						<div class="GaugeMeter" id="bme280_1p"></div>
 					</div>
 					<div class="col-auto">
 					<canvas  
+					data-id="bme280_2t"
 					data-type="linear-gauge"
-					 data-min-value="13"
-					 data-max-value="87"
-					 data-exact-ticks="true"
-					 data-major-ticks="13,20,38,62,80,87"
-					 data-minor-ticks="2"
-					 data-highlights="0"
-					 data-width="100"
-					 data-height="150"
-					 data-value="47"
 					></canvas>
-					  <div class="GaugeMeter" id="GauAvHum"></div>
-					<div class="GaugeMeter" id="GauAvHum"></div>
-					<div class="GaugeMeter" id="GauAvHum"></div>
+						<div class="GaugeMeter" id="bme280_2h"></div>
+						<div class="GaugeMeter" id="bme280_2p"></div>
 					</div>
 				<div class="form-group row">
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Температура [C&deg]:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "SHT30_t" name="SHT30_t" value=""></div>
+					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">DEW_bme280:</div>
+				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "bme280_DEW" name="bme280_DEW" value=""></div>
 				</div>					
 				<div class="form-group row">
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Температура [C&deg]:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "SHT31_t" name="SHT31_t" value=""></div>
+					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">QNH_bme280:</div>
+				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "bme280_QNH" name="bme280_QNH" value=""></div>
 				</div>	
 				<div class="form-group row">
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Температура [C&deg]:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "SHT30_t" name="SHT30_t" value=""></div>
+					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">ALT_bme280_1</div>
+				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "bme280_ALT" name="bme280_ALT" value=""></div>
 				</div>					
-				<div class="form-group row">
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Температура [C&deg]:</div>
-				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "SHT31_t" name="SHT31_t" value=""></div>
-				</div>	
 </div>
 	
 	
 <div class="container row text-center">
-				<p class="h5 modal-title text-center" id="sht_35_41">Датчик BME680</p>
+				<p class="h5 modal-title text-center">Датчик BME680</p>
 					<div class="col-auto">
 					<canvas  
 					data-type="linear-gauge"
@@ -360,3 +308,12 @@
             	});
 					
 				</script>
+					 data-min-value="13"
+					 data-max-value="87"
+					 data-exact-ticks="true"
+					 data-major-ticks="13,20,38,62,80,87"
+					 data-minor-ticks="2"
+					 data-highlights="0"
+					 data-width="100"
+					 data-height="150"
+					 data-value="47"
