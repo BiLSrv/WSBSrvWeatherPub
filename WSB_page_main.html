@@ -63,7 +63,6 @@
     Opacity:         .8;
   }
   </style>
-
 <br>
 <form>
 <div class="col-xs-3 mb-2 offset-lg-1 col-lg-3 offset-md-1 offset-sm-1 offset-1 col-5 col-sm-4 col-md-4 col-xl-3">
@@ -91,52 +90,34 @@
 <div class="container row text-center">
 					<p class="h5 modal-title text-center">Датчик LM75_1 и Датчик LM75_2</p>			  
 					<div class="col-auto">
-					<canvas  
-					 data-id="lm75_t1"
-					 data-type="linear-gauge"
-					></canvas>
+					<canvas id="lm75_t1"></canvas>
 					<label class="form-check-label" id="lm75_t1_lbl" for="lm75_t1_chk">Зап 1: <input class="form-check-input" id="lm75_t1_chk" type="checkbox"></label>	
 					</div>
 					<div class="col-auto">
-					<canvas  
-					 data-id="lm75_t2"		
-					 data-type="linear-gauge"
-					></canvas>
+					<canvas id="lm75_t2"></canvas>
 					<label class="form-check-label" id="lm75_t2_lbl" for="lm75_t2_chk">Зап 2:<input class="form-check-input" id="lm75_t2_chk" type="checkbox"></label>
 	</div>
 </div>
 <div class="container row text-center">
 					<p class="h5 modal-title text-center">Датчик SHT35 и SHT41</p>			  
 					<div class="col-auto">
-					<canvas  
-					 data-id="sht35t"		
-					 data-type="linear-gauge"
-					></canvas>
+					<canvas id="sht35t"></canvas>
 					  <div class="GaugeMeter" id="GauAvHum"></div>
 					</div>
 					<div class="col-auto">
-					<canvas  
-						data-id="sht41t"
-					 	data-type="linear-gauge"
-					></canvas>
+					<canvas id="sht41t"></canvas>
 						<div class="GaugeMeter" id="GauAvHum"></div>
 					</div>
 </div>
 <div class="container row text-center">
 				<p class="h5 modal-title text-center">Датчики BME280</p>
 					<div class="col-auto">
-					<canvas  
-					data-id="bme280_1t"
-					data-type="linear-gauge"
-					></canvas>
+					<canvas id="bme280_1t"></canvas>
 						<div class="GaugeMeter" id="bme280_1h"></div>
 						<div class="GaugeMeter" id="bme280_1p"></div>
 					</div>
 					<div class="col-auto">
-					<canvas  
-					data-id="bme280_2t"
-					data-type="linear-gauge"
-					></canvas>
+					<canvas id="bme280_2t"></canvas>
 						<div class="GaugeMeter" id="bme280_2h"></div>
 						<div class="GaugeMeter" id="bme280_2p"></div>
 					</div>
@@ -149,124 +130,44 @@
 				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "bme280_QNH" name="bme280_QNH" value=""></div>
 				</div>	
 				<div class="form-group row">
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">ALT_bme280_1</div>
+					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">ALT_bme280:</div>
 				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "bme280_ALT" name="bme280_ALT" value=""></div>
 				</div>					
 </div>
-	
-	
 <div class="container row text-center">
 				<p class="h5 modal-title text-center">Датчик BME680</p>
 					<div class="col-auto">
-					<canvas  
-					data-type="linear-gauge"
-					 data-min-value="13"
-					 data-max-value="87"
-					 data-exact-ticks="true"
-					 data-major-ticks="13,20,38,62,80,87"
-					 data-minor-ticks="2"
-					 data-highlights="0"
-					 data-width="100"
-					 data-height="150"
-					 data-value="47"
-					></canvas>
-						<div class="GaugeMeter" id="GauAvHum"></div>
-					</div>
-					<div class="col-auto">
-					<div class="GaugeMeter" id="GauAvHum"></div>
-					<div class="GaugeMeter" id="GauAvHum"></div>
-					<div class="GaugeMeter" id="GauAvHum"></div>
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Температура [C&deg]:</div>
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Температура [C&deg]:</div>
-					</div>
-</div>
-	
-	
-<div class="container row text-center">
-				<p class="h5 modal-title text-center" id="sht_35_41">Датчик ENS160</p>
-					<div class="col-auto">
-					<canvas  
-					data-type="linear-gauge"
-					 data-min-value="13"
-					 data-max-value="87"
-					 data-exact-ticks="true"
-					 data-major-ticks="13,20,38,62,80,87"
-					 data-minor-ticks="2"
-					 data-highlights="0"
-					 data-width="100"
-					 data-height="150"
-					 data-value="47"
-					></canvas>
-						<div class="GaugeMeter" id="GauAvHum"></div>
-					</div>
-					<div class="col-auto">
-					<div class="GaugeMeter" id="GauAvHum"></div>
-					<div class="GaugeMeter" id="GauAvHum"></div>
-					<div class="GaugeMeter" id="GauAvHum"></div>
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Температура [C&deg]:</div>
+					<canvas id="bme680_1t"></canvas>
+						<div class="GaugeMeter" id="bme680_1h"></div>
+						<div class="GaugeMeter" id="bme680_1p"></div>
+						<div class="GaugeMeter" id="bme680_gr"></div>
 					</div>
 </div>
 <div class="container row text-center">
-				<p class="h5 modal-title text-center" id="sht_35_41">Датчик AHT21</p>
+				<p class="h5 modal-title text-center">Датчик ENS160</p>
 					<div class="col-auto">
-					<canvas  
-					data-type="linear-gauge"
-					 data-min-value="13"
-					 data-max-value="87"
-					 data-exact-ticks="true"
-					 data-major-ticks="13,20,38,62,80,87"
-					 data-minor-ticks="2"
-					 data-highlights="0"
-					 data-width="100"
-					 data-height="150"
-					 data-value="47"
-					></canvas>
-						<div class="GaugeMeter" id="GauAvHum"></div>
-					</div>
-					<div class="col-auto">
-					<div class="GaugeMeter" id="GauAvHum"></div>
-					<div class="GaugeMeter" id="GauAvHum"></div>
-					<div class="GaugeMeter" id="GauAvHum"></div>
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Температура [C&deg]:</div>
+					<div class="GaugeMeter" id="ens160_tempout"></div>
+					<div class="GaugeMeter" id="ens160_hout"></div>
+					<div class="GaugeMeter" id="ens160_tvoc"></div>
+					<div class="GaugeMeter" id="ens160_eco2"></div>
 					</div>
 </div>
 <div class="container row text-center">
-				<p class="h5 modal-title text-center" id="sht_35_41">Датчик LPA35HW</p>
+				<p class="h5 modal-title text-center">Датчик AHT21</p>
 					<div class="col-auto">
-					<canvas  
-					data-type="linear-gauge"
-					 data-min-value="13"
-					 data-max-value="87"
-					 data-exact-ticks="true"
-					 data-major-ticks="13,20,38,62,80,87"
-					 data-minor-ticks="2"
-					 data-highlights="0"
-					 data-width="100"
-					 data-height="150"
-					 data-value="47"
-					></canvas>
-					<canvas  
-					data-type="linear-gauge"
-					 data-min-value="13"
-					 data-max-value="87"
-					 data-exact-ticks="true"
-					 data-major-ticks="13,20,38,62,80,87"
-					 data-minor-ticks="2"
-					 data-highlights="0"
-					 data-width="100"
-					 data-height="150"
-					 data-value="47"
-					></canvas>
+					<canvas id="aht21_t"></canvas>
+					<div class="GaugeMeter" id="aht21_h"></div>
 					</div>
+</div>
+<div class="container row text-center">
+				<p class="h5 modal-title text-center">Датчик LPS35HW</p>
 					<div class="col-auto">
-					<div class="GaugeMeter" id="GauAvHum"></div>
-					<div class="GaugeMeter" id="GauAvHum"></div>
-					<div class="GaugeMeter" id="GauAvHum"></div>
-					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">Температура [C&deg]:</div>
+					<canvas id="lpshw_t"></canvas>
+					<div class="GaugeMeter" id="lpshw_p"></div>
 					</div>
 </div>
 				<p class="h5 modal-title text-center" id="htu21">Датчик CJMCU</p>
-				<p class="text-primary fw-bold fs-2">НЕТ ДАННЫХ</p>
+				<p class="text-primary fw-bold fs-5">НЕТ ДАННЫХ</p>
 				<p class="h5 modal-title text-center" id="sht3x">Данные АЦП</p>
 				<div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
 				  <div class="progress-bar bg-success" style="width: 25%">25%</div>
@@ -283,6 +184,7 @@
 				<div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
 			  		<div class="progress-bar bg-success" style="width: 25%">25%</div>
 				</div>
+
 				<p class="h5 modal-title text-center" id="sht3x">Доступность датчиков</p>
 	    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="This top tooltip is themed via CSS variables.">
 	    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="This top tooltip is themed via CSS variables.">
@@ -302,18 +204,105 @@
 		</button>
 </form>
 				<script type="text/javascript">
-				$(document).ready(function () {
+					
+$(document).ready(function () {
+	
+	    var idArr = [];
+        $(".box").each(function(){
+            idArr.push($(this).attr("id"));
+        });
+        
+        // Join array elements and display in alert
+        //alert(idArr.join(", "));
+
+					var gaugeElement = document.getElementsByTagName('canvas')[0];
+					var guagelm75_t = $('canvas[data-id="lm75_t1"]');
+	
+var gaugeArr = [];
+	
+$('canvas').each(function(index){	
+    gaugeArr.push(new LinearGauge({
+    renderTo: $( this ).attr('id'),
+    width: 100,
+    height: 300,
+	colorPlate: "black",
+	borderRadius: "20",
+	borders: "true",
+	minValue: -50,
+	maxValue: 50,
+	colorBarStroke: "black",
+	minorTicks: 11,
+	majorTicks: ['-50','-40','-30','-20','-10','0','10','20','30','40','50'],
+    colorNumbers: ['cyan','blue','blue','blue','#ccc','#ccc','#ccc','green','green','orange','red'],
+    colorMajorTicks: ['red','green','blue','transparent','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc','#ccc'],
+    fontNumbersSize: "30",
+	fontValueSize: "45",
+	fontTitleSize: "30",
+	fontUnitsSize: "45",
+	value: 0,
+    units: '°C',
+    colorPlate: "transparent",
+	animationRule: 'elastic',
+	animationDuration: 250
+}).draw());
+	//console.log( index + ": " + $( this ).text() + $( this ).attr('id')+ " " );
+});
+	
+var gaugeElement = $('canvas');
+						
+gaugeArr[1].update({ value: '47' });
+					
+					var guageopt = {
+					   width: 100,
+					   height: 150,
+					   animationRule: 'elastic',
+					   animationDuration: 500,
+					   value: '47'
+					   
+				   };
+
+					document.body.appendChild(gauge);
+
+					gauge.value = 55.3;
+
+$('canvas').attr('data-type','linear-gauge');
+					/*$('canvas').attr({value:'51'})
+					/$('canvas').attr({width:'100',height:'150'});*/
+					
+					/*guagelm75_t.attr('data-value','47');guagelm75_t.attr('data-width','100');
+					guagelm75_t.attr('data-height','150');
+					guagelm75_t.attr('data-value','47');*/
+					
 					$(".GaugeMeter").gaugeMeter({style:'Semi', percent: 15 });
 					$('#GaugeMeter_1').gaugeMeter({style:'Semi', percent: 15 });
             	});
 					
 				</script>
-					 data-min-value="13"
-					 data-max-value="87"
-					 data-exact-ticks="true"
-					 data-major-ticks="13,20,38,62,80,87"
-					 data-minor-ticks="2"
-					 data-highlights="0"
-					 data-width="100"
-					 data-height="150"
-					 data-value="47"
+	
+	
+	    units: 'Km/h',
+    title: false,
+	    minValue: 0,
+    maxValue: 220,
+    majorTicks: [
+        '0','20','40','60','80','100','120','140','160','180','200','220'
+    ],
+	
+    colorPlate: '#222',
+    colorMajorTicks: '#f5f5f5',
+    colorMinorTicks: '#ddd',
+    colorTitle: '#fff',
+    colorUnits: '#ccc',
+    colorNumbers: '#eee',
+    colorNeedle: 'rgba(240, 128, 128, 1)',
+    colorNeedleEnd: 'rgba(255, 160, 122, .9)',
+			
+			    minorTicks: 2,
+    strokeTicks: false,
+    highlights: [
+        { from: 0, to: 50, color: 'rgba(0,255,0,.15)' },
+        { from: 50, to: 100, color: 'rgba(255,255,0,.15)' },
+        { from: 100, to: 150, color: 'rgba(255,30,0,.25)' },
+        { from: 150, to: 200, color: 'rgba(255,0,225,.25)' },
+        { from: 200, to: 220, color: 'rgba(0,0,255,.25)' }
+    ],
