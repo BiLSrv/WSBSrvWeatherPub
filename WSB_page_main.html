@@ -1,7 +1,7 @@
-<!--upd3 2.6a		view-source:https://raw.githubusercontent.com/Rakosel/WSB_Server_Private_Sources/mainESP32/WSB_page_main.html		-->
+<!--upd1 1.0a		view-source:https://bilsrv.github.io/WSBSrvWeatherPub/WSB_page_main.html		-->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
@@ -442,41 +442,12 @@ function txjstmp(s, d) {
 	
 // zapros temperature
 function sub_grad() {
-    maOBJ = $("#tmpo").serializeArray();
+    //maOBJ = $("#tmpo").serializeArray();
     fetch("/temp_out.json?n=" + Math.random(), "GET", txjstmp, 10);
-		 $("#temperature").val(j_T.toString().substring(0, 6));
-		 $("#humudity").val(j_H.toString().substring(0, 6));
-		 $("#pressure").val(j_P.toString().substring(0, 6));
+		 //$("#temperature").val(j_T.toString().substring(0, 6));
+		 //$("#humudity").val(j_H.toString().substring(0, 6));
+		 //$("#pressure").val(j_P.toString().substring(0, 6));
     //console.log(maOBJ);
 }
 
-					
 </script>
-	
-	
-	    units: 'Km/h',
-    title: false,
-	    minValue: 0,
-    maxValue: 220,
-    majorTicks: [
-        '0','20','40','60','80','100','120','140','160','180','200','220'
-    ],
-	
-    colorPlate: '#222',
-    colorMajorTicks: '#f5f5f5',
-    colorMinorTicks: '#ddd',
-    colorTitle: '#fff',
-    colorUnits: '#ccc',
-    colorNumbers: '#eee',
-    colorNeedle: 'rgba(240, 128, 128, 1)',
-    colorNeedleEnd: 'rgba(255, 160, 122, .9)',
-			
-			    minorTicks: 2,
-    strokeTicks: false,
-    highlights: [
-        { from: 0, to: 50, color: 'rgba(0,255,0,.15)' },
-        { from: 50, to: 100, color: 'rgba(255,255,0,.15)' },
-        { from: 100, to: 150, color: 'rgba(255,30,0,.25)' },
-        { from: 150, to: 200, color: 'rgba(255,0,225,.25)' },
-        { from: 200, to: 220, color: 'rgba(0,0,255,.25)' }
-    ],
