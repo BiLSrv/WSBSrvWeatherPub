@@ -199,7 +199,7 @@
             .appendTo(t)
             .html(option.label)
             .css({
-              'line-height': option.size + 5 * a + 'px',
+              'line-height': option.size + 10 * a + 'px',
               color: option.label_color
             });
         }
