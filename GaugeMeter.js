@@ -199,7 +199,7 @@
             .appendTo(t)
             .html(option.label)
             .css({
-              'line-height': option.size + 10 * a + 'px',
+              'line-height': option.size + 5 * a + 'px',
               color: option.label_color
             });
         }
@@ -436,7 +436,6 @@
         /* Initially create canvas. */
         $(b).appendTo($(this));
       }
-		console.log(option.style); 
 
       if ('Semi' === option.style) {
         k = 2 * Math.PI;

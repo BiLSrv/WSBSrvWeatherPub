@@ -51,17 +51,25 @@
 			
   .GaugeMeter S,
   .GaugeMeter U{
+	Color:           Black;
     Text-Decoration: None;
     Font-Size:       .5em;
-    Opacity:         .5;
+    Opacity:         1.0;
   }
 
   .GaugeMeter B{
     Color:           Black;
     Font-Weight:     300;
-    Font-Size:       .5em;
-    Opacity:         .8;
+    Font-Size:       .8em;
+    Opacity:         1.0;
   }
+			
+  .bd_fail 
+  {
+    border: 3px inset red;
+	border-radius: 12px;
+  }		
+			
   </style>
 <br>
 <form>
@@ -78,13 +86,13 @@
 						<div class="GaugeMeter1T" id="GauAvTemp"></div>
 					</div>
 					<div class="col-auto">
-						<div class="GaugeMeter1" id="GauAvHum"></div>
+						<div class="GaugeMeter1H" id="GauAvHum"></div>
 					</div>
 					<div class="col-auto">
-						<div class="GaugeMeter1" id="GauAvPress"></div>
+						<div class="GaugeMeter1P" id="GauAvPress"></div>
 					</div>
 					<div class="col-auto">
-						<div class="GaugeMeter2" id="GauAirQ"></div>
+						<div class="GaugeMeter1AQ" id="GauAirQ"></div>
 					</div>
 </div>
 <div class="container row text-center">
@@ -115,22 +123,24 @@
 </div>
 <div class="container row text-center">
 						<div class="col-auto">
-							<div class="GaugeMeter" id="sht35h"></div>
+							<div class="GaugeMeter1H" id="sht35h"></div>
 						</div>
 						<div class="col-auto">
-							<div class="GaugeMeter" id="sht41h"></div>
+							<div class="GaugeMeter1H" id="sht41h"></div>
 						</div>
 						<div class="col-auto">
-							<div class="GaugeMeter" id="bme280_1h"></div>
+							<div class="GaugeMeter1H" id="bme280_1h"></div>
 						</div>
 						<div class="col-auto">
-							<div class="GaugeMeter" id="bme280_2h"></div>
+							<div class="GaugeMeter1H" id="bme280_2h"></div>
+						</div>
+</div>
+<div class="container row text-center">
+						<div class="col-auto">
+							<div class="GaugeMeter1P" id="bme280_1p"></div>
 						</div>
 						<div class="col-auto">
-							<div class="GaugeMeter" id="bme280_1p"></div>
-						</div>
-						<div class="col-auto">
-							<div class="GaugeMeter" id="bme280_2p"></div>
+							<div class="GaugeMeter1P" id="bme280_2p"></div>
 						</div>
 </div>
 				<div class="form-group row">
@@ -150,36 +160,63 @@
 				<p class="h5 modal-title text-center">Датчик BME680</p>
 					<div class="col-auto">
 					<canvas id="bme680_1t"></canvas>
+					</div>
+					<div class="col-auto">
 					<canvas id="aht21_t"></canvas>
-						<div class="GaugeMeter" id="bme680_1h"></div>
-						<div class="GaugeMeter" id="bme680_1p"></div>
-						<div class="GaugeMeter" id="bme680_gr"></div>
-						<div class="GaugeMeter" id="aht21_h"></div>
+					</div>
+					<div class="col-auto">
+					<canvas id="lpshw_t"></canvas>
 					</div>
 </div>
 <div class="container row text-center">
-				<p class="h5 modal-title text-center">Датчик AHT21</p>
 					<div class="col-auto">
-					
+						<div class="GaugeMeter1H" id="bme680_1h"></div>
+					</div>
+					<div class="col-auto">
+						<div class="GaugeMeter1P" id="bme680_1p"></div>
+					</div>
+					<div class="col-auto">
+						<div class="GaugeMeter1AQ" id="bme680_gr"></div>
+					</div>
+					<div class="col-auto">
+						<div class="GaugeMeter1H" id="aht21_h"></div>
 					</div>
 </div>
 <div class="container row text-center">
 				<p class="h5 modal-title text-center">Датчик LPS35HW</p>
 					<div class="col-auto">
-					<canvas id="lpshw_t"></canvas>
-					<div class="GaugeMeter" id="lpshw_p"></div>
+						<div class="GaugeMeter1P" id="lpshw_p"></div>
+					</div>
+					<div class="col-auto">
+						<div class="GaugeMeter1T" id="ens160_tempout"></div>
+					</div>
+					<div class="col-auto">
+						<div class="GaugeMeter1P" id="lpshw_p"></div>
+					</div>
+					<div class="col-auto">
+						<div class="GaugeMeter1P" id="lpshw_p"></div>
+					</div>
+					<div class="col-auto">
+						<div class="GaugeMeter1P" id="lpshw_p"></div>
 					</div>
 </div>
 
 <div class="container row text-center">
-				<p class="h5 modal-title text-center">Датчик ENS160</p>
+<p class="h5 modal-title text-center">Датчик ENS160</p>
 					<div class="col-auto">
-					<div class="GaugeMeter" id="ens160_tempout"></div>
-					<div class="GaugeMeter" id="ens160_hout"></div>
-					<div class="GaugeMeter" id="ens160_tvoc"></div>
-					<div class="GaugeMeter" id="ens160_eco2"></div>
+					<div class="GaugeMeter1T" id="ens160_tempout"></div>
+					</div>
+					<div class="col-auto">
+					<div class="GaugeMeter1H" id="ens160_hout"></div>
+					</div>
+					<div class="col-auto">
+					<div class="GaugeMeter1AQ" id="ens160_tvoc"></div>
+					</div>
+					<div class="col-auto">
+					<div class="GaugeMeter1AQ" id="ens160_eco2"></div>
 					</div>
 </div>
+<div class="container row text-center">
 				<p class="h5 modal-title text-center" id="htu21">Датчик CJMCU</p>
 				<p class="text-primary fw-bold fs-5">НЕТ ДАННЫХ</p>
 				<p class="h5 modal-title text-center" id="sht3x">Данные АЦП</p>
@@ -198,7 +235,7 @@
 				<div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
 			  		<div class="progress-bar bg-success" style="width: 25%">25%</div>
 				</div>
-
+</div>
 				<p class="h5 modal-title text-center" id="sht3x">Доступность датчиков</p>
 	    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="This top tooltip is themed via CSS variables.">
 	    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="This top tooltip is themed via CSS variables.">
@@ -216,10 +253,11 @@
 		<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top">
 		  Tooltip on top
 		</button>
+
 </form>
 <script type="text/javascript">		
 $(document).ready(function () {
-	
+
 	    /*var idArr = [];
         $(".box").each(function(){
             idArr.push($(this).attr("id"));
@@ -228,36 +266,23 @@ $(document).ready(function () {
         //alert(idArr.join(", "));
 
 //var gaugeElement = document.getElementsByTagName('canvas')[0];	
+
 	
-// CanvasGuage https://canvas-gauges.com/documentation/examples/
-var gaugeArr = [];
-// This jQuery GaugeMeter Plugin 
-// 	theme: ["Red-Gold-Green","Green-Gold-Red","DarkBlue-LightBlue","LightBlue-DarkBlue"],
-// style: ["Semi","Arch"],
+var str_out = "";
+var str_out1 = "";
+var uart_json = {};
+var temp_json = {};
+var input_lm75 = {};
+var tmranim = 2000; // animate [s]
 
-var GuageMeter =
-{
-	theme: "Red-Gold-Green",
-	text: "0",
-	style: "Arch",
-	text_size: "0.25",
-	append: "°C",
-	percent: 77,
-	size: 100,
-	width: 6,
-	color: null,
-	animate_gauge_colors: true,
-	animate_text_colors:  false,
-	label: "Темпер",
-	label_color: null
-}
+	
 
-$(".GaugeMeter1T").gaugeMeter(GuageMeter);
-					$(".GaugeMeter1").gaugeMeter({style:'Semi', percent: 0 });
-					$('.GaugeMeter2').gaugeMeter({style:'Semi', percent: 15 });
+// This jQuery https://canvas-gauges.com/documentation/examples/ 
+var CanvGaugeArr = [];
 
+// Canvas .each Default Settings 
 $('canvas').each(function(index){	
-    gaugeArr.push(new LinearGauge({
+    CanvGaugeArr.push(new LinearGauge({
     renderTo: $( this ).attr('id'),
     width: 100,
     height: 300,
@@ -290,21 +315,47 @@ $('canvas').each(function(index){
 }).draw());
 	//console.log( index + ": " + $( this ).text() + $( this ).attr('id')+ " " );    units: '°C',	colorPlateEnd: "#327ac0",
 });
-	
-var gaugeElement = $('canvas');
-						
-gaugeArr[1].update({ value: '47' });
-					
-					var guageopt = {
-					   width: 100,
-					   height: 150,
-					   animationRule: 'elastic',
-					   animationDuration: 500,
-					   value: '47'
-					   
-				   };
 
 	
+// This jQuery GaugeMeter Plugin 
+// theme: ["Red-Gold-Green","Green-Gold-Red","DarkBlue-LightBlue","LightBlue-DarkBlue"],
+// style: ["Semi","Arch"],
+var GuageMeter =
+{
+	theme: "Red-Gold-Green",
+	text: "-60",
+	style: "Arch",
+	text_size: "0.22",
+	append: "°C",
+	percent: 77,
+	size: 110,
+	width: 10,
+	color: null,
+	animate_gauge_colors: true,
+	animate_text_colors:  false,
+	label: "Темпер",
+	label_color: null
+}
+
+
+$(".GaugeMeter1T").gaugeMeter(GuageMeter);
+GuageMeter.append = "%";
+GuageMeter.label = "Влажн-ь"
+$(".GaugeMeter1H").gaugeMeter(GuageMeter);
+GuageMeter.append = "ммРт";
+GuageMeter.label = "Давл-е"
+GuageMeter.text_size = "0.18";
+$(".GaugeMeter1P").gaugeMeter(GuageMeter);
+GuageMeter.append = "";
+GuageMeter.label = "Воздух"
+$(".GaugeMeter1AQ").gaugeMeter(GuageMeter);
+
+//$( "div:has(.GaugeMeter1T)").addClass("bd_fail");.fadeOut(1000)
+$( ".GaugeMeter1T").addClass("bd_fail");
+$( ".GaugeMeter1T" ).find('bd_fail');
+//$( ".GaugeMeter1T" ).find('bd_fail').fadeIn(1000);
+
+//gaugeArr[1].update({ value: '47' });
 
 					/*$('canvas').attr({value:'51'})
 					/$('canvas').attr({width:'100',height:'150'});*/
@@ -314,6 +365,91 @@ gaugeArr[1].update({ value: '47' });
 					guagelm75_t.attr('data-value','47');*/
 
 });
+
+// cont: TEMP, RTC, DEBUG + Settings
+function txjstmp(s, d) {
+	var j=0,ii=0;
+	var tmpf = 0.0;
+	//var jT = 0;
+	//var jH = 0;
+	//var jP = 0;
+	var T_cnt = 1
+	var H_cnt = 1
+	var P_cnt = 1
+//    console.log(d);
+    if (s != 200) {
+        as0.removeClass("badge-success");
+        as0.addClass("badge-danger");
+        as0.text("Нет связи");
+        as1.removeClass("badge-success");
+        as1.addClass("badge-danger");
+        as1.text("Нет связи");
+        $(".swdeb").removeAttr("disabled");
+        ftmpd();
+        //console.log("Connection proplem!");
+        return 0;
+        //clearTimeout(rs.handle);
+    } else {
+        as0.removeClass("badge-danger");
+        as1.removeClass("badge-danger");
+        as0.addClass("badge-success");
+        as1.addClass("badge-success");
+        as0.text("ОК ");
+		as1.text("ОК ");
+        if (typeof d === "string") {
+            console.log("priem ok!");
+            try {
+                temp_json = JSON.parse(d);
+                console.log(s, temp_json);
+            } catch (e) {
+                // ftvall - form clear
+                ftvall("");
+                console.log(s, e.message);
+                return 0;
+            }
+        } else {
+            //console.log("d not string");
+            ftvall("");
+            return 0;
+        }
+    }
+    //$(".btns_bme280_1").fadeIn();
+    // posle input BME280: WEB -> ESP
+
+    if (temp_json["LM75_CMP"]) {
+        //$(".btns_bme280_1").removeClass('badge-success');
+        //$(".btns_bme280_1").removeClass('badge-danger');
+        try {
+            var aou1 = parseInt(temp_json.LM75_CMP[0].trim(), 10);
+            var aou2 = parseInt(temp_json.LM75_CMP[1].trim(), 10);
+            //console.log("temp_json.LM75_CMP[0]" + aou1);
+            //console.log("temp_json.LM75_CMP[1]" + aou2);
+            if (aou1 == 1) {
+                $("#lm75_t1_chk").prop("checked", true);
+            } else {
+                $("#lm75_t1_chk").prop("checked", false);
+            }
+            if (aou2 == 1) {
+                $("#lm75_t2_chk").prop("checked", true);
+            } else {
+                $("#lm75_t2_chk").prop("checked", false);
+            }
+        } catch (e) {
+            //console.log(e);
+        }
+    }
+}
+	
+// zapros temperature
+function sub_grad() {
+    maOBJ = $("#tmpo").serializeArray();
+    fetch("/temp_out.json?n=" + Math.random(), "GET", txjstmp, 10);
+		 $("#temperature").val(j_T.toString().substring(0, 6));
+		 $("#humudity").val(j_H.toString().substring(0, 6));
+		 $("#pressure").val(j_P.toString().substring(0, 6));
+    //console.log(maOBJ);
+}
+
 					
 </script>
 	
