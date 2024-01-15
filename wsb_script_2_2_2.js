@@ -92,10 +92,8 @@ $(".GaugeMeter1P").gaugeMeter(GuageMeter);
 GuageMeter.append = "";
 GuageMeter.label = "Воздух"
 $(".GaugeMeter1AQ").gaugeMeter(GuageMeter);
-
 //$( "div:has(.GaugeMeter1T)").addClass("bd_fail");.fadeOut(1000)
 $( ".GaugeMeter1T").addClass("bd_fail");
-$( ".GaugeMeter1T" ).find('bd_fail');
 //$( ".GaugeMeter1T" ).find('bd_fail').fadeIn(1000);
 
 //gaugeArr[1].update({ value: '47' });
@@ -107,17 +105,14 @@ $( ".GaugeMeter1T" ).find('bd_fail');
 					guagelm75_t.attr('data-height','150');
 					guagelm75_t.attr('data-value','47');*/
 
-
-
-
 $(".bt0st").attr("value", "off");
 $(".navia").addClass("list-group-item list-group-item-action bg-light border");
 $("#esp_tx").val("wsbuser.prints(node.heap());");
 $("#esp_urx").val("");
-rs = setInterval(refr_rtc, 3000);
+//rs = setInterval(refr_rtc, 3000);
 i = 0;
 	                // Initialize GaugeMeter plugin
-                $(".GaugeMeter").gaugeMeter();
+$(".GaugeMeter").gaugeMeter();
 
                 // Bind new handler to init and update gauges.
                 ko.bindingHandlers.gaugeValue = {
