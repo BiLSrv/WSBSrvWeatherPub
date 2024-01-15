@@ -3,6 +3,7 @@
 //					https://javascriptcompressor.com/
 //
 // $(document).ready(function ()
+// $(document).ready(function ()
 window.onload = function () {
 
 	    /*var idArr = [];
@@ -106,6 +107,37 @@ $( ".GaugeMeter1T" ).find('bd_fail');
 					guagelm75_t.attr('data-height','150');
 					guagelm75_t.attr('data-value','47');*/
 
+
+
+
+$(".bt0st").attr("value", "off");
+$(".navia").addClass("list-group-item list-group-item-action bg-light border");
+$("#esp_tx").val("wsbuser.prints(node.heap());");
+$("#esp_urx").val("");
+rs = setInterval(refr_rtc, 3000);
+i = 0;
+	                // Initialize GaugeMeter plugin
+                $(".GaugeMeter").gaugeMeter();
+
+                // Bind new handler to init and update gauges.
+                ko.bindingHandlers.gaugeValue = {
+                    init: function(element, valueAccessor) {
+                        $(element).gaugeMeter({ percent: ko.unwrap(valueAccessor()) });
+                    },
+                    update: function(element, valueAccessor) {
+                        $(element).gaugeMeter({ percent: ko.unwrap(valueAccessor()) });
+                    }
+                };
+
+                // Create view model with inital gauge value 15mph
+
+                // Use observable for easy update.
+                var myViewModel = {
+                    Percent: ko.observable(15)
+                };
+                ko.applyBindings(myViewModel);
+	
+	
 };
 // cont: TEMP, RTC, DEBUG + Settings
 function txjstmp(s, d) {
@@ -191,34 +223,3 @@ function sub_grad() {
 		 //$("#pressure").val(j_P.toString().substring(0, 6));
     //console.log(maOBJ);
 }
-
-
-
-    $(".bt0st").attr("value", "off");
-    $(".navia").addClass("list-group-item list-group-item-action bg-light border");
-    $("#esp_tx").val("wsbuser.prints(node.heap());");
-    $("#esp_urx").val("");
-    rs = setInterval(refr_rtc, 3000);
-    i = 0;
-	
-	                // Initialize GaugeMeter plugin
-                $(".GaugeMeter").gaugeMeter();
-
-                // Bind new handler to init and update gauges.
-                ko.bindingHandlers.gaugeValue = {
-                    init: function(element, valueAccessor) {
-                        $(element).gaugeMeter({ percent: ko.unwrap(valueAccessor()) });
-                    },
-                    update: function(element, valueAccessor) {
-                        $(element).gaugeMeter({ percent: ko.unwrap(valueAccessor()) });
-                    }
-                };
-
-                // Create view model with inital gauge value 15mph
-                // Use observable for easy update.
-                var myViewModel = {
-                    Percent: ko.observable(15)
-                };
-                ko.applyBindings(myViewModel);
-	
-};
