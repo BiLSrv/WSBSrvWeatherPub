@@ -13,7 +13,7 @@
  */
 // tolko eta fn '!'
 // !(function ($)
-function ($) {
+!(function ($) {
   $.fn.gaugeMeter = function (t) {
     var defaults = $.extend(
       {
@@ -451,4 +451,4 @@ function ($) {
       drawGauge(M / 100);
     });
   };
-};
+});
