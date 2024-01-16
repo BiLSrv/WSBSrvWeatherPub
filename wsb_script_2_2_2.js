@@ -597,7 +597,7 @@ var GuageMeter =
 	theme: "Red-Gold-Green",
 	text: "-60",
 	style: "Arch",
-	text_size: "0.22",
+	text_size: "0.15",
 	append: "°C",
 	percent: 77,
 	size: 110,
