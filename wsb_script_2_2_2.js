@@ -715,6 +715,7 @@ function onError(error) {
 function onMessage(event)
 {
 	console.log(event.data);
+	alert("rx"+event.data);
 	
 	WSsocket.readyState(event.data);
 /*	var j=0,ii=0;
