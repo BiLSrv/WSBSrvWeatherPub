@@ -676,7 +676,7 @@ initWebSocket(WSsocket);
 
 function sub_grad()
 {
-	WSsocket.send("Yes!");
+	WSsocket.send("toggle");
 	alert("send tx");
 }
 
