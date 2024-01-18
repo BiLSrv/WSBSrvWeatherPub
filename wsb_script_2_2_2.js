@@ -550,7 +550,6 @@ var gateway =
 		protocol:''
 };
 var WSsocket = new WebSocket(gateway.gw,gateway.timeout,gateway.attempts,gateway.dataType,gateway.protocol);
-alert(gateway);
 
 	
 var str_out = "";
