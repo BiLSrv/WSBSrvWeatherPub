@@ -4,7 +4,7 @@
 //
 // $(document).ready(function ()
 // $(document).ready(function ()
-
+/*
 $.fn.gaugeMeter = function (t) {
     var defaults = $.extend(
       {
@@ -442,93 +442,7 @@ $.fn.gaugeMeter = function (t) {
       drawGauge(M / 100);
     });
 };
-
-// cont: TEMP, RTC, DEBUG + Settings
-function txjstmp(s, d) {
-	var j=0,ii=0;
-	var tmpf = 0.0;
-	//var jT = 0;
-	//var jH = 0;
-	//var jP = 0;
-	var T_cnt = 1
-	var H_cnt = 1
-	var P_cnt = 1
-//    console.log(d);
-    if (s != 200) {
-        as0.removeClass("badge-success");
-        as0.addClass("badge-danger");
-        as0.text("Нет связи");
-        as1.removeClass("badge-success");
-        as1.addClass("badge-danger");
-        as1.text("Нет связи");
-        $(".swdeb").removeAttr("disabled");
-        ftmpd();
-        //console.log("Connection proplem!");
-        return 0;
-        //clearTimeout(rs.handle);
-    } else {
-
-        as0.removeClass("badge-danger");
-        as1.removeClass("badge-danger");
-        as0.addClass("badge-success");
-        as1.addClass("badge-success");
-        as0.text("ОК ");
-		as1.text("ОК ");
-        if (typeof d === "string") {
-            console.log("priem ok!");
-            try {
-                temp_json = JSON.parse(d);
-                console.log(s, temp_json);
-            } catch (e) {
-                // ftvall - form clear
-                ftvall("");
-                console.log(s, e.message);
-                return 0;
-            }
-        } else {
-            //console.log("d not string");
-            ftvall("");
-            return 0;
-        }
-    }
-    //$(".btns_bme280_1").fadeIn();
-    // posle input BME280: WEB -> ESP
-
-    if (temp_json["LM75_CMP"]) {
-        //$(".btns_bme280_1").removeClass('badge-success');
-        //$(".btns_bme280_1").removeClass('badge-danger');
-        try {
-            var aou1 = parseInt(temp_json.LM75_CMP[0].trim(), 10);
-            var aou2 = parseInt(temp_json.LM75_CMP[1].trim(), 10);
-            //console.log("temp_json.LM75_CMP[0]" + aou1);
-            //console.log("temp_json.LM75_CMP[1]" + aou2);
-            if (aou1 == 1) {
-                $("#lm75_t1_chk").prop("checked", true);
-            } else {
-                $("#lm75_t1_chk").prop("checked", false);
-            }
-            if (aou2 == 1) {
-                $("#lm75_t2_chk").prop("checked", true);
-            } else {
-                $("#lm75_t2_chk").prop("checked", false);
-            }
-        } catch (e) {
-            //console.log(e);
-        }
-    }
-}
-	
-// zapros temperature
-function sub_grad() {
-    //maOBJ = $("#tmpo").serializeArray();
-    fetch("/temp_out.json?n=" + Math.random(), "GET", txjstmp, 10);
-		 //$("#temperature").val(j_T.toString().substring(0, 6));
-		 //$("#humudity").val(j_H.toString().substring(0, 6));
-		 //$("#pressure").val(j_P.toString().substring(0, 6));
-    //console.log(maOBJ);
-}
-
-
+*/
 window.onload = function () {
 
 	    /*var idArr = [];
