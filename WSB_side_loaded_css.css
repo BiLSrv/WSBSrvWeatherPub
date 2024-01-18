@@ -5,6 +5,11 @@
 .overlay { 
    		overflow-y: scroll;
 		}
+
+.sidebar_sensor
+{
+	background-color:#A1A1A1;
+}
 /* .GaugeMeter */
 
   .GaugeMeter{
