@@ -528,6 +528,7 @@ function sub_grad() {
     //console.log(maOBJ);
 }
 
+
 window.onload = function () {
 
 	    /*var idArr = [];
@@ -538,10 +539,19 @@ window.onload = function () {
         //alert(idArr.join(", "));
 
 //var gaugeElement = document.getElementsByTagName('canvas')[0];	
-// Design WSocket
-var gateway = 'ws://${window.location.hotname}/ws';
-var ws;
-	
+// Design WSocket gw:'ws://${window.location.hotname}/ws',
+
+var gateway = 
+{
+		gw:'ws://192.168.1.45/ws',
+		timeout:2000,
+		attempts: 60,		
+		dataType: 'json',
+		protocol:''
+};
+var WSsocket = new WebSocket(gateway.gw,gateway.timeout,gateway.attempts,gateway.dataType,gateway.protocol);
+alert(gateway);
+
 	
 var str_out = "";
 var str_out1 = "";
@@ -643,6 +653,8 @@ i = 0;
 	                // Initialize GaugeMeter plugin
 $(".GaugeMeter").gaugeMeter();
 
+initWebSocket(WSsocket);
+	
                 // Bind new handler to init and update gauges.
                 ko.bindingHandlers.gaugeValue = {
                     init: function(element, valueAccessor) {
@@ -652,7 +664,6 @@ $(".GaugeMeter").gaugeMeter();
                         $(element).gaugeMeter({ percent: ko.unwrap(valueAccessor()) });
                     }
                 };
-
                 // Create view model with inital gauge value 15mph
 
                 // Use observable for easy update.
@@ -660,6 +671,124 @@ $(".GaugeMeter").gaugeMeter();
                     Percent: ko.observable(15)
                 };
                 ko.applyBindings(myViewModel);
-	
-	
 };
+
+
+function sub_grad()
+{
+	WSsocket.send("Yes!");
+	alert("send tx");
+}
+
+function initWebSocket(ws)
+{
+	ws.onopen = onOpen;
+	ws.onclose = onClose;
+	ws.onmessage = onMessage; // add this line
+	ws.onerror = onError;
+	// socket.isConnected(); // or: socket.isConnected(function(connected) {});
+	// socket.listen(function(data) {});
+	// socket.remove(listenerCallback);
+	// socket.removeAll();
+}
+
+function onOpen(event)
+{
+	console.log('ws opened');
+}
+
+function onClose(event)
+{
+	if (event.wasClean) 
+	{
+        console.log('Соединение закрыто чисто');
+	}
+	console.log('ws close');
+}
+
+function onError(error) {
+	console.log('ws error');
+};
+ 
+
+
+function onMessage(event)
+{
+	console.log(event.data);
+	
+	WSsocket.readyState(event.data);
+/*	var j=0,ii=0;
+	var tmpf = 0.0;
+	//var jT = 0;
+	//var jH = 0;
+	//var jP = 0;
+	var T_cnt = 1
+	var H_cnt = 1
+	var P_cnt = 1
+//    console.log(d);
+    if (s != 200) {
+        as0.removeClass("badge-success");
+        as0.addClass("badge-danger");
+        as0.text("Нет связи");
+        as1.removeClass("badge-success");
+        as1.addClass("badge-danger");
+        as1.text("Нет связи");
+        $(".swdeb").removeAttr("disabled");
+        ftmpd();
+        //console.log("Connection proplem!");
+        return 0;
+        //clearTimeout(rs.handle);
+    } else {
+
+        as0.removeClass("badge-danger");
+        as1.removeClass("badge-danger");
+        as0.addClass("badge-success");
+        as1.addClass("badge-success");
+        as0.text("ОК ");
+		as1.text("ОК ");
+        if (typeof d === "string") {
+            console.log("priem ok!");
+            try {
+                temp_json = JSON.parse(d);
+                console.log(s, temp_json);
+            } catch (e) {
+                // ftvall - form clear
+                ftvall("");
+                console.log(s, e.message);
+                return 0;
+            }
+        } else {
+            //console.log("d not string");
+            ftvall("");
+            return 0;
+        }
+    }
+    //$(".btns_bme280_1").fadeIn();
+    // posle input BME280: WEB -> ESP
+
+    if (temp_json["LM75_CMP"]) {
+        //$(".btns_bme280_1").removeClass('badge-success');
+        //$(".btns_bme280_1").removeClass('badge-danger');
+        try {
+            var aou1 = parseInt(temp_json.LM75_CMP[0].trim(), 10);
+            var aou2 = parseInt(temp_json.LM75_CMP[1].trim(), 10);
+            //console.log("temp_json.LM75_CMP[0]" + aou1);
+            //console.log("temp_json.LM75_CMP[1]" + aou2);
+            if (aou1 == 1) {
+                $("#lm75_t1_chk").prop("checked", true);
+            } else {
+                $("#lm75_t1_chk").prop("checked", false);
+            }
+            if (aou2 == 1) {
+                $("#lm75_t2_chk").prop("checked", true);
+            } else {
+                $("#lm75_t2_chk").prop("checked", false);
+            }
+        } catch (e) {
+            //console.log(e);
+        }
+    }*/
+	WSsocket.close();
+
+	
+}
