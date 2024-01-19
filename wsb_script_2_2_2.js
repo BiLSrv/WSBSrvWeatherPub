@@ -3,7 +3,12 @@
 //					https://javascriptcompressor.com/
 //
 // $(document).ready(function ()
-!(function ($) {
+
+
+
+window.onload = function () {
+
+function ($) {
   $.fn.gaugeMeter = function (t) {
     var defaults = $.extend(
       {
@@ -440,11 +445,8 @@
       drawGauge(M / 100);
     });
   };
-})(jQuery);
-
-
-window.onload = function () {
-
+}	
+	
 	    /*var idArr = [];
         $(".box").each(function(){
             idArr.push($(this).attr("id"));
