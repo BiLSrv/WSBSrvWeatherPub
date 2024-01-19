@@ -5,11 +5,23 @@
 // $(document).ready(function ()
 
 
+var gateway = 
+{
+		gw:'ws://192.168.1.45/ws',
+		timeout:2000,
+		attempts: 60,		
+		dataType: 'json',
+		protocol:''
+};
+var WSsocket = new WebSocket(gateway.gw,gateway.timeout,gateway.attempts,gateway.dataType,gateway.protocol);
+
+	
+
 
 window.onload = function () {
 
-function ($) {
-  $.fn.gaugeMeter = function (t) {
+
+$.fn.gaugeMeter = function (t) {
     var defaults = $.extend(
       {
         id: '',
@@ -444,8 +456,7 @@ function ($) {
       }
       drawGauge(M / 100);
     });
-  };
-}	
+};	
 	
 	    /*var idArr = [];
         $(".box").each(function(){
@@ -457,17 +468,6 @@ function ($) {
 //var gaugeElement = document.getElementsByTagName('canvas')[0];	
 // Design WSocket gw:'ws://${window.location.hotname}/ws',
 
-var gateway = 
-{
-		gw:'ws://192.168.1.45/ws',
-		timeout:2000,
-		attempts: 60,		
-		dataType: 'json',
-		protocol:''
-};
-var WSsocket = new WebSocket(gateway.gw,gateway.timeout,gateway.attempts,gateway.dataType,gateway.protocol);
-
-	
 var str_out = "";
 var str_out1 = "";
 var uart_json = {};
