@@ -3,9 +3,8 @@
 //					https://javascriptcompressor.com/
 //
 // $(document).ready(function ()
-// $(document).ready(function ()
-
-$.fn.gaugeMeter = function (t) {
+!(function ($) {
+  $.fn.gaugeMeter = function (t) {
     var defaults = $.extend(
       {
         id: '',
@@ -319,8 +318,7 @@ $.fn.gaugeMeter = function (t) {
           'text',
           'text_size',
           'fill',
-          'showvalue',
-		  'data'
+          'showvalue'
         ],
         option = {},
         c = 0,
@@ -441,7 +439,9 @@ $.fn.gaugeMeter = function (t) {
       }
       drawGauge(M / 100);
     });
-};
+  };
+})(jQuery);
+
 
 window.onload = function () {
 
