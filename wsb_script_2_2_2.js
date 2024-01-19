@@ -4,7 +4,7 @@
 //
 // $(document).ready(function ()
 // $(document).ready(function ()
-/*
+
 $.fn.gaugeMeter = function (t) {
     var defaults = $.extend(
       {
@@ -442,7 +442,7 @@ $.fn.gaugeMeter = function (t) {
       drawGauge(M / 100);
     });
 };
-*/
+
 window.onload = function () {
 
 	    /*var idArr = [];
