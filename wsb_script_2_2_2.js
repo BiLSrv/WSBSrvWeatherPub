@@ -2,7 +2,7 @@
 //
 //					https://javascriptcompressor.com/
 //
-// $(document).ready(function ()
+// $(document).ready(function () 
 
 var gateway = 
 {
