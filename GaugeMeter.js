@@ -11,9 +11,8 @@
  * https://github.com/mictronics/GaugeMeter
  *
  */
-// tolko eta fn '!'
-!(function ($)
-$.fn.gaugeMeter = function (t) {
+!(function ($) {
+  $.fn.gaugeMeter = function (t) {
     var defaults = $.extend(
       {
         id: '',
@@ -191,7 +190,7 @@ $.fn.gaugeMeter = function (t) {
           t
         );
       }
-      // The label below gauge. 
+      /* The label below gauge. */
       function createLabel(t, a) {
         if (t.children('b').length === 0) {
           $('<b></b>')
@@ -203,7 +202,7 @@ $.fn.gaugeMeter = function (t) {
             });
         }
       }
-      // Prepend and append text, the gauge text or percentage value. 
+      /* Prepend and append text, the gauge text or percentage value. */
       function createSpanTag(t) {
         var fgcolor = '';
         if (option.animate_text_colors === true) {
@@ -229,9 +228,9 @@ $.fn.gaugeMeter = function (t) {
             color: fgcolor
           });
       }
-      // Get data attributes as options from div tag. Fall back to defaults when not exists. 
-      
-	  function getDataAttr(t) {
+
+      /* Get data attributes as options from div tag. Fall back to defaults when not exists. */
+      function getDataAttr(t) {
         $.each(dataAttr, function (index, element) {
           if (t.data(element) !== undefined && t.data(element) !== null) {
             option[element] = t.data(element);
@@ -258,7 +257,7 @@ $.fn.gaugeMeter = function (t) {
           }
         });
       }
-      // Draws the gauge. 
+      /* Draws the gauge. */
       function drawGauge(a) {
         if (option.animate_gauge_colors) {
           // Set gauge color for each value change.
@@ -328,8 +327,7 @@ $.fn.gaugeMeter = function (t) {
           'text',
           'text_size',
           'fill',
-          'showvalue',
-		  'data'
+          'showvalue'
         ],
         option = {},
         c = 0,
@@ -430,10 +428,10 @@ $.fn.gaugeMeter = function (t) {
         I = Math.PI / 2;
       var child = $(this).children('canvas');
       if (child.length !== 0) {
-        // Replace existing canvas when new percentage was written. 
+        /* Replace existing canvas when new percentage was written. */
         child.replaceWith(b);
       } else {
-        // Initially create canvas. 
+        /* Initially create canvas. */
         $(b).appendTo($(this));
       }
 
