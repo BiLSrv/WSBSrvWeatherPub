@@ -118,9 +118,63 @@
 <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery-touch-events/2.0.0/jquery.mobile-events.min.js></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-<script src="https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js"></script>
+<!--<script src="https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js"></script>
+!-->
 <script>
 $(document).ready(function() {
-            $(".macnt").load('https://bilsrv.github.io/WSBSrvWeatherPub/WSB_page_main.html').html();
+
+	
+	            $(".macnt").load('https://bilsrv.github.io/WSBSrvWeatherPub/WSB_page_main.html').html();
+var GuageMeter =
+{
+	theme: "Red-Gold-Green",
+	text: "-60",
+	style: "Arch",
+	text_size: "0.15",
+	append: "°C",
+	percent: 77,
+	size: 110,
+	width: 10,
+	color: null,
+	animate_gauge_colors: true,
+	animate_text_colors:  false,
+	label: "Темпер",
+	label_color: null
+}
+
+
+$(".GaugeMeter1T").gaugeMeter(GuageMeter);
+GuageMeter.append = "%";
+GuageMeter.label = "Влажн-ь"
+$(".GaugeMeter1H").gaugeMeter(GuageMeter);
+GuageMeter.append = "ммРт";
+GuageMeter.label = "Давл-е"
+GuageMeter.text_size = "0.18";
+$(".GaugeMeter1P").gaugeMeter(GuageMeter);
+GuageMeter.append = "";
+GuageMeter.label = "Воздух"
+$(".GaugeMeter1AQ").gaugeMeter(GuageMeter);
+//$( "div:has(.GaugeMeter1T)").addClass("bd_fail");.fadeOut(1000)
+$( ".GaugeMeter1T").addClass("bd_fail");
+//$( ".GaugeMeter1T" ).find('bd_fail').fadeIn(1000);
+
+//gaugeArr[1].update({ value: '47' });
+
+					/*$('canvas').attr({value:'51'})
+					/$('canvas').attr({width:'100',height:'150'});*/
+					
+					/*guagelm75_t.attr('data-value','47');guagelm75_t.attr('data-width','100');
+					guagelm75_t.attr('data-height','150');
+					guagelm75_t.attr('data-value','47');*/
+
+$(".bt0st").attr("value", "off");
+$(".navia").addClass("list-group-item list-group-item-action bg-light border");
+$("#esp_tx").val("wsbuser.prints(node.heap());");
+$("#esp_urx").val("");
+//rs = setInterval(refr_rtc, 3000);
+i = 0;
+	                // Initialize GaugeMeter plugin
+$(".GaugeMeter").gaugeMeter();
+
 });
 </script>
