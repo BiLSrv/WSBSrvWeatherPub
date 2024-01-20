@@ -459,7 +459,6 @@ window.onload = function () {
         });*/
         // Join array elements and display in alert
         //alert(idArr.join(", "));
-WSsocket = new WebSocket(gateway.gw,gateway.timeout,gateway.attempts,gateway.dataType,gateway.protocol);
 //var gaugeElement = document.getElementsByTagName('canvas')[0];	
 // Design WSocket gw:'ws://${window.location.hotname}/ws',
 var str_out = "";
@@ -561,6 +560,9 @@ $("#esp_urx").val("");
 i = 0;
 	                // Initialize GaugeMeter plugin
 $(".GaugeMeter").gaugeMeter();
+	
+
+WSsocket = new WebSocket(gateway.gw,gateway.timeout,gateway.attempts,gateway.dataType,gateway.protocol);
 
 initWebSocket(WSsocket);
 	
