@@ -14,7 +14,7 @@
 {
 	background-color:#A1A1A1;
 }
-/* .GaugeMeter */
+ .GaugeMeter 
 
   .GaugeMeter{
     Position:        Relative;
@@ -31,7 +31,7 @@
     Text-align:      Center;
     Display:         Inline-Block;
     Color:           RGBa(0,0,0,.8);
-    Font-Weight:     100;
+    Font-Weight:     50;
     Font-Family:     "Open Sans", Arial;
     Overflow:        Hidden;
     White-Space:     NoWrap;
@@ -39,17 +39,17 @@
   }
   .GaugeMeter[data-style="Semi"] B{
     Margin:          0 10%;
-    Width:           80%;
+    Width:           50%;
   }
 
   .GaugeMeter[data-style="Full"] B{
     Margin:          0 10%;
-    Width:           80%;
+    Width:           50%;
   }
 			
   .GaugeMeter[data-style="Arch"] B{
     Margin:          0 10%;
-    Width:           80%;
+    Width:           50%;
   }
 			
   .GaugeMeter S,
@@ -62,11 +62,11 @@
 
   .GaugeMeter B{
     Color:           Black;
-    Font-Weight:     100;
+    Font-Weight:     50;
     Font-Size:       .4em;
     Opacity:         1.0;
   }
-			
+
   .bd_fail 
   {
     border: 3px inset red;
