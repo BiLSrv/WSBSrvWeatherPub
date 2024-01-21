@@ -27,8 +27,13 @@ var uart_json = {};
 var temp_json = {};
 var input_lm75 = {};
 var tmranim = 2000; // animate [s]
+
+
 // This jQuery https://canvas-gauges.com/documentation/examples/ 
 var CanvGaugeArr = [];
+
+
+$(".macnt").load('https://bilsrv.github.io/WSBSrvWeatherPub/WSB_page_main.html').html();
 console.log("ready wsbscript ok!");
 // Canvas .each Default Settings 
 $('canvas').each(function(index){	
