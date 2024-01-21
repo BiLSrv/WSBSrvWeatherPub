@@ -37,7 +37,6 @@ var CanvGaugeArr = [];
 //	console.log( "Load was performed." );
 //});
 
-	
 console.log("ready wsbscript ok!");
 // Canvas .each Default Settings 
 $('canvas').each(function(index){	
@@ -87,7 +86,7 @@ var GuageMeter =
 	text_size: "0.15",
 	append: "°C",
 	percent: 77,
-	size: 110,
+	size: 70,
 	width: 10,
 	color: null,
 	animate_gauge_colors: true,
