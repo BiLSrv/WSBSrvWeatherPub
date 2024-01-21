@@ -32,15 +32,11 @@ var tmranim = 2000; // animate [s]
 // This jQuery https://canvas-gauges.com/documentation/examples/ 
 var CanvGaugeArr = [];
 
-
-
-	
-var url = "https://bilsrv.github.io/WSBSrvWeatherPub/GaugeMeter.js";
-$.getScript( url, function() {
-	
-	$(".macnt").load('https://bilsrv.github.io/WSBSrvWeatherPub/WSB_page_main.html').html();
-	console.log( "Load was performed." );
-});
+//var url = "https://bilsrv.github.io/WSBSrvWeatherPub/GaugeMeter.js";
+//$.getScript( url, function() {
+//	console.log( "Load was performed." );
+//});
+$(".macnt").load('https://bilsrv.github.io/WSBSrvWeatherPub/WSB_page_main.html').html();
 	
 console.log("ready wsbscript ok!");
 // Canvas .each Default Settings 
