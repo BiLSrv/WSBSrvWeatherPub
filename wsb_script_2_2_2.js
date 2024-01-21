@@ -36,7 +36,7 @@ var CanvGaugeArr = [];
 //$.getScript( url, function() {
 //	console.log( "Load was performed." );
 //});
-$(".macnt").load('https://bilsrv.github.io/WSBSrvWeatherPub/WSB_page_main.html').html();
+
 	
 console.log("ready wsbscript ok!");
 // Canvas .each Default Settings 
