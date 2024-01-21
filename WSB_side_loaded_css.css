@@ -27,7 +27,7 @@
   .GaugeMeter B{
     Margin:          0 23%;
     Width:           54%;
-    Position:        Relative;
+    Position:        Absolute;
     Text-align:      Center;
     Display:         Inline-Block;
     Color:           RGBa(0,0,0,.8);
