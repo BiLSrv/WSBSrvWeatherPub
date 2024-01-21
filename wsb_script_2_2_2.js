@@ -33,7 +33,13 @@ var tmranim = 2000; // animate [s]
 var CanvGaugeArr = [];
 
 
-$(".macnt").load('https://bilsrv.github.io/WSBSrvWeatherPub/WSB_page_main.html').html();
+
+	
+var url = "https://bilsrv.github.io/WSBSrvWeatherPub/GaugeMeter.js";
+$.getScript( url, function() {
+	$(".macnt").load('https://bilsrv.github.io/WSBSrvWeatherPub/WSB_page_main.html').html();
+};
+	
 console.log("ready wsbscript ok!");
 // Canvas .each Default Settings 
 $('canvas').each(function(index){	
