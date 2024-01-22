@@ -39,7 +39,6 @@ var CanvGaugeArr = [];
 
 console.log("ready wsbscript ok!");
 $(".macnt").load('https://bilsrv.github.io/WSBSrvWeatherPub/WSB_page_main.html').html();
-$('head').append('<link rel="stylesheet" href="https://bilsrv.github.io/WSBSrvWeatherPub/WSB_side_loaded_css.css">');
 
 // Canvas .each Default Settings 
 $('canvas').each(function(index){	
