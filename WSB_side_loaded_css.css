@@ -15,56 +15,47 @@
 	background-color:#A1A1A1;
 }
 
-  .GaugeMeter{
-    Position:        Relative;
-    Text-Align:      Center;
-    Overflow:        Hidden;
-    Cursor:          Default;
-  }
- 
-  .GaugeMeter SPAN,
-  .GaugeMeter B{
-    Margin:          0 13%;
-    Width:           34%;
-    Position:        Absolute;
-    Text-align:      Center;
-    Display:         Inline-Block;
-    Color:           RGBa(0,0,0,.8);
-    Font-Weight:     50;
-    Font-Family:     "Open Sans", Arial;
-    Overflow:        Hidden;
-    White-Space:     NoWrap;
-    Text-Overflow:   Ellipsis;
-  }
-  .GaugeMeter[data-style="Semi"] B{
-    Margin:          0 1%;
-    Width:           50%;
-  }
+      .GaugeMeter {
+        position: Relative;
+        text-align: Center;
+        overflow: Hidden;
+        cursor: Default;
+      }
 
-  .GaugeMeter[data-style="Full"] B{
-    Margin:          0 1%;
-    Width:           50%;
-  }
-			
-  .GaugeMeter[data-style="Arch"] B{
-    Margin:          0 1%;
-    Width:           50%;
-  }
-			
-  .GaugeMeter S,
-  .GaugeMeter U{
-	Color:           Black;
-    Text-Decoration: None;
-    Font-Size:       .3em;
-    Opacity:         1.0;
-  }
+      .GaugeMeter SPAN,
+      .GaugeMeter B {
+        margin: 0 23%;
+        width: 54%;
+        position: Absolute;
+        text-align: Center;
+        display: Inline-Block;
+        color: RGBa(0, 0, 0, 0.8);
+        font-weight: 100;
+        font-family: 'Open Sans', Arial;
+        overflow: Hidden;
+        white-space: NoWrap;
+        text-overflow: Ellipsis;
+      }
+      .GaugeMeter[data-style='Semi'] B {
+        margin: 0 10%;
+        width: 80%;
+      }
 
-  .GaugeMeter B{
-    Color:           Black;
-    Font-Weight:     50;
-    Font-Size:       .4em;
-    Opacity:         1.0;
-  }
+      .GaugeMeter S,
+      .GaugeMeter U {
+        text-decoration: None;
+        font-size: 0.6em;
+        font-weight: 200;
+        opacity: 0.6;
+      }
+
+      .GaugeMeter B {
+        color: Black;
+        font-weight: 200;
+        font-size: 0.85em;
+        opacity: 0.8;
+      }
+
 
   .bd_fail 
   {
