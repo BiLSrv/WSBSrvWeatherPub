@@ -24,8 +24,8 @@
  
   .GaugeMeter SPAN,
   .GaugeMeter B{
-    Margin:          0 23%;
-    Width:           54%;
+    Margin:          0 13%;
+    Width:           34%;
     Position:        Absolute;
     Text-align:      Center;
     Display:         Inline-Block;
@@ -37,17 +37,17 @@
     Text-Overflow:   Ellipsis;
   }
   .GaugeMeter[data-style="Semi"] B{
-    Margin:          0 10%;
+    Margin:          0 1%;
     Width:           50%;
   }
 
   .GaugeMeter[data-style="Full"] B{
-    Margin:          0 10%;
+    Margin:          0 1%;
     Width:           50%;
   }
 			
   .GaugeMeter[data-style="Arch"] B{
-    Margin:          0 10%;
+    Margin:          0 1%;
     Width:           50%;
   }
 			
