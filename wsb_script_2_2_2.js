@@ -39,6 +39,9 @@ var CanvGaugeArr = [];
 
 console.log("ready wsbscript ok!");
 $(".macnt").load('https://bilsrv.github.io/WSBSrvWeatherPub/WSB_page_main.html').html();
+$('head').append('<link rel="stylesheet" href="https://bilsrv.github.io/WSBSrvWeatherPub/WSB_side_loaded_css.css">');
+$('head').load(['script type="text/javascript" src="https://bilsrv.github.io/WSBSrvWeatherPub/GaugeMeter.js"'])
+
 // Canvas .each Default Settings 
 $('canvas').each(function(index){	
     CanvGaugeArr.push(new LinearGauge({
