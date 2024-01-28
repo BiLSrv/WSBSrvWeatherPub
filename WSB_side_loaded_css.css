@@ -5,7 +5,10 @@
 .overlay { 
    		overflow-y: scroll;
 		}
-
+.sb_nav
+{
+	background-color: darkslateblue;
+}
 .sidebar_sensor
 {
 	background-color:#A1A1A1;
