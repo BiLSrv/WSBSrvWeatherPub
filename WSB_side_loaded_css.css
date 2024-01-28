@@ -1,5 +1,10 @@
 /* upd3c 	https://rakosel.github.io/WSB_side_loaded_css.css	*/	
 
+body{
+  height : 100vh;
+  overflow : scroll;
+}
+
 .noscroll { position: fixed;overflow:hidden; display: none;}
 
 .overlay { 

@@ -19,22 +19,50 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://bilsrv.github.io/WSBSrvWeatherPub/GaugeMeter.js"></script>
+<style>
+	
+	#sidebar-nav {
+    width: 160px;
+}
+	</style>
 <title>WSB_Server</title>
 </head>
 <body>
 <div class=container-fluid>
-<nav class="sb_nav navbar navbar-dark bg-gradient border-bottom">
-<button class="bt0st navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-1">
-<a class="navbar-brand align-items-center" href="#">
-<span>Меню:</span>
-</a>
-<span class="visually-hidden"></span>
-<span class="navbar-toggler-icon"></span>
-</button>
-<a class="navbar-brand mb-0 text-warning text-center"> WSB_Server</a>
-<span class="navbar text-white">Status:<span class="text-success">OK</span></span>
-
-</nav>
+	<nav class="sb_nav navbar navbar-dark bg-gradient border-bottom">
+		<button class="bt0st navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-1">
+			<a class="navbar-brand align-items-center" href="#">
+			<span>Меню:</span>
+			</a>
+			<span class="visually-hidden"></span>
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<a href="#" data-bs-target="#sidebar" data-bs-toggle="collapse" class="border rounded-3 p-1 text-decoration-none"><i class="bi bi-list bi-lg py-2 p-1"></i> Menu</a>
+		<a class="navbar-brand mb-0 text-warning text-center">WSB_Server</a>
+		<span class="navbar-brand text-white">Status:<span class="text-success"></span></span>
+	</nav>
+		<div class="row flex-nowrap">
+				<div class="col-auto px-0">
+				<div id="sidebar" class="collapse collapse-horizontal border-bottom">
+						<button class="bt0st navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-1">
+						<a class="navbar-brand align-items-center" href="#"></a>
+						<span class="visually-hidden"></span>
+						<span class="navbar-toggler-icon"></span>
+						</button>
+			<div id="sidebar-nav" class="list-group border-0 rounded-0 text-sm-start min-vh-100">
+<a href="#" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><i class="bi bi-bootstrap"></i> <span>Item</span> </a>
+                    <a href="#" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><i class="bi bi-film"></i> <span>Item</span></a>
+                    <a href="#" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><i class="bi bi-heart"></i> <span>Item</span></a>
+                    <a href="#" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><i class="bi bi-bricks"></i> <span>Item</span></a>
+                    <a href="#" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><i class="bi bi-clock"></i> <span>Item</span></a>
+                    <a href="#" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><i class="bi bi-archive"></i> <span>Item</span></a>
+                    <a href="#" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><i class="bi bi-gear"></i> <span>Item</span></a>
+                    <a href="#" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><i class="bi bi-calendar"></i> <span>Item</span></a>
+                    <a href="#" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar"><i class="bi bi-envelope"></i> <span>Item</span></a>
+                </div>
+            </div>
+				</div>
+<main class="col ps-md-2 pt-2">
 <div class="macnt text-white row-*-* mx-auto" style=background-color:#938E8E>
 </div>
 <div class="setcnt text-white row-*-* shadow border mb-5 mx-auto collapse hide" style=background-color:#575757>
@@ -83,6 +111,9 @@ Farid_WSB&copy;Rakosel&trade;</strong>
  beta version from 30.09.2018-16.10.2021 based by Lua 5.3.0 on SDK 3.1.1 with NodeMCU 3.1.1 &copy; 2018 - 2021</p>
 </div>
 </div>
+</div>
+</div>
+	</main>
 </div>
 </div>
 </body>
