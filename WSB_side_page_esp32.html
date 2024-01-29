@@ -33,33 +33,37 @@
 <script src="https://bilsrv.github.io/WSBSrvWeatherPub/GaugeMeter.js"></script>
 <title>WSB_Server</title>
 </head>
-<body>
-<div class=container-fluid>
-	<nav class="sb_nav navbar navbar-dark bg-gradient border-bottom">
-		<button class="bt0st navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-1">
-			<a class="navbar-brand align-items-center" href="#">
+<body class="p-3 m-0 border-0 bd-example m-0 border-1">
+<div class="container-fluid flex-nowrap">
+	<div class="container-fluid shadow p-3 mb-1 rounded navbar sb_nav bg-gradient border-bottom">
+		<button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+			<a class="navbar-brand align-items-center text-white" href="#">
 			<span>Меню:</span>
 			</a>
 			<span class="visually-hidden"></span>
-			<span class="navbar-toggler-icon"></span>
-		</button>
+			<span class="navbar-toggler-icon text-white"></span>
+        </button>
 		<a class="navbar-brand mb-0 text-warning text-center">WSB_Server</a>
 		<span class="navbar-brand text-white">Status:<span class="text-success"></span></span>
-	</nav>
+	</div>
 <div class="row flex-nowrap">
-<div id="sidebar" class="col-auto px-5">
-	<nav class="collapse show collapse-horizontal border-bottom">
-		<ul class="list-group">
-		  <li class="list-group-item active" aria-current="true">An active item</li>
-		  <li class="list-group-item">A second item</li>
-		  <li class="list-group-item">A third item</li>
-		  <li class="list-group-item">A fourth item</li>
-		  <li class="list-group-item">And a fifth one</li>
+	<div id="sidebar" class="col-auto p-3 mb-5 w-25 collapse navbar-collapse bg-opacity-75" style=" .bg-secondary.bg-gradient">
+		<ul class="navbar-nav navbar-nav-scroll list-group">
+			<li class="nav-item bg-primary rounded">
+			<span class="text-light">
+			WSB_Server [DEMO VERSION]</span>
+			</li>
+			<li class=nav-item>
+			<span>
+			Статус сервера:</span>
+			<span class="pst0 navbar-brand badge mb-0 text-white">
+			</span>
+			</li>
+      		<a href="#" class="list-group-item list-group-item-action">A second link item</a>
+      		<a href="#" class="list-group-item list-group-item-action">A third link item</a>
+      		<a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
 		</ul>
-				<a class="list-group-item" href="#" data-bs-parent="#sidebar"><i class="bi bi-bricks"><span>Item</span></i></a>
-
-     </nav>
-</div>
+     </div>
 <main class="col ps-md-2 pt-2">
 <div class="macnt text-white row-*-* mx-auto" style=background-color:#938E8E>
 </div>
