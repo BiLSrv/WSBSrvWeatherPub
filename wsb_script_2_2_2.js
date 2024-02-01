@@ -1,7 +1,13 @@
-// upd1a2 STABLE trim with upravl timer	https://rakosel.github.io/wsb_script_2_2_2.js
-//
-//					https://javascriptcompressor.com/
-
+// reverse panelki dlya debug
+var sds, mds, sets;
+sds = $(".sideset");
+mds = $(".macnt");
+sets = $(".setcnt");
+cnftmp = $(".scntf");
+	
+var CanvGaugeArr = [];
+	
+//$(document).ready(function() {
 var gateway = 
 {
 		gw:'ws://192.168.1.45/ws',
@@ -12,34 +18,26 @@ var gateway =
 };
 var WSsocket;
 
-window.onload = function () {
-	    /*var idArr = [];
-        $(".box").each(function(){
-            idArr.push($(this).attr("id"));
-        });*/
-        // Join array elements and display in alert
-        //alert(idArr.join(", "));
-//var gaugeElement = document.getElementsByTagName('canvas')[0];	
-// Design WSocket gw:'ws://${window.location.hotname}/ws',
-var str_out = "";
-var str_out1 = "";
-var uart_json = {};
-var temp_json = {};
-var input_lm75 = {};
-var tmranim = 2000; // animate [s]
+var GuageMeter =
+{
+	theme: "Red-Gold-Green",
+	text: "-60",
+	style: "Arch",
+	text_size: "0.15",
+	append: "°C",
+	percent: 77,
+	size: 70,
+	width: 10,
+	color: null,
+	animate_gauge_colors: true,
+	animate_text_colors:  false,
+	label: "Темпер",
+	label_color: null
+}
 
 
-// This jQuery https://canvas-gauges.com/documentation/examples/ 
-var CanvGaugeArr = [];
-
-//var url = "https://bilsrv.github.io/WSBSrvWeatherPub/GaugeMeter.js";
-//$.getScript( url, function() {
-//	console.log( "Load was performed." );
-//});
-$(".macnt").load('https://bilsrv.github.io/WSBSrvWeatherPub/WSB_page_main.html').html();
-console.log("ready wsbscript ok!");
-
-
+$('body').delay(500).queue(function() {
+    //$(this).load('myPage.php');
 // Canvas .each Default Settings 
 $('canvas').each(function(index){	
     CanvGaugeArr.push(new LinearGauge({
@@ -76,28 +74,6 @@ $('canvas').each(function(index){
 	//console.log( index + ": " + $( this ).text() + $( this ).attr('id')+ " " );    units: '°C',	colorPlateEnd: "#327ac0",
 });
 
-	
-// This jQuery GaugeMeter Plugin 
-// theme: ["Red-Gold-Green","Green-Gold-Red","DarkBlue-LightBlue","LightBlue-DarkBlue"],
-// style: ["Semi","Arch"],
-var GuageMeter =
-{
-	theme: "Red-Gold-Green",
-	text: "-60",
-	style: "Arch",
-	text_size: "0.15",
-	append: "°C",
-	percent: 77,
-	size: 70,
-	width: 10,
-	color: null,
-	animate_gauge_colors: true,
-	animate_text_colors:  false,
-	label: "Темпер",
-	label_color: null
-}
-
-
 $(".GaugeMeter1T").gaugeMeter(GuageMeter);
 GuageMeter.append = "%";
 GuageMeter.label = "Влажн-ь"
@@ -112,7 +88,110 @@ $(".GaugeMeter1AQ").gaugeMeter(GuageMeter);
 //$( "div:has(.GaugeMeter1T)").addClass("bd_fail");.fadeOut(1000)
 $( ".GaugeMeter1T").addClass("bd_fail");
 //$( ".GaugeMeter1T" ).find('bd_fail').fadeIn(1000);
+$(".GaugeMeter").gaugeMeter();
+	
+});
 
+function sdmc_sh() {
+    mds.removeClass("collapse show");
+    mds.addClass("collapse hide");
+    sds.removeClass("collapse hide");
+    sds.addClass("collapse show");
+    sets.removeClass("collapse hide");
+    sets.addClass("collapse show");
+}
+
+function sdmc_rm() {
+    mds.removeClass("collapse hide");
+    mds.addClass("collapse show");
+    sds.removeClass("collapse show");
+    sds.addClass("collapse hide");
+    sets.removeClass("collapse show");
+    sets.addClass("collapse hide");
+}
+
+function ftvall(cl) {
+    for (i = 0; i < maOBJ.length; i++) {
+        $("#" + maOBJ[i].name).val(cl);
+        $("#" + maOBJ[i].name)
+			.removeClass("is-invalid")
+			.html();
+        $("#" + maOBJ[i].name)
+			.removeClass("is-valid")
+			.html();
+    }
+}
+
+function ftmpd() {
+    for (i = 0; i < maOBJ.length; i++) {
+        $("#" + maOBJ[i].name)
+			.removeClass("is-invalid")
+			.html();
+        $("#" + maOBJ[i].name)
+			.removeClass("is-valid")
+			.html();
+    }
+}
+
+function spt0() {
+    var lines = $("#esp_tx")
+		.val()
+		.replace(/^[\n]+$/g, "")
+		.split(/[\n]+/);
+    return lines;
+}
+
+function smgh() {
+    if (!device.mobile()) {
+        $(".bt0st").click();
+    }
+}
+
+// MENU - dublirovanmie
+$(".bt0st1").click(function bjst1() {
+    $(".bt0st").click();
+});
+
+function erxclr_uart() {
+    $("#esp_tx").val("");
+}
+
+function etxclr_uart() {
+    $("#esp_urx").val("");
+    str_out1 = "";
+}
+
+
+function rm_b() {
+    // remove deviser HD
+    $(".mc1").removeClass("col-md-8 col-xl-8").html();
+    $(".bsn0").removeClass("col-md-4 col-xl-4").html();
+    $(".mc1").removeClass("noscroll collapse hide");
+    $(".mc1").addClass("col-12").html();
+}
+
+function sh_b() {
+    // deviser HD
+    $(".mc1").remove("col-12").html();
+    $(".mc1").addClass("col-md-8 col-xl-8").html();
+    $(".bsn0").addClass("col-md-4 col-xl-4").html();
+}
+
+function rms_b() {
+    //$('.bsn0').removeClass('col-12').html();
+    $(".bsn0").removeClass("col-12 overlay").html();
+    $(".mc1").removeClass("noscroll collapse hide");
+}
+
+function shs_b() {
+    $(".bsn0").addClass("col-12 overlay").html();
+    $(".mc1").addClass("noscroll collapse hide").html();
+}
+
+function sub_grad()
+{
+	//
+//https://javascriptcompressor.com/
 //gaugeArr[1].update({ value: '47' });
 
 					/*$('canvas').attr({value:'51'})
@@ -122,42 +201,11 @@ $( ".GaugeMeter1T").addClass("bd_fail");
 					guagelm75_t.attr('data-height','150');
 					guagelm75_t.attr('data-value','47');*/
 
-$(".bt0st").attr("value", "off");
-$(".navia").addClass("list-group-item list-group-item-action bg-light border");
-$("#esp_tx").val("wsbuser.prints(node.heap());");
-$("#esp_urx").val("");
 //rs = setInterval(refr_rtc, 3000);
 i = 0;
 	                // Initialize GaugeMeter plugin
 $(".GaugeMeter").gaugeMeter();
-	
-
-WSsocket = new WebSocket(gateway.gw,gateway.timeout,gateway.attempts,gateway.dataType,gateway.protocol);
-
-initWebSocket(WSsocket);
-	
-                // Bind new handler to init and update gauges.
-                ko.bindingHandlers.gaugeValue = {
-                    init: function(element, valueAccessor) {
-                        $(element).gaugeMeter({ percent: ko.unwrap(valueAccessor()) });
-                    },
-                    update: function(element, valueAccessor) {
-                        $(element).gaugeMeter({ percent: ko.unwrap(valueAccessor()) });
-                    }
-                };
-                // Create view model with inital gauge value 15mph
-
-                // Use observable for easy update.
-                var myViewModel = {
-                    Percent: ko.observable(15)
-                };
-                ko.applyBindings(myViewModel);
-};
-
-
-function sub_grad()
-{
-	WSsocket.send("toggle");
+	//WSsocket.send("toggle");
 	alert("send tx");
 }
 
@@ -191,7 +239,6 @@ function onError(error) {
 	console.log('ws error');
 };
  
-
 
 function onMessage(event)
 {
@@ -271,6 +318,15 @@ function onMessage(event)
         }
     }*/
 	WSsocket.close();
+}
 
+	
+	
+window.onload = function () {
+
+$(".bt0st").attr("value", "off");
+$(".navia").addClass("list-group-item list-group-item-action bg-light border");
+$("#esp_tx").val("wsbuser.prints(node.heap());");
+$("#esp_urx").val("");
 	
 }
