@@ -13,7 +13,6 @@
  */
 !(function ($) {
   $.fn.gaugeMeter = function (t) {
-	console.log("GM work!");
     var defaults = $.extend(
       {
         id: '',
