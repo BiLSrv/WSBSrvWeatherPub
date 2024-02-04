@@ -1,3 +1,4 @@
+// upd11
 // reverse panelki dlya debug
 var sds, mds, sets;
 sds = $(".sideset");
@@ -89,6 +90,8 @@ $(".GaugeMeter1AQ").gaugeMeter(GuageMeter);
 $( ".GaugeMeter1T").addClass("bd_fail");
 //$( ".GaugeMeter1T" ).find('bd_fail').fadeIn(1000);
 $(".GaugeMeter").gaugeMeter();
+
+initWebSocket();
 	
 });
 
@@ -203,18 +206,16 @@ function sub_grad()
 
 //rs = setInterval(refr_rtc, 3000);
 i = 0;
-	                // Initialize GaugeMeter plugin
-$(".GaugeMeter").gaugeMeter();
-	//WSsocket.send("toggle");
-	alert("send tx");
+// Initialize GaugeMeter plugin
 }
 
-function initWebSocket(ws)
+function initWebSocket()
 {
-	ws.onopen = onOpen;
-	ws.onclose = onClose;
-	ws.onmessage = onMessage; // add this line
-	ws.onerror = onError;
+	WSsocket = new WebSocket(gateway);
+	WSsocket.onopen = onOpen;
+	WSsocket.onclose = onClose;
+	WSsocket.onmessage = onMessage; // add this line
+	WSsocket.onerror = onError;
 	// socket.isConnected(); // or: socket.isConnected(function(connected) {});
 	// socket.listen(function(data) {});
 	// socket.remove(listenerCallback);
