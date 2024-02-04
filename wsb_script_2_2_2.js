@@ -13,7 +13,7 @@ var CanvGaugeArr = [];
 var gateway = 
 {
 		//gw:'wss://wsb.bilymo.keenetic.pro/ws',
-		gw:'wss://${window.location.hostname}/ws',
+		gw:'ws://${window.location.hostname}/ws',
 		timeout:2000,
 		attempts: 60,		
 		dataType: 'json',
