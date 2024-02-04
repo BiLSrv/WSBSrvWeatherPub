@@ -1,4 +1,5 @@
-// upd11
+// upd12
+// https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug
 var sds, mds, sets;
 sds = $(".sideset");
@@ -11,7 +12,8 @@ var CanvGaugeArr = [];
 //$(document).ready(function() {
 var gateway = 
 {
-		gw:'wss://wsb.bilymo.keenetic.pro/ws',
+		//gw:'wss://wsb.bilymo.keenetic.pro/ws',
+		gw:'wss://${window.location.hostname}/ws',
 		timeout:2000,
 		attempts: 60,		
 		dataType: 'json',
@@ -211,6 +213,7 @@ i = 0;
 
 function initWebSocket()
 {
+	console.log('Trying to open a WebSocket connection...');
 	WSsocket = new WebSocket(gateway);
 	WSsocket.onopen = onOpen;
 	WSsocket.onclose = onClose;
