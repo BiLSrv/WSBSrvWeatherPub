@@ -1,4 +1,4 @@
-// upd13
+// upd14
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug
 var sds, mds, sets;
