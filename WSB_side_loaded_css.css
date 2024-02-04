@@ -1,4 +1,13 @@
-/* upd3c 	https://rakosel.github.io/WSB_side_loaded_css.css	*/	
+/* upd3c 	https://rakosel.github.io/WSB_side_loaded_css.css	
+a,
+a:hover,
+a:focus {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.4s;
+}
+
+*/	
 
 body{
   overflow : scroll;
@@ -9,13 +18,7 @@ body{
   transition: all 0.4s;
 }
 
-a,
-a:hover,
-a:focus {
-  color: inherit;
-  text-decoration: none;
-  transition: all 0.4s;
-}
+
 
 .noscroll { position: fixed;overflow:hidden; display: none;}
 
