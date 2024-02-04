@@ -1,4 +1,4 @@
-// upd14
+// upd15
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug
 var sds, mds, sets;
@@ -10,6 +10,8 @@ cnftmp = $(".scntf");
 var CanvGaugeArr = [];
 	
 //$(document).ready(function() {
+var gateway = 'ws://wsb.bilymo.keenetic.pro/ws'
+/*
 var gateway = 
 {
 		//gw:'wss://wsb.bilymo.keenetic.pro/ws',
@@ -19,6 +21,7 @@ var gateway =
 		dataType: 'json',
 		protocol:''
 };
+*/
 var WSsocket;
 
 var GuageMeter =
