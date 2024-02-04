@@ -213,7 +213,7 @@ function sub_grad()
 initWebSocket();
 // Initialize GaugeMeter plugin
 }
-
+// https://learn.javascript.ru/websocket
 // event websocket
 // event.error
 // event.wasClean
