@@ -10,7 +10,7 @@ var CanvGaugeArr = [];
 //$(document).ready(function() {
 var gateway = 
 {
-		gw:'ws://wsb.bilymo.keenetic.pro/ws',
+		gw:'wss://wsb.bilymo.keenetic.pro/ws',
 		timeout:2000,
 		attempts: 60,		
 		dataType: 'json',
