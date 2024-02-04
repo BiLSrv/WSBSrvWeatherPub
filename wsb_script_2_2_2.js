@@ -1,4 +1,4 @@
-// upd15
+// upd16
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug
 var sds, mds, sets;
@@ -211,6 +211,7 @@ function sub_grad()
 
 //rs = setInterval(refr_rtc, 3000);
 initWebSocket();
+WSsocket.send('toggle');
 // Initialize GaugeMeter plugin
 }
 // https://learn.javascript.ru/websocket
