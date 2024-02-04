@@ -210,9 +210,41 @@ function sub_grad()
 					guagelm75_t.attr('data-value','47');*/
 
 //rs = setInterval(refr_rtc, 3000);
-i = 0;
+initWebSocket();
 // Initialize GaugeMeter plugin
 }
+
+// event websocket
+// event.error
+// event.wasClean
+//   
+// event.code === 1000
+// event.reason === "работа закончена"
+// event.wasClean === true (закрыто чисто)
+//socket.readyState со значениями:
+//
+//0 – «CONNECTING»: соединение ещё не установлено,
+//1 – «OPEN»: обмен данными,
+//2 – «CLOSING»: соединение закрывается,
+//3 – «CLOSED»: соединение закрыто.
+/*
+// Make the function wait until the connection is made...
+function waitForSocketConnection(socket, callback){
+    setTimeout(
+        function () {
+            if (socket.readyState === 1) {
+                console.log("Connection is made")
+                if (callback != null){
+                    callback();
+                }
+            } else {
+                console.log("wait for connection...")
+                waitForSocketConnection(socket, callback);
+            }
+
+        }, 5); // wait 5 milisecond for the connection...
+}
+*/
 
 function initWebSocket()
 {
@@ -230,11 +262,14 @@ function initWebSocket()
 
 function onOpen(event)
 {
-	console.log('ws opened');
+	console.log('ws opened'+event);
 }
 
 function onClose(event)
 {
+	// wasClean Returns a boolean value that Indicates whether or not the connection was cleanly closed.
+	// reason
+	// Returns an unsigned short containing the close code sent by the server.
 	if (event.wasClean) 
 	{
         console.log('Соединение закрыто чисто');
@@ -242,17 +277,20 @@ function onClose(event)
 	console.log('ws close');
 }
 
-function onError(error) {
-	console.log('ws error');
+function onError(event) {
+	// only event
+	console.log('ws error'+event);
 };
  
 
 function onMessage(event)
 {
+	// data
+	// origin
 	console.log(event.data);
-	alert("rx"+event.data);
-	
 	WSsocket.readyState(event.data);
+	alert("rx"+event.data);
+	WSsocket.send('toggle');
 /*	var j=0,ii=0;
 	var tmpf = 0.0;
 	//var jT = 0;
