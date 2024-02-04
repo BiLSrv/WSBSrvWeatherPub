@@ -1,4 +1,4 @@
-// upd12
+// upd13
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug
 var sds, mds, sets;
@@ -13,7 +13,7 @@ var CanvGaugeArr = [];
 var gateway = 
 {
 		//gw:'wss://wsb.bilymo.keenetic.pro/ws',
-		gw:'ws://${window.location.hostname}/ws',
+		gw:'ws://wsb.bilymo.keenetic.pro/ws',
 		timeout:2000,
 		attempts: 60,		
 		dataType: 'json',
