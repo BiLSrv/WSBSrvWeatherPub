@@ -47,7 +47,7 @@
 		<a class="navbar-brand mb-0 text-warning text-center">WSB_Server</a>
 </li>
 <li class="nav-item d-block">
-<span class="navbar text-white tst0">Статус сервера:</span><span class="text-success"></span>
+<span class="navbar text-white tst0">Статус сервера:</span><span class="won text-success text-bg-success"></span>
 </li>
 <li class="nav-item d-block">
 <span class="navbar pst0 badge lead text-white">
@@ -57,19 +57,27 @@
 <div class="row flex-nowrap-xl">
 <div id=sidebar_sensor class="bsn0 col-md-4 col-xl-4 px-0 container-fluid collapse show" style=background-color:#DFDBDB>
 	<div id="sidebar" class="p-3 mb-5 navbar-collapse shadow rounded border-end">
+		<div id="sidebar" class="container-fluid shadow p-3 mb-5 bg-white rounded">
 		<ul class="navbar-nav navbar-nav-scroll list-group list-group-flush">
 			<li class="nav-item bg-primary rounded">
 			<span class="text-light">WSB_Server [DEMO VERSION]</span>
 			</li>
 			<li class=nav-item>
-			<span class="text-primary">Статус сервера:</span>
-			<span class="pst0 navbar-brand badge mb-0 text-white"></span>
+			<span class="text-primary">Статус сервера:<span class="navbar-brand badge mb-0 text-bg-success"></span></span>
+			<span class="won navbar-brand badge mb-0 text-white"></span>
 			</li>
-			<div class="sidebar-heading text-dark">Датчики температуры: </div>
+			<br>
+			<hr class="border border-secondary-subtle border-1 opacity-50 mt-0">
+			<p class="sidebar-heading text-dark">Датчики температуры: </p>
       		<a href="#" class="navlink list-group-item list-group-item-action">A second link item</a>
       		<a href="#" class="navlink list-group-item list-group-item-action">A third link item</a>
       		<a href="#" class="navlink list-group-item list-group-item-action">A fourth link item</a>
+			<li class=nav-item>
+			<p class="lead mb-0 text-dark">Время сервера:</p>
+			<p class="lead mb-0 text-dark ptime"></p>
+			</li>
 		</ul>
+		</div>
      </div>
 	</div>
 <main class="mc1 bd-content col ps-md-1 pt-2 row-*-* mx-auto shadow border ">
