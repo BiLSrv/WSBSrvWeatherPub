@@ -81,16 +81,21 @@ $('canvas').each(function(index){
 });
 
 $(".GaugeMeter1T").gaugeMeter(GuageMeter);
-GuageMeter.append = "%";
-GuageMeter.label = "Влажн-ь"
+GuageMeter.append = " С";
+GuageMeter.label = "Темпер-а"
+GuageMeter.text_size = "0.18";
 $(".GaugeMeter1H").gaugeMeter(GuageMeter);
+GuageMeter.append = "ммРт";
+GuageMeter.label = "Влажн-ь"
+GuageMeter.text_size = "0.18";
+$(".GaugeMeter1P").gaugeMeter(GuageMeter);
 GuageMeter.append = "ммРт";
 GuageMeter.label = "Давл-е"
 GuageMeter.text_size = "0.18";
-$(".GaugeMeter1P").gaugeMeter(GuageMeter);
+$(".GaugeMeter1AQ").gaugeMeter(GuageMeter);
 GuageMeter.append = "";
 GuageMeter.label = "Воздух"
-$(".GaugeMeter1AQ").gaugeMeter(GuageMeter);
+GuageMeter.text_size = "0.18";
 //$( "div:has(.GaugeMeter1T)").addClass("bd_fail");.fadeOut(1000)
 $( ".GaugeMeter1T").addClass("bd_fail");
 //$( ".GaugeMeter1T" ).find('bd_fail').fadeIn(1000);
