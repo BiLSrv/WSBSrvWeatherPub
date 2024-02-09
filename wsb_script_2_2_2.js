@@ -97,7 +97,7 @@ GuageMeter.append = "";
 GuageMeter.label = "Воздух"
 GuageMeter.text_size = "0.18";
 //$( "div:has(.GaugeMeter1T)").addClass("bd_fail");.fadeOut(1000)
-$( ".GaugeMeter1T").addClass("bd_fail");
+//$( ".GaugeMeter1T").addClass("bd_fail");
 //$( ".GaugeMeter1T" ).find('bd_fail').fadeIn(1000);
 $(".GaugeMeter").gaugeMeter();
 
@@ -234,9 +234,14 @@ initWebSocket();
 //1 – «OPEN»: обмен данными,
 //2 – «CLOSING»: соединение закрывается,
 //3 – «CLOSED»: соединение закрыто.
-/*
+
 // Make the function wait until the connection is made...
-function waitForSocketConnection(socket, callback){
+// 
+//  waitForSocketConnection(socket, () => {
+//        socket.send(action.payload);
+ // })
+function waitForSocketConnection(socket, callback)
+{
     setTimeout(
         function () {
             if (socket.readyState === 1) {
@@ -246,12 +251,13 @@ function waitForSocketConnection(socket, callback){
                 }
             } else {
                 console.log("wait for connection...")
-                waitForSocketConnection(socket, callback);
+                if (callback != null)
+					waitForSocketConnection(socket, callback);
             }
 
-        }, 5); // wait 5 milisecond for the connection...
+        }, 500); // wait 5 milisecond for the connection...
 }
-*/
+
 
 function initWebSocket()
 {
@@ -282,6 +288,7 @@ function onClose(event)
 	{
         console.log('Соединение закрыто чисто');
 	}
+	waitForSocketConnection(WSsocket, callback)
 	console.log('ws close');
 }
 
