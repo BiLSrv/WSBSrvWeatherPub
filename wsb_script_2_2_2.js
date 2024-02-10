@@ -275,7 +275,8 @@ function initWebSocket()
 
 function onOpen(event)
 {
-	console.log('ws opened');
+	//console.log('ws opened');
+	state_online(true);
 	WSsocket.send('toggle');
 }
 
@@ -284,6 +285,7 @@ function onClose(event)
 	// wasClean Returns a boolean value that Indicates whether or not the connection was cleanly closed.
 	// reason
 	// Returns an unsigned short containing the close code sent by the server.
+	state_online(false);
 	if (event.wasClean) 
 	{
         console.log('Соединение закрыто чисто');
@@ -294,6 +296,7 @@ function onClose(event)
 
 function onError(event) {
 	// only event
+	state_online(false);
 	console.log('ws error'+event);
 };
  
@@ -304,7 +307,6 @@ function onMessage(event)
 	// origin
 	console.log(event.data);
 	WSsocket.readyState(event.data);
-	alert("rx"+event.data);
 	WSsocket.send('toggle');
 /*	var j=0,ii=0;
 	var tmpf = 0.0;
@@ -380,7 +382,14 @@ function onMessage(event)
 	WSsocket.close();
 }
 
-	
+function state_online(state) 
+{
+	if(state==true)
+	{$(".tst0").removeClass("bg-danger");$(".tst0").addClass("bg-success").text("ОК")}
+	{$(".tst0").removeClass("bg-success");$("tst0").addClass("bg-danger").text("off")};
+}
+
+
 	
 window.onload = function () {
 
