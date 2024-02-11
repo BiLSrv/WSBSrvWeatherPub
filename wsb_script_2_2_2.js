@@ -332,8 +332,9 @@ function onMessage(event)
 	// origin
 
 	console.log('onMessage'+event.data);
-	if(WSsocket.readyState==1);
-		WSsocket.send('time');
+	if(WSsocket.readyState==1)
+	{
+		//WSsocket.send('time');
 	        try {
                 temp_json = JSON.parse(event.data);
                 console.log(s, temp_json);
@@ -343,8 +344,8 @@ function onMessage(event)
                 console.log(s, e.message);
                 return 0;
             }
-$('mcu_tus').text(temp_json.time[0].toString());
-	
+$('.mcu_tus').text(temp_json.time[1].toString());
+}
 /*	var j=0,ii=0;
 	var tmpf = 0.0;
 	//var jT = 0;
