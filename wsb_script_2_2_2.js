@@ -202,7 +202,7 @@ function shs_b() {
     $(".mc1").addClass("noscroll collapse hide").html();
 }
 
-function sub_grad()
+function sub_init()
 {
 	//
 //https://javascriptcompressor.com/
@@ -217,6 +217,27 @@ function sub_grad()
 
 //rs = setInterval(refr_rtc, 3000);
 initWebSocket();
+
+// Initialize GaugeMeter plugin
+}
+
+function sub_grad()
+{
+	//
+//https://javascriptcompressor.com/
+//gaugeArr[1].update({ value: '47' });
+
+					/*$('canvas').attr({value:'51'})
+					/$('canvas').attr({width:'100',height:'150'});*/
+					
+					/*guagelm75_t.attr('data-value','47');guagelm75_t.attr('data-width','100');
+					guagelm75_t.attr('data-height','150');
+					guagelm75_t.attr('data-value','47');*/
+
+//rs = setInterval(refr_rtc, 3000);
+if (WSsocket.readyState === 1) {
+	WSsocket.send('time');
+} 
 
 // Initialize GaugeMeter plugin
 }
@@ -310,9 +331,9 @@ function onMessage(event)
 	// data
 	// origin
 	ev_var;
-	console.log(event.data);
+	console.log('onMessage'+event.data);
 	if(WSsocket.readyState(event.data)==1);
-		WSsocket.send('toggle');
+		WSsocket.send('time');
 	        try {
                 temp_json = JSON.parse(event.data);
                 console.log(s, temp_json);
@@ -322,7 +343,7 @@ function onMessage(event)
                 console.log(s, e.message);
                 return 0;
             }
-	$('mcu_tus').text(temp_json.time[0].toString());
+$('mcu_tus').text(temp_json.time[0].toString());
 	
 /*	var j=0,ii=0;
 	var tmpf = 0.0;
