@@ -322,11 +322,6 @@ function onMessage(event)
                 console.log(s, e.message);
                 return 0;
             }
-        } else {
-            //console.log("d not string");
-            ftvall("");
-            return 0;
-        }
 	$('mcu_tus').text(temp_json.time[0].toString());
 	
 /*	var j=0,ii=0;
