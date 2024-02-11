@@ -330,7 +330,6 @@ function onMessage(event)
 {
 	// data
 	// origin
-
 	console.log('onMessage'+event.data);
 	if(WSsocket.readyState==1)
 	{
