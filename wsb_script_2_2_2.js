@@ -338,8 +338,6 @@ function onMessage(event)
                 temp_json = JSON.parse(event.data);
                 console.log(s, temp_json);
             } catch (e) {
-                // ftvall - form clear
-                ftvall("");
                 console.log(s, e.message);
                 return 0;
             }
