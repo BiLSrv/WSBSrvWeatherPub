@@ -423,6 +423,7 @@ function state_online(state)
 {
 	if(state==true)
 	{$(".tst0").removeClass("bg-danger");$(".tst0").addClass("bg-success").text("ОК")}
+	else
 	{$(".tst0").removeClass("bg-success");$(".tst0").addClass("bg-danger").text("off")};
 }
 
