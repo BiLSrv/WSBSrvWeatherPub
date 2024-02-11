@@ -343,7 +343,8 @@ function onMessage(event)
                 console.log(e.message);
                 return 0;
             }
-$('.mcu_tus').text(temp_json.time[1].toString());
+$('.tst0').text(temp_json.time[0].toString());
+$('.mcu_tus').text(temp_json.time[0].toString());
 }
 /*	var j=0,ii=0;
 	var tmpf = 0.0;
