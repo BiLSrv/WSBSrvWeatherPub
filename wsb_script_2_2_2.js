@@ -311,7 +311,7 @@ function onClose(event)
 	{
         console.log('Соединение закрыто чисто');
 	}
-	waitForSocketConnection(WSsocket, null)
+	waitForSocketConnection(WSsocket, null);
 	console.log('ws close');
 	WSsocket.close();
 }
@@ -321,6 +321,7 @@ function onError(event) {
 	if(WSsocket.readyState==2 || WSsocket.readyState==3)
 	{
 		state_online(false);
+		waitForSocketConnection(WSsocket, null);
 		console.log('ws error'+event);
 	}
 };
@@ -330,13 +331,13 @@ function onMessage(event)
 {
 	// data
 	// origin
-	console.log('onMessage'+event.data);
+	//console.log('onMessage'+event.data);
 	if(WSsocket.readyState==1)
 	{
 		//WSsocket.send('time');
 	        try {
                 temp_json = JSON.parse(event.data);
-                console.log(temp_json);
+                //console.log(temp_json);
             } catch (e) {
                 console.log(e.message);
                 return 0;
