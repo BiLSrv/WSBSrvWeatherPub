@@ -277,7 +277,7 @@ function onOpen(event)
 {
 	//console.log('ws opened');
 	state_online(true);
-	WSsocket.send('toggle');
+	WSsocket.send('time');
 }
 
 function onClose(event)
@@ -292,12 +292,16 @@ function onClose(event)
 	}
 	waitForSocketConnection(WSsocket, null)
 	console.log('ws close');
+	WSsocket.close();
 }
 
 function onError(event) {
 	// only event
-	state_online(false);
-	console.log('ws error'+event);
+	if(WSsocket.readyState(event.data)==2 || WSsocket.readyState(event.data)==3)
+	{
+		state_online(false);
+		console.log('ws error'+event);
+	}
 };
  
 
@@ -305,9 +309,26 @@ function onMessage(event)
 {
 	// data
 	// origin
+	ev_var;
 	console.log(event.data);
-	WSsocket.readyState(event.data);
-	WSsocket.send('toggle');
+	if(WSsocket.readyState(event.data)==1);
+		WSsocket.send('toggle');
+	        try {
+                temp_json = JSON.parse(event.data);
+                console.log(s, temp_json);
+            } catch (e) {
+                // ftvall - form clear
+                ftvall("");
+                console.log(s, e.message);
+                return 0;
+            }
+        } else {
+            //console.log("d not string");
+            ftvall("");
+            return 0;
+        }
+	$('mcu_tus').text(temp_json.time[0].toString());
+	
 /*	var j=0,ii=0;
 	var tmpf = 0.0;
 	//var jT = 0;
@@ -379,7 +400,7 @@ function onMessage(event)
             //console.log(e);
         }
     }*/
-	WSsocket.close();
+	//WSsocket.close();
 }
 
 function state_online(state) 
