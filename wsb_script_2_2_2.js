@@ -233,7 +233,7 @@ function sub_grad()
 					/*guagelm75_t.attr('data-value','47');guagelm75_t.attr('data-width','100');
 					guagelm75_t.attr('data-height','150');
 					guagelm75_t.attr('data-value','47');*/
-
+console.log(WSsocket.readyState);
 //rs = setInterval(refr_rtc, 3000);
 if (WSsocket.readyState === 1) {
 	WSsocket.send('time');
@@ -330,7 +330,7 @@ function onMessage(event)
 {
 	// data
 	// origin
-	ev_var;
+
 	console.log('onMessage'+event.data);
 	if(WSsocket.readyState(event.data)==1);
 		WSsocket.send('time');
