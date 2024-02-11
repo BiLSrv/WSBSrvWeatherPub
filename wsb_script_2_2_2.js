@@ -318,7 +318,7 @@ function onClose(event)
 
 function onError(event) {
 	// only event
-	if(WSsocket.readyState(event.data)==2 || WSsocket.readyState(event.data)==3)
+	if(WSsocket.readyState==2 || WSsocket.readyState==3)
 	{
 		state_online(false);
 		console.log('ws error'+event);
@@ -332,7 +332,7 @@ function onMessage(event)
 	// origin
 
 	console.log('onMessage'+event.data);
-	if(WSsocket.readyState(event.data)==1);
+	if(WSsocket.readyState==1);
 		WSsocket.send('time');
 	        try {
                 temp_json = JSON.parse(event.data);
