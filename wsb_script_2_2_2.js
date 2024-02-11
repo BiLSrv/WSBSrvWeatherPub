@@ -331,8 +331,8 @@ function onMessage(event)
 {
 	// data
 	// origin
-	//console.log('onMessage'+event.data);
-	WSsocket.send(event.data);
+	console.log('onMessage'+event.data);
+	
 	if(WSsocket.readyState==1)
 	{
 		//WSsocket.send('time');
