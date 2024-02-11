@@ -336,9 +336,9 @@ function onMessage(event)
 		//WSsocket.send('time');
 	        try {
                 temp_json = JSON.parse(event.data);
-                console.log(s, temp_json);
+                console.log(temp_json);
             } catch (e) {
-                console.log(s, e.message);
+                console.log(e.message);
                 return 0;
             }
 $('.mcu_tus').text(temp_json.time[1].toString());
