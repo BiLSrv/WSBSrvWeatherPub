@@ -103,6 +103,11 @@ $(".GaugeMeter").gaugeMeter();
 
 initWebSocket();
 	
+maOBJ = $(".macnt").serializeArray();
+canvasOBJ = $("canvas").serializeArray();
+GuageMeterOBJ = $(".GuageMeter").serializeArray();
+console.log(maOBJ);
+	
 });
 
 
@@ -217,10 +222,7 @@ function sub_init()
 
 //rs = setInterval(refr_rtc, 3000);
 	
-maOBJ = $(".macnt").serializeArray();
-canvasOBJ = $("canvas").serializeArray();
-GuageMeterOBJ = $(".GuageMeter").serializeArray();
-console.log(maOBJ);
+
 initWebSocket();
 
 // Initialize GaugeMeter plugin
