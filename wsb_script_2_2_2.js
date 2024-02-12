@@ -1,7 +1,7 @@
-// upd17a
+// upd18a
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug
-var sds, mds, sets;
+var sds, mds, sets, maOBJ;
 sds = $(".sideset");
 mds = $(".macnt");
 sets = $(".setcnt");
@@ -10,7 +10,7 @@ cnftmp = $(".scntf");
 var CanvGaugeArr = [];
 	
 //$(document).ready(function() {
-var gateway = 'ws://wsb.bilymo.keenetic.pro/ws'
+var gateway = 'wss://wsb.bilymo.keenetic.pro/ws'
 /*
 var gateway = 
 {
@@ -331,11 +331,8 @@ function onMessage(event)
 {
 	// data
 	// origin
-	console.log('onMessage'+event.data);
-	
-	if(WSsocket.readyState==1)
-	{
-		//WSsocket.send('time');
+if(WSsocket.readyState==1)
+{
 	        try {
                 temp_json = JSON.parse(event.data);
                 //console.log(temp_json);
@@ -343,9 +340,10 @@ function onMessage(event)
                 console.log(e.message);
                 return 0;
             }
+}
+	
 $('.mcu_tus').text(temp_json.time[0].toString());
 $('.ptime').text(temp_json.time[1].toString());
-}
 /*	var j=0,ii=0;
 	var tmpf = 0.0;
 	//var jT = 0;
@@ -432,6 +430,8 @@ function state_online(state)
 	
 window.onload = function () {
 
+maOBJ = $(".sens").serializeArray();
+	console.log(maOBJ);
 $(".bt0st").attr("value", "off");
 $(".navia").addClass("list-group-item list-group-item-action bg-light border");
 $("#esp_tx").val("wsbuser.prints(node.heap());");
