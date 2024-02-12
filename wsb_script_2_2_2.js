@@ -103,10 +103,12 @@ $(".GaugeMeter").gaugeMeter();
 
 initWebSocket();
 	
-maOBJ = $('*');
+//maOBJ = $('*');
 canvasOBJ = $( "canvas" ).get();
 GuageMeterOBJ = $("GaugeMeter").get();
-console.log(maOBJ);
+//console.log(maOBJ);
+console.log(canvasOBJ);
+console.log(GuageMeterOBJ);
 	
 });
 
