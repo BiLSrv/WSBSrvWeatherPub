@@ -105,7 +105,7 @@ initWebSocket();
 	
 maOBJ = $('*');
 canvasOBJ = $( "canvas" ).get();
-GuageMeterOBJ = $("GuageMeter").get();
+GuageMeterOBJ = $("GaugeMeter").get();
 console.log(maOBJ);
 	
 });
