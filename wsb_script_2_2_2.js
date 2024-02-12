@@ -329,21 +329,69 @@ function onError(event) {
 
 function onMessage(event)
 {
+
 	// data
 	// origin
 if(WSsocket.readyState==1)
 {
 	        try {
                 temp_json = JSON.parse(event.data);
-                //console.log(temp_json);
             } catch (e) {
                 console.log(e.message);
                 return 0;
             }
 }
+else
+	return 0;
 	
-$('.mcu_tus').text(temp_json.time[0].toString());
-$('.ptime').text(temp_json.time[1].toString());
+
+
+if (temp_json["temp"]) {
+	    console.log(temp_json["temp"]);
+		j_T = 0.0; j_H = 0.0; j_P = 0.0;
+		T_cnt = 0; H_cnt = 0; P_cnt = 0;
+        for (i = 3; i <= maOBJ.length && (i - 3) <= temp_json.temp.length; i++) {
+            try {
+		console.log("temp_json:", parseFloat(temp_json.temp[T_arr[ii]]));
+            
+				if(ii<T_arr.length && parseFloat(temp_json.temp[T_arr[ii]]) != NaN && temp_json.temp[T_arr[ii]] != "#ERR")
+				{
+					tmpf = parseFloat(temp_json.temp[T_arr[ii]]);
+					if(tmpf<0)
+					{j=-1;}
+					else
+					{j=j*j}
+					j_T+=Math.abs(tmpf);T_cnt++; 
+					//console.log("a5 "+" "+ii+" "+parseFloat(temp_json.temp[T_arr[ii]])+" "+T_arr[ii]+" "+temp_arr[ii]+" "+T_arr+" "+T_cnt);
+				}
+				if(ii<H_arr.length && parseFloat(temp_json.temp[H_arr[ii]]) != NaN && temp_json.temp[H_arr[ii]] != "#ERR")
+				{
+					tmpf = parseFloat(temp_json.temp[H_arr[ii]]);
+					H_cnt++;
+					if(tmpf>=99.0)
+					{H_cnt--;}
+					else if(H_arr[ii] == 3)
+					{j_H+=(parseFloat(temp_json.temp[H_arr[ii]])-9.5);}
+					else 
+					{j_H+=parseFloat(temp_json.temp[H_arr[ii]]);}
+				}
+				if(ii<P_arr.length && parseFloat(temp_json.temp[P_arr[ii]]) != NaN && temp_json.temp[P_arr[ii]] != "#ERR")
+				{
+					j_P+=parseFloat(temp_json.temp[P_arr[ii]]);P_cnt++;
+				}	
+					ii++;
+				}
+				catch (e) 
+				{
+					console.log(e);
+				}
+				$("#" + maOBJ[i].name).val(temp_json.temp[i - 3]);
+				}
+			}
+
+			j_T=(j_T*j)/T_cnt; j_H=j_H/H_cnt; j_P=j_P/P_cnt;	
+//$('.mcu_tus').text(temp_json.time[0].toString());
+//$('.ptime').text(temp_json.time[1].toString());
 /*	var j=0,ii=0;
 	var tmpf = 0.0;
 	//var jT = 0;
@@ -430,8 +478,12 @@ function state_online(state)
 	
 window.onload = function () {
 
+	
 maOBJ = $(".sens").serializeArray();
-	console.log(maOBJ);
+canvasOBJ = $("canvas").serializeArray();
+GuageMeterOBJ = $(".GuageMeter").serializeArray();
+console.log(maOBJ);
+	
 $(".bt0st").attr("value", "off");
 $(".navia").addClass("list-group-item list-group-item-action bg-light border");
 $("#esp_tx").val("wsbuser.prints(node.heap());");
