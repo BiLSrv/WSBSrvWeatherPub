@@ -103,7 +103,7 @@ $(".GaugeMeter").gaugeMeter();
 
 initWebSocket();
 	
-maOBJ = $(".macnt").serializeArray();
+maOBJ = $(".macnt");
 canvasOBJ = $("canvas").serializeArray();
 GuageMeterOBJ = $(".GuageMeter").serializeArray();
 console.log(maOBJ);
