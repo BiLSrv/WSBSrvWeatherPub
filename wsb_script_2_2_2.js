@@ -345,7 +345,7 @@ else
 	return 0;
 	
 
-
+/*
 if (temp_json["temp"]) {
 	    console.log(temp_json["temp"]);
 		j_T = 0.0; j_H = 0.0; j_P = 0.0;
@@ -389,7 +389,8 @@ if (temp_json["temp"]) {
 				}
 			}
 
-			j_T=(j_T*j)/T_cnt; j_H=j_H/H_cnt; j_P=j_P/P_cnt;	
+			j_T=(j_T*j)/T_cnt; j_H=j_H/H_cnt; j_P=j_P/P_cnt;
+			*/
 //$('.mcu_tus').text(temp_json.time[0].toString());
 //$('.ptime').text(temp_json.time[1].toString());
 /*	var j=0,ii=0;
