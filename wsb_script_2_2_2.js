@@ -216,6 +216,11 @@ function sub_init()
 					guagelm75_t.attr('data-value','47');*/
 
 //rs = setInterval(refr_rtc, 3000);
+	
+maOBJ = $(".macnt").serializeArray();
+canvasOBJ = $("canvas").serializeArray();
+GuageMeterOBJ = $(".GuageMeter").serializeArray();
+console.log(maOBJ);
 initWebSocket();
 
 // Initialize GaugeMeter plugin
@@ -479,11 +484,7 @@ function state_online(state)
 	
 window.onload = function () {
 
-	
-maOBJ = $(".sens").serializeArray();
-canvasOBJ = $("canvas").serializeArray();
-GuageMeterOBJ = $(".GuageMeter").serializeArray();
-console.log(maOBJ);
+
 	
 $(".bt0st").attr("value", "off");
 $(".navia").addClass("list-group-item list-group-item-action bg-light border");
