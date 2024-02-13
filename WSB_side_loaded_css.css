@@ -1,4 +1,4 @@
-/* upd3c 	https://rakosel.github.io/WSB_side_loaded_css.css	
+/* upd4c 	https://rakosel.github.io/WSB_side_loaded_css.css	
 a,
 a:hover,
 a:focus {
@@ -35,9 +35,11 @@ body{
 }
 .macnt
 {
-	background-color:#A1A1A1;
+	background-color:#BDC4D0;
 }
   .GaugeMeter{
+	background: #0070ad URL(https://bilsrv.github.io/WSBSrvWeatherPub/BokehFrost.jpg) Top Left No-Repeat;
+    background-size: Cover;
     Position:        Relative;
     Text-Align:      Center;
     Overflow:        Hidden;
