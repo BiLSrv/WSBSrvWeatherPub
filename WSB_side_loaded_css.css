@@ -1,4 +1,4 @@
-/* upd4 	https://bilsrv.github.io/WSBSrvWeatherPub/WSB_side_loaded_css.css	
+/* upd4a 	https://bilsrv.github.io/WSBSrvWeatherPub/WSB_side_loaded_css.css	
 a,
 a:hover,
 a:focus {
@@ -42,12 +42,10 @@ body{
     Text-Align:      Center;
     Overflow:        Hidden;
     Cursor:          Default;
-  }
-  .GaugeMeter:before{
 	background: #0070ad URL(https://bilsrv.github.io/WSBSrvWeatherPub/BokehFrost.jpg) Top Left No-Repeat;
 	opacity: 0.33;
     background-size: Contain;
-}
+  }
 
   .GaugeMeter SPAN,
   .GaugeMeter B{
