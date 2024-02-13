@@ -73,11 +73,11 @@ $('canvas').each(function(index){
 	fontUnitsSize: "45",
 	value: 0,
 	units: '°C',
-	title: 'noname',
+	title: String($(this).attr('id')),
 	animationRule: 'elastic',
 	animationDuration: 250
 }).draw());
-	//console.log( index + ": " + $( this ).text() + $( this ).attr('id')+ " " );    units: '°C',	colorPlateEnd: "#327ac0",
+	//console.log( String($(this).attr('id')) + ": " + $( this ).text() + $( this ).attr('id')+ " " );    units: '°C',	colorPlateEnd: "#327ac0",
 });
 
 $(".GaugeMeter1T").gaugeMeter(GuageMeter);
@@ -109,8 +109,7 @@ if(WSsocket.readyState!=1)
 {
 	initWebSocket();
 }
-	
-	
+
 //maOBJ = $('*');
 canvasOBJ = $( "canvas" ).get();
 GuageMeterOBJ = $("GaugeMeter").get();
