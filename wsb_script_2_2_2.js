@@ -34,7 +34,7 @@ var GuageMeter =
 	percent: 77,
 	size: 70,
 	width: 10,
-	back: "#e2e3e4",
+	back: "RGBa(255,255,255,.2)",
 	animate_gauge_colors: true,
 	animate_text_colors:  false,
 	label: "Темпер",
