@@ -44,6 +44,7 @@ var GuageMeter =
 
 $('body').delay(500).queue(function() {
     //$(this).load('myPage.php');
+WSsocket = new WebSocket(gateway);
 // Canvas .each Default Settings 
 $('canvas').each(function(index){	
     CanvGaugeArr.push(new LinearGauge({
@@ -298,7 +299,7 @@ function waitForSocketConnection(socket, callback)
 function initWebSocket()
 {
 	console.log('Trying to open a WebSocket connection...');
-	WSsocket = new WebSocket(gateway);
+	
 	WSsocket.onopen = onOpen;
 	WSsocket.onclose = onClose;
 	WSsocket.onmessage = onMessage; // add this line
