@@ -43,7 +43,7 @@ body{
     Overflow:        Hidden;
     Cursor:          Default;
   }
-  .GaugeMeter::before
+  /*.GaugeMeter::before
 	{
 	content: ' ';
 	display: block;
@@ -56,7 +56,7 @@ body{
 	background: #0070ad URL(https://bilsrv.github.io/WSBSrvWeatherPub/BokehFrost.jpg) Top Left No-Repeat;
     background-size: Cover;
 	}
-
+*/
   .GaugeMeter SPAN,
   .GaugeMeter B{
     Margin:          0 23%;
