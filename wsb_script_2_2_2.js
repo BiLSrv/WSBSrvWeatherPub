@@ -1,4 +1,4 @@
-// upd19a
+// upd20a
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -34,7 +34,7 @@ var GuageMeter =
 	percent: 77,
 	size: 70,
 	width: 10,
-	color: "#DCDCDC",
+	//color: "RGBa(0,0,0,.06)",
 	animate_gauge_colors: true,
 	animate_text_colors:  false,
 	label: "Темпер",
