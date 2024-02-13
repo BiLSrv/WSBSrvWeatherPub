@@ -38,7 +38,8 @@ var GuageMeter =
 	animate_gauge_colors: true,
 	animate_text_colors:  false,
 	label: "Темпер",
-	label_color: null
+	color: "White",
+	label_color: "White"
 }
 
 
