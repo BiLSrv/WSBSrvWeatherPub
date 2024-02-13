@@ -46,7 +46,7 @@ body{
   .GaugeMeter:before{
 	background: #0070ad URL(https://bilsrv.github.io/WSBSrvWeatherPub/BokehFrost.jpg) Top Left No-Repeat;
 	opacity: 0.5;
-    background-size: Cover;
+    background-size: Contain;
 }
 
   .GaugeMeter SPAN,
