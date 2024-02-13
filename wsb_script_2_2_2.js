@@ -56,7 +56,7 @@ $('canvas').each(function(index){
 	colorNeedle: "#222",
 	colorNeedleEnd: "",
 	colorBar: "#f5f5f5",
-	colorTitle: "#C90076",
+	colorTitle: "blue",
     colorPlate: "#ccc",
 	colorPlateEnd: "#ccc",
 	colorBarStroke: "black",
