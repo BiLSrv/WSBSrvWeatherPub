@@ -5,8 +5,8 @@ var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
 var httpd_cmd = 
 {
 	content_type: "application/json",
-    command: "get_data",
-    CRC32: "ANY"
+	command: "get_data",
+	CRC32: "ANY"
 }
 sds = $(".sideset");
 mds = $(".macnt");
@@ -51,7 +51,7 @@ var GuageMeter =
 
 $('body').delay(500).queue(function() {
     //$(this).load('myPage.php');
-WSsocket = new WebSocket(gateway,"JSON");
+WSsocket = new WebSocket(gateway);
 // Canvas .each Default Settings 
 $('canvas').each(function(index){	
     CanvGaugeArr.push(new LinearGauge({
