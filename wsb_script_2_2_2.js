@@ -323,8 +323,6 @@ function onOpen(event)
 {
 	//console.log('ws opened');
 	state_online(true);
-	
-	WSsocket.send('time');
 }
 
 function onClose(event)
