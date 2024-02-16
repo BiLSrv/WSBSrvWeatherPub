@@ -118,7 +118,7 @@ GuageMeterOBJ = $("GaugeMeter").get();
 //console.log(maOBJ);
 console.log(GuageMeterOBJ);
 	
-});
+}); 
 
 
 function sdmc_sh() {
@@ -351,12 +351,12 @@ function onMessage(event)
 	// origin
 if(WSsocket.readyState==1)
 {
-	        try {
-                temp_json = JSON.parse(event.data);
-            } catch (e) {
-                console.log(e.message);
-                return 0;
-            }
+try {
+	json_data = JSON.parse(event.data);
+	} catch (e) {
+		console.log(e.message);
+		return 0;
+	}
 }
 else
 	return 0;
