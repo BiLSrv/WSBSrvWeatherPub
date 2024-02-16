@@ -2,6 +2,11 @@
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
+var httpd_cmd = 
+{
+    command: "get_data",
+    CRC32: "ANY"
+}
 sds = $(".sideset");
 mds = $(".macnt");
 sets = $(".setcnt");
@@ -255,12 +260,6 @@ console.log(WSsocket.readyState);
 if (WSsocket.readyState === 1) {
 	
 	httpd_cmd.command="get_data";
-	
-	httpd_cmd = 
-	{
-    command: "get_data",
-    CRC32: "ANY"
-  	}
 	
 	WSsocket.send(JSON.stringify(httpd_cmd));
 } 
