@@ -1,4 +1,4 @@
-// upd20a
+// upda1a1
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -253,7 +253,16 @@ function sub_grad()
 console.log(WSsocket.readyState);
 //rs = setInterval(refr_rtc, 3000);
 if (WSsocket.readyState === 1) {
-	WSsocket.send('time');
+	
+	httpd_cmd.command="get_data";
+	
+	httpd_cmd = 
+	{
+    command: "get_data",
+    CRC32: "ANY"
+  	}
+	
+	WSsocket.send(JSON.stringify(httpd_cmd));
 } 
 
 // Initialize GaugeMeter plugin
@@ -315,6 +324,7 @@ function onOpen(event)
 {
 	//console.log('ws opened');
 	state_online(true);
+	
 	WSsocket.send('time');
 }
 
