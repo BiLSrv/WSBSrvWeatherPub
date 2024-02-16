@@ -1,4 +1,4 @@
-// upda1a1
+// upda1a2
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -50,7 +50,7 @@ var GuageMeter =
 
 $('body').delay(500).queue(function() {
     //$(this).load('myPage.php');
-WSsocket = new WebSocket(gateway);
+WSsocket = new WebSocket(gateway,"JSON");
 // Canvas .each Default Settings 
 $('canvas').each(function(index){	
     CanvGaugeArr.push(new LinearGauge({
