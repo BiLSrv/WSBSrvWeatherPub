@@ -4,6 +4,7 @@
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
 var httpd_cmd = 
 {
+	content_type: "application/json",
     command: "get_data",
     CRC32: "ANY"
 }
