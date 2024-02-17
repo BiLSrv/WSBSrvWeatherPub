@@ -259,9 +259,7 @@ function sub_grad()
 console.log(WSsocket.readyState);
 //rs = setInterval(refr_rtc, 3000);
 if (WSsocket.readyState === 1) {
-	
-	httpd_cmd.command="get_data";
-	
+
 	WSsocket.send(JSON.stringify(httpd_cmd));
 } 
 
