@@ -5,7 +5,7 @@ var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
 var httpd_cmd = 
 {
 	content_type: "application/json",
-	command: "get_data",
+	command: "get_data,get_data2",
 	CRC32: "ANY"
 }
 sds = $(".sideset");
