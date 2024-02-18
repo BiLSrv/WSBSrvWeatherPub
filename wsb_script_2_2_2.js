@@ -355,6 +355,7 @@ function onMessage(event)
 
 	// data
 	// origin
+console.log("onMessage");
 if(WSsocket.readyState==1)
 {
 try {
