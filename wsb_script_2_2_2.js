@@ -355,7 +355,8 @@ function onMessage(event)
 
 	// data
 	// origin
-console.log("onMessage");
+console.log("onMessage"+event.data);
+console.log("json_data"+json_data);
 if(WSsocket.readyState==1)
 {
 try {
