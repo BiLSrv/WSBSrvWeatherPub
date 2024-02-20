@@ -134,31 +134,29 @@
 					<div class="col-auto">
 					<div class="GaugeMeter1AQ GaugeMeter" id="ens160_eco2"></div>
 					</div>
-					<div class="GaugeMeter1AQ GaugeMeter" id="ENS160_AIQ"></div>
-					<div class="badge text-wrap ENS160_AIQ" style="width: 6rem;">AIQ</div>
+					<div class="GaugeMeter1AQ GaugeMeter" id="ens160_AIQ"></div>
+					<div class="badge text-wrap ens160_AIQ" style="width: 6rem;">AIQ</div>
 					</div>
 </div>
 <div class="container row text-center">
 				<p class="h5 modal-title text-center">Датчик CJMCU</p>
-				<p class="text-primary fw-bold fs-5" id="htu21">НЕТ ДАННЫХ</p>
+				<p class="text-primary fw-bold fs-5" id="CJMCU">НЕТ ДАННЫХ</p>
 				<p class="h5 modal-title text-center">Данные АЦП</p>
-				<div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-				  <div class="progress-bar bg-success" style="width: 25%">25%</div>
+				<div class="progress adc0per" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+				  <div class="progress-bar bg-success adc0" style="width: 25%">25%</div>
 				</div>
-				<div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-				  <div class="progress-bar bg-info text-dark" style="width: 50%">50%</div>
+				<div class="progress adc1per" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+				  <div class="progress-bar bg-info text-dark adc1" style="width: 50%">50%</div>
 				</div>
-				<div class="progress" role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-				  <div class="progress-bar bg-warning text-dark" style="width: 75%">75%</div>
+				<div class="progress adc2per" role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+				  <div class="progress-bar bg-warning text-dark adc2" style="width: 75%">75%</div>
 				</div>
-				<div class="progress" role="progressbar" aria-label="Default example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-				  <div class="progress-bar bg-danger" style="width: 100%">100%</div>
-				</div>
-				<div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-			  		<div class="progress-bar bg-success" style="width: 25%">25%</div>
+				<div class="progress adc3per" role="progressbar" aria-label="Default example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+				  <div class="progress-bar bg-danger adc3" style="width: 100%">100%</div>
 				</div>
 </div>
-		<p class="h5 modal-title text-center">Доступность датчиков</p>
+	<p class="h5 modal-title text-center">Доступность датчиков</p>
+	<p class="h5 modal-title text-center REG_FAIL">Доступность датчиков</p>
    <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover" aria-describedby="popover452354"></button>
    <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover" aria-describedby="popover452354"></button>
 </form>
