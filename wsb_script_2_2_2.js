@@ -359,6 +359,7 @@ console.log("onMessage"+event.data);
 if(WSsocket.readyState==1)
 {
 try {
+	console.log(event.data);
 	json_data = JSON.parse(event.data);
 	} catch (e) {
 		console.log(e.message);
