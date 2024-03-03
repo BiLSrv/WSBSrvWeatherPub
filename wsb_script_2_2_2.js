@@ -72,7 +72,7 @@ function crc16(buffer,extcrc)
 	$.each(buffer, function(index, element) {
   		console.log(index, element);
 		str=buffer[index];
-        for (var j = 0; j < strlen(str); j++) {
+        for (var j = 0; j < str.length; j++) {
 			crc ^= str.charCodeAt(j) << 8;
 			for (k = 0; k < 8; k++)
             	crc ^= crc & 0x8000 ? (crc << 1) ^ POLY_D : crc << 1;
