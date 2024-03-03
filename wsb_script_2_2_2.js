@@ -73,9 +73,9 @@ function crc16(buffer,extcrc)
   		//console.log(index, element);
 		//str=buffer[index];
 		//console.log('puu '+buffer[index]);
-        for (var j = 0; j < buffer[index].length; j++) {
+        for (var j = 0; j < element.length; j++) {
 			
-			crc ^= buffer[index].charCodeAt(j) << 8;
+			crc ^= element.charCodeAt(j) << 8;
 			//console.log('crc ^=  '+crc.toString(16));
 			for (k = 0; k < 8; k++)
             	crc ^= crc & 0x8000 ? (crc << 1) ^ POLY_D : crc << 1;
