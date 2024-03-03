@@ -70,19 +70,19 @@ function crc16(buffer,extcrc)
     });*/
 	
 	$.each(buffer, function(index, element) {
-  		console.log(index, element);
+  		//console.log(index, element);
 		//str=buffer[index];
-		console.log('puu '+buffer[index]);
+		//console.log('puu '+buffer[index]);
         for (var j = 0; j < buffer[index].length; j++) {
 			
 			crc ^= buffer[index].charCodeAt(j) << 8;
-			console.log('crc ^=  '+crc.toString(16));
+			//console.log('crc ^=  '+crc.toString(16));
 			for (k = 0; k < 8; k++)
             	crc ^= crc & 0x8000 ? (crc << 1) ^ POLY_D : crc << 1;
 		}
 	});
 	
-	console.log('crcrez '+crc+'crcext '+extcrc);
+	//console.log('crcrez '+crc+'crcext '+extcrc);
 	
     if(crc==extcrc) 
 		{return true;}
@@ -419,7 +419,7 @@ if (json_data["crc16"]) {
 	arrbufcrc=[].concat(json_data.sensors).concat(json_data.time);
 	
 	crc16_int=parseInt(json_data.crc16, 16);
-	console.log("crc16_int"+crc16_int);
+	//console.log("crc16_int"+crc16_int);
 	
 	if (isNaN(crc16_int)) {
     	return NaN;
