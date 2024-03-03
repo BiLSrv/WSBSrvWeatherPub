@@ -64,16 +64,16 @@ function crc16(buffer,extcrc)
 	var POLY_D = 0x1021
 	var pcBlock=0;
 	var i=0,j,n1,k;
-	var str="";
+	//var str="";
 	/*$(buffer).each((index, element) => {
         console.log(`current index : ${index} element : ${element}`)
     });*/
 	
 	$.each(buffer, function(index, element) {
   		console.log(index, element);
-		str=buffer[index];
-        for (var j = 0; j < str.length; j++) {
-			crc ^= str.charCodeAt(j) << 8;
+		//str=buffer[index];
+        for (var j = 0; j < buffer[index].length; j++) {
+			crc ^= buffer[index].charCodeAt(j) << 8;
 			for (k = 0; k < 8; k++)
             	crc ^= crc & 0x8000 ? (crc << 1) ^ POLY_D : crc << 1;
 		}
