@@ -384,6 +384,8 @@ function onError(event) {
 
 function onMessage(event)
 {
+arrbufcrc="";
+i=0,j=0;
 //
 //	2.1	Processing 'onMessage'
 //
@@ -403,7 +405,15 @@ else
 //	2.1 CRC
 //
 if (json_data["crc16"]) {
-	console.log(json_data);
+	
+	arrbufcrc=[].concat(",",json_data.time).concat(",",json_data.sensors);
+	
+	//for(i=0;i<json_data.time.length)
+	//	{arrbufcrc[i]=json_data.time[i];j++;}
+	//for(i=0;i<json_data.time.length)
+	//	{arrbufcrc[i]=json_data.time[i];}
+	
+	console.log(arrbufcrc);
 }
 
 /*
