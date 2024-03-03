@@ -419,6 +419,7 @@ if (json_data["crc16"]) {
 	arrbufcrc=[].concat(json_data.sensors).concat(json_data.time);
 	
 	crc16_int=parseInt(json_data.crc16, 16);
+	console.log("crc16_int"+crc16_int);
 	
 	if (isNaN(crc16_int)) {
     	return NaN;
