@@ -1,4 +1,4 @@
-// upda1a3
+// upda1a1
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -83,9 +83,9 @@ function crc16(buffer,extcrc)
 		}
 	});
 	
-	console.log('crcrez '+parseInt(crc[1],16)+' crcext '+extcrc.toString(16));
+	console.log('crcrez '+crc[1]+' crcext '+extcrc);
 	
-    if(crc==extcrc) 
+    if(crc[1]==extcrc) 
 		{return true;}
 	else
 		{return false;}
