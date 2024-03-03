@@ -406,7 +406,7 @@ else
 //
 if (json_data["crc16"]) {
 	
-	arrbufcrc=[].concat(",",json_data.time).concat(",",json_data.sensors);
+	arrbufcrc=[].concat(json_data.time).concat(json_data.sensors);
 	
 	//for(i=0;i<json_data.time.length)
 	//	{arrbufcrc[i]=json_data.time[i];j++;}
