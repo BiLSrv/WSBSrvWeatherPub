@@ -1,4 +1,4 @@
-// upda1a1
+// upda1a2
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -60,8 +60,9 @@ var GuageMeter =
 
 function crc16(buffer,extcrc) 
 {
-	var crc = new Uint32Array(1);
-    crc[1] = 0xFFFF;
+	var crc = 0xFFFFFFFF;
+	// var arr = new Uint32Array(1);
+    //crc[1] = 0xFFFF;
 	var POLY_D = 0x1021
 	var pcBlock=0;
 	var i=0,j,n1,k;
