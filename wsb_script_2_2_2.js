@@ -58,7 +58,8 @@ var GuageMeter =
  */
 
 
-function crc16(buffer) {
+function crc16(buffer,extcrc) 
+{
     var crc = 0xFFFF;
 	var POLY_D = 0x1021
 	var pcBlock=0;
@@ -77,7 +78,10 @@ function crc16(buffer) {
             	crc ^= crc & 0x8000 ? (crc << 1) ^ POLY_D : crc << 1;
 		}
 	});
-    return crc;
+    if(crc==extctc)
+		{return true;}
+	else
+		{return false;}
 };
 
 
@@ -385,7 +389,7 @@ function onError(event) {
 function onMessage(event)
 {
 arrbufcrc="";
-i=0,j=0;
+i=0,j=0,crc16_int=0;
 //
 //	2.1	Processing 'onMessage'
 //
@@ -408,6 +412,17 @@ if (json_data["crc16"]) {
 	
 	arrbufcrc=[].concat(json_data.time).concat(json_data.sensors);
 	
+	crc16_int=parseInt(json_data.crc16, 16);
+	
+	if (isNaN(crc16_int)) {
+    	return NaN;
+	}	
+	console.log(arrbufcrc);
+	
+	if(crc16(arrbufcrc,crc16_int) == true )
+		{console.log("crc16 ok");}
+	else
+		{console.log("crc16 fail");}
 	//for(i=0;i<json_data.time.length)
 	//	{arrbufcrc[i]=json_data.time[i];j++;}
 	//for(i=0;i<json_data.time.length)
