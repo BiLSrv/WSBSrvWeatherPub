@@ -417,7 +417,7 @@ if (json_data["crc16"]) {
 	if (isNaN(crc16_int)) {
     	return NaN;
 	}	
-	console.log(arrbufcrc);
+	console.log(arrbufcrc,crc16_int);
 	
 	if(crc16(arrbufcrc,crc16_int) == true )
 		{console.log("crc16 ok");}
