@@ -82,7 +82,7 @@ function crc16(buffer,extcrc)
 		}
 	});
 	
-	//console.log('crcrez '+crc+'crcext '+extcrc);
+	console.log('crcrez '+parseInt(crc,16)+'crcext '+parseInt(extcrc,16));
 	
     if(crc==extcrc) 
 		{return true;}
