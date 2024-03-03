@@ -72,12 +72,18 @@ function crc16(buffer,extcrc)
 	$.each(buffer, function(index, element) {
   		console.log(index, element);
 		//str=buffer[index];
+		console.log('puu'+buffer[index]);
         for (var j = 0; j < buffer[index].length; j++) {
+			
 			crc ^= buffer[index].charCodeAt(j) << 8;
+			console.log('crc ^=  '+crc.toString('hex'));
 			for (k = 0; k < 8; k++)
             	crc ^= crc & 0x8000 ? (crc << 1) ^ POLY_D : crc << 1;
 		}
 	});
+	
+	console.log('crcrez '+crc.toString('hex'));
+	
     if(crc==extcrc) 
 		{return true;}
 	else
