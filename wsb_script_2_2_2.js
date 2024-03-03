@@ -60,7 +60,7 @@ var GuageMeter =
 
 function crc16(buffer,extcrc) 
 {
-    var crc = 0xFFFF;
+    var crc = 0xFFFF'u32;
 	var POLY_D = 0x1021
 	var pcBlock=0;
 	var i=0,j,n1,k;
