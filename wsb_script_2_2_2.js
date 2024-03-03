@@ -78,7 +78,7 @@ function crc16(buffer,extcrc)
             	crc ^= crc & 0x8000 ? (crc << 1) ^ POLY_D : crc << 1;
 		}
 	});
-    if(crc==extcrc)
+    if(crc==extcrc) 
 		{return true;}
 	else
 		{return false;}
