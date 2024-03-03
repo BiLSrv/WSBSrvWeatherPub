@@ -76,13 +76,13 @@ function crc16(buffer,extcrc)
         for (var j = 0; j < buffer[index].length; j++) {
 			
 			crc ^= buffer[index].charCodeAt(j) << 8;
-			console.log('crc ^=  '+crc.toString('hex'));
+			console.log('crc ^=  '+crc.toString(16));
 			for (k = 0; k < 8; k++)
             	crc ^= crc & 0x8000 ? (crc << 1) ^ POLY_D : crc << 1;
 		}
 	});
 	
-	console.log('crcrez '+crc.toString('hex'));
+	console.log('crcrez '+crc.toString(16));
 	
     if(crc==extcrc) 
 		{return true;}
