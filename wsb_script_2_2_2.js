@@ -72,7 +72,7 @@ function crc16(buffer,extcrc)
 	$.each(buffer, function(index, element) {
   		console.log(index, element);
 		//str=buffer[index];
-		console.log('puu'+buffer[index]);
+		console.log('puu '+buffer[index]);
         for (var j = 0; j < buffer[index].length; j++) {
 			
 			crc ^= buffer[index].charCodeAt(j) << 8;
@@ -416,7 +416,7 @@ else
 //
 if (json_data["crc16"]) {
 	
-	arrbufcrc=[].concat(json_data.time).concat(json_data.sensors);
+	arrbufcrc=[].concat(json_data.sensors).concat(json_data.time);
 	
 	crc16_int=parseInt(json_data.crc16, 16);
 	
