@@ -80,30 +80,6 @@ function crc16(buffer) {
     return crc;
 };
 
-unsigned int crc16_arr(unsigned int n)
-{
-
-	//n1=strlen(sensor_dataTPH[i].TPH);
-	for(i=0;i<=n;i++)
-	{
-	//ESP_LOGE(TAG,"puu %s\r\n", sensor_dataTPH[i].TPH);
-		n1=strlen(sensor_dataTPH[i].TPH);
-	//ESP_LOGE(TAG,"n1 %d\r\n", n1);
-		for(j=0;j<n1;j++)
-		{
-		crc ^= sensor_dataTPH[i].TPH[j] << 8;
-		//ESP_LOGE(TAG,"crc ^= 0x%x\r\n", crc);
-        for (k = 0; k < 8; k++)
-            crc ^= crc & 0x8000 ? (crc << 1) ^ POLY_D : crc << 1;
-				//ESP_LOGE(TAG,"crc k ^= 0x%x\r\n", crc);
-		}
-		//ESP_LOGE(TAG,"puu 0x%x\r\n", crc);
-	}
-	//ESP_LOGE(TAG,"puu 0x%x\r\n", crc);
-	//ESP_LOGE(TAG,"crc %x",crc);
-    return crc;
-}
-
 
 $('body').delay(500).queue(function() {
     //$(this).load('myPage.php');
