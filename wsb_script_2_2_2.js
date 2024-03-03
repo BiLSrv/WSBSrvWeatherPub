@@ -1,4 +1,4 @@
-// upda1a4
+// upda1a1
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -46,6 +46,62 @@ var GuageMeter =
 	label: "Темпер",
 	color: "White",
 	label_color: "White"
+}
+
+/**
+ * Calculates the buffers CRC16.
+ *
+ * @param {Buffer} buffer the data buffer.
+ * @return {number} the calculated CRC16.
+ * 
+ * Source: github.com/yaacov/node-modbus-serial
+ */
+
+
+function crc16(buffer) {
+    var crc = 0xFFFF;
+	var POLY_D = 0x1021
+	var pcBlock=0;
+	var i=0,j,n1,k;
+	var str="";
+	/*$(buffer).each((index, element) => {
+        console.log(`current index : ${index} element : ${element}`)
+    });*/
+	
+	$.each(buffer, function(index, element) {
+  		console.log(index, element);
+		str=buffer[index];
+        for (var j = 0; j < strlen(str); j++) {
+			crc ^= str.charCodeAt(j) << 8;
+			for (k = 0; k < 8; k++)
+            	crc ^= crc & 0x8000 ? (crc << 1) ^ POLY_D : crc << 1;
+		}
+	});
+    return crc;
+};
+
+unsigned int crc16_arr(unsigned int n)
+{
+
+	//n1=strlen(sensor_dataTPH[i].TPH);
+	for(i=0;i<=n;i++)
+	{
+	//ESP_LOGE(TAG,"puu %s\r\n", sensor_dataTPH[i].TPH);
+		n1=strlen(sensor_dataTPH[i].TPH);
+	//ESP_LOGE(TAG,"n1 %d\r\n", n1);
+		for(j=0;j<n1;j++)
+		{
+		crc ^= sensor_dataTPH[i].TPH[j] << 8;
+		//ESP_LOGE(TAG,"crc ^= 0x%x\r\n", crc);
+        for (k = 0; k < 8; k++)
+            crc ^= crc & 0x8000 ? (crc << 1) ^ POLY_D : crc << 1;
+				//ESP_LOGE(TAG,"crc k ^= 0x%x\r\n", crc);
+		}
+		//ESP_LOGE(TAG,"puu 0x%x\r\n", crc);
+	}
+	//ESP_LOGE(TAG,"puu 0x%x\r\n", crc);
+	//ESP_LOGE(TAG,"crc %x",crc);
+    return crc;
 }
 
 
@@ -352,14 +408,13 @@ function onError(event) {
 
 function onMessage(event)
 {
-
-	// data
-	// origin
+//
+//	2.1	Processing 'onMessage'
+//
 console.log("onMessage"+event.data);
 if(WSsocket.readyState==1)
 {
 try {
-	console.log(event.data);
 	json_data = JSON.parse(event.data);
 	} catch (e) {
 		console.log(e.message);
@@ -368,7 +423,12 @@ try {
 }
 else
 	return 0;
-	
+//
+//	2.1 CRC
+//
+if (json_data["crc16"]) {
+	console.log(json_data);
+}
 
 /*
 if (temp_json["temp"]) {
