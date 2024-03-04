@@ -104,7 +104,7 @@ $('body').delay(500).queue(function() {
     //$(this).load('myPage.php');
 WSsocket = new WebSocket(gateway);
 // Canvas .each Default Settings 
-$('canvas').each(function(index){	
+$('.canvasT').each(function(index){	
     CanvGaugeArr.push(new LinearGauge({
     renderTo: $( this ).attr('id'),
     width: 100,
@@ -405,11 +405,11 @@ function onMessage(event)
 arrbufcrc="";
 i=0,j=0,crc16_int=0;
 	
-canvasOBJ = $( "canvas" ).get();
+canvasOBJ = $( ".canvasT" ).get();
 
 //console.log(maOBJ);
 //console.log(GuageMeterOBJ);
-//console.log(canvasOBJ);
+console.log(canvasOBJ);
 //console.log(CanvGaugeArr);
 //
 //	2.1	Processing 'onMessage'
@@ -462,7 +462,7 @@ $('.ptime').text(json_data.time[1].toString());
 if (json_data["sensors"]) 
 {
 //try {
-	$('canvas').each(function(index){
+	$('.canvasT').each(function(index){
 		//console.log(CanvGaugeArr[index]," ind ",index);
 		CanvGaugeArr[index].update({ value: parseFloat(json_data.sensors[index]) });
 		if(index>8)
