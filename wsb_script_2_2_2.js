@@ -491,7 +491,7 @@ if (json_data["sensors"])
 		$(this).attr('id').gaugeMeter(GuageMeter);
 		if(index>4)
 		{return true;}
-	});
+	}); 
 
 }
 //} 
