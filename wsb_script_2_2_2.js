@@ -448,11 +448,17 @@ $('.ptime').text(temp_json.time[1].toString());
 //
 if (temp_json["sensors"]) 
 {
+try {
 	$('canvas').each(function(index){	
 		CanvGaugeArr[index].update({ value: parseFloat(temp_json.temp[index]) });
 		if(index>9)
-			break;
+			throw BreakError;
 	});
+} 
+catch (err) 
+{
+  if (err !== BreakError) throw err;
+}
 }
 /*
 if (temp_json["temp"]) {
