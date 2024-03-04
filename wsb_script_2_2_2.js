@@ -80,7 +80,7 @@ function crc16(buffer,extcrc)
 			crc ^= element.charCodeAt(j) << 8;//charCodeAt
 			//console.log('crc ^=  '+crc.toString(16));
 			for (k = 0; k < 8; k++)
-            	crc ^= crc & 0x8000 ? (crc << 1) ^ POLY_D : crc << 1;
+            	crc = crc & 0x8000 ? (crc << 1) ^ POLY_D : crc << 1;
 		}
 	});
 	
