@@ -486,7 +486,7 @@ if (json_data["sensors"])
 	
 	$(".GaugeMeter1P").each(function(index){
 		$(this).text=json_data.sensors[index+17].toString();
-		$(this).percent=parseInt(json_data.sensors[index+10],10);
+		$(this).percent=parseInt(json_data.sensors[index+17],10);
 		$(this).attr('id').gaugeMeter(GuageMeter);
 		if(index>4)
 		{return true;}
