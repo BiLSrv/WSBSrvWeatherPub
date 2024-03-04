@@ -446,7 +446,7 @@ $('.ptime').text(temp_json.time[1].toString());
 //
 //	2.3 temp_json["sensors"]
 //
-outer: if (temp_json["sensors"]) 
+if (temp_json["sensors"]) 
 {
 //try {
 	$('canvas').each(function(index){	
@@ -454,6 +454,7 @@ outer: if (temp_json["sensors"])
 		if(index>9)
 		{return true;}
 	});
+}
 //} 
 /*catch (err) 
 {throw BreakError;	
