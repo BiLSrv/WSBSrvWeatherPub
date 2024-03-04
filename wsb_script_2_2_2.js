@@ -90,10 +90,10 @@ function crc16(buffer,extcrc)
 };
 
 function refr_rtc() {
-    if (subwdeb == false && $("#autmp").prop("checked")) {
-        fetch("/get_rtc.json?n=" + Math.random(), "GET", txjstmp, 30);
+    //if (subwdeb == false && $("#autmp").prop("checked")) {
+        //fetch("/get_rtc.json?n=" + Math.random(), "GET", txjstmp, 30);
         sub_grad();
-    }
+    //}
     //console.log("refr_rtc");
 }
 
@@ -789,10 +789,5 @@ rs = setInterval(refr_rtc, 3000);
       }, false)
     })
   }
-	
-	
-	
-	
-	
-	
+
 }
