@@ -408,9 +408,9 @@ i=0,j=0,crc16_int=0;
 canvasOBJ = $( "canvas" ).get();
 
 //console.log(maOBJ);
-console.log(GuageMeterOBJ);
-console.log(canvasOBJ);
-console.log(CanvGaugeArr);
+//console.log(GuageMeterOBJ);
+//console.log(canvasOBJ);
+//console.log(CanvGaugeArr);
 //
 //	2.1	Processing 'onMessage'
 //
@@ -469,20 +469,20 @@ if (json_data["sensors"])
 		{return true;}
 	});
 
-	GuageMeterOBJ = $("GaugeMeter1H").get();
+	GuageMeterOBJ = $(".GaugeMeter1H").get();
 	console.log(GuageMeterOBJ);
-	GuageMeterOBJ = $("GaugeMeter1P").get();
+	GuageMeterOBJ = $(".GaugeMeter1P").get();
 	console.log(GuageMeterOBJ);
 	
-	$("GaugeMeter1H").each(function(index){
+	$(".GaugeMeter1H").each(function(index){
 		GuageMeter.text=json_data.sensors[index+10].toString();
 		GuageMeter.percent=parseInt(json_data.sensors[index+10],10);
 		GuageMeterOBJ[index].gaugeMeter(GuageMeter);
 		if(index>7)
 		{return true;}
 	});
-	
-	$("GaugeMeter1P").each(function(index){
+
+	$(".GaugeMeter1P").each(function(index){
 		GuageMeter.text=json_data.sensors[index+17].toString();
 		GuageMeter.percent=parseInt(json_data.sensors[index+10],10);
 		GuageMeterOBJ[index].gaugeMeter(GuageMeter);
