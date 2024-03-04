@@ -1,4 +1,4 @@
-// upda1a1
+// upda1a1a
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -83,9 +83,7 @@ function crc16(buffer,extcrc)
             	crc = (crc & 0x8000 ? (crc << 1) ^ POLY_D : crc << 1) & 0x0FFFFFFF;
 		}
 	});
-	
-	console.log('crcrez '+crc+' crcext '+extcrc);
-	
+
     if(crc==extcrc) 
 		{return true;}
 	else
@@ -162,11 +160,13 @@ if(WSsocket.readyState!=1)
 	initWebSocket();
 }
 
-//maOBJ = $('*');
+maOBJ = $('*');
 canvasOBJ = $( "canvas" ).get();
 GuageMeterOBJ = $("GaugeMeter").get();
 //console.log(maOBJ);
 console.log(GuageMeterOBJ);
+console.log(canvasOBJ);
+console.log(CanvGaugeArr);
 	
 }); 
 
@@ -416,30 +416,44 @@ else
 //
 //	2.1 CRC
 //
-if (json_data["crc16"]) {
-	
+if (json_data["crc16"]) 
+{
 	arrbufcrc=[].concat(json_data.sensors).concat(json_data.time);
-	
 	crc16_int=parseInt(json_data.crc16, 16);
 	//console.log("crc16_int"+crc16_int);
 	
 	if (isNaN(crc16_int)) {
     	return NaN;
 	}	
-	console.log(arrbufcrc,crc16_int);
-	
-	if(crc16(arrbufcrc,crc16_int) == true )
-		{console.log("crc16 ok");}
-	else
-		{console.log("crc16 fail");}
+
+	if(crc16(arrbufcrc,crc16_int) != true )
+		return 0;
 	//for(i=0;i<json_data.time.length)
 	//	{arrbufcrc[i]=json_data.time[i];j++;}
 	//for(i=0;i<json_data.time.length)
 	//	{arrbufcrc[i]=json_data.time[i];}
-	
-	console.log(arrbufcrc);
 }
-
+else
+	{return 0;}
+	
+//
+//	2.2 Times from mcu
+//
+	
+$('.mcu_tus').text(temp_json.time[0].toString());
+$('.ptime').text(temp_json.time[1].toString());
+	
+//
+//	2.3 temp_json["sensors"]
+//
+if (temp_json["sensors"]) 
+{
+	$('canvas').each(function(index){	
+		CanvGaugeArr[index].update({ value: parseFloat(temp_json.temp[index]) });
+		if(index>9)
+			break;
+	});
+}
 /*
 if (temp_json["temp"]) {
 	    console.log(temp_json["temp"]);
