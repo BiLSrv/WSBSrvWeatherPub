@@ -477,6 +477,7 @@ if (json_data["sensors"])
 		$(this).attr('id').text=json_data.sensors[index+10].toString();
 		$(this).attr('id').percent=parseInt(json_data.sensors[index+10],10);
 		$(this).attr('id').gaugeMeter(GuageMeter);
+		console.log($(this).attr('id'));
 		if(index>7)
 		{return true;}
 	});
