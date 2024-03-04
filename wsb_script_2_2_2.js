@@ -29,7 +29,6 @@ var gateway =
 };
 */
 var WSsocket;
-
 var GuageMeter =
 {
 	theme: "Red-Gold-Green",
@@ -89,6 +88,14 @@ function crc16(buffer,extcrc)
 	else
 		{return false;}
 };
+
+function refr_rtc() {
+    if (subwdeb == false && $("#autmp").prop("checked")) {
+        fetch("/get_rtc.json?n=" + Math.random(), "GET", txjstmp, 30);
+        sub_grad();
+    }
+    //console.log("refr_rtc");
+}
 
 
 $('body').delay(500).queue(function() {
@@ -449,7 +456,14 @@ $('.ptime').text(json_data.time[1].toString());
 if (json_data["sensors"]) 
 {
 //try {
-	$('canvas').each(function(index){
+	$('.canvasT').each(function(index){
+		console.log(CanvGaugeArr[index]," ind ",index);
+		CanvGaugeArr[index].update({ value: parseFloat(json_data.sensors[index]) });
+		if(index>9)
+		{return true;}
+	});
+	
+	$('.canvasT').each(function(index){
 		console.log(CanvGaugeArr[index]," ind ",index);
 		CanvGaugeArr[index].update({ value: parseFloat(json_data.sensors[index]) });
 		if(index>9)
@@ -601,7 +615,8 @@ $(".bt0st").attr("value", "off");
 $(".navia").addClass("list-group-item list-group-item-action bg-light border");
 $("#esp_tx").val("wsbuser.prints(node.heap());");
 $("#esp_urx").val("");
-	
+
+rs = setInterval(refr_rtc, 3000);
   // --------
   // Tooltips
   // --------
