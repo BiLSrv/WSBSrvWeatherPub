@@ -452,7 +452,7 @@ try {
 	$('canvas').each(function(index){	
 		CanvGaugeArr[index].update({ value: parseFloat(temp_json.temp[index]) });
 		if(index>9)
-			throw BreakError;
+		{break outer;throw BreakError;}
 	});
 } 
 catch (err) 
@@ -460,6 +460,7 @@ catch (err)
   if (err !== BreakError) throw err;
 }
 }
+outer:
 /*
 if (temp_json["temp"]) {
 	    console.log(temp_json["temp"]);
