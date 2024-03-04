@@ -448,18 +448,16 @@ $('.ptime').text(temp_json.time[1].toString());
 //
 outer: if (temp_json["sensors"]) 
 {
-try {
+//try {
 	$('canvas').each(function(index){	
 		CanvGaugeArr[index].update({ value: parseFloat(temp_json.temp[index]) });
 		if(index>9)
-		{break outer;throw BreakError;}
+		{return true;}
 	});
-} 
-catch (err) 
-{
-  if (err !== BreakError) throw err;
-}
-}
+//} 
+/*catch (err) 
+{throw BreakError;	
+if (err !== BreakError) throw err;}}*/
 
 /*
 if (temp_json["temp"]) {
