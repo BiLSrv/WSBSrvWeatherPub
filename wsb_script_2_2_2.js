@@ -98,6 +98,8 @@ function refr_rtc() {
 }
 
 
+
+
 $('body').delay(500).queue(function() {
     //$(this).load('myPage.php');
 WSsocket = new WebSocket(gateway);
@@ -136,6 +138,10 @@ $('canvas').each(function(index){
 }).draw());
 	//console.log( String($(this).attr('id')) + ": " + $( this ).text() + $( this ).attr('id')+ " " );    units: '°C',	colorPlateEnd: "#327ac0",
 });
+	
+$(".GaugeMeter1H").gaugeMeter(GuageMeter);
+GuageMeter.text="";
+GuageMeter.value=0;
 
 $(".GaugeMeter1T").gaugeMeter(GuageMeter);
 GuageMeter.append = " С";
@@ -463,7 +469,7 @@ if (json_data["sensors"])
 		{return true;}
 	});
 	
-	$('.canvasT').each(function(index){
+	$('.GaugeMeter1H').each(function(index){
 		console.log(CanvGaugeArr[index]," ind ",index);
 		CanvGaugeArr[index].update({ value: parseFloat(json_data.sensors[index]) });
 		if(index>9)
