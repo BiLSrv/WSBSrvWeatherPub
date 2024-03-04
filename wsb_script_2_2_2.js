@@ -406,7 +406,7 @@ arrbufcrc="";
 i=0,j=0,crc16_int=0;
 	
 canvasOBJ = $( ".canvasT" ).get();
-
+$(".GaugeMeter").gaugeMeter();
 //console.log(maOBJ);
 //console.log(GuageMeterOBJ);
 console.log(canvasOBJ);
