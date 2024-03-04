@@ -104,7 +104,7 @@ $('body').delay(500).queue(function() {
     //$(this).load('myPage.php');
 WSsocket = new WebSocket(gateway);
 // Canvas .each Default Settings 
-$('.canvasT').each(function(index){	
+$('canvas').each(function(index){	
     CanvGaugeArr.push(new LinearGauge({
     renderTo: $( this ).attr('id'),
     width: 100,
