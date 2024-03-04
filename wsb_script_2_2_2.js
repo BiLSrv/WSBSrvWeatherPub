@@ -465,8 +465,8 @@ if (json_data["sensors"])
 	$('canvas').each(function(index){
 		console.log(CanvGaugeArr[index]," ind ",index);
 		CanvGaugeArr[index].update({ value: parseFloat(json_data.sensors[index]) });
-		if(index>8)
-		{return true;}
+		if(index>9)
+		{return false;}
 	});
 	
 	console.log("GaugeMeter1H");
