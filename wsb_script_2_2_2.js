@@ -139,9 +139,7 @@ $('canvas').each(function(index){
 	//console.log( String($(this).attr('id')) + ": " + $( this ).text() + $( this ).attr('id')+ " " );    units: '°C',	colorPlateEnd: "#327ac0",
 });
 	
-$(".GaugeMeter1H").gaugeMeter(GuageMeter);
-GuageMeter.text="";
-GuageMeter.value=0;
+
 
 $(".GaugeMeter1T").gaugeMeter(GuageMeter);
 GuageMeter.append = " С";
@@ -174,12 +172,7 @@ if(WSsocket.readyState!=1)
 }
 
 maOBJ = $('*');
-canvasOBJ = $( "canvas" ).get();
-GuageMeterOBJ = $("GaugeMeter").get();
-//console.log(maOBJ);
-console.log(GuageMeterOBJ);
-console.log(canvasOBJ);
-console.log(CanvGaugeArr);
+
 	
 }); 
 
@@ -411,6 +404,13 @@ function onMessage(event)
 {
 arrbufcrc="";
 i=0,j=0,crc16_int=0;
+	
+canvasOBJ = $( "canvas" ).get();
+
+//console.log(maOBJ);
+console.log(GuageMeterOBJ);
+console.log(canvasOBJ);
+console.log(CanvGaugeArr);
 //
 //	2.1	Processing 'onMessage'
 //
@@ -468,13 +468,26 @@ if (json_data["sensors"])
 		if(index>9)
 		{return true;}
 	});
+
+	GuageMeterOBJ = $(".GaugeMeter1H").get();
+	console.log(GuageMeterOBJ);
 	
-	$('.GaugeMeter1H').each(function(index){
-		console.log(CanvGaugeArr[index]," ind ",index);
-		CanvGaugeArr[index].update({ value: parseFloat(json_data.sensors[index]) });
-		if(index>9)
+	$(".GaugeMeter1H").each(function(index){
+		GuageMeter.text=json_data.sensors[index+10].toString();
+		GuageMeter.percent=parseInt(json_data.sensors[index+10],10);
+		GuageMeterOBJ[index].gaugeMeter(GuageMeter);
+		if(index>7)
 		{return true;}
 	});
+	
+	$(".GaugeMeter1P").each(function(index){
+		GuageMeter.text=json_data.sensors[index+17].toString();
+		GuageMeter.percent=parseInt(json_data.sensors[index+10],10);
+		GuageMeterOBJ[index].gaugeMeter(GuageMeter);
+		if(index>4)
+		{return true;}
+	});
+
 }
 //} 
 /*catch (err) 
