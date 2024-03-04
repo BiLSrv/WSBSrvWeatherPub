@@ -77,10 +77,10 @@ function crc16(buffer,extcrc)
 		//console.log('puu '+buffer[index]);
         for (var j = 0; j < element.length; j++) {
 			
-			crc ^= (element.charCodeAt(j) << 8) & 0x0000FFFF;//charCodeAt
+			crc ^= (element.charCodeAt(j) << 8) & 0xFFFFFFFF;//charCodeAt
 			//console.log('crc ^=  '+crc.toString(16));
 			for (k = 0; k < 8; k++)
-            	crc = (crc & 0x8000 ? (crc << 1) ^ POLY_D : crc << 1) & 0x0000FFFF;
+            	crc = (crc & 0x8000 ? (crc << 1) ^ POLY_D : crc << 1) & 0xFFFFFFFF;
 		}
 	});
 	
