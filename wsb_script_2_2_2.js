@@ -462,7 +462,7 @@ $('.ptime').text(json_data.time[1].toString());
 if (json_data["sensors"]) 
 {
 //try {
-	$('.canvasT').each(function(index){
+	$('canvas').each(function(index){
 		console.log(CanvGaugeArr[index]," ind ",index);
 		CanvGaugeArr[index].update({ value: parseFloat(json_data.sensors[index]) });
 		if(index>8)
