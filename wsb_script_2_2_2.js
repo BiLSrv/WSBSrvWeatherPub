@@ -1,4 +1,4 @@
-// upda2a1
+// upda2a2
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -491,7 +491,7 @@ if (json_data["sensors"])
 		$(".GaugeMeter1P").gaugeMeter(GuageMeter);
 		if(index>4)
 		{return true;}
-	}); 
+	}; 
 
 }
 //} 
