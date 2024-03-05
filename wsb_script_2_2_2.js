@@ -490,7 +490,7 @@ if (json_data["sensors"])
 	console.log(GuageMeterOBJ);
 	
 	$(".GaugeMeter1P").each(function(index){
-		console.log($($(this).attr('id')));
+		console.log(($(this).attr('id'));
 		$(this).attr('id').text=json_data.sensors[i+18].toString();
 		$(this).attr('id').percent=parseInt(json_data.sensors[i+18],10)/100;
 		$($(this).attr('id')).gaugeMeter(GuageMeter);
