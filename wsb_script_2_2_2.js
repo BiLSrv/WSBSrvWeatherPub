@@ -418,7 +418,7 @@ console.log(canvasOBJ);
 //
 //	2.1	Processing 'onMessage'
 //
-console.log("onMessage"+event.data);
+//console.log("onMessage"+event.data);
 if(WSsocket.readyState==1)
 {
 try {
@@ -467,7 +467,7 @@ if (json_data["sensors"])
 {
 //try {
 	$('canvas').each(function(index){
-		console.log(CanvGaugeArr[index]," ind ",index);
+		//console.log(CanvGaugeArr[index]," ind ",index);
 		CanvGaugeArr[index].update({ value: parseFloat(json_data.sensors[index]) });
 		if(index>8)
 		{return false;}
@@ -478,7 +478,7 @@ if (json_data["sensors"])
 	//console.log(GuageMeterOBJ);
 
 	$(".GaugeMeter1H").each(function(index){
-		console.log($(this).attr('id'));
+		//console.log($(this).attr('id'));
 		GuageMeter.text=json_data.sensors[index+10].toString();
 		GuageMeter.percent=parseInt(json_data.sensors[index+10],10);
 		$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter(GuageMeter);
@@ -490,10 +490,13 @@ if (json_data["sensors"])
 	console.log(GuageMeterOBJ);
 	
 	$(".GaugeMeter1P").each(function(index){
-		//console.log($(this).attr('id'));
+		
 		GuageMeter.text=json_data.sensors[index+18].toString();
 		GuageMeter.percent=parseInt(json_data.sensors[index+18],10)/100;
 		$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter(GuageMeter);
+		
+		console.log(GuageMeter.text);
+		
 		if(index>3)
 		{return true;}
 	});
