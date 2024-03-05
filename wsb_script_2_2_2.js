@@ -488,7 +488,7 @@ if (json_data["sensors"])
 	console.log("GaugeMeter1P");*/
 	GuageMeterOBJ = $(".GaugeMeter1P").get();
 	console.log(GuageMeterOBJ);
-	for(var index=0;index<3;index++)
+	for(var i=0;i<3;i++)
 	{
 	//$(".GaugeMeter1P").each(function(index){
 		GuageMeter.text=json_data.sensors[index+18].toString();
