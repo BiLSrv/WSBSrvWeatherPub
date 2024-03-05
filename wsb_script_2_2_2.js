@@ -1,4 +1,4 @@
-// upda2a3
+// upda2a4
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -479,8 +479,8 @@ if (json_data["sensors"])
 
 	$(".GaugeMeter1H").each(function(index){
 		console.log($(this).attr('id'));
-		GuageMeter.text=json_data.sensors[i+10].toString();
-		GuageMeter.percent=parseInt(json_data.sensors[i+10],10);
+		GuageMeter.text=json_data.sensors[index+10].toString();
+		GuageMeter.percent=parseInt(json_data.sensors[index+10],10);
 		$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter(GuageMeter);
 		if(index>7)
 		{return true;}
@@ -491,8 +491,8 @@ if (json_data["sensors"])
 	
 	$(".GaugeMeter1P").each(function(index){
 		//console.log($(this).attr('id'));
-		GuageMeter.text=json_data.sensors[i+18].toString();
-		GuageMeter.percent=parseInt(json_data.sensors[i+18],10)/100;
+		GuageMeter.text=json_data.sensors[index+18].toString();
+		GuageMeter.percent=parseInt(json_data.sensors[index+18],10)/100;
 		$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter(GuageMeter);
 		if(index>3)
 		{return true;}
