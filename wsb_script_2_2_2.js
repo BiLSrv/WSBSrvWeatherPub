@@ -31,20 +31,20 @@ var gateway =
 var WSsocket;
 var GuageMeter =
 {
-	theme: "Red-Gold-Green",
+	theme: "LightBlue-DarkBlue",
 	text: "-60",
 	style: "Arch",
 	text_size: "0.15",
 	append: "°C",
 	percent: 77,
-	size: 70,
-	width: 10,
-	back: "RGBa(255,255,255,.2)",
-	animate_gauge_colors: true,
+	size: 80,
+	width: 30,
+	back: "null",
+	animate_gauge_colors: false,
 	animate_text_colors:  false,
 	label: "Темпер",
-	color: "White",
-	label_color: "White"
+	//color: "White",
+	//label_color: "White"
 }
 
 /**
