@@ -163,6 +163,26 @@ $(".GaugeMeter1AQ").gaugeMeter(GuageMeter);
 GuageMeter.append = "";
 GuageMeter.label = "Воздух"
 GuageMeter.text_size = "0.18";
+	
+$(".GaugeMeterT").gaugeMeter(GuageMeter);
+GuageMeter.append = " С";
+GuageMeter.label = "Темпер-а"
+GuageMeter.text_size = "0.18";
+//GuageMeter.back="#DCDCDC"
+$(".GaugeMeterH").gaugeMeter(GuageMeter);
+GuageMeter.append = "ммРт";
+GuageMeter.label = "Влажн-ь"
+GuageMeter.text_size = "0.18";
+//GuageMeter.back="#DCDCDC"
+$(".GaugeMeterP").gaugeMeter(GuageMeter);
+GuageMeter.append = "ммРт";
+GuageMeter.label = "Давл-е"
+GuageMeter.text_size = "0.18";
+//GuageMeter.back="#DCDCDC"
+$(".GaugeMeterAQ").gaugeMeter(GuageMeter);
+GuageMeter.append = "";
+GuageMeter.label = "Воздух"
+GuageMeter.text_size = "0.18";
 //GuageMeter.back="#DCDCDC"
 //$( "div:has(.GaugeMeter1T)").addClass("bd_fail");.fadeOut(1000)
 //$( ".GaugeMeter1T").addClass("bd_fail");
