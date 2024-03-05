@@ -38,7 +38,7 @@ var GuageMeter =
 	append: "°C",
 	percent: 77,
 	size: 150,
-	width: 40,
+	width: 25,
 	back: "null",
 	animate_gauge_colors: false,
 	animate_text_colors:  false,
