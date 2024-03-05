@@ -1,4 +1,4 @@
-// upda1a2
+// upda2a1
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -406,7 +406,7 @@ arrbufcrc="";
 i=0,j=0,crc16_int=0;
 	
 canvasOBJ = $( ".canvasT" ).get();
-$(".GaugeMeter").gaugeMeter();
+$(".GaugeMeter").gaugeMeter(GuageMeter);
 //console.log(maOBJ);
 //console.log(GuageMeterOBJ);
 console.log(canvasOBJ);
@@ -473,22 +473,22 @@ if (json_data["sensors"])
 	GuageMeterOBJ = $(".GaugeMeter1H").get();
 	console.log(GuageMeterOBJ);
 
-	$(".GaugeMeter1H").each(function(index){
+	/*$(".GaugeMeter1H").each(function(index){
 		console.log($(this).attr('id'));
 		$(this).attr('id').text=json_data.sensors[index+10].toString();
 		$(this).attr('id').percent=parseInt(json_data.sensors[index+10],10);
-		$(this).attr('id').gaugeMeter();
+		$(this).attr('id').gaugeMeter(GuageMeter);
 		if(index>7)
 		{return true;}
 	});
-	console.log("GaugeMeter1P");
+	console.log("GaugeMeter1P");*/
 	GuageMeterOBJ = $(".GaugeMeter1P").get();
 	console.log(GuageMeterOBJ);
 	
-	$(".GaugeMeter1P").each(function(index){
-		$(this).text=json_data.sensors[index+17].toString();
-		$(this).percent=parseInt(json_data.sensors[index+17],10);
-		$(this).attr('id').gaugeMeter();
+	//$(".GaugeMeter1P").each(function(index){
+		GuageMeter.text=json_data.sensors[index+17].toString();
+		GuageMeter.percent=parseInt(json_data.sensors[index+17],10);
+		$(".GaugeMeter1P").gaugeMeter(GuageMeter);
 		if(index>4)
 		{return true;}
 	}); 
