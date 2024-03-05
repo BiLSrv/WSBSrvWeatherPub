@@ -482,6 +482,9 @@ if (json_data["sensors"])
 		GuageMeter.text=json_data.sensors[index+10].toString();
 		GuageMeter.percent=parseInt(json_data.sensors[index+10],10);
 		$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter(GuageMeter);
+		
+		console.log(GuageMeter.text);
+		
 		if(index>7)
 		{return true;}
 	});
