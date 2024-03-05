@@ -1,4 +1,4 @@
-// upda2a3
+// upda2a4
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -140,31 +140,35 @@ $('canvas').each(function(index){
 });
 	
 
-
+GuageMeter.theme="Red-Gold-Green";
+GuageMeter.animationstep=true;
+GuageMeter.animate_gauge_colors=true;
+GuageMeter.animate_text_colors=true;
 $(".GaugeMeter1T").gaugeMeter(GuageMeter);
 GuageMeter.append = " С";
 GuageMeter.label = "Темпер-а"
 GuageMeter.text_size = "0.18";
-GuageMeter.back="#DCDCDC"
+//GuageMeter.back="#DCDCDC"
 $(".GaugeMeter1H").gaugeMeter(GuageMeter);
 GuageMeter.append = "ммРт";
 GuageMeter.label = "Влажн-ь"
 GuageMeter.text_size = "0.18";
-GuageMeter.back="#DCDCDC"
+//GuageMeter.back="#DCDCDC"
 $(".GaugeMeter1P").gaugeMeter(GuageMeter);
 GuageMeter.append = "ммРт";
 GuageMeter.label = "Давл-е"
 GuageMeter.text_size = "0.18";
-GuageMeter.back="#DCDCDC"
+//GuageMeter.back="#DCDCDC"
 $(".GaugeMeter1AQ").gaugeMeter(GuageMeter);
 GuageMeter.append = "";
 GuageMeter.label = "Воздух"
 GuageMeter.text_size = "0.18";
-GuageMeter.back="#DCDCDC"
+//GuageMeter.back="#DCDCDC"
 //$( "div:has(.GaugeMeter1T)").addClass("bd_fail");.fadeOut(1000)
 //$( ".GaugeMeter1T").addClass("bd_fail");
 //$( ".GaugeMeter1T" ).find('bd_fail').fadeIn(1000);
-$(".GaugeMeter").gaugeMeter();
+	
+//$(".GaugeMeter").gaugeMeter(GuageMeter);
 
 if(WSsocket.readyState!=1)
 {
@@ -484,13 +488,13 @@ if (json_data["sensors"])
 	console.log("GaugeMeter1P");*/
 	GuageMeterOBJ = $(".GaugeMeter1P").get();
 	console.log(GuageMeterOBJ);
-	
+	for(idnex=0;index<GuageMeterOBJ.length)
+	{
 	//$(".GaugeMeter1P").each(function(index){
 		GuageMeter.text=json_data.sensors[index+17].toString();
-		GuageMeter.percent=parseInt(json_data.sensors[index+17],10);
+		GuageMeter.percent=parseInt(json_data.sensors[index+18],10)/100;
 		$(".GaugeMeter1P").gaugeMeter(GuageMeter);
-		if(index>4)
-		{return true;}
+	}
 } 
 
 }
