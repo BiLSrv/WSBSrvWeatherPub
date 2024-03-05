@@ -1,4 +1,4 @@
-// upda2a2
+// upda2a3
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -619,7 +619,7 @@ if (temp_json["temp"]) {
         }
     }*/
 	//WSsocket.close();
-}
+
 
 function state_online(state) 
 {
