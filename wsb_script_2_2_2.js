@@ -498,8 +498,8 @@ if (json_data["sensors"])
 	$(".GaugeMeter1H").each(function(index){
 		//console.log($(this).attr('id'));
 		GuageMeter.text=json_data.sensors[index+10].toString();
-		GuageMeter.percent=Math.round(parseInt(json_data.sensors[index+10],10));
-		$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:json_data.sensors[index+10].toString(),parseInt(json_data.sensors[index+10],10)});
+		GuageMeter.percent=parseInt(json_data.sensors[index+10],10);
+$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:GuageMeter.text,percent:parseInt(json_data.sensors[index+10],10)});
 		
 		console.log(GuageMeter.percent);
 		
