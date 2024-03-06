@@ -127,9 +127,10 @@ var GuageMeter =
 GuageMeter.append = "ммРт";
 GuageMeter.label = "Давл-е"
 GuageMeter.text_size = "0.18";
-GuageMeter.percent="55";
+GuageMeter.text = "8";
+GuageMeter.percent=55;
 //GuageMeter.back="#DCDCDC"parseInt("50",10)
-$(".GaugeMeter").gaugeMeter(GuageMeter);
+$(".GaugeMeter").gaugeMeter({percent:GuageMeter.percent,text:GuageMeter.text});
 
 console.log(parseInt("50",10));
 

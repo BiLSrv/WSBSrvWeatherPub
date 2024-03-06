@@ -88,18 +88,17 @@ $('body').delay(500).queue(function() {
 	
 GuageMeter =
 {
-	theme: "LightBlue-DarkBlue",
-	text: "-60",
+	theme: "Green-Red",
+	text: "0",
 	style: "Arch",
 	text_size: "0.15",
 	append: "°C",
-	percent: 77,
+	percent: 0,
 	size: 100,
-	width: 8,
+	width: 10,
 	back: "null",
 	animate_gauge_colors: false,
-	animate_text_colors:  false,
-	label: "Темпер",
+	animate_text_colors:  false
 	//color: "White",
 	//label_color: "White"
 }
@@ -145,40 +144,39 @@ GuageMeter.animationstep=true;
 GuageMeter.animate_gauge_colors=true;
 GuageMeter.animate_text_colors=true;
 //GuageMeter.back="#DCDCDC"
-$(".GaugeMeter1H").gaugeMeter(GuageMeter);
 GuageMeter.append = "ммРт";
 GuageMeter.label = "Влажн-ь"
+GuageMeter.text_size = "0.18";
+$(".GaugeMeter1H").gaugeMeter(GuageMeter);
+GuageMeter.append = "ммРт";
+GuageMeter.label = "Давл-е"
 GuageMeter.text_size = "0.18";
 //GuageMeter.back="#DCDCDC"
 $(".GaugeMeter1P").gaugeMeter(GuageMeter);
-GuageMeter.append = "ммРт";
-GuageMeter.label = "Давл-е"
+GuageMeter.append = "";
+GuageMeter.label = "Кач.Возд."
 GuageMeter.text_size = "0.18";
 //GuageMeter.back="#DCDCDC"
 $(".GaugeMeter1AQ").gaugeMeter(GuageMeter);
-GuageMeter.append = "";
-GuageMeter.label = "Воздух"
-GuageMeter.text_size = "0.18";
-	
-$(".GaugeMeterT").gaugeMeter(GuageMeter);
 GuageMeter.append = " С";
 GuageMeter.label = "Темпер-а"
 GuageMeter.text_size = "0.18";
+$(".GaugeMeterT").gaugeMeter(GuageMeter);
 //GuageMeter.back="#DCDCDC"
-$(".GaugeMeterH").gaugeMeter(GuageMeter);
 GuageMeter.append = "ммРт";
 GuageMeter.label = "Влажн-ь"
 GuageMeter.text_size = "0.18";
+$(".GaugeMeterH").gaugeMeter(GuageMeter);
 //GuageMeter.back="#DCDCDC"
-$(".GaugeMeterP").gaugeMeter(GuageMeter);
 GuageMeter.append = "ммРт";
 GuageMeter.label = "Давл-е"
 GuageMeter.text_size = "0.18";
-//GuageMeter.back="#DCDCDC"
-$(".GaugeMeterAQ").gaugeMeter(GuageMeter);
+$(".GaugeMeterP").gaugeMeter(GuageMeter);
 GuageMeter.append = "";
 GuageMeter.label = "Воздух"
 GuageMeter.text_size = "0.18";
+//GuageMeter.back="#DCDCDC"
+$(".GaugeMeterAQ").gaugeMeter(GuageMeter);
 //GuageMeter.back="#DCDCDC"
 //$( "div:has(.GaugeMeter1T)").addClass("bd_fail");.fadeOut(1000)
 //$( ".GaugeMeter1T").addClass("bd_fail");
