@@ -29,23 +29,7 @@ var gateway =
 };
 */
 var WSsocket;
-var GuageMeter =
-{
-	theme: "LightBlue-DarkBlue",
-	text: "-60",
-	style: "Arch",
-	text_size: "0.15",
-	append: "°C",
-	percent: 77,
-	size: 100,
-	width: 8,
-	back: "null",
-	animate_gauge_colors: false,
-	animate_text_colors:  false,
-	label: "Темпер",
-	//color: "White",
-	//label_color: "White"
-}
+var GuageMeter;
 
 /**
  * Calculates the buffers CRC16.
@@ -101,6 +85,24 @@ function refr_rtc() {
 
 
 $('body').delay(500).queue(function() {
+	
+GuageMeter =
+{
+	theme: "LightBlue-DarkBlue",
+	text: "-60",
+	style: "Arch",
+	text_size: "0.15",
+	append: "°C",
+	percent: 77,
+	size: 100,
+	width: 8,
+	back: "null",
+	animate_gauge_colors: false,
+	animate_text_colors:  false,
+	label: "Темпер",
+	//color: "White",
+	//label_color: "White"
+}
     //$(this).load('myPage.php');
 WSsocket = new WebSocket(gateway);
 // Canvas .each Default Settings 
@@ -138,9 +140,7 @@ $('canvas').each(function(index){
 }).draw());
 	//console.log( String($(this).attr('id')) + ": " + $( this ).text() + $( this ).attr('id')+ " " );    units: '°C',	colorPlateEnd: "#327ac0",
 });
-	
 
-GuageMeter.theme="Red-Gold-Green";
 GuageMeter.animationstep=true;
 GuageMeter.animate_gauge_colors=true;
 GuageMeter.animate_text_colors=true;

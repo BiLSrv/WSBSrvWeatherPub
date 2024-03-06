@@ -3,8 +3,25 @@
 <head>
 <title>Online jQuery Editor</title>
 <script src="https://www.tutorialspoint.com/jquery/jquery-3.6.0.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://rawgit.com/Mikhus/canvas-gauges/master/fonts/fonts.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://atuin.ru/demo/ui-slider/jquery-ui.css">
+<link rel="stylesheet" href="https://bilsrv.github.io/WSBSrvWeatherPub/WSB_side_loaded_css.css"><script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js">
+	</script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+	</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+	</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script><script src="https://unpkg.com/current-device/umd/current-device.min.js">
+	</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-touch-events/2.0.0/jquery.mobile-events.min.js">
+	</script>
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 
-	
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://rawgit.com/Mikhus/canvas-gauges/master/fonts/fonts.css">
@@ -20,17 +37,512 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
 <script src=https://unpkg.com/current-device/umd/current-device.min.js></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery-touch-events/2.0.0/jquery.mobile-events.min.js></script>
+<script src="https://rawgit.com/Mikhus/canvas-gauges/master/gauge.min.js"></script>
+<script src="https://bilsrv.github.io/WSBSrvWeatherPub/GaugeMeter.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>GaugeMeter.js - jQuery Plugin</title>
+    <meta
+      name="description"
+      content="Easy to use gauge meter JavaScript plugin using jQuery"
+    />
+    <meta name="author" content="Mictronics" />
+    <style>
+      .GaugeMeter {
+        position: Relative;
+        text-align: Center;
+        overflow: Hidden;
+        cursor: Default;
+      }
+
+      .GaugeMeter SPAN,
+      .GaugeMeter B {
+        margin: 0 23%;
+        width: 54%;
+        position: Absolute;
+        text-align: Center;
+        display: Inline-Block;
+        color: RGBa(0, 0, 0, 0.8);
+        font-weight: 100;
+        font-family: 'Open Sans', Arial;
+        overflow: Hidden;
+        white-space: NoWrap;
+        text-overflow: Ellipsis;
+      }
+      .GaugeMeter[data-style='Semi'] B {
+        margin: 0 10%;
+        width: 80%;
+      }
+
+      .GaugeMeter S,
+      .GaugeMeter U {
+        text-decoration: None;
+        font-size: 0.6em;
+        font-weight: 200;
+        opacity: 0.6;
+      }
+
+      .GaugeMeter B {
+        color: Black;
+        font-weight: 200;
+        font-size: 0.85em;
+        opacity: 0.8;
+      }
+
+      BODY {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
+      PRE {
+        background: RGBa(0, 0, 0, 0.05);
+        padding: 15px;
+        border-radius: 10px;
+        position: Relative;
+        width: 350px;
+        float: Left;
+        font-weight: 100;
+        letter-spacing: -1px;
+        margin: 0 10px 10px 30px;
+		}
+
+      HR {
+        clear: Both;
+        margin-top: 230px;
+        margin-bottom: 10px;
+        width: 100%;
+        border: 0;
+        height: 1px;
+        background: #21b4f9;
+      }
+
+      DIV.GaugeMeter {
+        float: Left;
+      }
+
+      H1 {
+        font: Normal Bold 24px/24px 'Open Sans', Arial;
+        color: #2c94e0;
+        margin-left: 10px;
+      }
+
+      H1 B {
+        font-weight: 100;
+      }
+
+      H2 {
+        font: Normal 700 20px/20px 'Open Sans', Arial;
+        color: DarkBlue;
+        margin-top: 60px;
+        margin-left: 10px;
+      }
+
+      H3 {
+        font: Normal 600 16px/16px 'Open Sans', Arial;
+        color: DarkBlue;
+        margin-top: 30px;
+        margin-left: 20px;
+      }
+      H3 B {
+        font-weight: 100;
+      }
+
+      P {
+        font: Normal 100 15px/15px Arial;
+        color: Black;
+        margin-bottom: 20px;
+        margin-left: 20px;
+      }
+
+      UL {
+        color: #2c94e0;
+        list-style-type: Square;
+        padding-left: 0;
+        margin-bottom: 20px;
+        margin-left: 10px;
+      }
+
+      UL.Cols2 {
+        -webkit-column-count: 3;
+        -webkit-column-gap: 0.5em;
+        -moz-column-count: 3;
+        -moz-column-gap: 0.5em;
+        column-count: 3;
+        column-gap: 0.5em;
+      }
+
+      UL LI {
+        margin-left: 30px;
+        -webkit-column-break-inside: Avoid;
+        -moz-column-break-inside: Avoid;
+      }
+
+      LI P {
+        margin: 3px 0 !important;
+      }
+
+      PRE.Code {
+        letter-spacing: 0;
+        width: Auto;
+        width: calc(100vw - 70px);
+        color: #6aa121;
+        float: None;
+        font-size: 13px;
+        line-height: 20px;
+        margin-bottom: 50px;
+        margin-left: 30px;
+        border-left: 4px Solid #2c94e0;
+        border-radius: 1px 10px 10px 1px;
+        padding: 0 10px 0 0;
+        background-image: Linear-Gradient(
+          Transparent 50%,
+          RGBa(255, 255, 255, 0.6) 50%
+        );
+        background-size: 40px 40px;
+        counter-reset: Line-Numbering;
+        word-break: Break-Word;
+      }
+      PRE.Code .Line::before {
+        content: Counter(Line-Numbering);
+        counter-increment: Line-Numbering;
+        min-width: 3em;
+        padding-right: 1em;
+        margin-right: 1em;
+        display: Inline-Block;
+        text-align: Right;
+        color: RGBa(44, 148, 224, 0.7);
+        border-right: 1px Solid #2c94e0;
+        background: RGBa(44, 148, 224, 0.04);
+        -webkit-touch-callout: None;
+        -webkit-user-select: None;
+        -khtml-user-select: None;
+        -moz-user-select: None;
+        -ms-user-select: None;
+        user-select: None;
+      }
+
+      #Header {
+        min-height: 360px;
+      }
+
+      HEADER,
+      FOOTER {
+        width: 100%;
+        z-index: 1;
+        top: 0;
+        margin: 0;
+        padding: 10px 0 0 0;
+        text-align: Center;
+        background: #21b4f9;
+        background: #2c94e0;
+        background: Linear-Gradient(45deg, #2c94e0, #21b4f9);
+        background-blend-mode: Lighten;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+        -moz-animation: BluePrint 60s Infinite;
+        -webkit-animation: BluePrint 60s Infinite;
+        animation: BluePrint 60s Infinite;
+      }
+
+      @-moz-keyframes BluePrint {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 1100% 100%;
+        }
+      }
+
+      @-webkit-keyframes BluePrint {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 1100% 100%;
+        }
+      }
+
+      @keyframes BluePrint {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: -100% 100%;
+        }
+      }
+
+      HEADER H1 {
+        color: White;
+        font: Normal 400 28px/28px 'Helvetica', Arial;
+        margin: 30px Auto 20px Auto;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      HEADER P {
+        color: White;
+        font: Normal 200 18px/22px 'Helvetica', Arial;
+        margin: 0 Auto;
+        text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+      }
+      HEADER P.SubTitle {
+        color: White;
+        font: Normal 200 15px/22px 'Helvetica', Arial;
+        margin: 0 Auto;
+        text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      HEADER .Preview {
+        overflow: Auto;
+        margin-top: 30px;
+        display: Inline-Block;
+      }
+
+      HEADER .Preview .GaugeMeter {
+        margin: 0 10px;
+      }
+
+      TABLE {
+        font: Normal Normal 12px/14px 'Open Sans', Arial;
+        border-collapse: Collapse;
+        margin: 0 10px 10px 30px;
+        width: calc(100vw - 55px);
+        border-bottom: 2px Solid #2c94e0;
+      }
+
+      TR {
+        margin: 1px;
+        padding: 0;
+      }
+
+      TR:hover {
+        background: RGBa(33, 180, 249, 0.1) !important;
+      }
+      TR:not(.TableHead):hover TH {
+        background: RGBa(33, 180, 249, 0.11) !important;
+      }
+
+      TD,
+      TH {
+        text-align: Center;
+        margin: 0 !important;
+        padding: 0 !important;
+        border-right: 1px Solid LightGray;
+        border-bottom: 1px Solid #2c94e0;
+        padding: 10px;
+        vertical-align: Top;
+        text-align: Left;
+      }
+      TR:nth-child(odd) {
+        background: #f7f7f7;
+      }
+      TH {
+        border-right: 1px Solid #2c94e0;
+        font: Normal Bold 12px/14px MonoSpace;
+        white-space: NoWrap;
+      }
+
+      .Col1 {
+        width: 180px !important;
+        padding: 10px !important;
+      }
+
+      .Col2 {
+        width: 50px !important;
+        text-align: Center;
+        padding: 10px !important;
+      }
+
+      .Col3 {
+        width: 100px !important;
+        text-align: Center;
+        padding: 10px !important;
+        color: #6aa121;
+        font: Italic Normal 11px/14px Monospace, Arial;
+      }
+      .Col3 em {
+        font: Italic Normal 12px/14px 'Open Sans', Arial;
+        color: Silver;
+      }
+
+      .Col4 {
+        width: 200px !important;
+        padding: 10px !important;
+      }
+      .Col4 DIV {
+        width: 180px !important;
+        background: #efefef;
+        margin: 2px 0 10px 0;
+        padding: 5px 10px;
+        font: Normal Bold 10px/14px 'Open Sans', Arial;
+        color: White;
+        text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+      }
+      .Col4 DIV:before {
+        content: '0%';
+      }
+      .Col4 DIV span:after {
+        content: '100%';
+        text-decoration: None;
+        float: Right;
+      }
+
+      TH.Col4 {
+        text-align: Center;
+      }
+
+      .Col5 {
+        border-right: None;
+        min-width: 90% !important;
+        padding: 10px !important;
+      }
+
+      TABLE I {
+        color: #6aa121;
+        font: Italic Normal 12px/14px Monospace, Arial;
+      }
+
+      .TableHead TH {
+        background: #2c94e0;
+        font: Normal Bold 12px/18px 'Open Sans', Arial;
+        padding: 8px 10px 5px 10px;
+        color: White;
+        vertical-align: Middle;
+        border-right: 1px Solid White;
+      }
+      .TableHead TH:last-child {
+        border-right: None;
+      }
+
+      .Hide {
+        display: None;
+      }
+      DIV.StickyHeader {
+        position: Fixed;
+        top: 0;
+      }
+      DIV.StickyHeader TABLE {
+        border-bottom: None;
+      }
+
+      FOOTER {
+        width: 100%;
+        z-index: 1;
+        top: 0;
+        margin: 60px 0 0 0;
+        padding: 20px 0 15px 0;
+        text-align: Left;
+        overflow: Hidden;
+        background: #21b4f9;
+        background: #2c94e0;
+        background: Linear-Gradient(-45deg, #2c94e0, #21b4f9);
+        background-blend-mode: Lighten;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+      }
+
+      FOOTER A,
+      FOOTER A:hover {
+        color: White;
+        text-decoration: None;
+      }
+      FOOTER A:hover B {
+        color: RGBa(255, 255, 255, 1);
+      }
+
+      FOOTER H4 {
+        font: Normal 400 18px/36px 'Open Sans', Arial;
+        color: White;
+        margin: 0;
+        padding: 0 28px 0 28px;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
+      FOOTER H4 B {
+        font: Normal 400 18px/26px 'Open Sans', Arial;
+        color: RGBa(255, 255, 255, 0.6);
+      }
+      FOOTER H4 I {
+        font: Normal 100 14px/36px 'Open Sans', Arial;
+        float: Right;
+      }
+
+      .Ribbon {
+        background: #a90329;
+        background: -moz-linear-gradient(top, #a90329 0%, #6d0019 100%);
+        background: -webkit-gradient(
+          linear,
+          left top,
+          left bottom,
+          color-stop(0%, #a90329),
+          color-stop(100%, #6d0019)
+        );
+        background: -webkit-linear-gradient(top, #a90329 0%, #6d0019 100%);
+        background: -o-linear-gradient(top, #a90329 0%, #6d0019 100%);
+        background: -ms-linear-gradient(top, #a90329 0%, #6d0019 100%);
+        background: linear-gradient(to bottom, #a90329 0%, #6d0019 100%);
+        border: 1px Dashed RGBa(255, 255, 255, 0.2);
+        box-shadow: 0 1px 10px RGBa(0, 0, 0, 0.6);
+        font: Normal 800 10px 'Open Sans', Arial;
+        top: 3.2em;
+        right: -3.7em;
+        color: White;
+        display: Block;
+        padding: 0.6em 3.5em;
+        position: Fixed;
+        z-index: 100;
+        text-align: Center;
+        text-decoration: None;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+      }
+      .Ribbon:hover {
+        background: #000;
+      }
+    </style>
 
 
 </head>
 <body>
-<p class="GaugeMeter Tom1">This is a paragraph.</p>
-<p class="GaugeMeter Tom2">This is a paragraph.</p>
-<p class="GaugeMeter Tom3">This is a paragraph.</p>
-<p class="GaugeMeter Tom3">This is a paragraph.</p>
-<p class="GaugeMeter Tom4">This is a paragraph.</p>
+<p class="Tom1">This is a paragraph.</p>
+<p class="Tom2">This is a paragraph.</p>
+<p class="Tom3">This is a paragraph.</p>
+<p class="Tom3">This is a paragraph.</p>
+<p class="Tom4">This is a paragraph.</p>
 
 <p class="deb">This is a paragraph.</p>
+
+<div class="GaugeMeter" id="GaugeMeter_100" style="float: none"></div>
+
+					<div class="col-auto">
+						<div class="GaugeMeterT GaugeMeter" id="GauAvTemp">мс</div>
+					</div>
+
+      <div class="Preview">
+		  <div
+          class="GaugeMeter"
+          id="PreviewGaugeMeter_1"
+          data-min="-100"
+          data-total="0"
+          data-used="-10"
+          data-showvalue="true"
+          data-size="188"
+          data-theme="White"
+          data-back="RGBa(0,0,0,.1)"
+          data-animate_gauge_colors="true"
+          data-animate_text_colors="true"
+          data-width="2"
+          data-label="Years"
+          data-label_color="#FFF"
+        ></div>
 
 <p>This selector selects all elements with a title attribute value equal to 'Tomorrow', or starting with 'Tomorrow' followed by a hyphen.</p>
 <button>Hide the text above</button>
@@ -38,10 +550,35 @@
 </html>
 
 <script>
+	
    $(document).ready(function() {
+   
+var GuageMeter =
+{
+	theme: "LightBlue-DarkBlue",
+	text: "-60",
+	style: "Arch",
+	text_size: "0.15",
+	append: "°C",
+	percent: 77,
+	size: 100,
+	width: 8,
+	back: "null",
+	animate_gauge_colors: false,
+	animate_text_colors:  false,
+	label: "Темпер",
+	//color: "White",
+	//label_color: "White"
+}
+
+GuageMeter.append = "ммРт";
+GuageMeter.label = "Давл-е"
+GuageMeter.text_size = "0.18";
+//GuageMeter.back="#DCDCDC"
+$(".GaugeMeter").gaugeMeter(GuageMeter);
 
   maOBJ = $(".GaugeMeter").get();
-  
+  /*
  $(".GaugeMeter").each(function(index){
  
 		console.log($(this).attr('class').split(" ")[1]);
@@ -50,7 +587,7 @@
 		$("."+$(this).attr('class').split(" ")[1]).text("112");
 		if(index>3)
 		{return true;}
-	});
+	});*/
 	
   
   console.log(maOBJ);
