@@ -144,10 +144,6 @@ $('canvas').each(function(index){
 GuageMeter.animationstep=true;
 GuageMeter.animate_gauge_colors=true;
 GuageMeter.animate_text_colors=true;
-$(".GaugeMeter1T").gaugeMeter(GuageMeter);
-GuageMeter.append = " С";
-GuageMeter.label = "Темпер-а"
-GuageMeter.text_size = "0.18";
 //GuageMeter.back="#DCDCDC"
 $(".GaugeMeter1H").gaugeMeter(GuageMeter);
 GuageMeter.append = "ммРт";
