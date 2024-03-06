@@ -501,7 +501,7 @@ if (json_data["sensors"])
 		GuageMeter.percent=parseInt(json_data.sensors[index+10],10);
 		$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter(GuageMeter);
 		
-		console.log(GuageMeter.text parseInt(json_data.sensors[index+10],10));
+		console.log(GuageMeter.percent);
 		
 		if(index>7)
 		{return true;}
@@ -516,8 +516,8 @@ if (json_data["sensors"])
 		GuageMeter.percent=parseInt(json_data.sensors[index+17],10)/100;
 		$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter(GuageMeter);
 		
-		console.log(GuageMeter.text parseInt(json_data.sensors[index+17],10)/100);
-		
+		console.log(GuageMeter.percent);
+
 		if(index>3)
 		{return true;}
 	});
