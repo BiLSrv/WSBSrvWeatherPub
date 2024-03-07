@@ -125,8 +125,7 @@ $('canvas').each(function(index){
 });
 
 $(".GaugeMeter1H").each(function(index){
-GuageMeter.push(
-{
+GuageMeter={
 	theme: "Green-Red",
 	text: "0",
 	style: "Arch",
@@ -141,7 +140,7 @@ GuageMeter.push(
 	animate_text_colors:  false
 	//color: "White",
 	//label_color: "White"
-});
+};
 });
 	
 $(".GaugeMeter1P").each(function(index){
