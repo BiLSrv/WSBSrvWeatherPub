@@ -1,5 +1,5 @@
 /*
- * AshAlom Gauge Meter.  Version 2.0.0
+ * AshAlom Gauge Meter.  Version 2.1.0
  * Copyright AshAlom.com  All rights reserved.
  * https://github.com/AshAlom/GaugeMeter <- Deleted!
  * https://github.com/githubsrinath/GaugeMeter <- Backup original.
@@ -240,6 +240,33 @@
             color: fgcolor
           });
       }
+		
+      /* Prepend and append text, the gauge text or percentage value. */
+      function createSpanTag2(t) {
+        var fgcolor = '';
+        if (option.animate_text_colors === true) {
+          fgcolor = option.fgcolor;
+        }
+        var child = t.children('span');
+        if (child.length !== 0) {
+          child.html(r).css({ color: fgcolor });
+          return;
+        }
+        if (option.text_size <= 0.0 || Number.isNaN(option.text_size)) {
+          option.text_size = 0.22;
+        }
+        if (option.text_size > 0.5) {
+          option.text_size = 0.5;
+        }
+        $('<span></span>')
+          .prepend(t)
+          .html(r)
+          .css({
+            'line-height': option.size + 'px',
+            'font-size': option.text_size * option.size + 'px',
+            color: fgcolor
+          });
+      }
 
       /* Get data attributes as options from div tag. Fall back to defaults when not exists. */
       function getDataAttr(t) {
@@ -414,7 +441,7 @@
 
       option.fgcolor = getThemeColor(c);
       createSpanTag(p);
-		createSpanTag(p);
+	  createSpanTag2(p);
 
       if (
         option.style !== '' &&
