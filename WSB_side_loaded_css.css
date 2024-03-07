@@ -96,7 +96,7 @@ body{
 
   .GaugeMeter B{
     Color:           Black;
-    Font-Weight:     300;
+    Font-Weight:     200;
     Font-Size:       .5em;
     Opacity:         1.0;
   }
