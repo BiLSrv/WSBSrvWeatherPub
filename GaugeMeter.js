@@ -197,7 +197,7 @@
 		  console.log(a);
         if (t.children('b').length === 0) {
           $('<b></b>')
-            .appendTo(t)
+            .prependTo(t)
             .html(option.label)
             .css({
               'line-height': option.size + 5 * a + 'px',
