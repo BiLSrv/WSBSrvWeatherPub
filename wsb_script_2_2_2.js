@@ -348,12 +348,14 @@ function sub_grad()
 					/*guagelm75_t.attr('data-value','47');guagelm75_t.attr('data-width','100');
 					guagelm75_t.attr('data-height','150');
 					guagelm75_t.attr('data-value','47');*/
-console.log(WSsocket.readyState);
+//console.log(WSsocket.readyState);
 //rs = setInterval(refr_rtc, 3000);
 if (WSsocket.readyState === 1) {
 
 	WSsocket.send(JSON.stringify(httpd_cmd));
-} 
+}
+	else
+{initWebSocket();}
 
 // Initialize GaugeMeter plugin
 }
@@ -398,7 +400,7 @@ function waitForSocketConnection(socket, callback)
 
 function initWebSocket()
 {
-	console.log('Trying to open a WebSocket connection...');
+	//console.log('Trying to open a WebSocket connection...');
 	
 	WSsocket.onopen = onOpen;
 	WSsocket.onclose = onClose;
