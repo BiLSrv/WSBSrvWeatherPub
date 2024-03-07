@@ -1,5 +1,5 @@
 /*
- * AshAlom Gauge Meter.  Version 2.1.0
+ * AshAlom Gauge Meter.  Version 2.1.1
  * Copyright AshAlom.com  All rights reserved.
  * https://github.com/AshAlom/GaugeMeter <- Deleted!
  * https://github.com/githubsrinath/GaugeMeter <- Backup original.
@@ -192,9 +192,10 @@
       }
       /* The label higher gauge. */
       function createLbhigh(t, a) {
+		  console.log(createLbhigh);
         if (t.children('b').length === 0) {
           $('<b></b>')
-            .appendTo(t)
+            .prependTo(t)
             .html(option.label)
             .css({
               'line-height': option.size + 5 * a + 'px',
@@ -243,6 +244,7 @@
 		
       /* Prepend and append text, the gauge text or percentage value. */
       function createSpanTag2(t) {
+		  console.log(createSpanTag2);
         var fgcolor = '';
         if (option.animate_text_colors === true) {
           fgcolor = option.fgcolor;
@@ -259,7 +261,7 @@
           option.text_size = 0.5;
         }
         $('<span></span>')
-          .prepend(t)
+          .prependTo(t)
           .html(r)
           .css({
             'line-height': option.size + 'px',
@@ -449,6 +451,7 @@
         option.style !== undefined
       ) {
         createLabel(p, option.size / 13);
+		  createLbhigh(p, option.size / 13);
       }
 
       $(this).width(option.size + 'px');
