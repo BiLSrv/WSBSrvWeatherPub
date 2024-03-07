@@ -30,46 +30,62 @@
     />
     <meta name="author" content="Mictronics" />
     <style>
-      .GaugeMeter {
-        position: Relative;
-        text-align: Center;
-        overflow: Hidden;
-        cursor: Default;
-      }
+  .GaugeMeter{
+    Position:        Relative;
+    Text-Align:      Center;
+    Overflow:        Hidden;
+    Cursor:          Default;
+  }
 
-      .GaugeMeter SPAN,
-      .GaugeMeter B {
-        margin: 0 23%;
-        width: 54%;
-        position: Absolute;
-        text-align: Center;
-        display: Inline-Block;
-        color: RGBa(0, 0, 0, 0.8);
-        font-weight: 100;
-        font-family: 'Open Sans', Arial;
-        overflow: Hidden;
-        white-space: NoWrap;
-        text-overflow: Ellipsis;
-      }
-      .GaugeMeter[data-style='Semi'] B {
-        margin: 0 10%;
-        width: 80%;
-      }
+  .GaugeMeter SPAN,
+  .GaugeMeter B{
+    Margin:          0 20%;
+    Width:           54%;
+    Position:        Absolute;
+    Text-align:      Center;
+    Display:         Inline-Block;
+    Color:           Black;
+    Font-Weight:     100;
+    Font-Family:     "Open Sans", Arial;
+    Overflow:        Hidden;
+    White-Space:     NoWrap;
+    Text-Overflow:   Ellipsis;
+  }
+  .GaugeMeter[data-style="Semi"] B{
+    Margin:          0 10%;
+    Width:           80%;
+  }
 
-      .GaugeMeter S,
-      .GaugeMeter U {
-        text-decoration: None;
-        font-size: 0.6em;
-        font-weight: 200;
-        opacity: 0.6;
-      }
+  .GaugeMeter[data-style="Full"] B{
+    Margin:          0 10%;
+    Width:           80%;
+  }
+			
+  .GaugeMeter[data-style="Arch"] B{
+    Margin:          0 10%;
+    Width:           80%;
+  }
+			
+  .GaugeMeter S,
+  .GaugeMeter U{
+	Color:           Black;
+    Text-Decoration: None;
+    Font-Size:       .5em;
+    Opacity:         1.0;
+  }
 
-      .GaugeMeter B {
-        color: Black;
-        font-weight: 200;
-        font-size: 0.85em;
-        opacity: 0.8;
-      }
+  .GaugeMeter B{
+    Color:           Black;
+    Font-Weight:     300;
+    Font-Size:       .5em;
+    Opacity:         1.0;
+  }
+	  
+	  
+body {
+  background-color: #E6E6FA;
+}
+	  
     </style>
 
 
@@ -84,16 +100,6 @@
 <p class="deb">This is a paragraph.</p>
 
 <div class="GaugeMeter"></div>
-
-
-    <div
-      class="GaugeMeter"
-      id="GaugeMeter_41"
-      data-percent="20"
-      data-append="%"
-      data-size="150"
-      data-theme="LightBlue-DarkBlue"
-    ></div>
 
 <p>This selector selects all elements with a title attribute value equal to 'Tomorrow', or starting with 'Tomorrow' followed by a hyphen.</p>
 <button>Hide the text above</button>
@@ -114,23 +120,23 @@ var GuageMeter =
 	append: "°C",
 	percent: 30,
 	size: 100,
-	width: 8,
+	width: 10,
 	back: "null",
 	animate_gauge_colors: true,
 	animate_text_colors:  true,
 	label: "Темпер",
-	//color: "White",
-	//label_color: "White"
+	color: "Cyan",
+	label_color: "Blue"
 }
 
 
 GuageMeter.append = "ммРт";
 GuageMeter.label = "Давл-е"
 GuageMeter.text_size = "0.18";
-GuageMeter.text = "8";
+GuageMeter.text = "10";
 GuageMeter.percent=55;
 //GuageMeter.back="#DCDCDC"parseInt("50",10)
-$(".GaugeMeter").gaugeMeter({percent:GuageMeter.percent,text:GuageMeter.text});
+$(".GaugeMeter").gaugeMeter(GuageMeter);
 
 console.log(parseInt("50",10));
 

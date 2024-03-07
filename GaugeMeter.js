@@ -190,6 +190,18 @@
           t
         );
       }
+      /* The label higher gauge. */
+      function createLbhigh(t, a) {
+        if (t.children('b').length === 0) {
+          $('<b></b>')
+            .appendTo(t)
+            .html(option.label)
+            .css({
+              'line-height': option.size + 5 * a + 'px',
+              color: option.label_color
+            });
+        }
+      }
       /* The label below gauge. */
       function createLabel(t, a) {
         if (t.children('b').length === 0) {
@@ -402,6 +414,7 @@
 
       option.fgcolor = getThemeColor(c);
       createSpanTag(p);
+		createSpanTag(p);
 
       if (
         option.style !== '' &&
