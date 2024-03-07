@@ -1,4 +1,4 @@
-// upda2a6
+// upda3a1
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -86,22 +86,6 @@ function refr_rtc() {
 
 $('body').delay(500).queue(function() {
 	
-GuageMeter =
-{
-	theme: "Green-Red",
-	text: "0",
-	style: "Arch",
-	text_size: "0.15",
-	append: "°C",
-	percent: 0,
-	size: 100,
-	width: 10,
-	back: "null",
-	animate_gauge_colors: false,
-	animate_text_colors:  false
-	//color: "White",
-	//label_color: "White"
-}
     //$(this).load('myPage.php');
 WSsocket = new WebSocket(gateway);
 // Canvas .each Default Settings 
@@ -138,6 +122,46 @@ $('canvas').each(function(index){
 	animationDuration: 250
 }).draw());
 	//console.log( String($(this).attr('id')) + ": " + $( this ).text() + $( this ).attr('id')+ " " );    units: '°C',	colorPlateEnd: "#327ac0",
+});
+
+$(".GaugeMeter1H").each(function(index){
+GuageMeter.push( =
+{
+	theme: "Green-Red",
+	text: "0",
+	style: "Arch",
+	text_size: "0.15",
+	append: "°C",
+	percent: 0,
+	size: 100,
+	width: 10,
+	back: "null",
+	label: $( this ).attr('id'),
+	animate_gauge_colors: false,
+	animate_text_colors:  false
+	//color: "White",
+	//label_color: "White"
+});
+});
+	
+$(".GaugeMeter1P").each(function(index){
+GuageMeter.push( =
+{
+	theme: "Green-Red",
+	text: "0",
+	style: "Arch",
+	text_size: "0.15",
+	append: "°C",
+	percent: 0,
+	size: 100,
+	width: 10,
+	back: "null",
+	label: $( this ).attr('id'),
+	animate_gauge_colors: false,
+	animate_text_colors:  false
+	//color: "White",
+	//label_color: "White"
+});
 });
 
 GuageMeter.animationstep=true;
