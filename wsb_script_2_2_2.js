@@ -124,12 +124,12 @@ $('canvas').each(function(index){
 	//console.log( String($(this).attr('id')) + ": " + $( this ).text() + $( this ).attr('id')+ " " );    units: '°C',	colorPlateEnd: "#327ac0",
 });
 GuageMeter={
-	theme: "DarkBlue-LightBlue",
+	theme: "Green-Gold-Red",
 	text: "0",
 	style: "Arch",
 	text_size: "0.10",
 	append: "°C",
-	percent: 0,
+	percent: "null",
 	size: 140,
 	width: 10,
 	back: "null",

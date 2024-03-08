@@ -107,50 +107,207 @@ body {
 </html>
 
 <script>
-	
-   $(document).ready(function() {
-   
-
-var GuageMeter =
+// upda3a2
+// https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
+// reverse panelki dlya debug 
+var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
+var httpd_cmd = 
 {
-	theme: "Red-Gold-Green",
-	text: "30",
-	style: "Arch",
-	text_size: "0.15",
-	append: "°C",
-	prepend: "°C",
-	percent: 30,
-	size: 100,
-	width: 10,
-	back: "null",
-	animate_gauge_colors: true,
-	animate_text_colors:  true,
-	color: "Cyan",
-	label_color: "Blue"
+	content_type: "application/json",
+	command: ["get_data","get_sens"],
+	CRC32: "ANY"
+}
+sds = $(".sideset");
+mds = $(".macnt");
+sets = $(".setcnt");
+cnftmp = $(".scntf");
+	
+var CanvGaugeArr = [];
+	
+//$(document).ready(function() {
+var gateway = 'wss://wsb.bilymo.keenetic.pro/ws'
+/*
+var gateway = 
+{
+		//gw:'wss://wsb.bilymo.keenetic.pro/ws',
+		gw:'ws://wsb.bilymo.keenetic.pro/ws',
+		timeout:2000,
+		attempts: 60,		
+		dataType: 'json',
+		protocol:''
+};
+*/
+var WSsocket;
+var GuageMeter;
+
+/**
+ * Calculates the buffers CRC16.
+ *
+ * @param {Buffer} buffer the data buffer.
+ * @return {number} the calculated CRC16.
+ * 
+ * Source: github.com/yaacov/node-modbus-serial
+ */
+
+
+function crc16(buffer,extcrc) 
+{
+	var crc = 0xFFFFFFFF;
+	// var arr = new Uint32Array(1);
+    //crc[1] = 0xFFFF;
+	var POLY_D = 0x1021
+	var pcBlock=0;
+	var i=0,j,n1,k;
+	//var str="";
+	/*$(buffer).each((index, element) => {
+        console.log(`current index : ${index} element : ${element}`)
+    });*/
+	
+	$.each(buffer, function(index, element) {
+  		//console.log(index, element);
+		//str=buffer[index];
+		//console.log('puu '+buffer[index]);
+        for (var j = 0; j < element.length; j++) {
+			
+			crc ^= (element.charCodeAt(j) << 8) & 0x0FFFFFFF;//charCodeAt
+			//console.log('crc ^=  '+crc.toString(16));
+			for (k = 0; k < 8; k++)
+            	crc = (crc & 0x8000 ? (crc << 1) ^ POLY_D : crc << 1) & 0x0FFFFFFF;
+		}
+	});
+
+    if(crc==extcrc) 
+		{return true;}
+	else
+		{return false;}
+};
+
+function refr_rtc() {
+    //if (subwdeb == false && $("#autmp").prop("checked")) {
+        //fetch("/get_rtc.json?n=" + Math.random(), "GET", txjstmp, 30);
+        sub_grad();
+    //}
+    //console.log("refr_rtc");
 }
 
 
+
+
+$('body').delay(500).queue(function() {
+	
+    //$(this).load('myPage.php');
+WSsocket = new WebSocket(gateway);
+// Canvas .each Default Settings 
+$('canvas').each(function(index){	
+    CanvGaugeArr.push(new LinearGauge({
+    renderTo: $( this ).attr('id'),
+    width: 100,
+    height: 300,
+	colorPlate: "black",
+	colorUnits: "black",
+	colorNeedle: "#222",
+	colorNeedleEnd: "",
+	colorBar: "#f5f5f5",
+	colorTitle: "blue",
+    colorPlate: "#ccc",
+	colorPlateEnd: "#ccc",
+	colorBarStroke: "black",
+	borderRadius: "20",
+	borders: "true",
+	minValue: -50,
+	maxValue: 50,
+	minorTicks: 11,
+	majorTicks: ['-50','-40','-30','-20','-10','0','10','20','30','40','50'],
+    colorNumbers: ['cyan','blue','blue','blue','black','black','black','green','green','#CE7E00','red'],
+    colorMajorTicks: ['yellow','green','blue','blue','black','black','black','black','black','black','black'],
+    fontNumbersSize: "30",
+	fontValueSize: "45",
+	fontTitleSize: "35",
+	fontUnitsSize: "45",
+	value: 0,
+	units: '°C',
+	title: String($(this).attr('id')),
+	animationRule: 'elastic',
+	animationDuration: 250
+}).draw());
+	//console.log( String($(this).attr('id')) + ": " + $( this ).text() + $( this ).attr('id')+ " " );    units: '°C',	colorPlateEnd: "#327ac0",
+});
+GuageMeter={
+	theme: "Green-Gold-Red",
+	text: "0",
+	style: "Arch",
+	text_size: "0.10",
+	append: "°C",
+	percent: "null",
+	size: 140,
+	width: 10,
+	back: "null",
+	label: $( this ).attr('id'),
+	animate_gauge_colors: false,
+	animate_text_colors:  false,
+	label_color: "Blue"
+	//showvalue: true
+	//color: "White",
+	//label_color: "White"
+};
+
+GuageMeter.label = "Влажн-ь"
+GuageMeter.text_size = "0.12";
+GuageMeter.append = "%";
+$(".GaugeMeter1H").gaugeMeter(GuageMeter);
+GuageMeter.append = "%";
+GuageMeter.label = "Кач.Возд."
+//GuageMeter.back="#DCDCDC"
+$(".GaugeMeter1AQ").gaugeMeter(GuageMeter);
+$(".GaugeMeterAQ").gaugeMeter(GuageMeter);
+//GuageMeter.back="#DCDCDC"
+GuageMeter.append = "%";
+GuageMeter.label = "Влажн-ь"
+$(".GaugeMeterH").gaugeMeter(GuageMeter);
+//GuageMeter.back="#DCDCDC"
 GuageMeter.append = "ммРт";
 GuageMeter.label = "Давл-е"
-GuageMeter.text_size = "0.18";
-GuageMeter.text = "10";
-GuageMeter.percent=55;
-//GuageMeter.back="#DCDCDC"parseInt("50",10)
-$(".GaugeMeter").gaugeMeter(GuageMeter);
+GuageMeter.theme="White";
+GuageMeter.fill="#21B4F9";
+$(".GaugeMeterP").gaugeMeter(GuageMeter);
+$(".GaugeMeter1P").gaugeMeter(GuageMeter);
 
-console.log(parseInt("50",10));
 
-  maOBJ = $(".GaugeMeter").get();
-  /*
- $(".GaugeMeter").each(function(index){
- 
-		console.log($(this).attr('class').split(" ")[1]);
-		//$(this).attr('id').text="11";
-		//($(this).attr('class')).toString())
-		$("."+$(this).attr('class').split(" ")[1]).text("112");
+	$(".GaugeMeter1H").each(function(index){
+		//console.log($(this).attr('id'));
+		GuageMeter.text=parseFloat(json_data.sensors[index+10]).toFixed(2);
+		//GuageMeter.percent=parseInt(json_data.sensors[index+10],10);
+$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:GuageMeter.text,percent:parseInt(json_data.sensors[index+10],10)});
+
+		if(index>7)
+		{return true;}
+	});
+	//console.log("GaugeMeter1P");
+	//GuageMeterOBJ = $(".GaugeMeter1P").get();
+	//console.log(GuageMeterOBJ);
+	
+	$(".GaugeMeter1P").each(function(index){
+		Pdat = (parseFloat(json_data.sensors[index+17])*0.750062).toFixed(2);
+		//GuageMeter.text=Pdat.toString();
+		
+		if(Math.round(Pdat)>750)
+		{
+			Pdt=750-(Pdat-750);
+		}
+		else if(Math.round(Pdat)<750)
+		{
+			Pdt=750-(750-Pdat);
+		}
+$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:Pdat.toString(),percent:Math.round(Pdt*100/750)});
+		console.log(Math.round(Pdt*100/750));
 		if(index>3)
 		{return true;}
-	});*/
+	});
 
-   });
+	
+}); 
+	
+window.onload = function () {
+
+}
 </script>
