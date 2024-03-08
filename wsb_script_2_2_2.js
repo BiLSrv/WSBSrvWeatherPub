@@ -158,7 +158,7 @@ GuageMeter.append = "ммРт";
 GuageMeter.label = "Влажн-ь"
 GuageMeter.text_size = "0.15";
 $(".GaugeMeter1H").gaugeMeter(GuageMeter);
-GuageMeter.append = "";
+GuageMeter.append = "%";
 GuageMeter.label = "Кач.Возд."
 GuageMeter.text_size = "0.15";
 //GuageMeter.back="#DCDCDC"
