@@ -520,11 +520,11 @@ $($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:GuageMeter.text,p
 			Pdt=750-(750-Pdat);
 			
 		}
-		GuageMeter.percent=Math.round(Pdt*100/750);
+		GuageMeter.percent=50;
 		
 		$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter(GuageMeter);
 		
-		console.log(GuageMeter.percent);
+		console.log(Math.round(Pdt*100/750));
 
 		if(index>3)
 		{return true;}
