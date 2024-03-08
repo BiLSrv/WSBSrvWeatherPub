@@ -1,4 +1,4 @@
-// upda3a4
+// upda3a5
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -517,7 +517,7 @@ $($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:GuageMeter.text,p
 		}
 		else if(Math.round(Pdat)<750)
 		{
-			Pdt=750+(750-Pdat);
+			Pdt=750-(750-Pdat);
 			
 		}
 		GuageMeter.percent=Math.round(Pdt*100/750);
