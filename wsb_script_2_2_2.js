@@ -164,7 +164,7 @@ GuageMeter.label = "Кач.Возд."
 $(".GaugeMeter1AQ").gaugeMeter(GuageMeter);
 $(".GaugeMeterAQ").gaugeMeter(GuageMeter);
 //GuageMeter.back="#DCDCDC"
-GuageMeter.append = "ммРт";
+GuageMeter.append = "%";
 GuageMeter.label = "Влажн-ь"
 $(".GaugeMeterH").gaugeMeter(GuageMeter);
 //GuageMeter.back="#DCDCDC"
