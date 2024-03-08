@@ -123,16 +123,14 @@ $('canvas').each(function(index){
 }).draw());
 	//console.log( String($(this).attr('id')) + ": " + $( this ).text() + $( this ).attr('id')+ " " );    units: '°C',	colorPlateEnd: "#327ac0",
 });
-
-$(".GaugeMeter1H").each(function(index){
 GuageMeter={
-	theme: "Green-Red",
+	theme: "DarkBlue-LightBlue",
 	text: "0",
 	style: "Arch",
 	text_size: "0.15",
 	append: "°C",
 	percent: 0,
-	size: 100,
+	size: 140,
 	width: 10,
 	back: "null",
 	label: $( this ).attr('id'),
@@ -141,27 +139,15 @@ GuageMeter={
 	//color: "White",
 	//label_color: "White"
 };
+/*
+$(".GaugeMeter1H").each(function(index){
+	$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter(GuageMeter);
 });
 	
 $(".GaugeMeter1P").each(function(index){
-GuageMeter={
-	theme: "Green-Red",
-	text: "0",
-	style: "Arch",
-	text_size: "0.15",
-	append: "°C",
-	percent: 0,
-	size: 100,
-	width: 10,
-	back: "null",
-	label: $( this ).attr('id'),
-	animate_gauge_colors: false,
-	animate_text_colors:  false
-	//color: "White",
-	//label_color: "White"
-}
+
 	$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter(GuageMeter);
-});
+});*/
 
 //GuageMeter.animationstep=true;
 //GuageMeter.animate_gauge_colors=true;
@@ -169,35 +155,33 @@ GuageMeter={
 //GuageMeter.back="#DCDCDC"
 GuageMeter.append = "ммРт";
 GuageMeter.label = "Влажн-ь"
-GuageMeter.text_size = "0.18";
+GuageMeter.text_size = "0.15";
 $(".GaugeMeter1H").gaugeMeter(GuageMeter);
 GuageMeter.append = "ммРт";
 GuageMeter.label = "Давл-е"
-GuageMeter.text_size = "0.18";
+GuageMeter.text_size = "0.15";
 //GuageMeter.back="#DCDCDC"
 $(".GaugeMeter1P").gaugeMeter(GuageMeter);
 GuageMeter.append = "";
 GuageMeter.label = "Кач.Возд."
-GuageMeter.text_size = "0.18";
+GuageMeter.text_size = "0.15";
 //GuageMeter.back="#DCDCDC"
 $(".GaugeMeter1AQ").gaugeMeter(GuageMeter);
-GuageMeter.append = " С";
-GuageMeter.label = "Темпер-а"
-GuageMeter.text_size = "0.18";
-$(".GaugeMeterT").gaugeMeter(GuageMeter);
 //GuageMeter.back="#DCDCDC"
 GuageMeter.append = "ммРт";
 GuageMeter.label = "Влажн-ь"
-GuageMeter.text_size = "0.18";
+GuageMeter.text_size = "0.15";
 $(".GaugeMeterH").gaugeMeter(GuageMeter);
 //GuageMeter.back="#DCDCDC"
 GuageMeter.append = "ммРт";
 GuageMeter.label = "Давл-е"
-GuageMeter.text_size = "0.18";
+GuageMeter.text_size = "0.15";
+GuageMeter.fill:"#21B4F9"
 $(".GaugeMeterP").gaugeMeter(GuageMeter);
+GuageMeter.fill:"null"
 GuageMeter.append = "";
 GuageMeter.label = "Воздух"
-GuageMeter.text_size = "0.18";
+GuageMeter.text_size = "0.15";
 //GuageMeter.back="#DCDCDC"
 $(".GaugeMeterAQ").gaugeMeter(GuageMeter);
 //GuageMeter.back="#DCDCDC"
@@ -535,7 +519,7 @@ $($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:GuageMeter.text,p
 	
 	$(".GaugeMeter1P").each(function(index){
 		
-		GuageMeter.text=json_data.sensors[index+17].toString();
+		GuageMeter.text=(parseFloat(json_data.sensors[index+17])*0.750062).toFixed(2);
 		GuageMeter.percent=parseInt(json_data.sensors[index+17],10)/100;
 		$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter(GuageMeter);
 		
