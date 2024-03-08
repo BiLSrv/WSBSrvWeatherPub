@@ -135,7 +135,8 @@ GuageMeter={
 	back: "null",
 	label: $( this ).attr('id'),
 	animate_gauge_colors: false,
-	animate_text_colors:  false
+	animate_text_colors:  false,
+	showvalue: true
 	//color: "White",
 	//label_color: "White"
 };
