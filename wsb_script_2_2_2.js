@@ -1,4 +1,4 @@
-// upda3a3
+// upda3a4
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -127,7 +127,7 @@ GuageMeter={
 	theme: "DarkBlue-LightBlue",
 	text: "0",
 	style: "Arch",
-	text_size: "0.15",
+	text_size: "0.12",
 	append: "°C",
 	percent: 0,
 	size: 140,
@@ -154,25 +154,22 @@ $(".GaugeMeter1P").each(function(index){
 //GuageMeter.animate_gauge_colors=true;
 //GuageMeter.animate_text_colors=true;
 //GuageMeter.back="#DCDCDC"
-GuageMeter.append = "ммРт";
 GuageMeter.label = "Влажн-ь"
-GuageMeter.text_size = "0.15";
+GuageMeter.text_size = "0.12";
+GuageMeter.append = "%";
 $(".GaugeMeter1H").gaugeMeter(GuageMeter);
 GuageMeter.append = "%";
 GuageMeter.label = "Кач.Возд."
-GuageMeter.text_size = "0.15";
 //GuageMeter.back="#DCDCDC"
 $(".GaugeMeter1AQ").gaugeMeter(GuageMeter);
 $(".GaugeMeterAQ").gaugeMeter(GuageMeter);
 //GuageMeter.back="#DCDCDC"
 GuageMeter.append = "ммРт";
 GuageMeter.label = "Влажн-ь"
-GuageMeter.text_size = "0.15";
 $(".GaugeMeterH").gaugeMeter(GuageMeter);
 //GuageMeter.back="#DCDCDC"
 GuageMeter.append = "ммРт";
 GuageMeter.label = "Давл-е"
-GuageMeter.text_size = "0.15";
 GuageMeter.theme="Red-Gold-Green";
 GuageMeter.fill="#21B4F9";
 $(".GaugeMeterP").gaugeMeter(GuageMeter);
