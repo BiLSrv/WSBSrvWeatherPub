@@ -1,5 +1,5 @@
 /*
- * AshAlom Gauge Meter.  Version 2.1.2
+ * AshAlom Gauge Meter.  Version 2.0.0
  * Copyright AshAlom.com  All rights reserved.
  * https://github.com/AshAlom/GaugeMeter <- Deleted!
  * https://github.com/githubsrinath/GaugeMeter <- Backup original.
@@ -190,21 +190,6 @@
           t
         );
       }
-      /* The label higher gauge. */
-      function createLbhigh(t, a) {
-		  console.log('createLbhigh');
-		  console.log(t);
-		  console.log(a);
-        if (t.children('b').length === 0) {
-          $('<b></b>')
-            .prependTo(t)
-            .html(option.label)
-            .css({
-              'line-height': option.size + 5 * a + 'px',
-              color: option.label_color
-            });
-        }
-      }
       /* The label below gauge. */
       function createLabel(t, a) {
         if (t.children('b').length === 0) {
@@ -243,37 +228,6 @@
             color: fgcolor
           });
       }
-		
-      /* Prepend and append text, the gauge text or percentage value. */
-      function createSpanTag2(t) {
-		  console.log('createSpanTag2');
-		  console.log(t);
-		  console.log(r);
-        var fgcolor = '';
-        if (option.animate_text_colors === true) {
-          fgcolor = option.fgcolor;
-        }
-        var child = t.children('span');
-        if (child.length !== 0) {
-          child.html(r).css({ color: fgcolor });
-          return;
-        }
-        if (option.text_size <= 0.0 || Number.isNaN(option.text_size)) {
-          option.text_size = 0.22;
-        }
-        if (option.text_size > 0.5) {
-          option.text_size = 0.5;
-        }
-        $('<span></span>')
-          .prependTo(t)
-          .html(r)
-          .css({
-            'line-height': option.size + 'px',
-            'font-size': option.text_size * option.size + 'px',
-            color: fgcolor
-          });
-      }
-
       /* Get data attributes as options from div tag. Fall back to defaults when not exists. */
       function getDataAttr(t) {
         $.each(dataAttr, function (index, element) {
@@ -447,7 +401,6 @@
 
       option.fgcolor = getThemeColor(c);
       createSpanTag(p);
-	  createSpanTag2(p);
 
       if (
         option.style !== '' &&
@@ -455,7 +408,6 @@
         option.style !== undefined
       ) {
         createLabel(p, option.size / 13);
-		  createLbhigh(p, option.size / 13);
       }
 
       $(this).width(option.size + 'px');
@@ -481,7 +433,6 @@
         /* Initially create canvas. */
         $(b).appendTo($(this));
       }
-		$(b).appendTo($(this)).text("text");
 
       if ('Semi' === option.style) {
         k = 2 * Math.PI;

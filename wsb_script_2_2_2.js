@@ -163,9 +163,9 @@ GuageMeter={
 	$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter(GuageMeter);
 });
 
-GuageMeter.animationstep=true;
-GuageMeter.animate_gauge_colors=true;
-GuageMeter.animate_text_colors=true;
+//GuageMeter.animationstep=true;
+//GuageMeter.animate_gauge_colors=true;
+//GuageMeter.animate_text_colors=true;
 //GuageMeter.back="#DCDCDC"
 GuageMeter.append = "ммРт";
 GuageMeter.label = "Влажн-ь"
@@ -520,7 +520,7 @@ if (json_data["sensors"])
 
 	$(".GaugeMeter1H").each(function(index){
 		//console.log($(this).attr('id'));
-		GuageMeter.text=json_data.sensors[index+10].toString();
+		GuageMeter.text=parseFloat(json_data.sensors[index+10]).toFixed(2);
 		GuageMeter.percent=parseInt(json_data.sensors[index+10],10);
 $($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:GuageMeter.text,percent:parseInt(json_data.sensors[index+10],10)});
 		
