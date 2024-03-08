@@ -1,4 +1,4 @@
-// upda3a5
+// upda3a2
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -497,7 +497,7 @@ if (json_data["sensors"])
 	$(".GaugeMeter1H").each(function(index){
 		//console.log($(this).attr('id'));
 		GuageMeter.text=parseFloat(json_data.sensors[index+10]).toFixed(2);
-		GuageMeter.percent=parseInt(json_data.sensors[index+10],10);
+		//GuageMeter.percent=parseInt(json_data.sensors[index+10],10);
 $($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:GuageMeter.text,percent:parseInt(json_data.sensors[index+10],10)});
 
 		if(index>7)
@@ -509,7 +509,7 @@ $($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:GuageMeter.text,p
 	
 	$(".GaugeMeter1P").each(function(index){
 		Pdat = (parseFloat(json_data.sensors[index+17])*0.750062).toFixed(2);
-		GuageMeter.text=Pdat.toString();
+		//GuageMeter.text=Pdat.toString();
 		
 		if(Math.round(Pdat)>750)
 		{
@@ -520,10 +520,8 @@ $($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:GuageMeter.text,p
 			Pdt=750-(750-Pdat);
 			
 		}
-		GuageMeter.percent=50;
-		
-		$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter(GuageMeter);
-		
+$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:Pdat.toString(),percent:Math.round(Pdt*100/750)});
+
 		console.log(Math.round(Pdt*100/750));
 
 		if(index>3)
