@@ -127,7 +127,7 @@ GuageMeter={
 	theme: "DarkBlue-LightBlue",
 	text: "0",
 	style: "Arch",
-	text_size: "0.12",
+	text_size: "0.10",
 	append: "°C",
 	percent: 0,
 	size: 140,
@@ -424,11 +424,11 @@ function onMessage(event)
 arrbufcrc="";
 i=0,j=0,crc16_int=0;
 Pdat=0.0,Pdt=0.0;
-canvasOBJ = $( ".canvasT" ).get();
+//canvasOBJ = $( ".canvasT" ).get();
 
 //console.log(maOBJ);
 //console.log(GuageMeterOBJ);
-console.log(canvasOBJ);
+//console.log(canvasOBJ);
 //console.log(CanvGaugeArr);
 //
 //	2.1	Processing 'onMessage'
@@ -503,7 +503,7 @@ $($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:GuageMeter.text,p
 		if(index>7)
 		{return true;}
 	});
-	console.log("GaugeMeter1P");
+	//console.log("GaugeMeter1P");
 	//GuageMeterOBJ = $(".GaugeMeter1P").get();
 	//console.log(GuageMeterOBJ);
 	
