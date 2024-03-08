@@ -1,4 +1,4 @@
-// upda3a1
+// upda3a2
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -158,16 +158,12 @@ GuageMeter.append = "ммРт";
 GuageMeter.label = "Влажн-ь"
 GuageMeter.text_size = "0.15";
 $(".GaugeMeter1H").gaugeMeter(GuageMeter);
-GuageMeter.append = "ммРт";
-GuageMeter.label = "Давл-е"
-GuageMeter.text_size = "0.15";
-//GuageMeter.back="#DCDCDC"
-$(".GaugeMeter1P").gaugeMeter(GuageMeter);
 GuageMeter.append = "";
 GuageMeter.label = "Кач.Возд."
 GuageMeter.text_size = "0.15";
 //GuageMeter.back="#DCDCDC"
 $(".GaugeMeter1AQ").gaugeMeter(GuageMeter);
+$(".GaugeMeterAQ").gaugeMeter(GuageMeter);
 //GuageMeter.back="#DCDCDC"
 GuageMeter.append = "ммРт";
 GuageMeter.label = "Влажн-ь"
@@ -177,14 +173,12 @@ $(".GaugeMeterH").gaugeMeter(GuageMeter);
 GuageMeter.append = "ммРт";
 GuageMeter.label = "Давл-е"
 GuageMeter.text_size = "0.15";
-GuageMeter.fill:"#21B4F9"
+GuageMeter.theme="Red-Gold-Green";
+GuageMeter.fill="#21B4F9";
 $(".GaugeMeterP").gaugeMeter(GuageMeter);
-GuageMeter.fill:"null"
-GuageMeter.append = "";
-GuageMeter.label = "Воздух"
-GuageMeter.text_size = "0.15";
+$(".GaugeMeter1P").gaugeMeter(GuageMeter);
 //GuageMeter.back="#DCDCDC"
-$(".GaugeMeterAQ").gaugeMeter(GuageMeter);
+
 //GuageMeter.back="#DCDCDC"
 //$( "div:has(.GaugeMeter1T)").addClass("bd_fail");.fadeOut(1000)
 //$( ".GaugeMeter1T").addClass("bd_fail");
@@ -432,7 +426,7 @@ function onMessage(event)
 {
 arrbufcrc="";
 i=0,j=0,crc16_int=0;
-	
+Pdat=0.0,Pdt=0.0;
 canvasOBJ = $( ".canvasT" ).get();
 
 //console.log(maOBJ);
@@ -519,9 +513,20 @@ $($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:GuageMeter.text,p
 	console.log(GuageMeterOBJ);
 	
 	$(".GaugeMeter1P").each(function(index){
+		Pdat = (parseFloat(json_data.sensors[index+17])*0.750062).toFixed(2);
+		GuageMeter.text=Pdat.toString();
 		
-		GuageMeter.text=(parseFloat(json_data.sensors[index+17])*0.750062).toFixed(2);
-		GuageMeter.percent=parseInt(json_data.sensors[index+17],10)/100;
+		if(Math.round(Pdat)>750)
+		{
+			Pdt=750-(Pdat-750);
+		}
+		else if(Math.round(Pdat)<750)
+		{
+			Pdt=750+(Pdat-750);
+			
+		}
+		GuageMeter.percent=Math.round(Pdt*100/750);
+		
 		$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter(GuageMeter);
 		
 		console.log(GuageMeter.percent);
