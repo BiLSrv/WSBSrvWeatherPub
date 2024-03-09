@@ -59,7 +59,7 @@ body{
 */
   .GaugeMeter SPAN,
   .GaugeMeter B{
-    Margin:          0% 5%;
+    Margin:          -20% 10%;
     Width:           80%;
     Position:        Absolute;
     Text-align:      Center;
@@ -72,17 +72,17 @@ body{
     Text-Overflow:   Ellipsis;
   }
   .GaugeMeter[data-style="Semi"] B{
-    Margin:          0% 5%;
+    Margin:          -20% 10%;
     Width:           80%;
   }
 
   .GaugeMeter[data-style="Full"] B{
-    Margin:          0% 5%;
+    Margin:          -20% 10%;
     Width:           70%;
   }
 			
   .GaugeMeter[data-style="Arch"] B{
-    Margin:          0% 5%;
+    Margin:          -20% 10%;
     Width:           70%;
   }
 			
