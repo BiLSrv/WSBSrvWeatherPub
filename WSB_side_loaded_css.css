@@ -59,7 +59,7 @@ body{
 */
   .GaugeMeter SPAN,
   .GaugeMeter B{
-    Margin:          -5% 15%;
+    Margin:          -5% 0%;
     Width:           80%;
     Position:        Absolute;
     Text-align:      Center;
