@@ -39,7 +39,7 @@
 
   .GaugeMeter SPAN,
   .GaugeMeter B{
-    Margin:          0 20%;
+    Margin:          -10% 20%;
     Width:           54%;
     Position:        Absolute;
     Text-align:      Center;
@@ -91,20 +91,187 @@ body {
 
 </head>
 <body>
-<p class="Tom1">This is a paragraph.</p>
-<p class="Tom2">This is a paragraph.</p>
-<p class="Tom3">This is a paragraph.</p>
-<p class="Tom3">This is a paragraph.</p>
-<p class="Tom4">This is a paragraph.</p>
+<br>
+<form>
+<div class="col-xs-3 mb-2 offset-lg-1 col-lg-3 offset-md-1 offset-sm-1 offset-1 col-5 col-sm-4 col-md-4 col-xl-3 px-2">
+<button type="button" id="btn0" class="btn btn-primary" onclick="sub_init()">Открыть соед</button>
+<button type="button" id="btn0" class="btn btn-primary" onclick="sub_grad()">Послать</button>
+</div>
+<div class=" offset-lg-0 col-lg-4 offset-sm-0 col-sm-5 col-6 offset-md-0 col-md-5 col-xl-3">
+<span>Автозамер <input type="checkbox" class="form-check-input  ml-1" name="autmp" id="autmp" checked></span> 
+<span>Автозапись <input type="checkbox" class="form-check-input  ml-1" name="autwrtemp" id="autwrtemp" checked></span> 	
+</div>
+<div class="container row text-center">
+	<p class="h5 modal-title text-center">Средние значения датчиков</p>
+					<div class="col-auto">
+						<div class="GaugeMeterT GaugeMeter" id="GauAvTemp"></div>
+					</div>
+					<div class="col-auto">
+						<div class="GaugeMeterH GaugeMeter" id="GauAvHum"></div>
+					</div>
+					<div class="col-auto">
+						<div class="GaugeMeterP GaugeMeter" id="GauAvPress"></div>
+					</div>
+					<div class="col-auto">
+						<div class="GaugeMeterAQ GaugeMeter" id="GauAirQ"></div>
+					</div>
+</div>
+<div class="container row text-center">
+					<p class="h5 modal-title text-center">Датчик LM75_1 и Датчик LM75_2</p>			  
+					<div class="col-auto">
+					<canvas class="canvasT" id="lm75_t1"></canvas>
+					<label class="form-check-label" id="lm75_t1_lbl" for="lm75_t1_chk">Зап 1: <input class="form-check-input" id="lm75_t1_chk" type="checkbox"></label>	
+					</div>
+					<div class="col-auto">
+					<canvas class="canvasT" id="lm75_t2"></canvas>
+					<label class="form-check-label" id="lm75_t2_lbl" for="lm75_t2_chk">Зап 2:<input class="form-check-input" id="lm75_t2_chk" type="checkbox"></label>
+	</div>
+</div>
+<div class="container row text-center">
+				<p class="h5 modal-title text-center">Датчики BME280</p>
+					<div class="col-auto">
+					<canvas class="canvasT" id="bme280_1t"></canvas>
+					</div>
+					<div class="col-auto">
+					<canvas class="canvasT" id="bme280_2t"></canvas>
+					</div>
+					<div class="col-auto">
+					<canvas class="canvasT" id="sht35t"></canvas>
+					</div>
+					<div class="col-auto">
+					<canvas class="canvasT" id="sht41t"></canvas>
+					</div>
+</div>
+<div class="container row text-center">
+						<div class="col-auto">
+							<div class="GaugeMeter1H GH1 GaugeMeter" id="bme280_1h"></div>
+							<p class="text-center" id="aht21_h" style="width: 4rem;">bme280_1h</p>
+						</div>
+						<div class="col-auto">
+							<div class="GaugeMeter1H GH2 GaugeMeter" id="bme280_2h"></div>
+							<p class="text-center" id="aht21_h" style="width: 4rem;">bme280_2h</p>
+						</div>
+						<div class="col-auto">
+							<div class="GaugeMeter1H GH3 GaugeMeter" id="sht35h"></div>
+							<p class="text-center" id="aht21_h" style="width: 4rem;">sht35h</p>
+						</div>
+						<div class="col-auto">
+							<div class="GaugeMeter1H GH4 GaugeMeter" id="sht41h"></div>
+							<p class="text-center" id="aht21_h" style="width: 4rem;">sht41h</p>
+						</div>
+</div>
+<div class="container row text-center">
+						<div class="col-auto">
+							<div class="GaugeMeter1P GP1 GaugeMeter" id="bme280_1p"></div>
+							<p class="text-center" id="aht21_h" style="width: 4rem;">bme280_1p</p>
+						</div>
+						<div class="col-auto">
+							<div class="GaugeMeter1P GP2 GaugeMeter" id="bme280_2p"></div>
+							<p class="text-center" id="aht21_h" style="width: 4rem;">bme280_2p</p>
+						</div>
+						<div class="col-auto">
+							<div class="GaugeMeter1P GP3 GaugeMeter" id="bme680_1p"></div>
+							<p class="text-center" id="aht21_h" style="width: 4rem;">bme680_1p</p>
+						</div>
+</div>
+				<div class="form-group row">
+					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">DEW_bme280:</div>
+				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "bme280_DEW" name="bme280_DEW" value=""></div>
+				</div>					
+				<div class="form-group row">
+					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">QNH_bme280:</div>
+				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "bme280_QNH" name="bme280_QNH" value=""></div>
+				</div>	
+				<div class="form-group row">
+					<div class="col-xs-6 offset-xl-1 col-xl-4 col-lg-3 offset-lg-1 offset-md-1 col-md-5">ALT_bme280:</div>
+				  <div class="col-xs-3 col-md-3 offset-xl-2 offset-lg-2"><input type="text" class="form-control" id = "bme280_ALT" name="bme280_ALT" value=""></div>
+				</div>					
+</div>
+<div class="container row text-center">
+				<p class="h5 modal-title text-center">Датчик BME680</p>
+					<div class="col-auto">
+					<canvas class="canvasT" id="bme680_1t"></canvas>
+					</div>
+					<div class="col-auto">
+					<canvas class="canvasT" id="aht21_t"></canvas>
+					</div>
+					<div class="col-auto">
+					<canvas class="canvasT" id="ens160_t"></canvas>
+					</div>
+					<div class="col-auto">
+					<canvas class="canvasT" id="lpshw_t"></canvas>
+					</div>
+</div>
+<div class="container row text-center">
+					<div class="col-auto">
+						<div class="GaugeMeter1H GH5 GaugeMeter" id="bme680_1h"></div>
+						<p class="text-center" id="bme680_1h" style="width: 4rem;">bme680_1h</p>
+					</div>
+					<div class="col-auto">
+						<div class="GaugeMeter1H GH6 GaugeMeter" id="aht21_h"></div>
+						<p class="text-center" id="aht21_h" style="width: 4rem;">aht21_h</p>
+					</div>
+					<div class="col-auto">
+						<div class="GaugeMeter1GR GaugeMeter" id="bme680_gr">
+							<p class="text-center" id="bme680_gr" style="width: 4rem;">bme680_gr</p>
+						</div>
+						
+					</div>
+</div>
+<div class="container row text-center">
+				<p class="h5 modal-title text-center">Датчик LPS35HW</p>
+					<div class="col-auto">
+						<div class="GaugeMeter1P GM4 GaugeMeter" id="lpshw_p"></div>
+							<p class="text-center" id="lpshw_p" style="width: 4rem;">lpshw_p</p>
+					</div>
+</div>
 
-<p class="deb">This is a paragraph.</p>
+<div class="container row text-center">
+<p class="h5 modal-title text-center">Датчик ENS160</p>
+					<div class="col-auto">
+					<div class="canvasT" id="ens160_tempout"></div>
+					</div>
+					<div class="col-auto">
+					<div class="GaugeMeter1H GH7 GaugeMeter" id="ens160_hout"></div>
+						<p class="text-center" id="ens160_hout" style="width: 4rem;">ens160_hout</p>
+					</div>
+					<div class="col-auto">
+					<div class="GaugeMeter1AQ GaugeMeter" id="ens160_tvoc"></div>
+						<p class="text-center" id="ens160_tvoc" style="width: 4rem;">ens160_tvoc</p>
+					</div>
+					<div class="col-auto">
+					<div class="GaugeMeter1AQ GaugeMeter" id="ens160_eco2"></div>
+						<p class="text-center" id="ens160_eco2" style="width: 4rem;">ens160_eco2</p>
+					</div>
+					<div class="col-auto">
+					<div class="GaugeMeter1AQ GaugeMeter" id="ens160_AIQ"></div>
+						<p class="text-center" id="ens160_AIQ" style="width: 4rem;">ens160_AIQ</p>
+					</div>
+</div>
+</div>
+<div class="container row text-center">
+				<p class="h5 modal-title text-center">Датчик CJMCU</p>
+				<p class="text-primary fw-bold fs-5" id="CJMCU">НЕТ ДАННЫХ</p>
+				<p class="h5 modal-title text-center">Данные АЦП</p>
+				<div class="progress adc0per" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+				  <div class="progress-bar bg-success adc0" style="width: 25%">25%</div>
+				</div>
+				<div class="progress adc1per" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+				  <div class="progress-bar bg-info text-dark adc1" style="width: 50%">50%</div>
+				</div>
+				<div class="progress adc2per" role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+				  <div class="progress-bar bg-warning text-dark adc2" style="width: 75%">75%</div>
+				</div>
+				<div class="progress adc3per" role="progressbar" aria-label="Default example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+				  <div class="progress-bar bg-danger adc3" style="width: 100%">100%</div>
+				</div>
+</div>
+	<p class="h5 modal-title text-center">Доступность датчиков</p>
+	<p class="h5 modal-title text-center REG_FAIL">Доступность датчиков</p>
+   <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover" aria-describedby="popover452354"></button>
+   <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover" aria-describedby="popover452354"></button>
+</form>
 
-<div class="GaugeMeter"></div>
-
-<p>This selector selects all elements with a title attribute value equal to 'Tomorrow', or starting with 'Tomorrow' followed by a hyphen.</p>
-<button>Hide the text above</button>
-</body>
-</html>
 
 <script>
 // upda3a2
@@ -139,58 +306,6 @@ var gateway =
 */
 var WSsocket;
 var GuageMeter;
-
-/**
- * Calculates the buffers CRC16.
- *
- * @param {Buffer} buffer the data buffer.
- * @return {number} the calculated CRC16.
- * 
- * Source: github.com/yaacov/node-modbus-serial
- */
-
-
-function crc16(buffer,extcrc) 
-{
-	var crc = 0xFFFFFFFF;
-	// var arr = new Uint32Array(1);
-    //crc[1] = 0xFFFF;
-	var POLY_D = 0x1021
-	var pcBlock=0;
-	var i=0,j,n1,k;
-	//var str="";
-	/*$(buffer).each((index, element) => {
-        console.log(`current index : ${index} element : ${element}`)
-    });*/
-	
-	$.each(buffer, function(index, element) {
-  		//console.log(index, element);
-		//str=buffer[index];
-		//console.log('puu '+buffer[index]);
-        for (var j = 0; j < element.length; j++) {
-			
-			crc ^= (element.charCodeAt(j) << 8) & 0x0FFFFFFF;//charCodeAt
-			//console.log('crc ^=  '+crc.toString(16));
-			for (k = 0; k < 8; k++)
-            	crc = (crc & 0x8000 ? (crc << 1) ^ POLY_D : crc << 1) & 0x0FFFFFFF;
-		}
-	});
-
-    if(crc==extcrc) 
-		{return true;}
-	else
-		{return false;}
-};
-
-function refr_rtc() {
-    //if (subwdeb == false && $("#autmp").prop("checked")) {
-        //fetch("/get_rtc.json?n=" + Math.random(), "GET", txjstmp, 30);
-        sub_grad();
-    //}
-    //console.log("refr_rtc");
-}
-
-
 
 
 $('body').delay(500).queue(function() {
@@ -233,7 +348,7 @@ $('canvas').each(function(index){
 	//console.log( String($(this).attr('id')) + ": " + $( this ).text() + $( this ).attr('id')+ " " );    units: '°C',	colorPlateEnd: "#327ac0",
 });
 GuageMeter={
-	theme: "Green-Gold-Red",
+	theme: 'Green-Gold-Red',
 	text: "0",
 	style: "Arch",
 	text_size: "0.10",
@@ -251,7 +366,8 @@ GuageMeter={
 	//label_color: "White"
 };
 
-GuageMeter.label = "Влажн-ь"
+
+GuageMeter.label = "Влажн-ь";
 GuageMeter.text_size = "0.12";
 GuageMeter.append = "%";
 $(".GaugeMeter1H").gaugeMeter(GuageMeter);
@@ -263,11 +379,12 @@ $(".GaugeMeterAQ").gaugeMeter(GuageMeter);
 //GuageMeter.back="#DCDCDC"
 GuageMeter.append = "%";
 GuageMeter.label = "Влажн-ь"
+GuageMeter.theme = 'Green-Gold-Red';
 $(".GaugeMeterH").gaugeMeter(GuageMeter);
 //GuageMeter.back="#DCDCDC"
 GuageMeter.append = "ммРт";
 GuageMeter.label = "Давл-е"
-GuageMeter.theme="White";
+//GuageMeter.theme="White";
 GuageMeter.fill="#21B4F9";
 $(".GaugeMeterP").gaugeMeter(GuageMeter);
 $(".GaugeMeter1P").gaugeMeter(GuageMeter);
@@ -275,9 +392,9 @@ $(".GaugeMeter1P").gaugeMeter(GuageMeter);
 
 	$(".GaugeMeter1H").each(function(index){
 		//console.log($(this).attr('id'));
-		GuageMeter.text=parseFloat(json_data.sensors[index+10]).toFixed(2);
+		GuageMeter.text='22';
 		//GuageMeter.percent=parseInt(json_data.sensors[index+10],10);
-$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:GuageMeter.text,percent:parseInt(json_data.sensors[index+10],10)});
+$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:GuageMeter.text,percent:33});
 
 		if(index>7)
 		{return true;}
@@ -298,10 +415,11 @@ $($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:GuageMeter.text,p
 		{
 			Pdt=750-(750-Pdat);
 		}
-$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:Pdat.toString(),percent:Math.round(Pdt*100/750)});
-		console.log(Math.round(Pdt*100/750));
+$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:Pdat.toString(),percent:33});
+		console.log(33);
 		if(index>3)
 		{return true;}
+		
 	});
 
 	
