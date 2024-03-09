@@ -131,10 +131,11 @@ $("canvas[data-type='radial-gauge']").each(function(index){
 	else
 	{unit="%"}
 	
+	
     CanvGaugeArrR.push(new RadialGauge({
     renderTo: $(this).attr('id'),
-    width: 100,
-    height: 300,
+    width: 300,
+    height: 400,
     units: unit,
     minValue: 0,
     maxValue: 100,
