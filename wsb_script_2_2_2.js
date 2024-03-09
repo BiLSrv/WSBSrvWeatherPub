@@ -121,7 +121,7 @@ $("canvasT").each(function(index){
 	animationRule: 'elastic',
 	animationDuration: 250
 }).draw());
-	
+});
 	
 var gauge = new RadialGauge({
     renderTo: 'canvas-id',
@@ -164,7 +164,7 @@ var gauge = new RadialGauge({
     animationDuration: 1500,
     animationRule: "linear"
 }).draw();
-	
+});
 	
 $("canvas[data-type='radial-gauge']").each(function(index){	
 	

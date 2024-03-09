@@ -130,6 +130,9 @@ body
 </head>
 <body>
 <br>
+<!--upd1 3.3a		view-source:https://bilsrv.github.io/WSBSrvWeatherPub/WSB_page_main.html		-->
+<meta charset="utf-8">
+<br>
 <form>
 <div class="col-xs-3 mb-2 offset-lg-1 col-lg-3 offset-md-1 offset-sm-1 offset-1 col-5 col-sm-4 col-md-4 col-xl-3 px-2">
 <button type="button" id="btn0" class="btn btn-primary" onclick="sub_init()">Открыть соед</button>
@@ -142,16 +145,16 @@ body
 <div class="container row text-center">
 	<p class="h5 modal-title text-center">Средние значения датчиков</p>
 					<div class="col-auto">
-						<div class="GaugeMeterT GaugeMeter" id="GauAvTemp"></div>
+						<canvas data-type="radial-gauge" id="GauAvTemp"></canvas>
 					</div>
 					<div class="col-auto">
-						<div class="GaugeMeterH GaugeMeter" id="GauAvHum"></div>
+						<canvas data-type="radial-gauge" id="GauAvHum"></canvas>
 					</div>
 					<div class="col-auto">
-						<div class="GaugeMeterP GaugeMeter" id="GauAvPress"></div>
+						<canvas data-type="radial-gauge" id="GauAvPress"></canvas>
 					</div>
 					<div class="col-auto">
-						<div class="GaugeMeterAQ GaugeMeter" id="GauAirQ"></div>
+						<canvas data-type="radial-gauge" id="GauAirQ"></canvas>
 					</div>
 </div>
 <div class="container row text-center">
@@ -182,33 +185,33 @@ body
 </div>
 <div class="container row text-center">
 						<div class="col-auto">
-							<div class="GaugeMeter1H GH1 GaugeMeter" id="bme280_1h"></div>
+							<canvas data-type="radial-gauge" class="canvasH1" id="bme280_1h"></canvas>
 							<p class="text-center" id="aht21_h" style="width: 4rem;">bme280_1h</p>
 						</div>
 						<div class="col-auto">
-							<div class="GaugeMeter1H GH2 GaugeMeter" id="bme280_2h"></div>
+							<canvas data-type="radial-gauge" class="canvasH1" id="bme280_2h"></canvas>
 							<p class="text-center" id="aht21_h" style="width: 4rem;">bme280_2h</p>
 						</div>
 						<div class="col-auto">
-							<div class="GaugeMeter1H GH3 GaugeMeter" id="sht35h"></div>
+							<canvas data-type="radial-gauge" class="canvasH1" id="sht35h"></canvas>
 							<p class="text-center" id="aht21_h" style="width: 4rem;">sht35h</p>
 						</div>
 						<div class="col-auto">
-							<div class="GaugeMeter1H GH4 GaugeMeter" id="sht41h"></div>
+							<canvas data-type="radial-gauge" class="canvasH1" id="sht41h"></canvas>
 							<p class="text-center" id="aht21_h" style="width: 4rem;">sht41h</p>
 						</div>
 </div>
 <div class="container row text-center">
 						<div class="col-auto">
-							<div class="GaugeMeter1P GP1 GaugeMeter" id="bme280_1p"></div>
+							<canvas data-type="radial-gauge" class="canvasP1" id="bme280_1p"></canvas>
 							<p class="text-center" id="aht21_h" style="width: 4rem;">bme280_1p</p>
 						</div>
 						<div class="col-auto">
-							<div class="GaugeMeter1P GP2 GaugeMeter" id="bme280_2p"></div>
+							<canvas data-type="radial-gauge" class="canvasP1" id="bme280_2p"></canvas>
 							<p class="text-center" id="aht21_h" style="width: 4rem;">bme280_2p</p>
 						</div>
 						<div class="col-auto">
-							<div class="GaugeMeter1P GP3 GaugeMeter" id="bme680_1p"></div>
+							<canvas data-type="radial-gauge" class="canvasP1" id="bme680_1p"></canvas>
 							<p class="text-center" id="aht21_h" style="width: 4rem;">bme680_1p</p>
 						</div>
 </div>
@@ -242,15 +245,15 @@ body
 </div>
 <div class="container row text-center">
 					<div class="col-auto">
-						<div class="GaugeMeter1H GH5 GaugeMeter" id="bme680_1h"></div>
+						<canvas data-type="radial-gauge" class="canvasH1" id="bme680_1h"></canvas>
 						<p class="text-center" id="bme680_1h" style="width: 4rem;">bme680_1h</p>
 					</div>
 					<div class="col-auto">
-						<div class="GaugeMeter1H GH6 GaugeMeter" id="aht21_h"></div>
+						<canvas data-type="radial-gauge" class="canvasH1" id="aht21_h"></canvas>
 						<p class="text-center" id="aht21_h" style="width: 4rem;">aht21_h</p>
 					</div>
 					<div class="col-auto">
-						<div class="GaugeMeter1GR GaugeMeter" id="bme680_gr">
+						<canvas data-type="radial-gauge" id="bme680_gr"></canvas>
 							<p class="text-center" id="bme680_gr" style="width: 4rem;">bme680_gr</p>
 						</div>
 						
@@ -259,7 +262,7 @@ body
 <div class="container row text-center">
 				<p class="h5 modal-title text-center">Датчик LPS35HW</p>
 					<div class="col-auto">
-						<div class="GaugeMeter1P GM4 GaugeMeter" id="lpshw_p"></div>
+						<canvas data-type="radial-gauge" class="canvasP1" id="lpshw_p"></canvas>
 							<p class="text-center" id="lpshw_p" style="width: 4rem;">lpshw_p</p>
 					</div>
 </div>
@@ -267,22 +270,22 @@ body
 <div class="container row text-center">
 <p class="h5 modal-title text-center">Датчик ENS160</p>
 					<div class="col-auto">
-					<div class="canvasT" id="ens160_tempout"></div>
+					<canvas data-type="radial-gauge" class="canvasH1" id="ens160_tempout"></canvas>
 					</div>
 					<div class="col-auto">
-					<div class="GaugeMeter1H GH7 GaugeMeter" id="ens160_hout"></div>
+					<canvas data-type="radial-gauge" class="canvasH1" id="ens160_hout"></canvas>
 						<p class="text-center" id="ens160_hout" style="width: 4rem;">ens160_hout</p>
 					</div>
 					<div class="col-auto">
-					<div class="GaugeMeter1AQ GaugeMeter" id="ens160_tvoc"></div>
+					<canvas data-type="radial-gauge" id="ens160_tvoc"></canvas>
 						<p class="text-center" id="ens160_tvoc" style="width: 4rem;">ens160_tvoc</p>
 					</div>
 					<div class="col-auto">
-					<div class="GaugeMeter1AQ GaugeMeter" id="ens160_eco2"></div>
+					<canvas data-type="radial-gauge" id="ens160_eco2"></canvas>
 						<p class="text-center" id="ens160_eco2" style="width: 4rem;">ens160_eco2</p>
 					</div>
 					<div class="col-auto">
-					<div class="GaugeMeter1AQ GaugeMeter" id="ens160_AIQ"></div>
+					<canvas data-type="radial-gauge" id="ens160_AIQ"></canvas>
 						<p class="text-center" id="ens160_AIQ" style="width: 4rem;">ens160_AIQ</p>
 					</div>
 </div>
