@@ -13,7 +13,8 @@ mds = $(".macnt");
 sets = $(".setcnt");
 cnftmp = $(".scntf");
 	
-var CanvGaugeArr = [];
+var CanvGaugeArrL = [];
+var CanvGaugeArrR = [];
 	
 //$(document).ready(function() {
 var gateway = 'wss://wsb.bilymo.keenetic.pro/ws'
@@ -90,7 +91,7 @@ $('body').delay(500).queue(function() {
 WSsocket = new WebSocket(gateway);
 // Canvas .each Default Settings 
 $("canvasT").each(function(index){	
-    CanvGaugeArr.push(new LinearGauge({
+    CanvGaugeArrL.push(new LinearGauge({
     renderTo: $( this ).attr('id'),
     width: 100,
     height: 300,
@@ -130,7 +131,7 @@ $("canvas[data-type='radial-gauge']").each(function(index){
 	else
 	{unit="%"}
 	
-    CanvGaugeArr.push(new RadialGauge({
+    CanvGaugeArrR.push(new RadialGauge({
     renderTo: $(this).attr('id'),
     width: 100,
     height: 300,
