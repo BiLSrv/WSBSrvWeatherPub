@@ -35,29 +35,9 @@ body{
 {
 	background-color:#535157;
 }
-  .GaugeMeter{
-    Position:        Relative;
-    Text-Align:      Center;
-    Overflow:        Hidden;
-    Cursor:          Default;
-  }
-  /*.GaugeMeter::before
-	{
-	content: ' ';
-	display: block;
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	opacity: 0.6;
-	background: #0070ad URL(https://bilsrv.github.io/WSBSrvWeatherPub/BokehFrost.jpg) Top Left No-Repeat;
-    background-size: Cover;
-	}
-*/
   .GaugeMeter SPAN,
   .GaugeMeter B{
-    Margin:          -30% 10%;
+    Margin:          -20% 10%;
     Width:           80%;
     Position:        Absolute;
     Text-align:      Center;
@@ -104,4 +84,3 @@ body{
     border: 3px inset red;
 	border-radius: 12px;
   }		
-			

@@ -31,6 +31,10 @@
     <meta name="author" content="Mictronics" />
     <style>
 
+body
+{
+ background-color:cyan
+}
 
 .noscroll { position: fixed;overflow:hidden; display: none;}
 
@@ -71,7 +75,7 @@
 */
   .GaugeMeter SPAN,
   .GaugeMeter B{
-    Margin:          -30% 10%;
+    Margin:          -20% 10%;
     Width:           80%;
     Position:        Absolute;
     Text-align:      Center;
@@ -118,6 +122,7 @@
     border: 3px inset red;
 	border-radius: 12px;
   }		
+  
 	  
     </style>
 
@@ -381,16 +386,16 @@ $('canvas').each(function(index){
 	//console.log( String($(this).attr('id')) + ": " + $( this ).text() + $( this ).attr('id')+ " " );    units: '°C',	colorPlateEnd: "#327ac0",
 });
 GuageMeter={
-	theme: 'Green-Gold-Red',
+	theme: "null",
 	text: "0",
 	style: "Arch",
 	text_size: "0.10",
 	append: "°C",
-	percent: "null",
-	size: 140,
+	percent: "%",
+	size: 120,
 	width: 10,
 	back: "null",
-	label: $( this ).attr('id'),
+	//label: $( this ).attr('id'),
 	animate_gauge_colors: false,
 	animate_text_colors:  false,
 	label_color: "Blue"
@@ -401,41 +406,58 @@ GuageMeter={
 
 
 GuageMeter.label = "Влажн-ь";
-GuageMeter.text_size = "0.12";
+
+GuageMeter.text_size = "0.15";
 GuageMeter.append = "%";
-$(".GaugeMeter1H").gaugeMeter(GuageMeter);
+//$(".GaugeMeter1H").gaugeMeter(GuageMeter);
+
 GuageMeter.append = "%";
 GuageMeter.label = "Кач.Возд."
 //GuageMeter.back="#DCDCDC"
-$(".GaugeMeter1AQ").gaugeMeter(GuageMeter);
+//$(".GaugeMeter1AQ").gaugeMeter(GuageMeter);
 $(".GaugeMeterAQ").gaugeMeter(GuageMeter);
 //GuageMeter.back="#DCDCDC"
-GuageMeter.append = "%";
-GuageMeter.label = "Влажн-ь"
-GuageMeter.theme = 'Green-Gold-Red';
+
+
 $(".GaugeMeterH").gaugeMeter(GuageMeter);
 //GuageMeter.back="#DCDCDC"
 GuageMeter.append = "ммРт";
 GuageMeter.label = "Давл-е"
-//GuageMeter.theme="White";
+
 GuageMeter.fill="#21B4F9";
 $(".GaugeMeterP").gaugeMeter(GuageMeter);
-$(".GaugeMeter1P").gaugeMeter(GuageMeter);
+//$(".GaugeMeter1P").gaugeMeter(GuageMeter);
 
+// GaugeMeter1H 
+GuageMeter.text = "50";
+GuageMeter.append = "%";
+GuageMeter.label = "Влажн-ь"
+GuageMeter.theme = "Green-Gold-Red";
 
-	$(".GaugeMeter1H").each(function(index){
-		//console.log($(this).attr('id'));
-		GuageMeter.text='22';
+$(".GaugeMeter1H").gaugeMeter(GuageMeter);
+//{theme:GuageMeter.theme,size:GuageMeter.size,label:GuageMeter.label,style:GuageMeter.style}
+//$(".GaugeMeter1H").gaugeMeter({append:GuageMeter.append});
+
+$(".GaugeMeter1H").each(function(index){
+		console.log(("."+$(this).attr('class').split(" ")[index])+" "+("."+$(this).attr('class').split(" ")[1]));
 		//GuageMeter.percent=parseInt(json_data.sensors[index+10],10);
-$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:GuageMeter.text,percent:33});
+//$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({percent:80});
 
+//$($("."+$(this).attr('class').split(" ")[0])).gaugeMeter({append:GuageMeter.append,width:GuageMeter.width,label:GuageMeter.label,size:GuageMeter.size,text_size:GuageMeter.text_size});
+
+$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:GuageMeter.text,append:GuageMeter.append,percent:50});
+//$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:"33",percent:80});
+//$($("."+$(this).attr('class').split(" ")[0])).gaugeMeter(GuageMeter);
+
+
+//$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter(GuageMeter);
 		if(index>7)
 		{return true;}
 	});
 	//console.log("GaugeMeter1P");
 	//GuageMeterOBJ = $(".GaugeMeter1P").get();
 	//console.log(GuageMeterOBJ);
-	
+/*	
 	$(".GaugeMeter1P").each(function(index){
 		Pdat = (parseFloat(json_data.sensors[index+17])*0.750062).toFixed(2);
 		//GuageMeter.text=Pdat.toString();
@@ -453,7 +475,7 @@ $($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:Pdat.toString(),p
 		if(index>3)
 		{return true;}
 		
-	});
+});*/
 
 	
 }); 
