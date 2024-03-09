@@ -44,13 +44,13 @@ body{
 
   .GaugeMeter SPAN,
   .GaugeMeter B{
-    Margin:          -20% 10%;
-    Width:           54%;
+    Margin:          -5% 10%;
+    Width:           70%;
     Position:        Absolute;
     Text-align:      Center;
     Display:         Inline-Block;
     Color:           RGBa(0,0,0,.8);
-    Font-Weight:     200;
+    Font-Weight:     300;
     Font-Family:     "Open Sans", Arial;
     Overflow:        Hidden;
     White-Space:     NoWrap;

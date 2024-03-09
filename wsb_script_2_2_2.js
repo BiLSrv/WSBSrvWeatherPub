@@ -171,7 +171,7 @@ $(".GaugeMeterH").gaugeMeter(GuageMeter);
 //GuageMeter.back="#DCDCDC"
 GuageMeter.append = "ммРт";
 GuageMeter.label = "Давл-е"
-GuageMeter.theme="White";
+//GuageMeter.theme="White";
 GuageMeter.fill="#21B4F9";
 $(".GaugeMeterP").gaugeMeter(GuageMeter);
 $(".GaugeMeter1P").gaugeMeter(GuageMeter);
