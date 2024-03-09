@@ -1,4 +1,4 @@
-// upda4a1
+// upda3a3
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -89,7 +89,7 @@ $('body').delay(500).queue(function() {
     //$(this).load('myPage.php');
 WSsocket = new WebSocket(gateway);
 // Canvas .each Default Settings 
-$("canvasT").each(function(index){	
+$('canvas').each(function(index){	
     CanvGaugeArr.push(new LinearGauge({
     renderTo: $( this ).attr('id'),
     width: 100,
@@ -123,98 +123,101 @@ $("canvasT").each(function(index){
 }).draw());
 	
 	
-var gauge = new RadialGauge({
-    renderTo: 'canvas-id',
-    width: 300,
-    height: 300,
-    units: "Km/h",
-    minValue: 0,
-    maxValue: 220,
-    majorTicks: [
-        "0",
-        "20",
-        "40",
-        "60",
-        "80",
-        "100",
-        "120",
-        "140",
-        "160",
-        "180",
-        "200",
-        "220"
-    ],
-    minorTicks: 2,
-    strokeTicks: true,
-    highlights: [
-        {
-            "from": 160,
-            "to": 220,
-            "color": "rgba(200, 50, 50, .75)"
-        }
-    ],
-    colorPlate: "#fff",
-    borderShadowWidth: 0,
-    borders: false,
-    needleType: "arrow",
-    needleWidth: 2,
-    needleCircleSize: 7,
-    needleCircleOuter: true,
-    needleCircleInner: false,
-    animationDuration: 1500,
-    animationRule: "linear"
-}).draw();
 	
-	
-$("canvas[data-type='radial-gauge']").each(function(index){	
-	
-	if($(this).attr('class')=="canvasP1")
-	{unit="ммРст"}
-	else
-	{unit="%"}
-	
-    CanvGaugeArr.push(new RadialGauge({
-    renderTo: $(this).attr('id'),
+$('canvas').each(function(index){	
+    CanvGaugeArr.push(new LinearGauge({
+    renderTo: $( this ).attr('id'),
     width: 100,
     height: 300,
-    units: unit,
-    minValue: 0,
-    maxValue: 100,
-    majorTicks: [
-        "0",
-        "10",
-        "20",
-        "30",
-        "40",
-        "50",
-        "60",
-        "70",
-        "80",
-        "90",
-        "100"
-    ],
-    minorTicks: 5,
-    strokeTicks: true,
-    highlights: [
-        {
-            "from": 60,
-            "to": 100,
-            "color": "rgba(200, 50, 50, .75)"
-        }
-    ],
-    colorPlate: "#fff",
-    borderShadowWidth: 0,
-    borders: false,
-    needleType: "arrow",
-    needleWidth: 2,
-    needleCircleSize: 7,
-    needleCircleOuter: true,
-    needleCircleInner: false,
-    animationDuration: 1500,
-    animationRule: "linear"
+	colorPlate: "black",
+	colorUnits: "black",
+	colorNeedle: "#222",
+	colorNeedleEnd: "",
+	colorBar: "#f5f5f5",
+	colorTitle: "blue",
+    colorPlate: "#ccc",
+	colorPlateEnd: "#ccc",
+	colorBarStroke: "black",
+	borderRadius: "20",
+	borders: "true",
+	minValue: -50,
+	maxValue: 50,
+	minorTicks: 11,
+	majorTicks: ['-50','-40','-30','-20','-10','0','10','20','30','40','50'],
+    colorNumbers: ['cyan','blue','blue','blue','black','black','black','green','green','#CE7E00','red'],
+    colorMajorTicks: ['yellow','green','blue','blue','black','black','black','black','black','black','black'],
+    fontNumbersSize: "30",
+	fontValueSize: "45",
+	fontTitleSize: "35",
+	fontUnitsSize: "45",
+	value: 0,
+	units: '°C',
+	title: String($(this).attr('id')),
+	animationRule: 'elastic',
+	animationDuration: 250
 }).draw());
 	//console.log( String($(this).attr('id')) + ": " + $( this ).text() + $( this ).attr('id')+ " " );    units: '°C',	colorPlateEnd: "#327ac0",
 });
+GuageMeter={
+	theme: "Green-Gold-Red",
+	text: "0",
+	style: "Arch",
+	text_size: "0.10",
+	append: "°C",
+	percent: "null",
+	size: 140,
+	width: 10,
+	back: "null",
+	label: $( this ).attr('id'),
+	animate_gauge_colors: false,
+	animate_text_colors:  false,
+	label_color: "Blue"
+	//showvalue: true
+	//color: "White",
+	//label_color: "White"
+};
+/*
+$(".GaugeMeter1H").each(function(index){
+	$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter(GuageMeter);
+});
+	
+$(".GaugeMeter1P").each(function(index){
+
+	$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter(GuageMeter);
+});*/
+
+//GuageMeter.animationstep=true;
+//GuageMeter.animate_gauge_colors=true;
+//GuageMeter.animate_text_colors=true;
+//GuageMeter.back="#DCDCDC"
+GuageMeter.label = "Влажн-ь"
+GuageMeter.text_size = "0.12";
+GuageMeter.append = "%";
+$(".GaugeMeter1H").gaugeMeter(GuageMeter);
+GuageMeter.append = "%";
+GuageMeter.label = "Кач.Возд."
+//GuageMeter.back="#DCDCDC"
+$(".GaugeMeter1AQ").gaugeMeter(GuageMeter);
+$(".GaugeMeterAQ").gaugeMeter(GuageMeter);
+//GuageMeter.back="#DCDCDC"
+GuageMeter.append = "%";
+GuageMeter.label = "Влажн-ь"
+$(".GaugeMeterH").gaugeMeter(GuageMeter);
+//GuageMeter.back="#DCDCDC"
+GuageMeter.append = "ммРт";
+GuageMeter.label = "Давл-е"
+//GuageMeter.theme="White";
+GuageMeter.fill="#21B4F9";
+$(".GaugeMeterP").gaugeMeter(GuageMeter);
+$(".GaugeMeter1P").gaugeMeter(GuageMeter);
+//GuageMeter.back="#DCDCDC"
+
+//GuageMeter.back="#DCDCDC"
+//$( "div:has(.GaugeMeter1T)").addClass("bd_fail");.fadeOut(1000)
+//$( ".GaugeMeter1T").addClass("bd_fail");
+//$( ".GaugeMeter1T" ).find('bd_fail').fadeIn(1000);
+	
+//$(".GaugeMeter").gaugeMeter(GuageMeter);
 
 if(WSsocket.readyState!=1)
 {
