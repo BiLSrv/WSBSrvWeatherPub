@@ -123,7 +123,8 @@ $("canvas[data-type='linear-gauge']").each(function(index){
 	animationDuration: 250
 }).draw());
 });
-
+try
+{
 $("canvas[data-type='radial-gauge']").each(function(index){	
 	
 	if($(this).attr('class')=="canvasP1")
@@ -174,6 +175,13 @@ $("canvas[data-type='radial-gauge']").each(function(index){
 }).draw());
 	console.log(CanvGaugeArrR);
 });
+}
+catch (e) {
+		console.log(e.message);
+		console.log(CanvGaugeArrR);
+		return 0;
+}
+	
 	//console.log( String($(this).attr('id')) + ": " + $( this ).text() + $( this ).attr('id')+ " " );    units: '°C',	colorPlateEnd: "#327ac0",
 WSsocket = new WebSocket(gateway);
 
