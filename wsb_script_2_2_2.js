@@ -1,4 +1,4 @@
-// upda4a4
+// upda4a5
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -13,9 +13,11 @@ mds = $(".macnt");
 sets = $(".setcnt");
 cnftmp = $(".scntf");
 	
-var CanvGaugeArrL = [];
-var CanvGaugeArrR = [];
+var CanvGaugeArrT = [];
+var CanvGaugeArrP = [];
+var CanvGaugeArrH = [];
 var CanvGaugeArrOther = [];
+var CanvGaugeArrOtherT = [];
 	
 //$(document).ready(function() {
 var gateway = 'wss://wsb.bilymo.keenetic.pro/ws'
@@ -95,7 +97,7 @@ WSsocket = new WebSocket(gateway);
 console.log("mainOBJ"+maOBJ);
 // Canvas .each Default Settings 
 $("canvas[data-type='linear-gauge']").each(function(index){	
-    CanvGaugeArrL.push(new LinearGauge({
+    CanvGaugeArrT.push(new LinearGauge({
     renderTo: $( this ).attr('id'),
     width: 100,
     height: 300,
@@ -134,7 +136,7 @@ $("canvas[data-type='radial-gauge']").each(function(index){
 	if($(this).attr('class')=="canvasP1")
 	{
 	unit="ммРст"
-    CanvGaugeArrR.push(new RadialGauge({
+    CanvGaugeArrP.push(new RadialGauge({
 	renderTo: $( this ).attr('id'),
     title: String($(this).attr('id')),
     width: 150,
@@ -180,7 +182,7 @@ $("canvas[data-type='radial-gauge']").each(function(index){
 	if($(this).attr('class')=="canvasH1")
 	{
 	unit="%"
-    CanvGaugeArrR.push(new RadialGauge({
+    CanvGaugeArrH.push(new RadialGauge({
 	renderTo: $( this ).attr('id'),
     title: String($(this).attr('id')),
     width: 150,
@@ -227,7 +229,7 @@ $("canvas[data-type='radial-gauge']").each(function(index){
 if($(this).attr('id')=="GauAvTemp")
 {
 	unit="%"
-    CanvGaugeArrOther.push(new RadialGauge({
+    CanvGaugeArrOtherT.push(new RadialGauge({
 	renderTo: $( this ).attr('id'),
     title: String($(this).attr('id')),
     width: 150,
@@ -263,8 +265,10 @@ if($(this).attr('id')=="GauAvTemp")
 }).draw());
 }
 	
-if($(this).attr('id')=="GauAvHum" || $(this).attr('id')=="GauAirQ" || $(this).attr('id')=="bme680_gr" || $(this).attr('id')=="ens160_tvoc" || $(this).attr('id')=="ens160_eco2" || $(this).attr('id')=="ens160_AIQ")
+if($(this).attr('id')=="GauAvHum" || $(this).attr('id')=="GauAirQ" || $(this).attr('id')=="bme680_gr" || $(this).attr('id')=="ens160_tvoc" || $(this).attr('id')=="ens160_eco2" || $(this).attr('id')=="ens160_AIQ" || $(this).attr('id') == "GauAvPress")
 {
+	unit = "%";
+	
     CanvGaugeArrOther.push(new RadialGauge({
 	renderTo: $( this ).attr('id'),
     title: String($(this).attr('id')),
@@ -308,57 +312,10 @@ if($(this).attr('id')=="GauAvHum" || $(this).attr('id')=="GauAirQ" || $(this).at
 }).draw());
 }
 	
-	
-if($(this).attr('id')=="GauAvPress")
-{
-	unit="ммРст"
-    CanvGaugeArrOther.push(new RadialGauge({
-	renderTo: $( this ).attr('id'),
-    title: String($(this).attr('id')),
-    width: 150,
-    height: 150,
-    units: unit,
-    minValue: 0,
-    maxValue: 770,
-    majorTicks: [
-        "0",
-        "200",
-        "300",
-        "400",
-        "500",
-        "600",
-        "700",
-        "740",
-        "750",
-        "760",
-        "770"
-    ],
-    minorTicks: 10,
-    strokeTicks: true,
-    highlights: [
-        {
-            "from": 749,
-            "to": 750,
-            "color": "rgba(200, 50, 50, .75)"
-        }
-    ],
-    colorPlate: "#fff",
-    borderShadowWidth: 0,
-    borders: false,
-    needleType: "arrow",
-    needleWidth: 2,
-    needleCircleSize: 7,
-    needleCircleOuter: true,
-    needleCircleInner: false,
-    animationDuration: 1500,
-    animationRule: "linear"
-	}).draw());
+
 }
 	
-	
-	
-	
-	console.log(CanvGaugeArrR[index]);
+	console.log("CanvGaugeArrOther "+CanvGaugeArrOther[index]);
 });
 }
 catch (e) {
@@ -667,7 +624,7 @@ if (json_data["sensors"])
 {
 //try {
 	$("canvas[data-type='linear-gauge']").each(function(index){
-		console.log(CanvGaugeArrL[index]," ind ",index," class ",$(this).attr('class'));
+		console.log(CanvGaugeArrT[index]," ind ",index," class ",$(this).attr('class'));
 		CanvGaugeArrL[index].update({ value: parseFloat(json_data.sensors[index]) });
 		if(index>8)
 		{return false;}
@@ -679,14 +636,14 @@ if (json_data["sensors"])
 		
 		if($(this).attr('class')=="canvasH1")
 		{
-			console.log(CanvGaugeArrR[index]," indH ",index," class ",$(this).attr('class'));
+			console.log(CanvGaugeArrH[index]," indH ",index," class ",$(this).attr('class'));
 			CanvGaugeArrR[index].update({ value: parseFloat(json_data.sensors[index+10])});
 		}
 	});
 	$("canvas[data-type='radial-gauge']").each(function(index){
 		if($(this).attr('class')=="canvasP1")
 		{
-			console.log(CanvGaugeArrR[index]," indP ",index," class ",$(this).attr('class'));
+			console.log(CanvGaugeArrP[index]," indP ",index," class ",$(this).attr('class'));
 		Pdat = (parseFloat(json_data.sensors[index+17])*0.750062).toFixed(2);
 			CanvGaugeArrR[index].update({ value: Pdt});
 		}
