@@ -1,4 +1,4 @@
-// upda4a2
+// upda4a3
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -129,15 +129,16 @@ try
 {
 $("canvas[data-type='radial-gauge']").each(function(index){	
 	
-	//if($(this).attr('class')=="canvasP1")
-	//{unit="ммРст"}
-	//if($(this).attr('class')=="canvasH1")
-	//{unit="%"}
-	//else
-	unit="ppm"
+	if($(this).attr('class')=="canvasP1")
+	{unit="ммРст"}
+	if($(this).attr('class')=="canvasH1")
+	{unit="%"}
+	else
+		unit="ppm"
 	
     CanvGaugeArrR.push(new RadialGauge({
-    title: $(this).attr('id'),
+	renderTo: $( this ).attr('id'),
+    title: String($(this).attr('id')),
     width: 150,
     height: 150,
     units: unit,
