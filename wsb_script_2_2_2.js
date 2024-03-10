@@ -86,9 +86,11 @@ function refr_rtc() {
 
 
 $('body').delay(500).queue(function() {
-	
+WSsocket = new WebSocket(gateway);
     //$(this).load('myPage.php');
-console.log("mainOBJ"+mds);
+	maOBJ = $('*');
+	
+console.log("mainOBJ"+maOBJ);
 // Canvas .each Default Settings 
 $("canvas[data-type='linear-gauge']").each(function(index){	
     CanvGaugeArrL.push(new LinearGauge({
@@ -183,14 +185,14 @@ catch (e) {
 }
 	
 	//console.log( String($(this).attr('id')) + ": " + $( this ).text() + $( this ).attr('id')+ " " );    units: '°C',	colorPlateEnd: "#327ac0",
-WSsocket = new WebSocket(gateway);
+
 
 if(WSsocket.readyState!=1)
 {
 	initWebSocket();
 }
 
-maOBJ = $('*');
+
 
 	
 }); 
