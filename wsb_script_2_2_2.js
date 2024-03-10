@@ -1,4 +1,4 @@
-// upda4a3
+// upda4a4
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -543,11 +543,13 @@ if (json_data["sensors"])
 		//console.log(CanvGaugeArr[index]," ind ",index);
 		if($(this).attr('class')=="canvasH1")
 		{
-			CanvGaugeArrR[index].update({ value: parseFloat(json_data.sensors[index])});
+			CanvGaugeArrR[index].update({ value: parseFloat(json_data.sensors[index+10])});
 		}
 		if($(this).attr('class')=="canvasP1")
 		{
 		Pdat = (parseFloat(json_data.sensors[index+17])*0.750062).toFixed(2);
+			CanvGaugeArrR[index].update({ value: Pdt});
+		}
 		//if(Math.round(Pdat)>750)
 		//{
 		//	Pdt=750-(Pdat-750);
@@ -556,8 +558,9 @@ if (json_data["sensors"])
 		//{
 		//	Pdt=750-(750-Pdat);
 		//}
-			CanvGaugeArrR[index].update({ value: Pdt});
-		}
+		
+		//if(index>7)
+		//{return true;}
 	});
 	
 	/*for(var i=0;i<GuageMeterOBJ.length;i++)
