@@ -712,10 +712,8 @@ if (json_data["sensors"])
 		GuageMeter.percent=parseInt(json_data.sensors[i+18],10)/100;
 		console.log($(GuageMeterOBJ[i].attr('class')));
 		$(GuageMeterOBJ[i].attr('class')).gaugeMeter(GuageMeter);
-	}*/
-} 
+	}*/ 
 
-}
 //} 
 /*catch (err) 
 {throw BreakError;	
