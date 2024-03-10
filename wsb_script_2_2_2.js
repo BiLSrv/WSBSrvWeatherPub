@@ -622,7 +622,7 @@ if (json_data["sensors"])
 //try {
 	$("canvas[data-type='linear-gauge']").each(function(index){
 		console.log(CanvGaugeArrT[index]," ind ",index," class ",$(this).attr('class'));
-		CanvGaugeArrL[index].update({ value: parseFloat(json_data.sensors[index]) });
+		CanvGaugeArrT[index].update({ value: parseFloat(json_data.sensors[index]) });
 		if(index>8)
 		{return false;}
 	});
