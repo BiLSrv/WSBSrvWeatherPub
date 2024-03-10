@@ -129,12 +129,12 @@ try
 {
 $("canvas[data-type='radial-gauge']").each(function(index){	
 	
-	if($(this).attr('class')=="canvasP1")
-	{unit="ммРст"}
-	else if($(this).attr('class')=="canvasH1")
-	{unit="%"}
-	else
-	{unit="ppm"}
+	//if($(this).attr('class')=="canvasP1")
+	//{unit="ммРст"}
+	//if($(this).attr('class')=="canvasH1")
+	//{unit="%"}
+	//else
+	unit="ppm"
 	
     CanvGaugeArrR.push(new RadialGauge({
     title: $(this).attr('id'),
