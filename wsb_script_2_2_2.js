@@ -543,7 +543,7 @@ if (json_data["sensors"])
 		
 		if($(this).attr('class')=="canvasH1")
 		{
-			console.log(CanvGaugeArrR[index]," indL ",index);
+			console.log(CanvGaugeArrR[index]," indL ",index," class ",$(this).attr('class'));
 			CanvGaugeArrR[index].update({ value: parseFloat(json_data.sensors[index+10])});
 		}
 		if($(this).attr('class')=="canvasP1")
