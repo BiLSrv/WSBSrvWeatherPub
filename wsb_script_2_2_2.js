@@ -477,7 +477,7 @@ else
 //	2.2 Times from mcu
 //
 	
-$('.mcu_tus').text((parseFloat(json_data.time[0])*10^-6).toString());
+$('.mcu_tus').text((parseFloat(json_data.time[0])).toString());
 $('.ptime').text(json_data.time[1].toString());
 	
 //
