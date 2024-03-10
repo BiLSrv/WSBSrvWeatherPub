@@ -173,7 +173,7 @@ $("canvas[data-type='radial-gauge']").each(function(index){
     animationDuration: 1500,
     animationRule: "linear"
 }).draw());
-	console.log(CanvGaugeArrR);
+	console.log(CanvGaugeArrR[index]);
 });
 }
 catch (e) {
