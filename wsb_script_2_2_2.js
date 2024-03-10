@@ -311,10 +311,7 @@ if($(this).attr('id')=="GauAvHum" || $(this).attr('id')=="GauAirQ" || $(this).at
     animationRule: "linear"
 }).draw());
 }
-	
 
-}
-	
 	console.log("CanvGaugeArrOther "+CanvGaugeArrOther[index]);
 });
 }
