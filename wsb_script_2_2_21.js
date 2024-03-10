@@ -555,7 +555,6 @@ $($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:GuageMeter.text,a
 		else if(Math.round(Pdat)<750)
 		{
 			Pdt=750-(750-Pdat);
-			
 		}
 		
 		GuageMeter.append="ммРтст";

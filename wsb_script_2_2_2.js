@@ -273,7 +273,7 @@ if($(this).attr('class')=="canvasP1")
 }).draw());
 	 }
 	else
-		unit="ppm"
+		unit="%"
 	
 	
 	
@@ -720,7 +720,7 @@ if (json_data["sensors"])
 {
 //try {
 	$("canvas[data-type='linear-gauge']").each(function(index){
-		console.log(CanvGaugeArrL[index]," ind ",index);
+		console.log(CanvGaugeArrL[index]," ind ",index," class ",$(this).attr('class'));
 		CanvGaugeArrL[index].update({ value: parseFloat(json_data.sensors[index]) });
 		if(index>8)
 		{return false;}
