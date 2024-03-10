@@ -134,8 +134,8 @@ $("canvas[data-type='radial-gauge']").each(function(index){
 	
     CanvGaugeArrR.push(new RadialGauge({
     renderTo: $(this).attr('id'),
-    width: 50,
-    height: 50,
+    width: 150,
+    height: 150,
     units: unit,
     minValue: 0,
     maxValue: 100,
@@ -172,6 +172,7 @@ $("canvas[data-type='radial-gauge']").each(function(index){
     animationDuration: 1500,
     animationRule: "linear"
 }).draw());
+	console.log(CanvGaugeArrR);
 });
 	//console.log( String($(this).attr('id')) + ": " + $( this ).text() + $( this ).attr('id')+ " " );    units: '°C',	colorPlateEnd: "#327ac0",
 

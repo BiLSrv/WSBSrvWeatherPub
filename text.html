@@ -128,11 +128,6 @@ body
 
 
 </head>
-<body>
-<br>
-<!--upd1 3.3a		view-source:https://bilsrv.github.io/WSBSrvWeatherPub/WSB_page_main.html		-->
-<meta charset="utf-8">
-<br>
 <form>
 <div class="col-xs-3 mb-2 offset-lg-1 col-lg-3 offset-md-1 offset-sm-1 offset-1 col-5 col-sm-4 col-md-4 col-xl-3 px-2">
 <button type="button" id="btn0" class="btn btn-primary" onclick="sub_init()">Открыть соед</button>
@@ -160,27 +155,27 @@ body
 <div class="container row text-center">
 					<p class="h5 modal-title text-center">Датчик LM75_1 и Датчик LM75_2</p>			  
 					<div class="col-auto">
-					<canvas class="canvasT" id="lm75_t1"></canvas>
+					<canvas data-type="linear-gauge" class="canvasT" id="lm75_t1"></canvas>
 					<label class="form-check-label" id="lm75_t1_lbl" for="lm75_t1_chk">Зап 1: <input class="form-check-input" id="lm75_t1_chk" type="checkbox"></label>	
 					</div>
 					<div class="col-auto">
-					<canvas class="canvasT" id="lm75_t2"></canvas>
+					<canvas data-type="linear-gauge" class="canvasT" id="lm75_t2"></canvas>
 					<label class="form-check-label" id="lm75_t2_lbl" for="lm75_t2_chk">Зап 2:<input class="form-check-input" id="lm75_t2_chk" type="checkbox"></label>
 	</div>
 </div>
 <div class="container row text-center">
 				<p class="h5 modal-title text-center">Датчики BME280</p>
 					<div class="col-auto">
-					<canvas class="canvasT" id="bme280_1t"></canvas>
+					<canvas data-type="linear-gauge" class="canvasT" id="bme280_1t"></canvas>
 					</div>
 					<div class="col-auto">
-					<canvas class="canvasT" id="bme280_2t"></canvas>
+					<canvas data-type="linear-gauge" class="canvasT" id="bme280_2t"></canvas>
 					</div>
 					<div class="col-auto">
-					<canvas class="canvasT" id="sht35t"></canvas>
+					<canvas data-type="linear-gauge" class="canvasT" id="sht35t"></canvas>
 					</div>
 					<div class="col-auto">
-					<canvas class="canvasT" id="sht41t"></canvas>
+					<canvas data-type="linear-gauge" class="canvasT" id="sht41t"></canvas>
 					</div>
 </div>
 <div class="container row text-center">
@@ -231,16 +226,16 @@ body
 <div class="container row text-center">
 				<p class="h5 modal-title text-center">Датчик BME680</p>
 					<div class="col-auto">
-					<canvas class="canvasT" id="bme680_1t"></canvas>
+					<canvas data-type="linear-gauge" class="canvasT" id="bme680_1t"></canvas>
 					</div>
 					<div class="col-auto">
-					<canvas class="canvasT" id="aht21_t"></canvas>
+					<canvas data-type="linear-gauge" class="canvasT" id="aht21_t"></canvas>
 					</div>
 					<div class="col-auto">
-					<canvas class="canvasT" id="ens160_t"></canvas>
+					<canvas data-type="linear-gauge" class="canvasT" id="ens160_t"></canvas>
 					</div>
 					<div class="col-auto">
-					<canvas class="canvasT" id="lpshw_t"></canvas>
+					<canvas data-type="linear-gauge" class="canvasT" id="lpshw_t"></canvas>
 					</div>
 </div>
 <div class="container row text-center">
@@ -314,48 +309,17 @@ body
 </form>
 
 
-<script>
-// upda3a2
-// https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
-// reverse panelki dlya debug 
-var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
-var httpd_cmd = 
-{
-	content_type: "application/json",
-	command: ["get_data","get_sens"],
-	CRC32: "ANY"
-}
-sds = $(".sideset");
-mds = $(".macnt");
-sets = $(".setcnt");
-cnftmp = $(".scntf");
-	
-var CanvGaugeArr = [];
-	
-//$(document).ready(function() {
-var gateway = 'wss://wsb.bilymo.keenetic.pro/ws'
-/*
-var gateway = 
-{
-		//gw:'wss://wsb.bilymo.keenetic.pro/ws',
-		gw:'ws://wsb.bilymo.keenetic.pro/ws',
-		timeout:2000,
-		attempts: 60,		
-		dataType: 'json',
-		protocol:''
-};
-*/
-var WSsocket;
-var GuageMeter;
 
+<script>
+var CanvGaugeArrL = [];
+var CanvGaugeArrR = [];
 
 $('body').delay(500).queue(function() {
 	
     //$(this).load('myPage.php');
-WSsocket = new WebSocket(gateway);
 // Canvas .each Default Settings 
-$('canvas').each(function(index){	
-    CanvGaugeArr.push(new LinearGauge({
+$("canvas[data-type='linear-gauge']").each(function(index){	
+    CanvGaugeArrL.push(new LinearGauge({
     renderTo: $( this ).attr('id'),
     width: 100,
     height: 300,
@@ -386,101 +350,59 @@ $('canvas').each(function(index){
 	animationRule: 'elastic',
 	animationDuration: 250
 }).draw());
-	//console.log( String($(this).attr('id')) + ": " + $( this ).text() + $( this ).attr('id')+ " " );    units: '°C',	colorPlateEnd: "#327ac0",
 });
-GuageMeter={
-	theme: "null",
-	text: "0",
-	style: "Arch",
-	text_size: "0.10",
-	append: "°C",
-	percent: "%",
-	size: 120,
-	width: 10,
-	back: "null",
-	//label: $( this ).attr('id'),
-	animate_gauge_colors: false,
-	animate_text_colors:  false,
-	label_color: "Blue"
-	//showvalue: true
-	//color: "White",
-	//label_color: "White"
-};
 
-
-GuageMeter.label = "Влажн-ь";
-
-GuageMeter.text_size = "0.15";
-GuageMeter.append = "%";
-//$(".GaugeMeter1H").gaugeMeter(GuageMeter);
-
-GuageMeter.append = "%";
-GuageMeter.label = "Кач.Возд."
-//GuageMeter.back="#DCDCDC"
-//$(".GaugeMeter1AQ").gaugeMeter(GuageMeter);
-$(".GaugeMeterAQ").gaugeMeter(GuageMeter);
-//GuageMeter.back="#DCDCDC"
-
-
-$(".GaugeMeterH").gaugeMeter(GuageMeter);
-//GuageMeter.back="#DCDCDC"
-GuageMeter.append = "ммРт";
-GuageMeter.label = "Давл-е"
-
-GuageMeter.fill="#21B4F9";
-$(".GaugeMeterP").gaugeMeter(GuageMeter);
-//$(".GaugeMeter1P").gaugeMeter(GuageMeter);
-
-// GaugeMeter1H 
-GuageMeter.text = "50";
-GuageMeter.append = "%";
-GuageMeter.label = "Влажн-ь"
-GuageMeter.theme = "Green-Gold-Red";
-
-$(".GaugeMeter1H").gaugeMeter(GuageMeter);
-//{theme:GuageMeter.theme,size:GuageMeter.size,label:GuageMeter.label,style:GuageMeter.style}
-//$(".GaugeMeter1H").gaugeMeter({append:GuageMeter.append});
-
-$(".GaugeMeter1H").each(function(index){
-		console.log(("."+$(this).attr('class').split(" ")[index])+" "+("."+$(this).attr('class').split(" ")[1]));
-		//GuageMeter.percent=parseInt(json_data.sensors[index+10],10);
-//$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({percent:80});
-
-//$($("."+$(this).attr('class').split(" ")[0])).gaugeMeter({append:GuageMeter.append,width:GuageMeter.width,label:GuageMeter.label,size:GuageMeter.size,text_size:GuageMeter.text_size});
-
-$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:GuageMeter.text,append:GuageMeter.append,percent:50});
-//$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:"33",percent:80});
-//$($("."+$(this).attr('class').split(" ")[0])).gaugeMeter(GuageMeter);
-
-
-//$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter(GuageMeter);
-		if(index>7)
-		{return true;}
-	});
-	//console.log("GaugeMeter1P");
-	//GuageMeterOBJ = $(".GaugeMeter1P").get();
-	//console.log(GuageMeterOBJ);
-/*	
-	$(".GaugeMeter1P").each(function(index){
-		Pdat = (parseFloat(json_data.sensors[index+17])*0.750062).toFixed(2);
-		//GuageMeter.text=Pdat.toString();
-		
-		if(Math.round(Pdat)>750)
-		{
-			Pdt=750-(Pdat-750);
-		}
-		else if(Math.round(Pdat)<750)
-		{
-			Pdt=750-(750-Pdat);
-		}
-$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:Pdat.toString(),percent:33});
-		console.log(33);
-		if(index>3)
-		{return true;}
-		
-});*/
-
+$("canvas[data-type='radial-gauge']").each(function(index){	
 	
+	if($(this).attr('class')=="canvasP1")
+	{unit="ммРст"}
+	else
+	{unit="%"}
+	
+	
+    CanvGaugeArrR.push(new RadialGauge({
+    renderTo: $(this).attr('id'),
+    width: 150,
+    height: 150,
+    units: unit,
+    minValue: 0,
+    maxValue: 100,
+    majorTicks: [
+        "0",
+        "10",
+        "20",
+        "30",
+        "40",
+        "50",
+        "60",
+        "70",
+        "80",
+        "90",
+        "100"
+    ],
+    minorTicks: 5,
+    strokeTicks: true,
+    highlights: [
+        {
+            "from": 60,
+            "to": 100,
+            "color": "rgba(200, 50, 50, .75)"
+        }
+    ],
+    colorPlate: "#fff",
+    borderShadowWidth: 0,
+    borders: false,
+    needleType: "arrow",
+    needleWidth: 2,
+    needleCircleSize: 7,
+    needleCircleOuter: true,
+    needleCircleInner: false,
+    animationDuration: 1500,
+    animationRule: "linear"
+}).draw());
+	console.log(CanvGaugeArrR);
+});
+
 }); 
 	
 window.onload = function () {
