@@ -88,7 +88,7 @@ function refr_rtc() {
 $('body').delay(500).queue(function() {
 	
     //$(this).load('myPage.php');
-console.log("mainOBJ"+mds.get());
+console.log("mainOBJ"+mds);
 // Canvas .each Default Settings 
 $("canvas[data-type='linear-gauge']").each(function(index){	
     CanvGaugeArrL.push(new LinearGauge({
