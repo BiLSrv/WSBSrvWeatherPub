@@ -89,7 +89,7 @@ $('body').delay(500).queue(function() {
 WSsocket = new WebSocket(gateway);
     //$(this).load('myPage.php');
 	maOBJ = $('*');
-	
+	unit="";
 console.log("mainOBJ"+maOBJ);
 // Canvas .each Default Settings 
 $("canvas[data-type='linear-gauge']").each(function(index){	
@@ -133,6 +133,8 @@ $("canvas[data-type='radial-gauge']").each(function(index){
 	{unit="ммРст"}
 	else if($(this).attr('class')=="canvasH1")
 	{unit="%"}
+	else
+	{unit="ppm"}
 	
     CanvGaugeArrR.push(new RadialGauge({
     title: $(this).attr('id'),
