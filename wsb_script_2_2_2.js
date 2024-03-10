@@ -691,6 +691,7 @@ if (json_data["sensors"])
 			CanvGaugeArrR[index].update({ value: Pdt});
 		}
 	});
+}
 		//if(Math.round(Pdat)>750)
 		//{
 		//	Pdt=750-(Pdat-750);
@@ -702,7 +703,7 @@ if (json_data["sensors"])
 		
 		//if(index>7)
 		//{return true;}
-	});
+};
 	
 	/*for(var i=0;i<GuageMeterOBJ.length;i++)
 	{
