@@ -15,6 +15,7 @@ cnftmp = $(".scntf");
 	
 var CanvGaugeArrL = [];
 var CanvGaugeArrR = [];
+var CanvGaugeArrOther = [];
 	
 //$(document).ready(function() {
 var gateway = 'wss://wsb.bilymo.keenetic.pro/ws'
@@ -90,6 +91,7 @@ WSsocket = new WebSocket(gateway);
     //$(this).load('myPage.php');
 	maOBJ = $('*');
 	unit="";
+	tmpi=0;
 console.log("mainOBJ"+maOBJ);
 // Canvas .each Default Settings 
 $("canvas[data-type='linear-gauge']").each(function(index){	
@@ -222,6 +224,193 @@ $("canvas[data-type='radial-gauge']").each(function(index){
     animationRule: "linear"
 }).draw());
 	 }
+	
+	
+	
+if($(this).attr('class')=="canvasP1")
+{
+	unit="ммРст"
+    CanvGaugeArrR.push(new RadialGauge({
+	renderTo: $( this ).attr('id'),
+    title: String($(this).attr('id')),
+    width: 150,
+    height: 150,
+    units: unit,
+    minValue: 0,
+    maxValue: 770,
+    majorTicks: [
+        "0",
+        "200",
+        "300",
+        "400",
+        "500",
+        "600",
+        "700",
+        "740",
+        "750",
+        "760",
+        "770"
+    ],
+    minorTicks: 10,
+    strokeTicks: true,
+    highlights: [
+        {
+            "from": 749,
+            "to": 750,
+            "color": "rgba(200, 50, 50, .75)"
+        }
+    ],
+    colorPlate: "#fff",
+    borderShadowWidth: 0,
+    borders: false,
+    needleType: "arrow",
+    needleWidth: 2,
+    needleCircleSize: 7,
+    needleCircleOuter: true,
+    needleCircleInner: false,
+    animationDuration: 1500,
+    animationRule: "linear"
+}).draw());
+	 }
+	else
+		unit="ppm"
+	
+	
+	
+if($(this).attr('id')=="GauAvTemp")
+{
+	unit="%"
+    CanvGaugeArrOther.push(new RadialGauge({
+	renderTo: $( this ).attr('id'),
+    title: String($(this).attr('id')),
+    width: 150,
+    height: 150,
+    units: unit,
+    minValue: -50,
+    maxValue: 50,
+	majorTicks:	['-50','-40','-30','-20','-10','0','10','20','30','40','50'],
+    minorTicks: 5,
+    strokeTicks: true,
+    highlights: [
+        {
+            "from": -50,
+            "to": 0,
+            "color": "rgba(0,0, 255, .3)"
+        },
+        {
+            "from": 0,
+            "to": 50,
+            "color": "rgba(255, 0, 0, .3)"
+        }
+    ],
+    colorPlate: "#fff",
+    borderShadowWidth: 0,
+    borders: false,
+    needleType: "arrow",
+    needleWidth: 2,
+    needleCircleSize: 7,
+    needleCircleOuter: true,
+    needleCircleInner: false,
+    animationDuration: 1500,
+    animationRule: "linear"
+}).draw());
+}
+	
+if($(this).attr('id')=="GauAvHum" || $(this).attr('id')=="GauAirQ" || $(this).attr('id')=="bme680_gr" || $(this).attr('id')=="ens160_tvoc" || $(this).attr('id')=="ens160_eco2" || $(this).attr('id')=="ens160_AIQ")
+{
+    CanvGaugeArrOther.push(new RadialGauge({
+	renderTo: $( this ).attr('id'),
+    title: String($(this).attr('id')),
+    width: 150,
+    height: 150,
+    units: unit,
+    minValue: 0,
+    maxValue: 100,
+    majorTicks: [
+        "0",
+        "10",
+        "20",
+        "30",
+        "40",
+        "50",
+        "60",
+        "70",
+        "80",
+        "90",
+        "100"
+    ],
+    minorTicks: 5,
+    strokeTicks: true,
+    highlights: [
+        {
+            "from": 60,
+            "to": 100,
+            "color": "rgba(200, 50, 50, .75)"
+        }
+    ],
+    colorPlate: "#fff",
+    borderShadowWidth: 0,
+    borders: false,
+    needleType: "arrow",
+    needleWidth: 2,
+    needleCircleSize: 7,
+    needleCircleOuter: true,
+    needleCircleInner: false,
+    animationDuration: 1500,
+    animationRule: "linear"
+}).draw());
+}
+	
+	
+if($(this).attr('id')=="GauAvPress")
+{
+	unit="ммРст"
+    CanvGaugeArrOther.push(new RadialGauge({
+	renderTo: $( this ).attr('id'),
+    title: String($(this).attr('id')),
+    width: 150,
+    height: 150,
+    units: unit,
+    minValue: 0,
+    maxValue: 770,
+    majorTicks: [
+        "0",
+        "200",
+        "300",
+        "400",
+        "500",
+        "600",
+        "700",
+        "740",
+        "750",
+        "760",
+        "770"
+    ],
+    minorTicks: 10,
+    strokeTicks: true,
+    highlights: [
+        {
+            "from": 749,
+            "to": 750,
+            "color": "rgba(200, 50, 50, .75)"
+        }
+    ],
+    colorPlate: "#fff",
+    borderShadowWidth: 0,
+    borders: false,
+    needleType: "arrow",
+    needleWidth: 2,
+    needleCircleSize: 7,
+    needleCircleOuter: true,
+    needleCircleInner: false,
+    animationDuration: 1500,
+    animationRule: "linear"
+	}).draw());
+}
+	
+	
+	
+	
 	console.log(CanvGaugeArrR[index]);
 });
 }
