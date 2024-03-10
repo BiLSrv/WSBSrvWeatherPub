@@ -531,7 +531,7 @@ if (json_data["sensors"])
 {
 //try {
 	$("canvas[data-type='linear-gauge']").each(function(index){
-		//console.log(CanvGaugeArr[index]," ind ",index);
+		console.log(CanvGaugeArrL[index]," ind ",index);
 		CanvGaugeArrL[index].update({ value: parseFloat(json_data.sensors[index]) });
 		if(index>8)
 		{return false;}
@@ -540,7 +540,7 @@ if (json_data["sensors"])
 
 	
 	$("canvas[data-type='radial-gauge']").each(function(index){
-		//console.log(CanvGaugeArr[index]," ind ",index);
+		console.log(CanvGaugeArrR[index]," ind ",index);
 		if($(this).attr('class')=="canvasH1")
 		{
 			CanvGaugeArrR[index].update({ value: parseFloat(json_data.sensors[index+10])});
