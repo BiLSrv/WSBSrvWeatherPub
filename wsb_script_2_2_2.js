@@ -686,7 +686,7 @@ if (json_data["sensors"])
 	$("canvas[data-type='radial-gauge']").each(function(index){
 		if($(this).attr('class')=="canvasP1")
 		{
-			console.log(CanvGaugeArrR[index]," indR ",index);
+			console.log(CanvGaugeArrR[index]," indR ",index," class ",$(this).attr('class'));
 		Pdat = (parseFloat(json_data.sensors[index+17])*0.750062).toFixed(2);
 			CanvGaugeArrR[index].update({ value: Pdt});
 		}
