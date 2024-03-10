@@ -682,12 +682,15 @@ if (json_data["sensors"])
 			console.log(CanvGaugeArrR[index]," indL ",index," class ",$(this).attr('class'));
 			CanvGaugeArrR[index].update({ value: parseFloat(json_data.sensors[index+10])});
 		}
+	});
+	$("canvas[data-type='radial-gauge']").each(function(index){
 		if($(this).attr('class')=="canvasP1")
 		{
 			console.log(CanvGaugeArrR[index]," indR ",index);
 		Pdat = (parseFloat(json_data.sensors[index+17])*0.750062).toFixed(2);
 			CanvGaugeArrR[index].update({ value: Pdt});
 		}
+	});
 		//if(Math.round(Pdat)>750)
 		//{
 		//	Pdt=750-(Pdat-750);
