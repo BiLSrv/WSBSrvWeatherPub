@@ -176,8 +176,6 @@ $("canvas[data-type='radial-gauge']").each(function(index){
     animationRule: "linear"
 }).draw());
 	 }
-	else
-		unit="ppm"
 	
 	if($(this).attr('class')=="canvasH1")
 	{
@@ -222,60 +220,9 @@ $("canvas[data-type='radial-gauge']").each(function(index){
     needleCircleInner: false,
     animationDuration: 1500,
     animationRule: "linear"
-}).draw());
-	 }
-	
-	
-	
-if($(this).attr('class')=="canvasP1")
-{
-	unit="ммРст"
-    CanvGaugeArrR.push(new RadialGauge({
-	renderTo: $( this ).attr('id'),
-    title: String($(this).attr('id')),
-    width: 150,
-    height: 150,
-    units: unit,
-    minValue: 0,
-    maxValue: 770,
-    majorTicks: [
-        "0",
-        "200",
-        "300",
-        "400",
-        "500",
-        "600",
-        "700",
-        "740",
-        "750",
-        "760",
-        "770"
-    ],
-    minorTicks: 10,
-    strokeTicks: true,
-    highlights: [
-        {
-            "from": 749,
-            "to": 750,
-            "color": "rgba(200, 50, 50, .75)"
-        }
-    ],
-    colorPlate: "#fff",
-    borderShadowWidth: 0,
-    borders: false,
-    needleType: "arrow",
-    needleWidth: 2,
-    needleCircleSize: 7,
-    needleCircleOuter: true,
-    needleCircleInner: false,
-    animationDuration: 1500,
-    animationRule: "linear"
-}).draw());
-	 }
-	else
-		unit="%"
-	
-	
+	}).draw());
+	}
+
 	
 if($(this).attr('id')=="GauAvTemp")
 {
