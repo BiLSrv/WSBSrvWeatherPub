@@ -131,12 +131,11 @@ $("canvas[data-type='radial-gauge']").each(function(index){
 	
 	if($(this).attr('class')=="canvasP1")
 	{unit="ммРст"}
-	else
+	else if($(this).attr('class')=="canvasH1")
 	{unit="%"}
 	
-	
     CanvGaugeArrR.push(new RadialGauge({
-    renderTo: $(this).attr('id'),
+    title: $(this).attr('id'),
     width: 150,
     height: 150,
     units: unit,
@@ -487,35 +486,24 @@ $('.ptime').text(json_data.time[1].toString());
 if (json_data["sensors"]) 
 {
 //try {
-	$('canvas').each(function(index){
+	$("canvas[data-type='linear-gauge']").each(function(index){
 		//console.log(CanvGaugeArr[index]," ind ",index);
-		CanvGaugeArr[index].update({ value: parseFloat(json_data.sensors[index]) });
+		CanvGaugeArrL[index].update({ value: parseFloat(json_data.sensors[index]) });
 		if(index>8)
 		{return false;}
 	});
 	
-	//console.log("GaugeMeter1P");
-	//GuageMeterOBJ = $(".GaugeMeter1H").get();
-	//console.log(GuageMeterOBJ);
-	GuageMeter.append="%";
 
-	$(".GaugeMeter1H").each(function(index){
-		//console.log($(this).attr('id'));
-		GuageMeter.text=parseFloat(json_data.sensors[index+10]).toFixed(2);
-		//GuageMeter.percent=parseInt(json_data.sensors[index+10],10);
-$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:GuageMeter.text,append:GuageMeter.append,percent:parseInt(json_data.sensors[index+10],10)});
-
-		if(index>7)
-		{return true;}
-	});
-	//console.log("GaugeMeter1P");
-	//GuageMeterOBJ = $(".GaugeMeter1P").get();
-	//console.log(GuageMeterOBJ);
 	
-	$(".GaugeMeter1P").each(function(index){
+	$("canvas[data-type='radial-gauge']").each(function(index){
+		//console.log(CanvGaugeArr[index]," ind ",index);
+		if($(this).attr('class')=="canvasH1")
+		{
+			CanvGaugeArrR[index].update({ value: parseFloat(json_data.sensors[index])});
+		}
+		if($(this).attr('class')=="canvasP1")
+		{
 		Pdat = (parseFloat(json_data.sensors[index+17])*0.750062).toFixed(2);
-		//GuageMeter.text=Pdat.toString();
-		
 		if(Math.round(Pdat)>750)
 		{
 			Pdt=750-(Pdat-750);
@@ -523,19 +511,10 @@ $($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:GuageMeter.text,a
 		else if(Math.round(Pdat)<750)
 		{
 			Pdt=750-(750-Pdat);
-			
 		}
-		
-		GuageMeter.append="ммРтст";
-		
-$($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:Pdat.toString(),append:GuageMeter.append,percent:Math.round(Pdt*100/750)});
-
-		console.log(Math.round(Pdt*100/750));
-
-		if(index>3)
-		{return true;}
+			CanvGaugeArrR[index].update({ value: Pdt});
+		}
 	});
-	
 	
 	/*for(var i=0;i<GuageMeterOBJ.length;i++)
 	{
