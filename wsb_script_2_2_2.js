@@ -619,6 +619,9 @@ $('.ptime').text(json_data.time[1].toString());
 //
 if (json_data["sensors"]) 
 {
+	console.log(CanvGaugeArrT);
+	console.log(CanvGaugeArrH);
+	console.log(CanvGaugeArrP);
 //try {
 	$("canvas[data-type='linear-gauge']").each(function(index){
 		console.log(CanvGaugeArrT[index]," ind ",index," class ",$(this).attr('class'));
@@ -633,8 +636,8 @@ if (json_data["sensors"])
 		
 		if($(this).attr('class')=="canvasH1")
 		{
-			if(index>6)
-				return false;
+			//if(index>6)
+			//	return false;
 			console.log(CanvGaugeArrH[index]," indH ",index," class ",$(this).attr('class'));
 			CanvGaugeArrH[index].update({ value: parseFloat(json_data.sensors[index+10])});
 
@@ -648,6 +651,7 @@ if (json_data["sensors"])
 			CanvGaugeArrP[index].update({ value: Pdt});
 		}
 	});
+	
 }
 		//if(Math.round(Pdat)>750)
 		//{
