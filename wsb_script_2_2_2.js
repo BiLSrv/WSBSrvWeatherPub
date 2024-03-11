@@ -113,6 +113,7 @@ WSsocket = new WebSocket(gateway);
 //console.log("mainOBJ"+maOBJ);
 // Canvas .each Default Settings 
 $("canvas[data-type='linear-gauge']").each(function(index){	
+	
     CanvGaugeArrT.push(new LinearGauge({
     renderTo: $( this ).attr('id'),
     width: 100,
@@ -151,6 +152,7 @@ $("canvas[data-type='radial-gauge']").each(function(index){
 	
 	if($(this).attr('class')=="canvasP1")
 	{
+	console.log("Elem "+$(this).attr('class'))
 	unit="ммРст"
     CanvGaugeArrP.push(new RadialGauge({
 	renderTo: $( this ).attr('id'),
@@ -197,6 +199,7 @@ $("canvas[data-type='radial-gauge']").each(function(index){
 	
 	if($(this).attr('class')=="canvasH1")
 	{
+	console.log("Elem "+$(this).attr('class'))
 	unit="%"
     CanvGaugeArrH.push(new RadialGauge({
 	renderTo: $( this ).attr('id'),
@@ -244,6 +247,7 @@ $("canvas[data-type='radial-gauge']").each(function(index){
 	
 if($(this).attr('id')=="GauAvTemp")
 {
+	console.log("Elem "+$(this).attr('class'))
 	unit="%"
     CanvGaugeArrOtherT.push(new RadialGauge({
 	renderTo: $( this ).attr('class'),
@@ -284,7 +288,7 @@ if($(this).attr('id')=="GauAvTemp")
 if($(this).attr('class')=="GauAvHum" || $(this).attr('class')=="GauAirQ" || $(this).attr('class')=="bme680_gr" || $(this).attr('class')=="ens160_tvoc" || $(this).attr('class')=="ens160_eco2" || $(this).attr('class')=="ens160_AIQ" || $(this).attr('class') == "GauAvPress")
 {
 	unit = "%";
-	
+	console.log("Elem "+$(this).attr('class'))
     CanvGaugeArrOther.push(new RadialGauge({
 	renderTo: $( this ).attr('class'),
     title: String($(this).attr('class')),
@@ -331,7 +335,7 @@ if($(this).attr('class')=="GauAvHum" || $(this).attr('class')=="GauAirQ" || $(th
 if($(this).attr('class')=="GauAirQ")
 {
 	unit = "IAQ";
-	
+	console.log("Elem "+$(this).attr('class'))
     CanvGaugeArrOther.push(new RadialGauge({
 	renderTo: $( this ).attr('class'),
     title: String($(this).attr('class')),
