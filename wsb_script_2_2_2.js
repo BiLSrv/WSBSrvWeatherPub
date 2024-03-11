@@ -110,7 +110,7 @@ WSsocket = new WebSocket(gateway);
 	maOBJ = $('*').get();
 	unit="";
 	tmpi=0;
-console.log("mainOBJ"+maOBJ);
+//console.log("mainOBJ"+maOBJ);
 // Canvas .each Default Settings 
 $("canvas[data-type='linear-gauge']").each(function(index){	
     CanvGaugeArrT.push(new LinearGauge({
