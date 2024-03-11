@@ -152,7 +152,7 @@ $("canvas[data-type='radial-gauge']").each(function(index){
 	
 	if($(this).attr('class')=="canvasP1")
 	{
-	console.log("Elem "+$(this).attr('id'))
+	//console.log("Elem "+$(this).attr('id'))
 	unit="ммРст"
     CanvGaugeArrP.push(new RadialGauge({
 	renderTo: $( this ).attr('id'),
@@ -199,7 +199,7 @@ $("canvas[data-type='radial-gauge']").each(function(index){
 	
 	if($(this).attr('class')=="canvasH1")
 	{
-	console.log("Elem "+$(this).attr('id'))
+	//console.log("Elem "+$(this).attr('id'))
 	unit="%"
     CanvGaugeArrH.push(new RadialGauge({
 	renderTo: $( this ).attr('id'),
@@ -247,7 +247,7 @@ $("canvas[data-type='radial-gauge']").each(function(index){
 	
 if($(this).attr('id')=="GauAvTemp")
 {
-	console.log("Elem "+$(this).attr('id'))
+	//console.log("Elem "+$(this).attr('id'))
 	unit="%"
     CanvGaugeArrOtherT.push(new RadialGauge({
 	renderTo: $( this ).attr('id'),
@@ -285,11 +285,10 @@ if($(this).attr('id')=="GauAvTemp")
 }).draw());
 }
 	
-if($(this).attr('id')=="GauAvHum" || $(this).attr('id')=="GauAirQ" || $(this).attr('id')=="bme680_gr" || $(this).attr('id')=="ens160_tvoc" || $(this).attr('id')=="ens160_eco2" || $(this).attr('id')=="ens160_AIQ" || $(this).attr('id') == "GauAvPress")
+if($(this).attr('id')=="GauAvHum" || $(this).attr('id')=="bme680_gr" || $(this).attr('id')=="ens160_tvoc" || $(this).attr('id')=="ens160_eco2" || $(this).attr('id')=="ens160_AIQ" || $(this).attr('id') == "GauAvPress")
 {
 	unit = "%";
-	console.log("Elem "+$(this).attr('id'))
-	
+	//console.log("Elem "+$(this).attr('id'))
     CanvGaugeArrOther.push(new RadialGauge({
 	renderTo: $( this ).attr('id'),
     title: String($(this).attr('id')),
@@ -336,7 +335,7 @@ if($(this).attr('id')=="GauAvHum" || $(this).attr('id')=="GauAirQ" || $(this).at
 if($(this).attr('id')=="GauAirQ")
 {
 	unit = "IAQ";
-	console.log("Elem "+$(this).attr('id'))
+	//console.log("Elem "+$(this).attr('id'))
     CanvGaugeArrOther.push(new RadialGauge({
 	renderTo: $( this ).attr('id'),
     title: String($(this).attr('id')),
@@ -413,7 +412,7 @@ catch (e) {
 		//console.log(CanvGaugeArrR);
 		return 0;
 }
-console.log("CanvGaugeArrOther "+CanvGaugeArrOther);
+//console.log("CanvGaugeArrOther "+CanvGaugeArrOther);
 	
 //console.log( String($(this).attr('id')) + ": " + $( this ).text() + $( this ).attr('id')+ " " );    units: '°C',	colorPlateEnd: "#327ac0",
 
@@ -715,8 +714,8 @@ if (json_data["sensors"])
 {
 	console.log(CanvGaugeArrOther);
 	console.log(CanvGaugeArrOtherT);
-	console.log($("canvas[data-type='radial-gauge']"));
-	console.log($("canvas[data-type='radial-gauge']").attr("class"));
+	//console.log($("canvas[data-type='radial-gauge']"));
+	//console.log($("canvas[data-type='radial-gauge']").attr("i"));
 	
 //try {
 	$("canvas[data-type='linear-gauge']").each(function(index){
