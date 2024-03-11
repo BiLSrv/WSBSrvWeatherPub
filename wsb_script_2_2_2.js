@@ -1,4 +1,4 @@
-// upda5a2
+// upda5a3
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -628,7 +628,7 @@ if (json_data["sensors"])
 		//console.log(CanvGaugeArrT[index]," ind ",index," class ",$(this).attr('class'));
 		if($(this).attr('class')=="canvasT1")
 		{
-		CanvGaugeArrT[ind].update({ value: parseFloat(json_data.sensors[index]) });
+		CanvGaugeArrT[ind].update({ value: parseFloat(json_data.sensors[ind]) });
 		ind++;
 		//if(index>8)
 		//{return false;}
@@ -642,7 +642,7 @@ if (json_data["sensors"])
 			//if(index>6)
 			//	return false;
 			console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
-			CanvGaugeArrH[ind].update({ value: parseFloat(json_data.sensors[index+10])});
+			CanvGaugeArrH[ind].update({ value: parseFloat(json_data.sensors[ind+10])});
 			ind++;
 		}
 	});
@@ -651,9 +651,9 @@ if (json_data["sensors"])
 		if($(this).attr('class')=="canvasP1")
 		{
 			console.log(CanvGaugeArrP[ind]," indP ",ind," class ",$(this).attr('class'));
-			Pdat = (parseFloat(json_data.sensors[index+17])*0.750062).toFixed(2);
-			console.log(" Pdat ",Pdat);
-			CanvGaugeArrP[ind].update({ value: (parseFloat(json_data.sensors[index+17])*0.750062).toFixed(2)});
+			console.log(" Pdat "+Pdat+" jd_sens "+json_data.sensors[ind+17]);
+			Pdat = (parseFloat(json_data.sensors[ind+17])*0.750062).toFixed(2);
+			CanvGaugeArrP[ind].update({ value: (parseFloat(json_data.sensors[ind+17])*0.750062).toFixed(2)});
 			ind++;
 		}
 	});
