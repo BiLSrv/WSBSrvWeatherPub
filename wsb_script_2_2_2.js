@@ -721,7 +721,7 @@ if (json_data["sensors"])
 	
 //try {
 	$("canvas[data-type='linear-gauge']").each(function(index){
-		console.log(CanvGaugeArrT[index]," ind ",index," class ",$(this).attr('class'));
+		console.log("parseFloatT ",parseFloat(json_data.sensors[ind])," ind ",index," class ",$(this).attr('class'));
 		if($(this).attr('class')=="canvasT1")
 		{
 		CanvGaugeArrT[ind].update({ value: parseFloat(json_data.sensors[ind]) });
