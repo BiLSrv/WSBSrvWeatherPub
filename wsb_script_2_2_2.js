@@ -86,12 +86,28 @@ function refr_rtc() {
 }
 
 
+function rIAQItem_convertValue(rawValue,_temp,_humd)
+{
+  // Get temperature & humidity
+
+ // Compensate exponential impact of humidity on resistance
+  if (!isNaN(_temp) && !isNaN(_humd)) {
+    // Calculate stauration density and absolute humidity
+    // double hum_abs = _humd * 10 * ((6.112 * 100.0 * exp((17.67 * _temp)/(243.12 + _temp)))/(461.52 * (_temp + 273.15)));
+    hum_abs = 6.112 * exp((17.67 * _temp)/(_temp + 243.5)) * _humd * 2.1674 / (273.15 + _temp);
+    // Calculate the compensated value
+    comp_gas = rawValue * exp(_hum_ratio * hum_abs);
+    // Recalculation in IAQ from 0 to 500 with inversion
+    return comp_gas;
+  };
+	return comp_gas;
+}
 
 
 $('body').delay(500).queue(function() {
 WSsocket = new WebSocket(gateway);
     //$(this).load('myPage.php');
-	maOBJ = $('*');
+	maOBJ = $('*').get();
 	unit="";
 	tmpi=0;
 console.log("mainOBJ"+maOBJ);
@@ -265,7 +281,7 @@ if($(this).attr('id')=="GauAvTemp")
 }).draw());
 }
 	
-if($(this).attr('id')=="GauAvHum" || $(this).attr('id')=="GauAirQ" || $(this).attr('id')=="bme680_gr" || $(this).attr('class')=="ens160_tvoc" || $(this).attr('class')=="ens160_eco2" || $(this).attr('class')=="ens160_AIQ" || $(this).attr('id') == "GauAvPress")
+if($(this).attr('class')=="GauAvHum" || $(this).attr('class')=="GauAirQ" || $(this).attr('class')=="bme680_gr" || $(this).attr('class')=="ens160_tvoc" || $(this).attr('class')=="ens160_eco2" || $(this).attr('class')=="ens160_AIQ" || $(this).attr('class') == "GauAvPress")
 {
 	unit = "%";
 	
@@ -297,6 +313,78 @@ if($(this).attr('id')=="GauAvHum" || $(this).attr('id')=="GauAirQ" || $(this).at
             "from": 60,
             "to": 100,
             "color": "rgba(200, 50, 50, .75)"
+        }
+    ],
+    colorPlate: "#fff",
+    borderShadowWidth: 0,
+    borders: false,
+    needleType: "arrow",
+    needleWidth: 2,
+    needleCircleSize: 7,
+    needleCircleOuter: true,
+    needleCircleInner: false,
+    animationDuration: 1500,
+    animationRule: "linear"
+}).draw());
+}
+	
+if($(this).attr('id')=="GauAirQ")
+{
+	unit = "IAQ";
+	
+    CanvGaugeArrOther.push(new RadialGauge({
+	renderTo: $( this ).attr('id'),
+    title: String($(this).attr('id')),
+    width: 150,
+    height: 150,
+    units: unit,
+    minValue: 0,
+    maxValue: 500,
+    majorTicks: [
+        "0",
+        "50",
+        "100",
+        "150",
+		"200",
+		"250",
+        "300",
+		"350",
+        "400",
+		"450",
+        "500",
+    ],
+    minorTicks: 10,
+    strokeTicks: true,
+    highlights: [
+        {
+            "from": 0,
+            "to": 50,
+            "color": "#00FF00",
+        },
+		{
+            "from": 51,
+            "to": 150,
+            "color": "#3CB371"
+        },
+		{
+            "from": 101,
+            "to": 150,
+            "color": "#FFD700"
+        },
+		{
+            "from": 151,
+            "to": 200,
+            "color": "#FF8C00"
+        },
+		{
+            "from": 201,
+            "to": 300,
+            "color": "#FF0000"
+        },
+		{
+            "from": 301,
+            "to": 500,
+            "color": "#8B0000"
         }
     ],
     colorPlate: "#fff",
@@ -621,6 +709,8 @@ if (json_data["sensors"])
 {
 	console.log(CanvGaugeArrOther);
 	console.log(CanvGaugeArrOtherT);
+	console.log($("canvas[data-type='radial-gauge']"));
+	console.log($("canvas[data-type='radial-gauge']").attr("class"));
 	
 //try {
 	$("canvas[data-type='linear-gauge']").each(function(index){
