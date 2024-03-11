@@ -245,7 +245,7 @@ $("canvas[data-type='radial-gauge']").each(function(index){
 	}
 
 	
-if($(this).attr('id')=="GauAvTemp")
+if($(this).attr('class')=="GauAvTemp")
 {
 	console.log("Elem "+$(this).attr('class'))
 	unit="%"
