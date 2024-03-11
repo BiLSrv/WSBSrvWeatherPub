@@ -1,4 +1,4 @@
-// upda5a1
+// upda5a2
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -622,13 +622,17 @@ if (json_data["sensors"])
 	console.log(CanvGaugeArrT);
 	console.log(CanvGaugeArrH);
 	console.log(CanvGaugeArrP);
+	
 //try {
 	$("canvas[data-type='linear-gauge']").each(function(index){
 		//console.log(CanvGaugeArrT[index]," ind ",index," class ",$(this).attr('class'));
-		CanvGaugeArrT[index].update({ value: parseFloat(json_data.sensors[index]) });
+		if($(this).attr('class')=="canvasT1")
+		{
+		CanvGaugeArrT[ind].update({ value: parseFloat(json_data.sensors[index]) });
+		ind++;
 		//if(index>8)
 		//{return false;}
-		ind=index;
+		}
 	});
 	ind=0;
 	$("canvas[data-type='radial-gauge']").each(function(index){
@@ -636,7 +640,6 @@ if (json_data["sensors"])
 		if($(this).attr('class')=="canvasH1")
 		{
 			//if(index>6)
-			
 			//	return false;
 			console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
 			CanvGaugeArrH[ind].update({ value: parseFloat(json_data.sensors[index+10])});
@@ -647,10 +650,10 @@ if (json_data["sensors"])
 	$("canvas[data-type='radial-gauge']").each(function(index){
 		if($(this).attr('class')=="canvasP1")
 		{
-			
 			console.log(CanvGaugeArrP[ind]," indP ",ind," class ",$(this).attr('class'));
 			Pdat = (parseFloat(json_data.sensors[index+17])*0.750062).toFixed(2);
-			CanvGaugeArrP[ind].update({ value: Pdt});
+			console.log(" Pdat ",Pdat);
+			CanvGaugeArrP[ind].update({ value: (parseFloat(json_data.sensors[index+17])*0.750062).toFixed(2)});
 			ind++;
 		}
 	});
