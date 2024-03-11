@@ -317,7 +317,7 @@ if($(this).attr('id')=="GauAvHum" || $(this).attr('id')=="GauAirQ" || $(this).at
 }
 catch (e) {
 		console.log(e.message);
-		console.log(CanvGaugeArrR);
+		//console.log(CanvGaugeArrR);
 		return 0;
 }
 	
