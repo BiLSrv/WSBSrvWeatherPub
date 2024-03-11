@@ -559,7 +559,7 @@ function onError(event) {
 function onMessage(event)
 {
 arrbufcrc="";
-i=0,j=0,crc16_int=0;
+ind=0,j=0,crc16_int=0;
 Pdat=0.0,Pdt=0.0;
 //canvasOBJ = $( ".canvasT" ).get();
 
@@ -626,8 +626,9 @@ if (json_data["sensors"])
 	$("canvas[data-type='linear-gauge']").each(function(index){
 		console.log(CanvGaugeArrT[index]," ind ",index," class ",$(this).attr('class'));
 		CanvGaugeArrT[index].update({ value: parseFloat(json_data.sensors[index]) });
-		if(index>8)
-		{return false;}
+		//if(index>8)
+		//{return false;}
+		ind=index;
 	});
 	
 
@@ -637,18 +638,20 @@ if (json_data["sensors"])
 		if($(this).attr('class')=="canvasH1")
 		{
 			//if(index>6)
+			ind++;
 			//	return false;
-			console.log(CanvGaugeArrH[index]," indH ",index," class ",$(this).attr('class'));
-			CanvGaugeArrH[index].update({ value: parseFloat(json_data.sensors[index+10])});
+			console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
+			CanvGaugeArrH[ind].update({ value: parseFloat(json_data.sensors[index+10])});
 
 		}
 	});
 	$("canvas[data-type='radial-gauge']").each(function(index){
 		if($(this).attr('class')=="canvasP1")
 		{
-			console.log(CanvGaugeArrP[index]," indP ",index," class ",$(this).attr('class'));
+			ind++;
+			console.log(CanvGaugeArrP[ind]," indP ",ind," class ",$(this).attr('class'));
 		Pdat = (parseFloat(json_data.sensors[index+17])*0.750062).toFixed(2);
-			CanvGaugeArrP[index].update({ value: Pdt});
+			CanvGaugeArrP[ind].update({ value: Pdt});
 		}
 	});
 	
