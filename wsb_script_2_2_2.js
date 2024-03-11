@@ -714,6 +714,8 @@ if (json_data["sensors"])
 {
 	console.log(CanvGaugeArrOther);
 	console.log(CanvGaugeArrOtherT);
+	console.log(CanvGaugeArrOtherH);
+	console.log(CanvGaugeArrOtherP);
 	//console.log($("canvas[data-type='radial-gauge']"));
 	//console.log($("canvas[data-type='radial-gauge']").attr("i"));
 	
