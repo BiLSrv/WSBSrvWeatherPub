@@ -619,9 +619,8 @@ $('.ptime').text(json_data.time[1].toString());
 //
 if (json_data["sensors"]) 
 {
-	console.log(CanvGaugeArrT);
-	console.log(CanvGaugeArrH);
-	console.log(CanvGaugeArrP);
+	console.log(CanvGaugeArrOther);
+	console.log(CanvGaugeArrOtherT);
 	
 //try {
 	$("canvas[data-type='linear-gauge']").each(function(index){
