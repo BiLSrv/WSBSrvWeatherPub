@@ -400,7 +400,7 @@ if($(this).attr('id')=="GauAirQ")
 }).draw());
 }
 
-	console.log("CanvGaugeArrOther "+CanvGaugeArrOther[index]);
+
 });
 }
 catch (e) {
@@ -408,6 +408,7 @@ catch (e) {
 		//console.log(CanvGaugeArrR);
 		return 0;
 }
+console.log("CanvGaugeArrOther "+CanvGaugeArrOther);
 	
 //console.log( String($(this).attr('id')) + ": " + $( this ).text() + $( this ).attr('id')+ " " );    units: '°C',	colorPlateEnd: "#327ac0",
 
