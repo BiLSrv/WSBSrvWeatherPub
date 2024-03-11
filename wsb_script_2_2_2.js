@@ -635,6 +635,8 @@ if (json_data["sensors"])
 		{
 			console.log(CanvGaugeArrH[index]," indH ",index," class ",$(this).attr('class'));
 			CanvGaugeArrH[index].update({ value: parseFloat(json_data.sensors[index+10])});
+			if(index>6)
+				return false;
 		}
 	});
 	$("canvas[data-type='radial-gauge']").each(function(index){
