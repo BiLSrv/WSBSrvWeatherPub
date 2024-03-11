@@ -179,8 +179,8 @@ $("canvas[data-type='radial-gauge']").each(function(index){
     strokeTicks: true,
     highlights: [
         {
-            "from": 749,
-            "to": 750,
+            "from": 740,
+            "to": 760,
             "color": "rgba(200, 50, 50, .75)"
         }
     ],
@@ -924,7 +924,7 @@ $(".navia").addClass("list-group-item list-group-item-action bg-light border");
 $("#esp_tx").val("wsbuser.prints(node.heap());");
 $("#esp_urx").val("");
 
-rs = setInterval(refr_rtc, 3000);
+rs = setInterval(refr_rtc, 500);
   // --------
   // Tooltips
   // --------
