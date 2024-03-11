@@ -152,7 +152,7 @@ $("canvas[data-type='radial-gauge']").each(function(index){
 	
 	if($(this).attr('class')=="canvasP1")
 	{
-	console.log("Elem "+$(this).attr('class'))
+	console.log("Elem "+$(this).attr('id'))
 	unit="ммРст"
     CanvGaugeArrP.push(new RadialGauge({
 	renderTo: $( this ).attr('id'),
@@ -199,7 +199,7 @@ $("canvas[data-type='radial-gauge']").each(function(index){
 	
 	if($(this).attr('class')=="canvasH1")
 	{
-	console.log("Elem "+$(this).attr('class'))
+	console.log("Elem "+$(this).attr('id'))
 	unit="%"
     CanvGaugeArrH.push(new RadialGauge({
 	renderTo: $( this ).attr('id'),
@@ -245,13 +245,13 @@ $("canvas[data-type='radial-gauge']").each(function(index){
 	}
 
 	
-if($(this).attr('class')=="GauAvTemp")
+if($(this).attr('id')=="GauAvTemp")
 {
-	console.log("Elem "+$(this).attr('class'))
+	console.log("Elem "+$(this).attr('id'))
 	unit="%"
     CanvGaugeArrOtherT.push(new RadialGauge({
-	renderTo: $( this ).attr('class'),
-    title: String($(this).attr('class')),
+	renderTo: $( this ).attr('id'),
+    title: String($(this).attr('id')),
     width: 150,
     height: 150,
     units: unit,
@@ -285,13 +285,14 @@ if($(this).attr('class')=="GauAvTemp")
 }).draw());
 }
 	
-if($(this).attr('class')=="GauAvHum" || $(this).attr('class')=="GauAirQ" || $(this).attr('class')=="bme680_gr" || $(this).attr('class')=="ens160_tvoc" || $(this).attr('class')=="ens160_eco2" || $(this).attr('class')=="ens160_AIQ" || $(this).attr('class') == "GauAvPress")
+if($(this).attr('id')=="GauAvHum" || $(this).attr('id')=="GauAirQ" || $(this).attr('id')=="bme680_gr" || $(this).attr('id')=="ens160_tvoc" || $(this).attr('id')=="ens160_eco2" || $(this).attr('id')=="ens160_AIQ" || $(this).attr('id') == "GauAvPress")
 {
 	unit = "%";
-	console.log("Elem "+$(this).attr('class'))
+	console.log("Elem "+$(this).attr('id'))
+	
     CanvGaugeArrOther.push(new RadialGauge({
-	renderTo: $( this ).attr('class'),
-    title: String($(this).attr('class')),
+	renderTo: $( this ).attr('id'),
+    title: String($(this).attr('id')),
     width: 150,
     height: 150,
     units: unit,
@@ -332,13 +333,13 @@ if($(this).attr('class')=="GauAvHum" || $(this).attr('class')=="GauAirQ" || $(th
 }).draw());
 }
 	
-if($(this).attr('class')=="GauAirQ")
+if($(this).attr('id')=="GauAirQ")
 {
 	unit = "IAQ";
-	console.log("Elem "+$(this).attr('class'))
+	console.log("Elem "+$(this).attr('id'))
     CanvGaugeArrOther.push(new RadialGauge({
-	renderTo: $( this ).attr('class'),
-    title: String($(this).attr('class')),
+	renderTo: $( this ).attr('id'),
+    title: String($(this).attr('id')),
     width: 150,
     height: 150,
     units: unit,
