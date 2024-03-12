@@ -996,7 +996,6 @@ if (json_data["sensors"])
 
 		if($(this).attr('class')=="canvasT")
 		{
-		console.log("parseFloatT ",parseFloat(json_data.sensors[ind])," ind ",index," class ",$(this).attr('class'));
 		CanvGaugeArrT[ind].update({ value: parseFloat(json_data.sensors[ind]) });
 		ind++;
 		//if(index>8)
@@ -1020,7 +1019,7 @@ if (json_data["sensors"])
 		if($(this).attr('class')=="canvasP1")
 		{
 			//console.log(CanvGaugeArrP[ind]," indP ",ind," class ",$(this).attr('class'));
-			console.log(" Pdat "+Pdat+" jd_sens "+json_data.sensors[ind+17]);
+			//console.log(" Pdat "+Pdat+" jd_sens "+json_data.sensors[ind+17]);
 			Pdat = (parseFloat(json_data.sensors[ind+17])*0.750062).toFixed(2);
 			CanvGaugeArrP[ind].update({ value: (parseFloat(json_data.sensors[ind+17])*0.750062).toFixed(2)});
 			ind++;
