@@ -713,9 +713,6 @@ $('.ptime').text(json_data.time[1].toString());
 if (json_data["sensors"]) 
 {
 	console.log(CanvGaugeArrOther);
-	console.log(CanvGaugeArrT);
-	console.log(CanvGaugeArrH);
-	console.log(CanvGaugeArrP);
 	//console.log($("canvas[data-type='radial-gauge']"));
 	//console.log($("canvas[data-type='radial-gauge']").attr("i"));
 	
@@ -761,7 +758,30 @@ if (json_data["sensors"])
 			
 			CanvGaugeArrP[ind].update({ value: rIAQItem_convertValue(parseInt(json_data.sensors[21],10),parseFloat(json_data.sensors[6]),parseFloat(json_data.sensors[14])) });
 		}
+		if($(this).attr('id')=="bme680_gr")
+		{
+			console.log(" iaq "+rIAQItem_convertValue(parseInt(json_data.sensors[21],10),parseFloat(json_data.sensors[6]),parseFloat(json_data.sensors[14])));
+			CanvGaugeArrP[ind].update({ value: rIAQItem_convertValue(parseInt(json_data.sensors[21],10),parseFloat(json_data.sensors[6]),parseFloat(json_data.sensors[14])) });
+		}
+			
+		if($(this).attr('id')=="ens160_tvoc")
+		{
+			CanvGaugeArrOther[ind].update({ value: parseInt(json_data.sensors[22],10) });
+		}
+			
+		if($(this).attr('id')=="ens160_eco2")
+		{
+			CanvGaugeArrOther[ind].update({ value: parseInt(json_data.sensors[23],10)});
+		}
+			
+		if($(this).attr('id')=="ens160_AIQ")
+		{
+			CanvGaugeArrOther[ind].update({ value: parseInt(json_data.sensors[24],10)});
+		}
+			
 	});
+	
+	ENS_AIQf(parseInt(json_data.sensors[24],10));
 	
 }
 		//if(Math.round(Pdat)>750)
@@ -919,6 +939,33 @@ function state_online(state)
 	{$(".tst0").removeClass("bg-danger");$(".tst0").addClass("bg-success").text("ОК")}
 	else
 	{$(".tst0").removeClass("bg-success");$(".tst0").addClass("bg-danger").text("off")};
+}
+
+function ENS_AIQf(value) 
+{
+	
+	switch value:
+		case 1:
+			$('#ens_AIQ')[2].className = '';
+			$(".ens_AIQ").addClass("bg-info").text("ХОРОШО!");
+			break;
+		case 2:
+			$('#ens_AIQ')[2].className = '';
+			$(".ens_AIQ").addClass("bg-success").text("ОТЛИЧНО!");
+			break;
+		case 3:
+			$('#ens_AIQ')[3].className = '';
+			$(".ens_AIQ").addClass("bg-warning").text("НЕ ОЧЕНЬ!");
+			break;
+		case 4:
+			$('#ens_AIQ')[2].className = '';
+			$(".ens_AIQ").addClass("bg-secondary").text("ПЛОХО!");
+			break;
+		case 5:
+			$('#ens_AIQ')[2].className = '';
+			$(".ens_AIQ").addClass("bg-danger").text("ОПАСНО!");
+			break;	
+		//default:
 }
 
 
