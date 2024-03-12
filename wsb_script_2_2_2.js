@@ -451,79 +451,6 @@ if($(this).attr('id')=="GauAirQ" || $(this).attr('id')=="bme680_gr")
     animationRule: "linear"
 }).draw());
 }
-
-	
-if($(this).attr('id')=="GauAirQ" || $(this).attr('id')=="bme680_gr")
-{
-	unit = "IAQ";
-	//console.log("Elem "+$(this).attr('id'))
-    CanvGaugeArrOther.push(new RadialGauge({
-	renderTo: $( this ).attr('id'),
-    title: String($(this).attr('id')),
-    width: 150,
-    height: 150,
-    units: unit,
-    minValue: 0,
-    maxValue: 500,
-    majorTicks: [
-        "0",
-        "50",
-        "100",
-        "150",
-		"200",
-		"250",
-        "300",
-		"350",
-        "400",
-		"450",
-        "500",
-    ],
-    minorTicks: 10,
-    strokeTicks: true,
-    highlights: [
-        {
-            "from": 0,
-            "to": 50,
-            "color": "#00FF00",
-        },
-		{
-            "from": 51,
-            "to": 150,
-            "color": "#3CB371"
-        },
-		{
-            "from": 101,
-            "to": 150,
-            "color": "#FFD700"
-        },
-		{
-            "from": 151,
-            "to": 200,
-            "color": "#FF8C00"
-        },
-		{
-            "from": 201,
-            "to": 300,
-            "color": "#FF0000"
-        },
-		{
-            "from": 301,
-            "to": 500,
-            "color": "#8B0000"
-        }
-    ],
-    colorPlate: "#fff",
-    borderShadowWidth: 0,
-    borders: false,
-    needleType: "arrow",
-    needleWidth: 2,
-    needleCircleSize: 7,
-    needleCircleOuter: true,
-    needleCircleInner: false,
-    animationDuration: 1500,
-    animationRule: "linear"
-}).draw());
-}
 	
 	
 if($(this).attr('id')=="ens160_tvoc") 
@@ -1030,27 +957,27 @@ if (json_data["sensors"])
 		{
 			console.log(" iaq "+rIAQItem_convertValue(parseInt(json_data.sensors[21],10),parseFloat(json_data.sensors[6]),parseFloat(json_data.sensors[14])));
 			
-			CanvGaugeArrP[ind].update({ value: rIAQItem_convertValue(parseInt(json_data.sensors[21],10),parseFloat(json_data.sensors[6]),parseFloat(json_data.sensors[14])) });
+			CanvGaugeArrOther[3].update({ value: rIAQItem_convertValue(parseInt(json_data.sensors[21],10),parseFloat(json_data.sensors[6]),parseFloat(json_data.sensors[14])) });
 		}
 		if($(this).attr('id')=="bme680_gr")
 		{
 			console.log(" iaq "+rIAQItem_convertValue(parseInt(json_data.sensors[21],10),parseFloat(json_data.sensors[6]),parseFloat(json_data.sensors[14])));
-			CanvGaugeArrOther[3].update({ value: rIAQItem_convertValue(parseInt(json_data.sensors[21],10),parseFloat(json_data.sensors[6]),parseFloat(json_data.sensors[14])) });
+			CanvGaugeArrOther[4].update({ value: rIAQItem_convertValue(parseInt(json_data.sensors[21],10),parseFloat(json_data.sensors[6]),parseFloat(json_data.sensors[14])) });
 		}
 			
 		if($(this).attr('id')=="ens160_tvoc")
 		{
-			CanvGaugeArrOther[4].update({ value: parseInt(json_data.sensors[22],10) });
+			CanvGaugeArrOther[5].update({ value: parseInt(json_data.sensors[22],10) });
 		}
 			
 		if($(this).attr('id')=="ens160_eco2")
 		{
-			CanvGaugeArrOther[5].update({ value: parseInt(json_data.sensors[23],10)});
+			CanvGaugeArrOther[6].update({ value: parseInt(json_data.sensors[23],10)});
 		}
 			
 		if($(this).attr('id')=="ens160_AIQ")
 		{
-			CanvGaugeArrOther[2].update({ value: parseInt(json_data.sensors[24],10)});
+			CanvGaugeArrOther[7].update({ value: parseInt(json_data.sensors[24],10)});
 		}
 			
 	});
