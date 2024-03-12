@@ -1,4 +1,4 @@
-// upda5a5
+// upda6a1
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -583,10 +583,20 @@ if($(this).attr('id')=="ens160_AIQ")
             "to": 1,
             "color": "#00FF00",
         },
+        {
+            "from": 1,
+            "to": 2,
+            "color": "#3CB371",
+        },
 		{
             "from": 2,
             "to": 3,
-            "color": "#3CB371"
+            "color": "#FFD700"
+        },
+		{
+            "from": 3,
+            "to": 4,
+            "color": "#FF0000"
         },
 		{
             "from": 4,
