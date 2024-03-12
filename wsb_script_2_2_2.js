@@ -754,6 +754,14 @@ if (json_data["sensors"])
 			ind++;
 		}
 	});
+		$("canvas[data-type='radial-gauge']").each(function(index){
+		if($(this).attr('id')=="GauAirQ")
+		{
+			console.log(" iaq "+rIAQItem_convertValue(parseInt(json_data.sensors[21],10),parseFloat(json_data.sensors[6]),parseFloat(json_data.sensors[14])));
+			
+			CanvGaugeArrP[ind].update({ value: rIAQItem_convertValue(parseInt(json_data.sensors[21],10),parseFloat(json_data.sensors[6]),parseFloat(json_data.sensors[14])) });
+		}
+	});
 	
 }
 		//if(Math.round(Pdat)>750)
