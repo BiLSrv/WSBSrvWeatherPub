@@ -944,7 +944,7 @@ function state_online(state)
 function ENS_AIQf(value) 
 {
 	
-	switch (value):
+	switch (value)
 		{
 		case 1:
 			$('#ens_AIQ')[2].className = '';
