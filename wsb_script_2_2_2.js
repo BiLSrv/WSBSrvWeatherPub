@@ -944,7 +944,8 @@ function state_online(state)
 function ENS_AIQf(value) 
 {
 	
-	switch value:
+	switch (value):
+		{
 		case 1:
 			$('#ens_AIQ')[2].className = '';
 			$(".ens_AIQ").addClass("bg-info").text("ХОРОШО!");
@@ -965,6 +966,7 @@ function ENS_AIQf(value)
 			$('#ens_AIQ')[2].className = '';
 			$(".ens_AIQ").addClass("bg-danger").text("ОПАСНО!");
 			break;	
+		}
 		//default:
 }
 
