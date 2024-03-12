@@ -761,22 +761,22 @@ if (json_data["sensors"])
 		if($(this).attr('id')=="bme680_gr")
 		{
 			console.log(" iaq "+rIAQItem_convertValue(parseInt(json_data.sensors[21],10),parseFloat(json_data.sensors[6]),parseFloat(json_data.sensors[14])));
-			CanvGaugeArrP[ind].update({ value: rIAQItem_convertValue(parseInt(json_data.sensors[21],10),parseFloat(json_data.sensors[6]),parseFloat(json_data.sensors[14])) });
+			CanvGaugeArrOther[3].update({ value: rIAQItem_convertValue(parseInt(json_data.sensors[21],10),parseFloat(json_data.sensors[6]),parseFloat(json_data.sensors[14])) });
 		}
 			
 		if($(this).attr('id')=="ens160_tvoc")
 		{
-			CanvGaugeArrOther[ind].update({ value: parseInt(json_data.sensors[22],10) });
+			CanvGaugeArrOther[4].update({ value: parseInt(json_data.sensors[22],10) });
 		}
 			
 		if($(this).attr('id')=="ens160_eco2")
 		{
-			CanvGaugeArrOther[ind].update({ value: parseInt(json_data.sensors[23],10)});
+			CanvGaugeArrOther[5].update({ value: parseInt(json_data.sensors[23],10)});
 		}
 			
 		if($(this).attr('id')=="ens160_AIQ")
 		{
-			CanvGaugeArrOther[ind].update({ value: parseInt(json_data.sensors[24],10)});
+			CanvGaugeArrOther[2].update({ value: parseInt(json_data.sensors[24],10)});
 		}
 			
 	});
