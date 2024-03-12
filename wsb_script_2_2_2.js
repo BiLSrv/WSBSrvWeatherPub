@@ -91,7 +91,7 @@ function rIAQItem_convertValue(rawValue,_temp,_humd)
   // Get temperature & humidity
 	_hum_ratio = 0.09;
  // Compensate exponential impact of humidity on resistance
-  if (!Math.isNaN(_temp) && !Math.isNaN(_humd)) {
+  if (!isNaN(_temp) && !isNaN(_humd)) {
     // Calculate stauration density and absolute humidity
     // double hum_abs = _humd * 10 * ((6.112 * 100.0 * exp((17.67 * _temp)/(243.12 + _temp)))/(461.52 * (_temp + 273.15)));
     hum_abs = 6.112 * Math.exp((17.67 * _temp)/(_temp + 243.5)) * _humd * 2.1674 / (273.15 + _temp);
