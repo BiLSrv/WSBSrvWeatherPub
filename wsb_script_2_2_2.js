@@ -285,7 +285,7 @@ if($(this).attr('id')=="GauAvTemp")
 }).draw());
 }
 	
-if($(this).attr('id')=="GauAvHum" || $(this).attr('id')=="bme680_gr" || $(this).attr('id')=="ens160_tvoc" || $(this).attr('id')=="ens160_eco2" || $(this).attr('id')=="ens160_AIQ" || $(this).attr('id') == "GauAvPress")
+if($(this).attr('id')=="GauAvHum")
 {
 	unit = "%";
 	//console.log("Elem "+$(this).attr('id'))
@@ -332,7 +332,55 @@ if($(this).attr('id')=="GauAvHum" || $(this).attr('id')=="bme680_gr" || $(this).
 }).draw());
 }
 	
-if($(this).attr('id')=="GauAirQ")
+	
+	
+if($(this).attr('id')=="GauAvPress")
+{
+	unit="ммРст"
+    CanvGaugeArrOther.push(new RadialGauge({
+	renderTo: $( this ).attr('id'),
+    title: String($(this).attr('id')),
+    width: 150,
+    height: 150,
+    units: unit,
+    minValue: 0,
+    maxValue: 770,
+    majorTicks: [
+        "0",
+        "200",
+        "300",
+        "400",
+        "500",
+        "600",
+        "700",
+        "740",
+        "750",
+        "760",
+        "770"
+    ],
+    minorTicks: 10,
+    strokeTicks: true,
+    highlights: [
+        {
+            "from": 740,
+            "to": 760,
+            "color": "rgba(200, 50, 50, .75)"
+        }
+    ],
+    colorPlate: "#fff",
+    borderShadowWidth: 0,
+    borders: false,
+    needleType: "arrow",
+    needleWidth: 2,
+    needleCircleSize: 7,
+    needleCircleOuter: true,
+    needleCircleInner: false,
+    animationDuration: 1500,
+    animationRule: "linear"
+}).draw());
+}
+	
+if($(this).attr('id')=="GauAirQ" || $(this).attr('id')=="bme680_gr")
 {
 	unit = "IAQ";
 	//console.log("Elem "+$(this).attr('id'))
@@ -404,7 +452,234 @@ if($(this).attr('id')=="GauAirQ")
 }).draw());
 }
 
+	
+if($(this).attr('id')=="GauAirQ" || $(this).attr('id')=="bme680_gr")
+{
+	unit = "IAQ";
+	//console.log("Elem "+$(this).attr('id'))
+    CanvGaugeArrOther.push(new RadialGauge({
+	renderTo: $( this ).attr('id'),
+    title: String($(this).attr('id')),
+    width: 150,
+    height: 150,
+    units: unit,
+    minValue: 0,
+    maxValue: 500,
+    majorTicks: [
+        "0",
+        "50",
+        "100",
+        "150",
+		"200",
+		"250",
+        "300",
+		"350",
+        "400",
+		"450",
+        "500",
+    ],
+    minorTicks: 10,
+    strokeTicks: true,
+    highlights: [
+        {
+            "from": 0,
+            "to": 50,
+            "color": "#00FF00",
+        },
+		{
+            "from": 51,
+            "to": 150,
+            "color": "#3CB371"
+        },
+		{
+            "from": 101,
+            "to": 150,
+            "color": "#FFD700"
+        },
+		{
+            "from": 151,
+            "to": 200,
+            "color": "#FF8C00"
+        },
+		{
+            "from": 201,
+            "to": 300,
+            "color": "#FF0000"
+        },
+		{
+            "from": 301,
+            "to": 500,
+            "color": "#8B0000"
+        }
+    ],
+    colorPlate: "#fff",
+    borderShadowWidth: 0,
+    borders: false,
+    needleType: "arrow",
+    needleWidth: 2,
+    needleCircleSize: 7,
+    needleCircleOuter: true,
+    needleCircleInner: false,
+    animationDuration: 1500,
+    animationRule: "linear"
+}).draw());
+}
+	
+	
+if($(this).attr('id')=="ens160_tvoc") 
+{
+	unit = "ppb";
+	//console.log("Elem "+$(this).attr('id'))
+    CanvGaugeArrOther.push(new RadialGauge({
+	renderTo: $( this ).attr('id'),
+    title: String($(this).attr('id')),
+    width: 150,
+    height: 150,
+    units: unit,
+    minValue: 0,
+    maxValue: 65000,
+    majorTicks: [
+        "0",
+        "5000",
+        "10500",
+        "16000",
+        "21500",
+        "27000",
+        "32500",
+        "38000",
+        "43500",
+        "49000",
+		"53000",
+		"58500",
+		"62500",
+        "65000"
+    ],
+    minorTicks: 14,
+    strokeTicks: true,
+    highlights: [
+        {
+            "from": 49000,
+            "to": 65000,
+            "color": "rgba(200, 50, 50, .75)"
+        }
+    ],
+    colorPlate: "#fff",
+    borderShadowWidth: 0,
+    borders: false,
+    needleType: "arrow",
+    needleWidth: 2,
+    needleCircleSize: 7,
+    needleCircleOuter: true,
+    needleCircleInner: false,
+    animationDuration: 1500,
+    animationRule: "linear"
+}).draw());
+}
+	
+if($(this).attr('id')=="ens160_eco2")
+	{
+	unit = "ppm";
+	//console.log("Elem "+$(this).attr('id'))
+    CanvGaugeArrOther.push(new RadialGauge({
+	renderTo: $( this ).attr('id'),
+    title: String($(this).attr('id')),
+    width: 150,
+    height: 150,
+    units: unit,
+    minValue: 400,
+    maxValue: 65000,
+    majorTicks: [
+        "400",
+        "5000",
+        "10500",
+        "16000",
+        "21500",
+        "27000",
+        "32500",
+        "38000",
+        "43500",
+        "49000",
+		"53000",
+		"58500",
+		"62500",
+        "65000"
+    ],
+    minorTicks: 14,
+    strokeTicks: true,
+    highlights: [
+        {
+            "from": 49000,
+            "to": 65000,
+            "color": "rgba(200, 50, 50, .75)"
+        }
+    ],
+    colorPlate: "#fff",
+    borderShadowWidth: 0,
+    borders: false,
+    needleType: "arrow",
+    needleWidth: 2,
+    needleCircleSize: 7,
+    needleCircleOuter: true,
+    needleCircleInner: false,
+    animationDuration: 1500,
+    animationRule: "linear"
+}).draw());
+	}
 
+	
+	
+if($(this).attr('id')=="ens160_AIQ")
+{
+	unit = "AQI-UBA";
+	//console.log("Elem "+$(this).attr('id'))
+    CanvGaugeArrOther.push(new RadialGauge({
+	renderTo: $( this ).attr('id'),
+    title: String($(this).attr('id')),
+    width: 150,
+    height: 150,
+    units: unit,
+    minValue: 0,
+    maxValue: 5,
+    majorTicks: [
+        "0",
+        "1",
+        "2",
+        "3",
+		"4",
+		"5"
+    ],
+    minorTicks: 10,
+    strokeTicks: true,
+    highlights: [
+        {
+            "from": 0,
+            "to": 1,
+            "color": "#00FF00",
+        },
+		{
+            "from": 2,
+            "to": 3,
+            "color": "#3CB371"
+        },
+		{
+            "from": 4,
+            "to": 5,
+            "color": "#8B0000"
+        }
+    ],
+    colorPlate: "#fff",
+    borderShadowWidth: 0,
+    borders: false,
+    needleType: "arrow",
+    needleWidth: 2,
+    needleCircleSize: 7,
+    needleCircleOuter: true,
+    needleCircleInner: false,
+    animationDuration: 1500,
+    animationRule: "linear"
+}).draw());
+}
+	
 });
 }
 catch (e) {
