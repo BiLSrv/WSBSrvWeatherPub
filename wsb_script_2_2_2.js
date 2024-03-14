@@ -1,4 +1,4 @@
-// upda6a1
+// upda6a2
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -90,6 +90,11 @@ function rIAQItem_convertValue(rawValue,_temp,_humd)
 {
   // Get temperature & humidity
 	_hum_ratio = 0.09;
+	_min_T=0;
+	_min_U=500;
+	_max_T=1600000;
+	_max_U=0;
+	
  // Compensate exponential impact of humidity on resistance
   if (!isNaN(_temp) && !isNaN(_humd)) {
     // Calculate stauration density and absolute humidity
@@ -97,11 +102,16 @@ function rIAQItem_convertValue(rawValue,_temp,_humd)
     hum_abs = 6.112 * Math.exp((17.67 * _temp)/(_temp + 243.5)) * _humd * 2.1674 / (273.15 + _temp);
     // Calculate the compensated value
     comp_gas = rawValue * Math.exp(_hum_ratio * hum_abs);
+	console.log(comp_gas)
+	console.log((_max_T-_min_T))
+	console.log((_max_U-_min_U))
+	IAQ=(comp_gas-_min_T)/(_max_T-_min_T)*(_max_U-_min_U)+_min_U;
     // Recalculation in IAQ from 0 to 500 with inversion
-    return comp_gas;
+    return IAQ;
   };
-	return comp_gas;
+	return IAQ;
 }
+
 
 
 $('body').delay(500).queue(function() {
