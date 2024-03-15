@@ -1,4 +1,4 @@
-// upda6a6
+// upda7a1
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -1003,7 +1003,7 @@ ind=0;
 	console.log(CanvGaugeArrH);
 	console.log(CanvGaugeArrP);
 	
-	ind=0;
+	ind=0;j=0;
 	$("canvas[data-type='radial-gauge']").each(function(index){
 		if($(this).attr('class')=="GauAvTemp")
 		{
@@ -1039,10 +1039,10 @@ ind=0;
 		if($(this).attr('class')=="canvasP1")
 		{
 			//console.log(CanvGaugeArrP[ind]," indP ",ind," class ",$(this).attr('class'));
-			console.log(" Pdat "+Pdat+" jd_sens "+json_data.sensors[ind+17]);
+			console.log(" Pdat "+Pdat+" jd_sens "+json_data.sensors[j+17]);
 			Pdat = (parseFloat(json_data.sensors[ind+17])*0.750062).toFixed(2);
 			CanvGaugeArrP[ind].update({ value: (parseFloat(json_data.sensors[ind+17])*0.750062).toFixed(2)});
-			ind++;
+			j++;
 		}
 		
 		if($(this).attr('id')=="GauAirQ")
