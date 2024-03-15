@@ -151,6 +151,9 @@ body
 					<div class="col-auto">
 						<canvas data-type="radial-gauge" id="GauAirQ"></canvas>
 					</div>
+					<div class="col-auto">
+						<p class="navbar badge lead text-white font-weight-normal" style="width: 8rem;">Индекс воздуха:<p id="ens_AIQ" class="navbar-brand ens_AIQ" ></p></p>
+					</div>
 </div>
 <div class="container row text-center">
 					<p class="h5 modal-title text-center">Датчик LM75_1 и Датчик LM75_2</p>			  
@@ -302,7 +305,7 @@ var CanvGaugeArrR = [];
 //var maOBJarr =[];
 
 $('body').delay(500).queue(function() {
-	
+	$(".ens_AIQ").addClass("bg-info").text("ХОРОШО!");
 maOBJ = $('*');
 
 console.log("maOBJ");
