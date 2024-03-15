@@ -1001,6 +1001,9 @@ ind=0;
 	
 	//console.log(CanvGaugeArrH);
 	//console.log(CanvGaugeArrP);
+	console.log(RMSt);
+	console.log(RMSh);
+	console.log(RMSp);
 	
 	ind=0;j=0;
 	$("canvas[data-type='radial-gauge']").each(function(index){
@@ -1008,21 +1011,21 @@ ind=0;
 		{
 			//if(index>6)
 			//	return false;
-			console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
+			
 			CanvGaugeArrOther[0].update({ value: RMSt});
 		}
 		if($(this).attr('id')=="GauAvHum")
 		{
 			//if(index>6)
 			//	return false;
-			console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
+			
 			CanvGaugeArrOther[1].update({ value: RMSh});
 		}
 		if($(this).attr('id')=="GauAvPress")
 		{
 			//if(index>6)
 			//	return false;
-			console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
+			
 			CanvGaugeArrOther[2].update({ value: RMSp});
 		}
 		
