@@ -102,7 +102,7 @@ function rIAQItem_convertValue(rawValue,_temp,_humd)
     hum_abs = 6.112 * Math.exp((17.67 * _temp)/(_temp + 243.5)) * _humd * 2.1674 / (273.15 + _temp);
     // Calculate the compensated value
     comp_gas = rawValue * Math.exp(_hum_ratio * hum_abs);
-	console.log("IAQ T"+_temp+"IAQ H"+_humd+"IAQ adc"+rawValue)
+	//console.log("IAQ T"+_temp+"IAQ H"+_humd+"IAQ adc"+rawValue)
 	IAQ=(comp_gas-_min_T)/(_max_T-_min_T)*(_max_U-_min_U)+_min_U;
     // Recalculation in IAQ from 0 to 500 with inversion
     return IAQ;
