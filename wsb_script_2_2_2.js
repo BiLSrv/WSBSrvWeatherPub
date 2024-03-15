@@ -999,6 +999,10 @@ ind=0;
 		//{return false;}
 		}
 	});
+	
+	console.log(CanvGaugeArrH);
+	console.log(CanvGaugeArrR);
+	
 	ind=0;
 	$("canvas[data-type='radial-gauge']").each(function(index){
 		if($(this).attr('class')=="GauAvTemp")
@@ -1027,7 +1031,7 @@ ind=0;
 		{
 			//if(index>6)
 			//	return false;
-			//console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
+			console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
 			CanvGaugeArrH[ind].update({ value: parseFloat(json_data.sensors[ind+10])});
 			ind++;
 		}
@@ -1035,7 +1039,7 @@ ind=0;
 		if($(this).attr('class')=="canvasP1")
 		{
 			//console.log(CanvGaugeArrP[ind]," indP ",ind," class ",$(this).attr('class'));
-			//console.log(" Pdat "+Pdat+" jd_sens "+json_data.sensors[ind+17]);
+			console.log(" Pdat "+Pdat+" jd_sens "+json_data.sensors[ind+17]);
 			Pdat = (parseFloat(json_data.sensors[ind+17])*0.750062).toFixed(2);
 			CanvGaugeArrP[ind].update({ value: (parseFloat(json_data.sensors[ind+17])*0.750062).toFixed(2)});
 			ind++;
