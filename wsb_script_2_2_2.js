@@ -1009,21 +1009,21 @@ ind=0;
 		{
 			//if(index>6)
 			//	return false;
-			//console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
+			console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
 			CanvGaugeArrOther[0].update({ value: RMSt});
 		}
 		if($(this).attr('class')=="GauAvHum")
 		{
 			//if(index>6)
 			//	return false;
-			//console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
+			console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
 			CanvGaugeArrOther[1].update({ value: RMSh});
 		}
 		if($(this).attr('class')=="GauAvPress")
 		{
 			//if(index>6)
 			//	return false;
-			//console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
+			console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
 			CanvGaugeArrOther[2].update({ value: RMSp});
 		}
 		
@@ -1031,7 +1031,7 @@ ind=0;
 		{
 			//if(index>6)
 			//	return false;
-			console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
+			//console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
 			CanvGaugeArrH[ind].update({ value: parseFloat(json_data.sensors[ind+10])});
 			ind++;
 		}
@@ -1039,7 +1039,7 @@ ind=0;
 		if($(this).attr('class')=="canvasP1")
 		{
 			//console.log(CanvGaugeArrP[ind]," indP ",ind," class ",$(this).attr('class'));
-			console.log(" Pdat "+Pdat+" jd_sens "+json_data.sensors[j+17]);
+			//console.log(" Pdat "+Pdat+" jd_sens "+json_data.sensors[j+17]);
 			Pdat = (parseFloat(json_data.sensors[j+17])*0.750062).toFixed(2);
 			CanvGaugeArrP[j].update({ value: (parseFloat(json_data.sensors[j+17])*0.750062).toFixed(2)});
 			j++;
@@ -1047,7 +1047,7 @@ ind=0;
 		
 		if($(this).attr('id')=="GauAirQ")
 		{
-			console.log(" iaq "+rIAQItem_convertValue(parseInt(json_data.sensors[21],10),parseFloat(json_data.sensors[6]),parseFloat(json_data.sensors[14])));
+			//console.log(" iaq "+rIAQItem_convertValue(parseInt(json_data.sensors[21],10),parseFloat(json_data.sensors[6]),parseFloat(json_data.sensors[14])));
 			
 			CanvGaugeArrOther[2].update({ value: rIAQItem_convertValue(parseInt(json_data.sensors[21],10),parseFloat(json_data.sensors[6]),parseFloat(json_data.sensors[14])) });
 		}
