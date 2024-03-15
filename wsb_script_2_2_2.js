@@ -1010,21 +1010,21 @@ ind=0;
 			//if(index>6)
 			//	return false;
 			//console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
-			CanvGaugeArrH[0].update({ value: RMSt});
+			CanvGaugeArrOther[0].update({ value: RMSt});
 		}
 		if($(this).attr('class')=="GauAvHum")
 		{
 			//if(index>6)
 			//	return false;
 			//console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
-			CanvGaugeArrH[1].update({ value: RMSh});
+			CanvGaugeArrOther[1].update({ value: RMSh});
 		}
 		if($(this).attr('class')=="GauAvPress")
 		{
 			//if(index>6)
 			//	return false;
 			//console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
-			CanvGaugeArrH[2].update({ value: RMSp});
+			CanvGaugeArrOther[2].update({ value: RMSp});
 		}
 		
 		if($(this).attr('class')=="canvasH1")
