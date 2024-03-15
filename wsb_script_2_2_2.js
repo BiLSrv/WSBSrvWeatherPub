@@ -940,6 +940,7 @@ if (json_data["sensors"])
 	//
 	//	2.3 Scope RMS scope sensors
 	//
+	tmpf=1.0;
 	for(j=0;j<=9;j++)
 	{
 		if(parseFloat(json_data.sensors[j])<0)
@@ -950,6 +951,7 @@ if (json_data["sensors"])
 	for(j=0;j<=6;j++)
 	{
 	RMSh+=parseFloat(json_data.sensors[j+10])
+		console.log(RMSh)
 	}
 	RMSp=RMSh*0.14286;
 	for(j=0;j<=3;j++)
