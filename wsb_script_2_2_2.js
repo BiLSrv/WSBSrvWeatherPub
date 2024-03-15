@@ -1040,8 +1040,8 @@ ind=0;
 		{
 			//console.log(CanvGaugeArrP[ind]," indP ",ind," class ",$(this).attr('class'));
 			console.log(" Pdat "+Pdat+" jd_sens "+json_data.sensors[j+17]);
-			Pdat = (parseFloat(json_data.sensors[ind+17])*0.750062).toFixed(2);
-			CanvGaugeArrP[ind].update({ value: (parseFloat(json_data.sensors[ind+17])*0.750062).toFixed(2)});
+			Pdat = (parseFloat(json_data.sensors[j+17])*0.750062).toFixed(2);
+			CanvGaugeArrP[j].update({ value: (parseFloat(json_data.sensors[j+17])*0.750062).toFixed(2)});
 			j++;
 		}
 		
