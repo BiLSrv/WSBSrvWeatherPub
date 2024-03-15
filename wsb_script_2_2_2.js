@@ -953,7 +953,7 @@ if (json_data["sensors"])
 	RMSh+=parseFloat(json_data.sensors[j+10])
 		console.log(RMSh)
 	}
-	RMSp=RMSh*0.14286;
+	RMSh=RMSh*0.14286;
 	for(j=0;j<=3;j++)
 	{
 	RMSp+=parseFloat(json_data.sensors[j+17])
