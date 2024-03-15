@@ -1,4 +1,4 @@
-// upda6a3
+// upda6a4
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -1180,6 +1180,8 @@ function ENS_AIQf(value)
 		case 5:
 			$(".ens_AIQ").addClass("bg-danger").text("ОПАСНО!");
 			break;	
+		default:
+			break;
 		}
 		//default:
 }
