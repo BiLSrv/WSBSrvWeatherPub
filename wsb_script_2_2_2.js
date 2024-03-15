@@ -999,7 +999,6 @@ if (json_data["sensors"])
 		}
 			
 	});
-	$(".ens_AIQ").addClass("bg-info").text("ХОРОШО!");
 	ENS_AIQf(parseInt(json_data.sensors[24],10));
 	
 }
