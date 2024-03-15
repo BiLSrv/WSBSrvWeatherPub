@@ -1,4 +1,4 @@
-// upda6a4
+// upda6a5
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -779,7 +779,7 @@ if (WSsocket.readyState === 1) {
 
 	WSsocket.send(JSON.stringify(httpd_cmd));
 }
-	else
+else
 {initWebSocket();}
 
 // Initialize GaugeMeter plugin
@@ -873,7 +873,9 @@ function onMessage(event)
 {
 arrbufcrc="";
 ind=0,j=0,crc16_int=0;
-Pdat=0.0,Pdt=0.0;
+Pdat=0.0,RMSt=0.0,
+RMSh=0.0,RMSp=0.0;
+	
 //canvasOBJ = $( ".canvasT" ).get();
 
 //console.log(maOBJ);
@@ -921,14 +923,33 @@ else
 	{return 0;}
 	
 //
-//	2.2 Times from mcu
+//	2.3 Times from mcu
 //
 	
 $('.mcu_tus').text((parseFloat(json_data.time[0])).toString());
 $('.ptime').text(json_data.time[1].toString());
 	
 //
-//	2.3 temp_json["sensors"]
+//	2.3 Scope RMS scope sensors
+//
+for(j=0;j<=9;j++)
+{
+RMSt+=parseFloat(json_data.sensors[j]).toString()
+}
+RMSt=RMSt*0.1;
+for(j=0;j<=6;j++)
+{
+RMSh+=parseFloat(json_data.sensors[j+10]).toString()
+}
+RMSp=RMSh*0.14286;
+for(j=0;j<=3;j++)
+{
+RMSp+=parseFloat(json_data.sensors[j+17]).toString()
+}
+RMSp=RMSp*0.25;
+	
+//
+//	2.4 temp_json["sensors"]
 //
 if (json_data["sensors"]) 
 {
@@ -949,6 +970,31 @@ if (json_data["sensors"])
 	});
 	ind=0;
 	$("canvas[data-type='radial-gauge']").each(function(index){
+		if($(this).attr('class')=="GauAvTemp")
+		{
+			//if(index>6)
+			//	return false;
+			//console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
+			CanvGaugeArrH[0].update({ value: RMSt});
+			ind++;
+		}
+		if($(this).attr('class')=="GauAvHum")
+		{
+			//if(index>6)
+			//	return false;
+			//console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
+			CanvGaugeArrH[1].update({ value: RMSh});
+			ind++;
+		}
+		}
+		if($(this).attr('class')=="GauAvPress")
+		{
+			//if(index>6)
+			//	return false;
+			//console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
+			CanvGaugeArrH[2].update({ value: RMSp});
+			ind++;
+		}
 		
 		if($(this).attr('class')=="canvasH1")
 		{
