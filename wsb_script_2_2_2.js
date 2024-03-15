@@ -1004,21 +1004,21 @@ ind=0;
 	
 	ind=0;j=0;
 	$("canvas[data-type='radial-gauge']").each(function(index){
-		if($(this).attr('class')=="GauAvTemp")
+		if($(this).attr('id')=="GauAvTemp")
 		{
 			//if(index>6)
 			//	return false;
 			console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
 			CanvGaugeArrOther[0].update({ value: RMSt});
 		}
-		if($(this).attr('class')=="GauAvHum")
+		if($(this).attr('id')=="GauAvHum")
 		{
 			//if(index>6)
 			//	return false;
 			console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
 			CanvGaugeArrOther[1].update({ value: RMSh});
 		}
-		if($(this).attr('class')=="GauAvPress")
+		if($(this).attr('id')=="GauAvPress")
 		{
 			//if(index>6)
 			//	return false;
