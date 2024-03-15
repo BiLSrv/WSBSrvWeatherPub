@@ -1,4 +1,4 @@
-// upda6a5
+// upda6a6
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -872,6 +872,7 @@ function onError(event) {
 function onMessage(event)
 {
 arrbufcrc="";
+tmpf=0.0;
 ind=0,j=0,crc16_int=0;
 Pdat=0.0,RMSt=0.0,
 RMSh=0.0,RMSp=0.0;
@@ -972,19 +973,21 @@ if (json_data["sensors"])
 	$("#bme280_ALT").val(((parseInt(json_data.sensors[36],10)+parseInt(json_data.sensors[37],10))*0.5));
 	
 	ENS_AIQf(parseInt(json_data.sensors[24],10));
-	ind=0;
 	
-	$(".adc").each(function(index){
-		
-		$(this).attr('class').attr("aria-valuenow","90");
-		$(this).attr('class').attr("aria-valuenow","90");
-		$(this).attr('class').css("width", "100");
-		$(".adcp")[ind].attr('class').text("100");
-		
+ind=0;
+
+	$(".progress-bar").each(function(index){
+		//$ = jQuery.noConflict();
+		txt=$(this).attr('class').toString().split(' ')[3];
+		$('.'+txt).attr("aria-valuenow",parseInt(json_data.sensors[26+ind],10).toString());
+		$('.'+txt).attr("aria-valuenow",parseInt(json_data.sensors[26+ind],10).toString());
+		$('.'+txt).css("width", (0.0244*parseInt(json_data.sensors[26+ind],10)).toString());
+		$('#'+txt).text(parseInt(json_data.sensors[26+ind],10).toString());
+		ind++
 	});
 
 	
-	
+	ind=0;
 //try {
 	$("canvas[data-type='linear-gauge']").each(function(index){
 
