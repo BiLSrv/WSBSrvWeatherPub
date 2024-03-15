@@ -978,7 +978,7 @@ ind=0;
 
 	$(".progress-bar").each(function(index){
 		//$ = jQuery.noConflict();
-		txt=$(this).attr('class').toString().split(' ')[3];
+		txt=$(this).attr('class').toString().split(' ')[2];
 		$('.'+txt).attr("aria-valuenow",parseInt(json_data.sensors[26+ind],10).toString());
 		$('.'+txt).attr("aria-valuenow",parseInt(json_data.sensors[26+ind],10).toString());
 		$('.'+txt).css("width", (0.0244*parseInt(json_data.sensors[26+ind],10)).toString());
@@ -1000,8 +1000,8 @@ ind=0;
 		}
 	});
 	
-	console.log(CanvGaugeArrH);
-	console.log(CanvGaugeArrP);
+	//console.log(CanvGaugeArrH);
+	//console.log(CanvGaugeArrP);
 	
 	ind=0;j=0;
 	$("canvas[data-type='radial-gauge']").each(function(index){
