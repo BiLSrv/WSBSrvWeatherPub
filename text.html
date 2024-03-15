@@ -287,9 +287,13 @@ body
 				<div class="progress">
 					<div class="progress-bar bg-warning text-dark adc2" role="progressbar" aria-label="Warning" aria-valuenow="0" aria-valuemin="0" aria-valuemax="4096" style="width: 0%"><p id="adc2" class="navbar-brand" >1212</p></div>
 				</div>
-				<div class="progress" style="width: 100%">
-					<div class="progress-bar bg-danger text-dark adc3" role="progressbar" aria-label="Danger" aria-valuenow="0" aria-valuemin="0" aria-valuemax="4096" style="width: 0%"><span class="navbar-brand" >25</span></div>
-				</div>
+<div class="progress">
+					<div class="progress-bar bg-success adc3" role="progressbar" aria-label="Danger" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><span class="navbar-brand" >25</span></div>
+</div>
+					<div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+</div>
+			
 </div>
 	<p class="h5 modal-title text-center">Доступность датчиков</p>
 	<p class="h5 modal-title text-center REG_FAIL">Доступность датчиков</p>
@@ -313,7 +317,7 @@ $('body').delay(500).queue(function() {
 
 		$('.'+txt).attr("aria-valuenow","90");
 		$('.'+txt).attr("aria-valuenow","90");
-		$('.'+txt).css("width", "400");
+		$('.'+txt).css("width", "500");
 		
 		//$(".adc3").css("width", "100");
 		//$('#'+txt).text("100");
