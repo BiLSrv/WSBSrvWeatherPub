@@ -279,16 +279,16 @@ body
 				<p class="text-primary fw-bold fs-5" id="CJMCU">НЕТ ДАННЫХ</p>
 				<p class="h5 modal-title text-center">Данные АЦП</p>
 				<div class="progress">
-					<div class="progress-bar bg-success text-dark adc" role="progressbar" aria-label="Success" aria-valuenow="0" aria-valuemin="0" aria-valuemax="4096" style="width: 0%"><p id="adcp" class="navbar-brand ens_AIQ" ></p></div>
+					<div class="progress-bar bg-success text-dark adc0" role="progressbar" aria-label="Success" aria-valuenow="0" aria-valuemin="0" aria-valuemax="4096" style="width: 0%"><p id="adc0" class="navbar-brand" ></p></div>
 				</div>
 				<div class="progress">
-					<div class="progress-bar bg-info text-dark adc" role="progressbar" aria-label="Info" aria-valuenow="0" aria-valuemin="0" aria-valuemax="4096" style="width: 0%"><p id="adcp" class="navbar-brand ens_AIQ" ></p></div>
+					<div class="progress-bar bg-info text-dark adc1" role="progressbar" aria-label="Info" aria-valuenow="0" aria-valuemin="0" aria-valuemax="4096" style="width: 0%"><p id="adc1" class="navbar-brand" ></p></div>
 				</div>
 				<div class="progress">
-					<div class="progress-bar bg-warning text-dark adc" role="progressbar" aria-label="Warning" aria-valuenow="0" aria-valuemin="0" aria-valuemax="4096" style="width: 0%"><p id="adcp" class="navbar-brand ens_AIQ" ></p></div>
+					<div class="progress-bar bg-warning text-dark adc2" role="progressbar" aria-label="Warning" aria-valuenow="0" aria-valuemin="0" aria-valuemax="4096" style="width: 0%"><p id="adc2" class="navbar-brand" ></p></div>
 				</div>
 				<div class="progress">
-					<div class="progress-bar bg-danger text-dark adc" role="progressbar" aria-label="Danger" aria-valuenow="0" aria-valuemin="0" aria-valuemax="4096" style="width: 0%"><p id="adcp" class="navbar-brand ens_AIQ" ></p></div>
+					<div class="progress-bar bg-danger text-dark adc3" role="progressbar" aria-label="Danger" aria-valuenow="0" aria-valuemin="0" aria-valuemax="4096" style="width: 0%"><p id="adc3" class="navbar-brand" ></p></div>
 				</div>
 </div>
 	<p class="h5 modal-title text-center">Доступность датчиков</p>
@@ -306,12 +306,17 @@ var CanvGaugeArrR = [];
 
 $('body').delay(500).queue(function() {
 	ind=0;
-	$(".adc").each(function(index){
+	txt="";
+	$(".progress-bar").each(function(index){
 		//$ = jQuery.noConflict();
-		$($(this).attr('class')).attr("aria-valuenow","90");
-		$($(this).attr('class')).attr("aria-valuenow","90");
-		$($(this).attr('class')).css("width", "100");
-		$("#adcp").text("100");
+		txt=$(this).attr('class').toString().split(' ')[3];
+
+		$('.'+txt).attr("aria-valuenow","90");
+		$('.'+txt).attr("aria-valuenow","90");
+		$('.'+txt).css("width", "100");
+		
+		//$(".adc3").css("width", "100");
+		//$('#'+txt).text("100");
 		
 	});
 	
@@ -327,10 +332,10 @@ $('body').delay(500).queue(function() {
 	
 maOBJ = $('*');
 
-console.log("maOBJ");
+//console.log("maOBJ");
 $("canvas").each(function(index){	
 	//maOBJarr.push($( this ));
-	console.log($( this ));
+	//console.log($( this ));
 });
     //$(this).load('myPage.php');
 // Canvas .each Default Settings 
@@ -416,7 +421,7 @@ $("canvas[data-type='radial-gauge']").each(function(index){
     animationDuration: 1500,
     animationRule: "linear"
 }).draw());
-	console.log(CanvGaugeArrR[index]);
+	//console.log(CanvGaugeArrR[index]);
 });
 
 }); 
@@ -440,9 +445,9 @@ function rIAQItem_convertValue(rawValue,_temp,_humd)
     hum_abs = 6.112 * Math.exp((17.67 * _temp)/(_temp + 243.5)) * _humd * 2.1674 / (273.15 + _temp);
     // Calculate the compensated value
     comp_gas = rawValue * Math.exp(_hum_ratio * hum_abs);
-	console.log(comp_gas)
-	console.log((_max_T-_min_T))
-	console.log((_max_U-_min_U))
+	//console.log(comp_gas)
+	//console.log((_max_T-_min_T))
+	//console.log((_max_U-_min_U))
 	IAQ=(comp_gas-_min_T)/(_max_T-_min_T)*(_max_U-_min_U)+_min_U;
     // Recalculation in IAQ from 0 to 500 with inversion
     return IAQ;
