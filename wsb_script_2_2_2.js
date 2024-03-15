@@ -942,17 +942,19 @@ if (json_data["sensors"])
 	//
 	for(j=0;j<=9;j++)
 	{
-	RMSt+=parseFloat(json_data.sensors[j]).toString()
+		if(parseFloat(json_data.sensors[j])<0)
+			tmpf=tmpf*(-1);
+	RMSt+=Math.abs(parseFloat(json_data.sensors[j])
 	}
-	RMSt=RMSt*0.1;
+	RMSt=RMSt*0.1*tmpf;
 	for(j=0;j<=6;j++)
 	{
-	RMSh+=parseFloat(json_data.sensors[j+10]).toString()
+	RMSh+=parseFloat(json_data.sensors[j+10])
 	}
 	RMSp=RMSh*0.14286;
 	for(j=0;j<=3;j++)
 	{
-	RMSp+=parseFloat(json_data.sensors[j+17]).toString()
+	RMSp+=parseFloat(json_data.sensors[j+17])
 	}
 	RMSp=RMSp*0.25;
 
