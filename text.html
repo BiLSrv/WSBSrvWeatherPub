@@ -278,17 +278,17 @@ body
 				<p class="h5 modal-title text-center">Датчик CJMCU</p>
 				<p class="text-primary fw-bold fs-5" id="CJMCU">НЕТ ДАННЫХ</p>
 				<p class="h5 modal-title text-center">Данные АЦП</p>
-				<div class="progress adc0per" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-				  <div class="progress-bar bg-success adc0" style="width: 25%">25%</div>
+				<div class="progress">
+					<div class="progress-bar bg-success text-dark adc" role="progressbar" aria-label="Success" aria-valuenow="0" aria-valuemin="0" aria-valuemax="4096" style="width: 0%"><p id="adcp" class="navbar-brand ens_AIQ" ></p></div>
 				</div>
-				<div class="progress adc1per" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-				  <div class="progress-bar bg-info text-dark adc1" style="width: 50%">50%</div>
+				<div class="progress">
+					<div class="progress-bar bg-info text-dark adc" role="progressbar" aria-label="Info" aria-valuenow="0" aria-valuemin="0" aria-valuemax="4096" style="width: 0%"><p id="adcp" class="navbar-brand ens_AIQ" ></p></div>
 				</div>
-				<div class="progress adc2per" role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-				  <div class="progress-bar bg-warning text-dark adc2" style="width: 75%">75%</div>
+				<div class="progress">
+					<div class="progress-bar bg-warning text-dark adc" role="progressbar" aria-label="Warning" aria-valuenow="0" aria-valuemin="0" aria-valuemax="4096" style="width: 0%"><p id="adcp" class="navbar-brand ens_AIQ" ></p></div>
 				</div>
-				<div class="progress adc3per" role="progressbar" aria-label="Default example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-				  <div class="progress-bar bg-danger adc3" style="width: 100%">100%</div>
+				<div class="progress">
+					<div class="progress-bar bg-danger text-dark adc" role="progressbar" aria-label="Danger" aria-valuenow="0" aria-valuemin="0" aria-valuemax="4096" style="width: 0%"><p id="adcp" class="navbar-brand ens_AIQ" ></p></div>
 				</div>
 </div>
 	<p class="h5 modal-title text-center">Доступность датчиков</p>
@@ -305,17 +305,23 @@ var CanvGaugeArrR = [];
 //var maOBJarr =[];
 
 $('body').delay(500).queue(function() {
+	ind=0;
+	$(".adc").each(function(index){
+		//$ = jQuery.noConflict();
+		$($(this).attr('class')).attr("aria-valuenow","90");
+		$($(this).attr('class')).attr("aria-valuenow","90");
+		$($(this).attr('class')).css("width", "100");
+		$("#adcp").text("100");
+		
+	});
+	
+	
 	$(".ens_AIQ").addClass("bg-orange").text("ХОРОШО!");
 	
 	$('.ens_AIQ').last().removeClass(function() {
     return $( this ).prev().attr("class");
   });
-  
-for(j=0;j<9;j++)
-{
 
-console.log(j);
-}
   
 	//$('.ens_AIQ')[2].className = '';
 	
@@ -445,9 +451,6 @@ function rIAQItem_convertValue(rawValue,_temp,_humd)
 }
 
 
-
-
-alert(rIAQItem_convertValue((61930),28,26))
 
 }
 </script>

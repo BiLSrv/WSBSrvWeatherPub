@@ -967,7 +967,24 @@ if (json_data["sensors"])
 	else
 		$("#lm75_t2_chk").prop("checked", false);
 	
+	$("#bme280_DEW").val(((parseInt(json_data.sensors[32],10)+parseInt(json_data.sensors[33],10))*0.5));
+	$("#bme280_QNH").val(((parseInt(json_data.sensors[34],10)+parseInt(json_data.sensors[35],10))*0.5));
+	$("#bme280_ALT").val(((parseInt(json_data.sensors[36],10)+parseInt(json_data.sensors[37],10))*0.5));
+	
 	ENS_AIQf(parseInt(json_data.sensors[24],10));
+	ind=0;
+	
+	$(".adc").each(function(index){
+		
+		$(this).attr('class').attr("aria-valuenow","90");
+		$(this).attr('class').attr("aria-valuenow","90");
+		$(this).attr('class').css("width", "100");
+		$(".adcp")[ind].attr('class').text("100");
+		
+	});
+
+	
+	
 //try {
 	$("canvas[data-type='linear-gauge']").each(function(index){
 
@@ -987,7 +1004,6 @@ if (json_data["sensors"])
 			//	return false;
 			//console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
 			CanvGaugeArrH[0].update({ value: RMSt});
-			ind++;
 		}
 		if($(this).attr('class')=="GauAvHum")
 		{
@@ -995,7 +1011,6 @@ if (json_data["sensors"])
 			//	return false;
 			//console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
 			CanvGaugeArrH[1].update({ value: RMSh});
-			ind++;
 		}
 		if($(this).attr('class')=="GauAvPress")
 		{
@@ -1003,7 +1018,6 @@ if (json_data["sensors"])
 			//	return false;
 			//console.log(CanvGaugeArrH[ind]," indH ",ind," class ",$(this).attr('class'));
 			CanvGaugeArrH[2].update({ value: RMSp});
-			ind++;
 		}
 		
 		if($(this).attr('class')=="canvasH1")
