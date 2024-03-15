@@ -929,34 +929,45 @@ else
 $('.mcu_tus').text((parseFloat(json_data.time[0])).toString());
 $('.ptime').text(json_data.time[1].toString());
 	
-//
-//	2.3 Scope RMS scope sensors
-//
-for(j=0;j<=9;j++)
-{
-RMSt+=parseFloat(json_data.sensors[j]).toString()
-}
-RMSt=RMSt*0.1;
-for(j=0;j<=6;j++)
-{
-RMSh+=parseFloat(json_data.sensors[j+10]).toString()
-}
-RMSp=RMSh*0.14286;
-for(j=0;j<=3;j++)
-{
-RMSp+=parseFloat(json_data.sensors[j+17]).toString()
-}
-RMSp=RMSp*0.25;
-	
+
 //
 //	2.4 temp_json["sensors"]
 //
 if (json_data["sensors"]) 
 {
 	console.log(CanvGaugeArrOther);
+	
+	//
+	//	2.3 Scope RMS scope sensors
+	//
+	for(j=0;j<=9;j++)
+	{
+	RMSt+=parseFloat(json_data.sensors[j]).toString()
+	}
+	RMSt=RMSt*0.1;
+	for(j=0;j<=6;j++)
+	{
+	RMSh+=parseFloat(json_data.sensors[j+10]).toString()
+	}
+	RMSp=RMSh*0.14286;
+	for(j=0;j<=3;j++)
+	{
+	RMSp+=parseFloat(json_data.sensors[j+17]).toString()
+	}
+	RMSp=RMSp*0.25;
+
 	//console.log($("canvas[data-type='radial-gauge']"));
 	//console.log($("canvas[data-type='radial-gauge']").attr("i"));
+	if(parseInt(json_data.sensors[30],10))
+		$("#lm75_t1_chk").prop("checked", true);
+	else
+		$("#lm75_t1_chk").prop("checked", false);
+	if(parseInt(json_data.sensors[31],10))
+		$("#lm75_t2_chk").prop("checked", true);
+	else
+		$("#lm75_t2_chk").prop("checked", false);
 	
+	ENS_AIQf(parseInt(json_data.sensors[24],10));
 //try {
 	$("canvas[data-type='linear-gauge']").each(function(index){
 
@@ -986,7 +997,6 @@ if (json_data["sensors"])
 			CanvGaugeArrH[1].update({ value: RMSh});
 			ind++;
 		}
-		}
 		if($(this).attr('class')=="GauAvPress")
 		{
 			//if(index>6)
@@ -1004,9 +1014,7 @@ if (json_data["sensors"])
 			CanvGaugeArrH[ind].update({ value: parseFloat(json_data.sensors[ind+10])});
 			ind++;
 		}
-	});
-	ind=0;
-	$("canvas[data-type='radial-gauge']").each(function(index){
+		
 		if($(this).attr('class')=="canvasP1")
 		{
 			//console.log(CanvGaugeArrP[ind]," indP ",ind," class ",$(this).attr('class'));
@@ -1015,8 +1023,7 @@ if (json_data["sensors"])
 			CanvGaugeArrP[ind].update({ value: (parseFloat(json_data.sensors[ind+17])*0.750062).toFixed(2)});
 			ind++;
 		}
-	});
-		$("canvas[data-type='radial-gauge']").each(function(index){
+		
 		if($(this).attr('id')=="GauAirQ")
 		{
 			console.log(" iaq "+rIAQItem_convertValue(parseInt(json_data.sensors[21],10),parseFloat(json_data.sensors[6]),parseFloat(json_data.sensors[14])));
@@ -1043,11 +1050,11 @@ if (json_data["sensors"])
 		{
 			CanvGaugeArrOther[6].update({ value: parseInt(json_data.sensors[24],10)});
 		}
-			
 	});
-	ENS_AIQf(parseInt(json_data.sensors[24],10));
-	
 }
+	
+	
+};
 		//if(Math.round(Pdat)>750)
 		//{
 		//	Pdt=750-(Pdat-750);
@@ -1059,7 +1066,6 @@ if (json_data["sensors"])
 		
 		//if(index>7)
 		//{return true;}
-};
 	
 	/*for(var i=0;i<GuageMeterOBJ.length;i++)
 	{
@@ -1211,7 +1217,6 @@ function ENS_AIQf(value)
     	return $( this ).prev().attr("class");
   	});
 	$(".ens_AIQ").text("");
-	console.log('#ens_AIQ'+value)
 	switch (value)
 		{
 		case 1:
