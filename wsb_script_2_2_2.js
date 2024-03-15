@@ -17,7 +17,6 @@ var CanvGaugeArrT = [];
 var CanvGaugeArrP = [];
 var CanvGaugeArrH = [];
 var CanvGaugeArrOther = [];
-var CanvGaugeArrOtherT = [];
 	
 //$(document).ready(function() {
 var gateway = 'wss://wsb.bilymo.keenetic.pro/ws'
@@ -257,7 +256,7 @@ if($(this).attr('id')=="GauAvTemp")
 {
 	//console.log("Elem "+$(this).attr('id'))
 	unit="%"
-    CanvGaugeArrOtherT.push(new RadialGauge({
+    CanvGaugeArrOther.push(new RadialGauge({
 	renderTo: $( this ).attr('id'),
     title: String($(this).attr('id')),
     width: 150,
@@ -1049,12 +1048,12 @@ ind=0;
 		{
 			//console.log(" iaq "+rIAQItem_convertValue(parseInt(json_data.sensors[21],10),parseFloat(json_data.sensors[6]),parseFloat(json_data.sensors[14])));
 			
-			CanvGaugeArrOther[2].update({ value: rIAQItem_convertValue(parseInt(json_data.sensors[21],10),parseFloat(json_data.sensors[6]),parseFloat(json_data.sensors[14])) });
+			CanvGaugeArrOther[3].update({ value: rIAQItem_convertValue(parseInt(json_data.sensors[21],10),parseFloat(json_data.sensors[6]),parseFloat(json_data.sensors[14])) });
 		}
 		if($(this).attr('id')=="bme680_gr")
 		{
-			console.log(" iaq "+rIAQItem_convertValue(parseInt(json_data.sensors[21],10),parseFloat(json_data.sensors[6]),parseFloat(json_data.sensors[14])));
-			CanvGaugeArrOther[3].update({ value: rIAQItem_convertValue(parseInt(json_data.sensors[21],10),parseFloat(json_data.sensors[6]),parseFloat(json_data.sensors[14])) });
+			//console.log(" iaq "+rIAQItem_convertValue(parseInt(json_data.sensors[21],10),parseFloat(json_data.sensors[6]),parseFloat(json_data.sensors[14])));
+			CanvGaugeArrOther[4].update({ value: rIAQItem_convertValue(parseInt(json_data.sensors[21],10),parseFloat(json_data.sensors[6]),parseFloat(json_data.sensors[14])) });
 		}
 			
 		if($(this).attr('id')=="ens160_tvoc")
