@@ -984,7 +984,7 @@ ind=0;
 		txt=$(this).attr('class').toString().split(' ')[2];
 		$('.'+txt).attr("aria-valuenow",parseInt(json_data.sensors[26+ind],10).toString());
 		$('.'+txt).attr("aria-valuenow",parseInt(json_data.sensors[26+ind],10).toString());
-		$('.'+txt).css("width", (0.0244*parseInt(json_data.sensors[26+ind],10)).toString());
+		$('.'+txt).css("width", Math.round((0.0244*parseInt(json_data.sensors[26+ind],10))).toString());
 		$('#'+txt).text(parseInt(json_data.sensors[26+ind],10).toString());
 		ind++
 	});
