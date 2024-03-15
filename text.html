@@ -305,7 +305,13 @@ var CanvGaugeArrR = [];
 //var maOBJarr =[];
 
 $('body').delay(500).queue(function() {
-
+	$(".ens_AIQ").addClass("bg-orange").text("ХОРОШО!");
+	
+	$('.ens_AIQ').last().removeClass(function() {
+    return $( this ).prev().attr("class");
+  });
+	//$('.ens_AIQ')[2].className = '';
+	
 maOBJ = $('*');
 
 console.log("maOBJ");

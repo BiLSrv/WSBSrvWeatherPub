@@ -1162,7 +1162,9 @@ function state_online(state)
 
 function ENS_AIQf(value) 
 {
-	$('.ens_AIQ')[2].className = '';
+  	$('.ens_AIQ').last().removeClass(function() {
+    	return $( this ).prev().attr("class");
+  	});
 	$(".ens_AIQ").text("");
 	console.log('#ens_AIQ'+value)
 	switch (value)
