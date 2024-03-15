@@ -944,7 +944,7 @@ if (json_data["sensors"])
 	{
 		if(parseFloat(json_data.sensors[j])<0)
 			tmpf=tmpf*(-1);
-	RMSt+=Math.abs(parseFloat(json_data.sensors[j])
+	RMSt+=Math.abs(parseFloat(json_data.sensors[j]))
 	}
 	RMSt=RMSt*0.1*tmpf;
 	for(j=0;j<=6;j++)
