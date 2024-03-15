@@ -1166,10 +1166,10 @@ function ENS_AIQf(value)
 	switch (value)
 		{
 		case 1:
-			$(".ens_AIQ").addClass("bg-info").text("ХОРОШО!");
+			$(".ens_AIQ").addClass("bg-success").text("ОТЛИЧНО!");
 			break;
 		case 2:
-			$(".ens_AIQ").addClass("bg-success").text("ОТЛИЧНО!");
+			$(".ens_AIQ").addClass("bg-info").text("ХОРОШО!");
 			break;
 		case 3:
 			$(".ens_AIQ").addClass("bg-warning").text("НЕ ОЧЕНЬ!");
