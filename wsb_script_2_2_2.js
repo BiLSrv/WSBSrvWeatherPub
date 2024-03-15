@@ -1162,27 +1162,22 @@ function state_online(state)
 
 function ENS_AIQf(value) 
 {
-	
+	$('#ens_AIQ')[2].className = '';
 	switch (value)
 		{
 		case 1:
-			$('#ens_AIQ')[2].className = '';
 			$(".ens_AIQ").addClass("bg-info").text("ХОРОШО!");
 			break;
 		case 2:
-			$('#ens_AIQ')[2].className = '';
 			$(".ens_AIQ").addClass("bg-success").text("ОТЛИЧНО!");
 			break;
 		case 3:
-			$('#ens_AIQ')[3].className = '';
 			$(".ens_AIQ").addClass("bg-warning").text("НЕ ОЧЕНЬ!");
 			break;
 		case 4:
-			$('#ens_AIQ')[2].className = '';
 			$(".ens_AIQ").addClass("bg-secondary").text("ПЛОХО!");
 			break;
 		case 5:
-			$('#ens_AIQ')[2].className = '';
 			$(".ens_AIQ").addClass("bg-danger").text("ОПАСНО!");
 			break;	
 		}
