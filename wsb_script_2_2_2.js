@@ -1001,7 +1001,7 @@ ind=0;
 	});
 	
 	console.log(CanvGaugeArrH);
-	console.log(CanvGaugeArrR);
+	console.log(CanvGaugeArrP);
 	
 	ind=0;
 	$("canvas[data-type='radial-gauge']").each(function(index){
