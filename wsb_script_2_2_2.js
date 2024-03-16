@@ -1065,17 +1065,17 @@ console.log("Width "+Math.round((0.0244*parseFloat(json_data.sensors[26+ind]))).
 			
 		if($(this).attr('id')=="ens160_tvoc")
 		{
-			CanvGaugeArrOther[4].update({ value: parseInt(json_data.sensors[22],10) });
+			CanvGaugeArrOther[5].update({ value: parseInt(json_data.sensors[22],10) });
 		}
 			
 		if($(this).attr('id')=="ens160_eco2")
 		{
-			CanvGaugeArrOther[5].update({ value: parseInt(json_data.sensors[23],10)});
+			CanvGaugeArrOther[6].update({ value: parseInt(json_data.sensors[23],10)});
 		}
 			
 		if($(this).attr('id')=="ens160_AIQ")
 		{
-			CanvGaugeArrOther[6].update({ value: parseInt(json_data.sensors[24],10)});
+			CanvGaugeArrOther[7].update({ value: parseInt(json_data.sensors[24],10)});
 		}
 	});
 }
