@@ -971,9 +971,9 @@ if (json_data["sensors"])
 	else
 		$("#lm75_t2_chk").prop("checked", false);
 	
-	$("#bme280_DEW").val(((parseFloat(json_data.sensors[32],10)+parseFloat(json_data.sensors[33]))*0.5));
-	$("#bme280_QNH").val(((parseFloat(json_data.sensors[34],10)+parseFloat(json_data.sensors[35]))*0.5));
-	$("#bme280_ALT").val(((parseFloat(json_data.sensors[36],10)+parseFloat(json_data.sensors[37]))*0.5));
+	$("#bme280_DEW").val(((parseFloat(json_data.sensors[32],10)+parseFloat(json_data.sensors[33]))*0.5).substring(0, 7));
+	$("#bme280_QNH").val(((parseFloat(json_data.sensors[34],10)+parseFloat(json_data.sensors[35]))*0.5).substring(0, 7));
+	$("#bme280_ALT").val(((parseFloat(json_data.sensors[36],10)+parseFloat(json_data.sensors[37]))*0.5).substring(0, 7));
 	
 	ENS_AIQf(parseInt(json_data.sensors[24],10));
 	
@@ -985,7 +985,7 @@ ind=0;
 		$('.'+txt).attr("aria-valuenow",parseInt(json_data.sensors[26+ind],10).toString());
 		$('.'+txt).attr("aria-valuenow",parseInt(json_data.sensors[26+ind],10).toString());
 		$('.'+txt).css("width", Math.round((0.0244*parseFloat(json_data.sensors[26+ind]))).toString());
-		$('#'+txt).text(parseInt(json_data.sensors[26+ind],10).toString().toFixed(7));
+		$('#'+txt).text(parseInt(json_data.sensors[26+ind],10).toString());
 		ind++
 	});
 cosole.log("Width "+Math.round((0.0244*parseFloat(json_data.sensors[26+ind]))).toString()+"val "+parseFloat(json_data.sensors[26+ind]))
