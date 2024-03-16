@@ -951,7 +951,7 @@ if (json_data["sensors"])
 	for(j=0;j<=6;j++)
 	{
 	RMSh+=parseFloat(json_data.sensors[j+10])
-		console.log(RMSh)
+		//console.log(RMSh)
 	}
 	RMSh=RMSh*0.14286;
 	for(j=0;j<=3;j++)
@@ -1005,9 +1005,9 @@ cosole.log("Width "+Math.round((0.0244*parseFloat(json_data.sensors[26+ind]))).t
 	
 	//console.log(CanvGaugeArrH);
 	//console.log(CanvGaugeArrP);
-	console.log(RMSt);
-	console.log(RMSh);
-	console.log(RMSp);
+	//console.log(RMSt);
+	//console.log(RMSh);
+	//console.log(RMSp);
 	
 	ind=0;j=0;
 	$("canvas[data-type='radial-gauge']").each(function(index){
