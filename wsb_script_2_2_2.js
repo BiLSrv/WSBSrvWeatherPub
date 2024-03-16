@@ -985,7 +985,7 @@ ind=0;
 		$('.'+txt).attr("aria-valuenow",parseInt(json_data.sensors[26+ind],10).toString());
 		$('.'+txt).attr("aria-valuenow",parseInt(json_data.sensors[26+ind],10).toString());
 		$('.'+txt).css("width", Math.round((0.0244*parseFloat(json_data.sensors[26+ind]))).toString());
-		$('#'+txt).text(parseInt(json_data.sensors[26+ind],10).toString());
+		$('#'+txt).text(parseInt(json_data.sensors[26+ind],10).toString().toFixed(7));
 		ind++
 	});
 
