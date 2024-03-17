@@ -125,10 +125,44 @@ body
   
 	  
     </style>
+	
+<script>
+// Attach a submit handler to the form
+$( "#post_fw" ).submit(function( event ) {
+ 
+  // Stop form from submitting normally
+  event.preventDefault();
+ 
+  // Get some values from elements on the page:
+  var $form = $( this ),
+    term = $form.find( "input[name='s']" ).val(),
+    url = $form.attr( "action" );
+ 
+  // Send the data using post
+  var posting = $.post( url, { s: term } );
+ 
+  // Put the results in a div
+  posting.done(function( data ) {
+    var content = $( data ).find( "#content" );
+    $( "#result" ).empty().append( content );
+  });
+});
+</script>
 
 
 </head>
 <form>
+<!-- make sure the attribute enctype is set to multipart/form-data -->
+<form method="post" enctype="multipart/form-data" action="192.168.1.47/post_fw" id="Post_fw">
+    <!-- upload of a single file -->
+    <p>
+        <label>Загрузить FW: </label><br/>
+        <input type="file" name="example1"/>
+ 	</p>
+	<p>
+        <input type="submit" value="post_fw">
+    </p>
+</form>
 <div class="col-xs-3 mb-2 offset-lg-1 col-lg-3 offset-md-1 offset-sm-1 offset-1 col-5 col-sm-4 col-md-4 col-xl-3 px-2">
 <button type="button" id="btn0" class="btn btn-primary" onclick="sub_init()">Открыть соед</button>
 <button type="button" id="btn0" class="btn btn-primary" onclick="sub_grad()">Послать</button>

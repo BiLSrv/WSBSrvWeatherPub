@@ -3,6 +3,18 @@
 <br>
 <form>
 <div class="col-xs-3 mb-2 offset-lg-1 col-lg-3 offset-md-1 offset-sm-1 offset-1 col-5 col-sm-4 col-md-4 col-xl-3 px-2">
+<form method="post" enctype="multipart/form-data" action="192.168.1.47/post_fw" id="Post_fw">
+    <!-- upload of a single file -->
+<p>
+        <label>Загрузить FW: </label><br/>
+        <input type="file"/>
+ </p>
+<p>
+        <input type="submit" value="post_fw"/>
+</p>
+</form>
+<div id="result"></div>
+	
 <button type="button" id="btn0" class="btn btn-primary" onclick="sub_init()">Открыть соед</button>
 <button type="button" id="btn0" class="btn btn-primary" onclick="sub_grad()">Послать</button>
 </div>
@@ -10,17 +22,6 @@
 <span>Автозамер <input type="checkbox" class="form-check-input  ml-1" name="autmp" id="autmp" checked></span> 
 <span>Автозапись <input type="checkbox" class="form-check-input  ml-1" name="autwrtemp" id="autwrtemp" checked></span>
 
-<!-- make sure the attribute enctype is set to multipart/form-data -->
-<form method="post" enctype="multipart/form-data" action="/post_fw">
-    <!-- upload of a single file -->
-    <p>
-        <label>Загрузить FW: </label><br/>
-        <input type="file" name="example1"/>
- 	</p>
-	<p>
-        <input type="submit"/>
-    </p>
-</form>
 </div>
 <div class="container row text-center">
 	<p class="h5 modal-title text-center">Средние значения датчиков</p>
