@@ -659,6 +659,7 @@ $("form").on( "submit", function( event ) {
 	$.ajax({
     url: 'post_fw',
     type: 'POST',
+	enctype: 'multipart/form-data',
     data: formData,
     contentType: false,
     processData: false,
