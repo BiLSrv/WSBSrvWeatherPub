@@ -644,7 +644,7 @@ if(WSsocket.readyState!=1)
 }); 
 
 // Attach a submit handler to the form
-$( "#post_fw" ).submit(function( event ) {
+$( "button[value='post_fw']" ).submit(function( event ) {
  console.log("post_fw");
   // Stop form from submitting normally
   event.preventDefault();
