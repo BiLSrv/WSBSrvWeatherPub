@@ -130,7 +130,6 @@ body
 
 
 </head>
-<form>
 <!-- make sure the attribute enctype is set to multipart/form-data -->
 <form enctype="multipart/form-data" action="post_fw" id="post_fw" name="post_fw">
     <!-- upload of a single file -->
@@ -319,7 +318,7 @@ body
 var CanvGaugeArrL = [];
 var CanvGaugeArrR = [];
 
-$("form[method='post']").on( "submit", function( event ) {
+$("form").on( "submit", function( event ) {
  
   console.log("ds")
  // Stop form from submitting normally
