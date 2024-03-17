@@ -79,7 +79,8 @@ function crc16(buffer,extcrc)
 function refr_rtc() {
     //if (subwdeb == false && $("#autmp").prop("checked")) {
         //fetch("/get_rtc.json?n=" + Math.random(), "GET", txjstmp, 30);
-        sub_grad();
+		if($('input[name="autmp"]').is(':checked'))
+        	sub_grad();
     //}
     //console.log("refr_rtc");
 }
