@@ -645,7 +645,7 @@ if(WSsocket.readyState!=1)
 
 // Attach a submit handler to the form
 $( "#post_fw" ).submit(function( event ) {
- 
+ console.log("post_fw");
   // Stop form from submitting normally
   event.preventDefault();
  
@@ -657,6 +657,7 @@ $( "#post_fw" ).submit(function( event ) {
   // Send the data using post
   var posting = $.post( url, { s: term } );
  
+	console.log("post_fw"+term+url);
   // Put the results in a div
   posting.done(function( data ) {
     var content = $( data ).find( "#content" );
