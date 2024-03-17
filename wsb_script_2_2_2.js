@@ -644,25 +644,44 @@ if(WSsocket.readyState!=1)
 }); 
 
 // Attach a submit handler to the form
-$( "button[value='post_fw']" ).submit(function( event ) {
- console.log("post_fw");
-  // Stop form from submitting normally
+$("form").on( "submit", function( event ) {
+ 
+  console.log("ds")
+ // Stop form from submitting normally
   event.preventDefault();
- 
+
+	var formData = new FormData(this);
+	// var file_data = $("#file").prop('files')[0];
+	// $('input[type=file]')[0].files[0]
+	formData.append('file', $('input[type=file]').prop('files')[0]);
+
+	// Осуществление запроса
+	$.ajax({
+    url: 'post_fw',
+    type: 'POST',
+    data: formData,
+    contentType: false,
+    processData: false,
+    success: function(data) {
+        console.log('Файл успешно загружен:', data);
+    },
+    error: function(e) {
+        console.error('Ошибка при загрузке:', e);
+    }
+	})
   // Get some values from elements on the page:
-  var $form = $( this ),
-    term = $form.find( "input[name='s']" ).val(),
-    url = $form.attr( "action" );
- 
+  //var $form = $( this ),
+  //  val = $form.find( "input[name='file_fw']").val(),
+  //  url = $form.attr( "action" );
+ console.log(new FormData(this));
   // Send the data using post
-  var posting = $.post( url, { s: term } );
+  //var posting = $.post( url, { s: term } );
  
-	console.log("post_fw"+term+url);
   // Put the results in a div
-  posting.done(function( data ) {
-    var content = $( data ).find( "#content" );
-    $( "#result" ).empty().append(content);
-  });
+  //posting.done(function( data ) {
+  //  var content = $( data ).find( "#content" );
+  //  $( "#result" ).empty().append( content );
+  //});
 });
 
 

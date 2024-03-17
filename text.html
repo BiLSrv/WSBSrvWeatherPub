@@ -126,46 +126,24 @@ body
 	  
     </style>
 	
-<script>
-// Attach a submit handler to the form
-$( "#post_fw" ).submit(function( event ) {
- 
-  // Stop form from submitting normally
-  event.preventDefault();
- 
-  // Get some values from elements on the page:
-  var $form = $( this ),
-    term = $form.find( "input[name='s']" ).val(),
-    url = $form.attr( "action" );
- 
-  // Send the data using post
-  var posting = $.post( url, { s: term } );
- 
-  // Put the results in a div
-  posting.done(function( data ) {
-    var content = $( data ).find( "#content" );
-    $( "#result" ).empty().append( content );
-  });
-});
-</script>
+
 
 
 </head>
 <form>
 <!-- make sure the attribute enctype is set to multipart/form-data -->
-<form method="post" enctype="multipart/form-data" action="192.168.1.47/post_fw" id="Post_fw">
+<form enctype="multipart/form-data" action="post_fw" id="post_fw" name="post_fw">
     <!-- upload of a single file -->
     <p>
         <label>Загрузить FW: </label><br/>
-        <input type="file" name="example1"/>
+        <input type="file" name="file_fw"/>
  	</p>
 	<p>
         <input type="submit" value="post_fw">
     </p>
 </form>
 <div class="col-xs-3 mb-2 offset-lg-1 col-lg-3 offset-md-1 offset-sm-1 offset-1 col-5 col-sm-4 col-md-4 col-xl-3 px-2">
-<button type="button" id="btn0" class="btn btn-primary" onclick="sub_init()">Открыть соед</button>
-<button type="button" id="btn0" class="btn btn-primary" onclick="sub_grad()">Послать</button>
+
 </div>
 <div class=" offset-lg-0 col-lg-4 offset-sm-0 col-sm-5 col-6 offset-md-0 col-md-5 col-xl-3">
 <span>Автозамер <input type="checkbox" class="form-check-input  ml-1" name="autmp" id="autmp" checked></span> 
@@ -340,9 +318,63 @@ $( "#post_fw" ).submit(function( event ) {
 <script>
 var CanvGaugeArrL = [];
 var CanvGaugeArrR = [];
+
+$("form[method='post']").on( "submit", function( event ) {
+ 
+  console.log("ds")
+ // Stop form from submitting normally
+  event.preventDefault();
+
+	var formData = new FormData(this);
+	// var file_data = $("#file").prop('files')[0];
+	// $('input[type=file]')[0].files[0]
+	formData.append('file', $('input[type=file]').prop('files')[0]);
+
+	// Осуществление запроса
+	$.ajax({
+    url: 'post_fw',
+    type: 'POST',
+    data: formData,
+    contentType: false,
+    processData: false,
+    success: function(data) {
+        console.log('Файл успешно загружен:', data);
+    },
+    error: function(e) {
+        console.error('Ошибка при загрузке:', e);
+    }
+	})
+  // Get some values from elements on the page:
+  //var $form = $( this ),
+  //  val = $form.find( "input[name='file_fw']").val(),
+  //  url = $form.attr( "action" );
+ console.log(new FormData(this));
+  // Send the data using post
+  //var posting = $.post( url, { s: term } );
+ 
+  // Put the results in a div
+  //posting.done(function( data ) {
+  //  var content = $( data ).find( "#content" );
+  //  $( "#result" ).empty().append( content );
+  //});
+});
+
+
+
+
+
+
+
+
+
 //var maOBJarr =[];
 
 $('body').delay(500).queue(function() {
+	
+
+
+	
+	
 	ind=0;
 	txt="";
 	$(".progress-bar").each(function(index){
