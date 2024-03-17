@@ -988,7 +988,7 @@ ind=0;
 		$('#'+txt).text(parseInt(json_data.sensors[26+ind],10).toString());
 		ind++
 	});
-console.log("Width "+Math.round((0.0244*parseFloat(json_data.sensors[26+ind]))).toString()+"val "+parseFloat(json_data.sensors[26+ind]))
+console.log("Width "+Math.round((0.0244*parseInt(json_data.sensors[26+ind]))).toString()+"val "+parseInt(json_data.sensors[26+ind]))
 	
 	ind=0;
 //try {
