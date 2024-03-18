@@ -8,7 +8,7 @@
 <p>
         <label>Загрузить FW: </label><br/>
         <input type="file"/>
- </p>
+</p>
 <p>
         <input type="submit" value="post_fw"/>
 </p>
@@ -180,3 +180,48 @@
    <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover" aria-describedby="popover452354"></button>
    <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover" aria-describedby="popover452354"></button>
 </form>
+
+<script>
+// Attach a submit handler to the form
+$("form").on( "submit", function( event ) {
+ 
+  console.log("ds")
+ // Stop form from submitting normally
+  event.preventDefault();
+
+	var formData = new FormData(this);
+	// var file_data = $("#file").prop('files')[0];
+	// $('input[type=file]')[0].files[0]
+	formData.append('file', $('input[type=file]').prop('files')[0]);
+
+	// Осуществление запроса
+	$.ajax({
+    url: 'post_fw',
+    type: 'POST',
+	enctype: 'multipart/form-data',
+    data: formData,
+    contentType: false,
+    processData: false,
+    success: function(data) {
+        console.log('Файл успешно загружен:', data);
+    },
+    error: function(e) {
+        console.error('Ошибка при загрузке:', e);
+    }
+	})
+  // Get some values from elements on the page:
+  //var $form = $( this ),
+  //  val = $form.find( "input[name='file_fw']").val(),
+  //  url = $form.attr( "action" );
+ console.log(new FormData(this));
+  // Send the data using post
+  //var posting = $.post( url, { s: term } );
+ 
+  // Put the results in a div
+  //posting.done(function( data ) {
+  //  var content = $( data ).find( "#content" );
+  //  $( "#result" ).empty().append( content );
+  //});
+});
+
+</script>
