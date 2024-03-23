@@ -5,8 +5,9 @@ var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
 var httpd_cmd = 
 {
 	content_type: "application/json",
-	command: ["get_data","get_sens"],
-	CRC32: "ANY"
+	command: "get_sens",
+	data: "get_data",
+	crc16: "ANY"
 }
 sds = $(".sideset");
 mds = $(".macnt");

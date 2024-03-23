@@ -1,10 +1,10 @@
-<!--upd1 5.0a view-source:https://bilsrv.github.io/WSBSrvWeatherPub/WSB_page_main.html		-->
+<!--upd1 5.1a view-source:https://bilsrv.github.io/WSBSrvWeatherPub/WSB_page_main.html		-->
 <meta charset="utf-8">
 <br>
 
 <div class="col-xs-3 mb-2 offset-lg-1 col-lg-3 offset-md-1 offset-sm-1 offset-1 col-5 col-sm-4 col-md-4 col-xl-3 px-2">
-<form enctype="multipart/form-data" action="post_fw" id="post_fw" name="post_fw">
-    <!-- upload of a single file -->
+<!--<form enctype="multipart/form-data" action="post_fw" id="post_fw" name="post_fw">
+ upload of a single file 
 <p>
         <label>Загрузить FW: </label><br/>
         <input type="file"/>
@@ -13,9 +13,11 @@
         <input type="submit" value="post_fw"/>
 </p>
 </form>
+-->
 <form>
-<div id="result"></div>
-	
+
+<button type="button" id="btn0" class="btn btn-primary" onclick="upd_fw()">Обнов.прошив</button>
+<div class="col-auto"><p id="res_fw" class="navbar-brand res_fw" ></p></p></div>
 <button type="button" id="btn0" class="btn btn-primary" onclick="sub_init()">Открыть соед</button>
 <button type="button" id="btn0" class="btn btn-primary" onclick="sub_grad()">Послать</button>
 </div>
@@ -180,6 +182,37 @@
    <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover" aria-describedby="popover452354"></button>
    <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover" aria-describedby="popover452354"></button>
 </form>
+<div class="container-fluid shadow border">
+<p class="h5 modal-title text-center" id=esp_uart>Обмен по WEB-UART</p>
+<hr>
+<form id=esp_uart_form class=mb- novalidate>
+<p>
+Input</p>
+<div class="form-group col">
+<button type=button id=btn0 class="btn btn-primary" onclick=erxclr_uart()>
+Очистить Input</button>
+</div>
+<textarea id=esp_tx rows=10 cols=80 class=form-control>
+</textarea>
+<br>
+<div class="form-group col">
+<button type=button id=btn1 class="btn btn-primary" onclick=submit_uart()>
+SEND UART(D8)</button>
+<span>
+Передавать команды без LUA </span>
+<input type=checkbox name=uart_get_ch id=uart_get_ch>
+</div>
+<div class="form-group col">
+<button type=button id=btn2 class="btn btn-primary" onclick=etxclr_uart()>
+Очистить OUTPUT</button>
+</div>
+<p>
+Output</p>
+<textarea id=esp_urx rows=10 cols=80 class=form-control>
+</textarea>
+<br>
+</form>
+</div>
 
 <script>
 // Attach a submit handler to the form
