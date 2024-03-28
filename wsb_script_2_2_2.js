@@ -6,7 +6,8 @@ var httpd_cmd =
 {
 	content_type: "application/json",
 	command: "get_sens",
-	data: "get_data",
+	data_out: "NULL",
+	data_in: "NULL",
 	crc16: "ANY"
 }
 sds = $(".sideset");
@@ -645,9 +646,6 @@ if(WSsocket.readyState!=1)
 }); 
 
 
-
-
-
 function sdmc_sh() {
     mds.removeClass("collapse show");
     mds.addClass("collapse hide");
@@ -693,6 +691,7 @@ function spt0() {
     var lines = $("#esp_tx")
 		.val()
 		.replace(/^[\n]+$/g, "")
+		.replace(/"/g, "\\\"")
 		.split(/[\n]+/);
     return lines;
 }
@@ -746,7 +745,7 @@ function shs_b() {
 
 function sub_init()
 {
-	//
+//
 //https://javascriptcompressor.com/
 //gaugeArr[1].update({ value: '47' });
 
@@ -758,16 +757,12 @@ function sub_init()
 					guagelm75_t.attr('data-value','47');*/
 
 //rs = setInterval(refr_rtc, 3000);
-	
-
 initWebSocket();
-
 // Initialize GaugeMeter plugin
 }
 
-function sub_grad()
+function sub_grad(aa)
 {
-	//
 //https://javascriptcompressor.com/
 //gaugeArr[1].update({ value: '47' });
 
@@ -779,6 +774,11 @@ function sub_grad()
 					guagelm75_t.attr('data-value','47');*/
 //console.log(WSsocket.readyState);
 //rs = setInterval(refr_rtc, 3000);
+if(aa==0)
+	httpd_cmd.command="get_sens"
+if(aa==1)
+	httpd_cmd.command="upd_fw"
+	
 if (WSsocket.readyState === 1) {
 
 	WSsocket.send(JSON.stringify(httpd_cmd));
@@ -788,6 +788,96 @@ else
 
 // Initialize GaugeMeter plugin
 }
+
+
+var httpd_cmd = 
+{
+	content_type: "application/json",
+	command: "get_sens",
+	data: "get_data",
+	crc16: "ANY"
+}
+
+
+function txjs_ua(s, d) {
+    seOBJ = $("#scntf").serializeArray();
+    $("#btn1").prop("disabled", false);
+    if (s != 200) {
+        str_out1 += "Send command error" + "\n";
+        //clearTimeout(rs.handle);
+        //console.log("Connection proplem!");
+    } 
+	else if (typeof d === "string") 
+	{
+            //console.log("priem ok!");
+            try {
+                httpd_cmd.data = JSON.parse(d);
+            } catch (e) {
+                //console.log(e);
+                return -1;
+            }
+        } else {
+            uart_json.uart_out = "null";
+            uart_json.uart_in = "null";
+        }
+        //console.log(uart_json);
+        if (uart_json.uart_out == "") {
+            str_out1 += "ACK" + "\n";
+        } else {
+            str_out1 += uart_json.uart_out + "\n";
+        }
+        //console.log(uart_json.uart_out);
+    
+    var esp_uart_out_val = $("#esp_urx");
+    if (esp_uart_out_val.val() != "") {
+        esp_uart_out_val.val(esp_uart_out_val.val() + str_out1);
+    } else {
+        esp_uart_out_val.val(str_out1);
+    }
+	return 0;
+    //console.log(str_out1);
+    str_out1 = "";
+    //clearTimeout(rs.handle);
+    //rs = to(refr, 3);
+    //refr();
+}
+
+function submit_uart() {
+    $("#btn1").prop("disabled", true);
+    // spt0 - preobrazovanie ot mysora na UART
+    lines_in = spt0();
+    url = "";
+    httpd_cmd.data = "null";
+
+    if ($("#uart_get_ch").prop("checked")) {
+        ua_mode = 1;
+    } else {
+        ua_mode = 0;
+    }
+	httpd_cmd.command = "get_uart";
+    for (i = 0; i < lines_in.length; i++) {
+        httpd_cmd.data = lines_in[i];
+		if(txjs_ua(httpd_cmd.data)==-1)
+			{return -1;}
+		//if (WSsocket.readyState === 1) {
+		//	WSsocket.send(JSON.stringify(httpd_cmd));
+        if (ua_mode == 1) {
+            fetch("/uart_get?input=" + encodeURIComponent(lines_in[i]) + "&", "GET", txjs_ua, 10);
+        } else {
+            fetch("/uart.json?n=" + encodeURIComponent(JSON.stringify(httpd_cmd)) + "&", "GET", txjs_ua, 10);
+		}
+		else
+			{return -1;}
+}
+        //if (ua_mode == 1) {
+        //     fetch("/uart_get?input=" + encodeURIComponent(lines_in[i]) + "&", "GET", txjs_ua, 10);
+        //} else {
+        //    fetch("/uart.json?n=" + encodeURIComponent(JSON.stringify(uart_json)) + "&", "GET", txjs_ua, 10);
+        //}
+	return 0;
+}
+
+
 // https://learn.javascript.ru/websocket
 // event websocket
 // event.error
@@ -1084,8 +1174,6 @@ console.log("Width "+Math.round((0.0244*parseInt(json_data.sensors[26+ind]))).to
 		}
 	});
 }
-	
-	
 };
 		//if(Math.round(Pdat)>750)
 		//{
@@ -1284,156 +1372,6 @@ $("#esp_tx").val("wsbuser.prints(node.heap());");
 $("#esp_urx").val("");
 
 rs = setInterval(refr_rtc, 1000);
-  // --------
-  // Tooltips
-  // --------
-  // Instantiate all tooltips in a docs or StackBlitz
-  document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    .forEach(tooltip => {
-      new bootstrap.Tooltip(tooltip)
-    })
 
-  // --------
-  // Popovers
-  // --------
-  // Instantiate all popovers in docs or StackBlitz
-  document.querySelectorAll('[data-bs-toggle="popover"]')
-    .forEach(popover => {
-      new bootstrap.Popover(popover)
-    })
-
-  // -------------------------------
-  // Toasts
-  // -------------------------------
-  // Used by 'Placement' example in docs or StackBlitz
-  const toastPlacement = document.getElementById('toastPlacement')
-  if (toastPlacement) {
-    document.getElementById('selectToastPlacement').addEventListener('change', function () {
-      if (!toastPlacement.dataset.originalClass) {
-        toastPlacement.dataset.originalClass = toastPlacement.className
-      }
-
-      toastPlacement.className = `${toastPlacement.dataset.originalClass} ${this.value}`
-    })
-  }
-
-  // Instantiate all toasts in docs pages only
-  document.querySelectorAll('.bd-example .toast')
-    .forEach(toastNode => {
-      const toast = new bootstrap.Toast(toastNode, {
-        autohide: false
-      })
-
-      toast.show()
-    })
-
-  // Instantiate all toasts in docs pages only
-  // js-docs-start live-toast
-  const toastTrigger = document.getElementById('liveToastBtn')
-  const toastLiveExample = document.getElementById('liveToast')
-
-  if (toastTrigger) {
-    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-    toastTrigger.addEventListener('click', () => {
-      toastBootstrap.show()
-    })
-  }
-  // js-docs-end live-toast
-
-  // -------------------------------
-  // Alerts
-  // -------------------------------
-  // Used in 'Show live alert' example in docs or StackBlitz
-
-  // js-docs-start live-alert
-  const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
-  const appendAlert = (message, type) => {
-    const wrapper = document.createElement('div')
-    wrapper.innerHTML = [
-      `<div class="alert alert-${type} alert-dismissible" role="alert">`,
-      `   <div>${message}</div>`,
-      '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
-      '</div>'
-    ].join('')
-
-    alertPlaceholder.append(wrapper)
-  }
-
-  const alertTrigger = document.getElementById('liveAlertBtn')
-  if (alertTrigger) {
-    alertTrigger.addEventListener('click', () => {
-      appendAlert('Nice, you triggered this alert message!', 'success')
-    })
-  }
-  // js-docs-end live-alert
-
-  // --------
-  // Carousels
-  // --------
-  // Instantiate all non-autoplaying carousels in docs or StackBlitz
-  document.querySelectorAll('.carousel:not([data-bs-ride="carousel"])')
-    .forEach(carousel => {
-      bootstrap.Carousel.getOrCreateInstance(carousel)
-    })
-
-  // -------------------------------
-  // Checks & Radios
-  // -------------------------------
-  // Indeterminate checkbox example in docs and StackBlitz
-  document.querySelectorAll('.bd-example-indeterminate [type="checkbox"]')
-    .forEach(checkbox => {
-      if (checkbox.id.includes('Indeterminate')) {
-        checkbox.indeterminate = true
-      }
-    })
-
-  // -------------------------------
-  // Links
-  // -------------------------------
-  // Disable empty links in docs examples only
-  document.querySelectorAll('.bd-content [href="#"]')
-    .forEach(link => {
-      link.addEventListener('click', event => {
-        event.preventDefault()
-      })
-    })
-
-  // -------------------------------
-  // Modal
-  // -------------------------------
-  // Modal 'Varying modal content' example in docs and StackBlitz
-  // js-docs-start varying-modal-content
-  const exampleModal = document.getElementById('exampleModal')
-  if (exampleModal) {
-    exampleModal.addEventListener('show.bs.modal', event => {
-      // Button that triggered the modal
-      const button = event.relatedTarget
-      // Extract info from data-bs-* attributes
-      const recipient = button.getAttribute('data-bs-whatever')
-      // If necessary, you could initiate an Ajax request here
-      // and then do the updating in a callback.
-
-      // Update the modal's content.
-      const modalTitle = exampleModal.querySelector('.modal-title')
-      const modalBodyInput = exampleModal.querySelector('.modal-body input')
-
-      modalTitle.textContent = `New message to ${recipient}`
-      modalBodyInput.value = recipient
-    })
-  }
-  // js-docs-end varying-modal-content
-
-  // -------------------------------
-  // Offcanvas
-  // -------------------------------
-  // 'Offcanvas components' example in docs only
-  const myOffcanvas = document.querySelectorAll('.bd-example-offcanvas .offcanvas')
-  if (myOffcanvas) {
-    myOffcanvas.forEach(offcanvas => {
-      offcanvas.addEventListener('show.bs.offcanvas', event => {
-        event.preventDefault()
-      }, false)
-    })
-  }
 
 }
