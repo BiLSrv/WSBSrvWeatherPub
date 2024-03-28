@@ -866,8 +866,6 @@ function submit_uart() {
         } else {
             fetch("/uart.json?n=" + encodeURIComponent(JSON.stringify(httpd_cmd)) + "&", "GET", txjs_ua, 10);
 		}
-		else
-			{return -1;}
 }
         //if (ua_mode == 1) {
         //     fetch("/uart_get?input=" + encodeURIComponent(lines_in[i]) + "&", "GET", txjs_ua, 10);
