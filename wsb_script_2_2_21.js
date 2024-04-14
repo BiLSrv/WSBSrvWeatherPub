@@ -1,6 +1,15 @@
 // upda3a3
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
+
+/*
+float IAQ_abs(float IAQ,float T,float Hum)
+{
+	float hum_abs=6.112*exp((17.67*T)/(T+243.5))*Hum*2.1674/(273.15+T);
+	float comp_gas=IAQ*exp(0.09*hum_abs);
+	return ((comp_gas-0)/(16000000-0)*(0-500)+500);
+}
+*/
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
 var httpd_cmd = 
 {
