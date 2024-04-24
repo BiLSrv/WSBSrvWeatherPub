@@ -1,4 +1,4 @@
-// upda7a1
+// upda7a3
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -10,6 +10,7 @@ var httpd_cmd =
 	data_in: "NULL",
 	crc16: "ANY"
 }
+var temp_json = {};
 sds = $(".sideset");
 mds = $(".macnt");
 sets = $(".setcnt");
@@ -79,12 +80,13 @@ function crc16(buffer,extcrc)
 };
 
 function refr_rtc() {
-    //if (subwdeb == false && $("#autmp").prop("checked")) {
-        //fetch("/get_rtc.json?n=" + Math.random(), "GET", txjstmp, 30);
+
 		if($('input[name="autmp"]').is(':checked'))
-        	sub_grad();
-    //}
-    //console.log("refr_rtc");
+        	sub_grad(0);
+    	//console.log("refr_rtc");
+	 //if (subwdeb == false && $("#autmp").prop("checked")) {
+        //fetch("/get_rtc.json?n=" + Math.random(), "GET", txjstmp, 30);
+	//}
 }
 
 
@@ -111,6 +113,12 @@ function rIAQItem_convertValue(rawValue,_temp,_humd)
   };
 	return -1;
 }
+
+function ReconnectWebSocket() 
+{
+	WSsocket = WebSocket(gateway);
+	return WSsocket;
+};
 
 
 
@@ -776,19 +784,22 @@ function sub_grad(aa)
 //rs = setInterval(refr_rtc, 3000);
 if(aa==0)
 	httpd_cmd.command="get_sens"
-if(aa==1)
-	httpd_cmd.command="upd_fw"
+
 	
 if (WSsocket.readyState === 1) {
-
 	WSsocket.send(JSON.stringify(httpd_cmd));
+	return;
 }
 else
-{initWebSocket();}
+{waitForSocketConnection(WSsocket, ReconnectWebSocket());}
+	
+if(aa==1)
+	httpd_cmd.command="upd_fw"
 
-// Initialize GaugeMeter plugin
+url1 = "/get_cmd_srv_io.json?" + encodeURIComponent(JSON.stringify(httpd_cmd)) + "&";
+fetch1(url1, "GET", TxMAINAJAX, 10);
+	
 }
-
 
 var httpd_cmd = 
 {
@@ -910,7 +921,6 @@ function waitForSocketConnection(socket, callback)
                 if (callback != null)
 					waitForSocketConnection(socket, callback);
             }
-
         }, 500); // wait 5 milisecond for the connection...
 }
 
@@ -945,17 +955,18 @@ function onClose(event)
 	{
         console.log('Соединение закрыто чисто');
 	}
-	waitForSocketConnection(WSsocket, null);
+	waitForSocketConnection(WSsocket, ReconnectWebSocket());
 	console.log('ws close');
 	WSsocket.close();
 }
 
-function onError(event) {
+function onError(event) 
+{
 	// only event
 	if(WSsocket.readyState==2 || WSsocket.readyState==3)
 	{
 		state_online(false);
-		waitForSocketConnection(WSsocket, null);
+		waitForSocketConnection(WSsocket, ReconnectWebSocket());
 		console.log('ws error'+event);
 	}
 };
@@ -971,10 +982,6 @@ RMSh=0.0,RMSp=0.0;
 	
 //canvasOBJ = $( ".canvasT" ).get();
 
-//console.log(maOBJ);
-//console.log(GuageMeterOBJ);
-//console.log(canvasOBJ);
-//console.log(CanvGaugeArr);
 //
 //	2.1	Processing 'onMessage'
 //
@@ -1070,7 +1077,7 @@ if (json_data["sensors"])
 	
 	ENS_AIQf(parseInt(json_data.sensors[24],10));
 	
-ind=0;
+	ind=0;
 
 	$(".progress-bar").each(function(index){
 		//$ = jQuery.noConflict();
@@ -1173,6 +1180,63 @@ console.log("Width "+Math.round((0.0244*parseInt(json_data.sensors[26+ind]))).to
 	});
 }
 };
+
+
+// cont: TEMP, RTC, DEBUG + Settings
+function TxMAINAJAX(s, d) 
+{
+    if (s != 200) {
+        console.log("Connection proplem!");
+        return 0;
+        //clearTimeout(rs.handle);
+    } else {
+
+        if (typeof d === "string") {
+            console.log(d);
+            try {
+                temp_json = JSON.parse(d);
+            } catch (e) {
+				console.log(s, e);
+                return 0;
+            }
+        } else {
+            //console.log("d not string");
+            ftvall("");
+            return 0;
+        }
+    }
+	
+    if (temp_json["upd_fw"]) {
+	    alert("Start FW!");
+		return;
+	}
+	console.log("Invaild cmd");
+            
+}
+
+function ftvall(cl) {
+    for (i = 0; i < maOBJ.length; i++) {
+        $("#" + maOBJ[i].name).val(cl);
+        $("#" + maOBJ[i].name)
+			.removeClass("is-invalid")
+			.html();
+        $("#" + maOBJ[i].name)
+			.removeClass("is-valid")
+			.html();
+    }
+}
+
+function ftmpd() {
+    for (i = 0; i < maOBJ.length; i++) {
+        $("#" + maOBJ[i].name)
+			.removeClass("is-invalid")
+			.html();
+        $("#" + maOBJ[i].name)
+			.removeClass("is-valid")
+			.html();
+    }
+}
+
 		//if(Math.round(Pdat)>750)
 		//{
 		//	Pdt=750-(Pdat-750);
