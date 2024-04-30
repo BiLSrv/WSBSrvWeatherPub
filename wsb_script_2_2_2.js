@@ -21,7 +21,7 @@ var CanvGaugeArrP = [];
 var CanvGaugeArrH = [];
 var CanvGaugeArrOther = [];
 	
-//$(document).ready(function() {
+//$(document).ready(function() {  
 var gateway = 'wss://wsb.bilymo.keenetic.pro/ws'
 /*
 var gateway = 
