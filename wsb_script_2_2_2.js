@@ -266,7 +266,7 @@ $("canvas[data-type='radial-gauge']").each(function(index){
 if($(this).attr('id')=="GauAvTemp")
 {
 	//console.log("Elem "+$(this).attr('id'))
-	unit="%"
+	unit=" C"
     CanvGaugeArrOther.push(new RadialGauge({
 	renderTo: $( this ).attr('id'),
     title: String($(this).attr('id')),
