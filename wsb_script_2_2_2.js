@@ -1,4 +1,4 @@
-// upda7a3
+// upda7ae
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -116,7 +116,7 @@ function rIAQItem_convertValue(rawValue,_temp,_humd)
 
 function ReconnectWebSocket() 
 {
-	WSsocket = WebSocket(gateway);
+	WSsocket = new WebSocket(gateway);
 	return WSsocket;
 };
 
