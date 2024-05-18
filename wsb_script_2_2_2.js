@@ -784,6 +784,9 @@ function sub_grad(aa)
 //rs = setInterval(refr_rtc, 3000);
 if(aa==0)
 	httpd_cmd.command="get_sens"
+	
+if(aa==1)
+	httpd_cmd.command="upd_fw"
 
 	
 if (WSsocket.readyState === 1) {
@@ -793,8 +796,7 @@ if (WSsocket.readyState === 1) {
 else
 {waitForSocketConnection(WSsocket, ReconnectWebSocket());}
 	
-if(aa==1)
-	httpd_cmd.command="upd_fw"
+
 
 url1 = "/get_cmd_srv_io.json?" + encodeURIComponent(JSON.stringify(httpd_cmd)) + "&";
 fetch1(url1, "GET", TxMAINAJAX, 10);
@@ -1214,6 +1216,51 @@ function TxMAINAJAX(s, d)
             
 }
 
+// cont: TEMP, RTC, DEBUG + Settings
+function TxMAINAJAX(s, d) {
+    var as1 = $(".pst1");
+    var as0 = $(".pst0");
+//    console.log(d);
+    if (s != 200) {
+        as0.removeClass("badge-success");
+        as0.addClass("badge-danger");
+        as0.text("Нет связи");
+        as1.removeClass("badge-success");
+        as1.addClass("badge-danger");
+        as1.text("Нет связи");
+        $(".swdeb").removeAttr("disabled");
+        ftmpd();
+        console.log(" TxMAINAJAX(s, d) Connection proplem!");
+        return 0;
+        //clearTimeout(rs.handle);
+    } else {
+        as0.removeClass("badge-danger");
+        as1.removeClass("badge-danger");
+        as0.addClass("badge-success");
+        as1.addClass("badge-success");
+        as0.text("ОК");
+        if (typeof d === "string") {
+            console.log(d);
+            try {
+                temp_json = JSON.parse(d);
+                //console.log(s, temp_json);
+            } catch (e) {
+                // ftvall - form clear
+                ftvall("");
+                //console.log(s, e.message);
+                return 0;
+            }
+        } else {
+            //console.log("d not string");
+            ftvall("");
+            return 0;
+        }
+    }
+	j=1;ii=0;
+	console.log("temp_json[temp])");
+
+}
+
 function ftvall(cl) {
     for (i = 0; i < maOBJ.length; i++) {
         $("#" + maOBJ[i].name).val(cl);
@@ -1225,165 +1272,6 @@ function ftvall(cl) {
 			.html();
     }
 }
-
-function ftmpd() {
-    for (i = 0; i < maOBJ.length; i++) {
-        $("#" + maOBJ[i].name)
-			.removeClass("is-invalid")
-			.html();
-        $("#" + maOBJ[i].name)
-			.removeClass("is-valid")
-			.html();
-    }
-}
-
-		//if(Math.round(Pdat)>750)
-		//{
-		//	Pdt=750-(Pdat-750);
-		//}
-		//else if(Math.round(Pdat)<750)
-		//{
-		//	Pdt=750-(750-Pdat);
-		//}
-		
-		//if(index>7)
-		//{return true;}
-	
-	/*for(var i=0;i<GuageMeterOBJ.length;i++)
-	{
-	//$(".GaugeMeter1P").each(function(index){
-		GuageMeter.text=json_data.sensors[i+18].toString();
-		GuageMeter.percent=parseInt(json_data.sensors[i+18],10)/100;
-		console.log($(GuageMeterOBJ[i].attr('class')));
-		$(GuageMeterOBJ[i].attr('class')).gaugeMeter(GuageMeter);
-	}*/ 
-
-//} 
-/*catch (err) 
-{throw BreakError;	
-if (err !== BreakError) throw err;}}*/
-
-/*
-if (temp_json["temp"]) {
-	    console.log(temp_json["temp"]);
-		j_T = 0.0; j_H = 0.0; j_P = 0.0;
-		T_cnt = 0; H_cnt = 0; P_cnt = 0;
-        for (i = 3; i <= maOBJ.length && (i - 3) <= temp_json.temp.length; i++) {
-            try {
-		console.log("temp_json:", parseFloat(temp_json.temp[T_arr[ii]]));
-            
-				if(ii<T_arr.length && parseFloat(temp_json.temp[T_arr[ii]]) != NaN && temp_json.temp[T_arr[ii]] != "#ERR")
-				{
-					tmpf = parseFloat(temp_json.temp[T_arr[ii]]);
-					if(tmpf<0)
-					{j=-1;}
-					else
-					{j=j*j}
-					j_T+=Math.abs(tmpf);T_cnt++; 
-					//console.log("a5 "+" "+ii+" "+parseFloat(temp_json.temp[T_arr[ii]])+" "+T_arr[ii]+" "+temp_arr[ii]+" "+T_arr+" "+T_cnt);
-				}
-				if(ii<H_arr.length && parseFloat(temp_json.temp[H_arr[ii]]) != NaN && temp_json.temp[H_arr[ii]] != "#ERR")
-				{
-					tmpf = parseFloat(temp_json.temp[H_arr[ii]]);
-					H_cnt++;
-					if(tmpf>=99.0)
-					{H_cnt--;}
-					else if(H_arr[ii] == 3)
-					{j_H+=(parseFloat(temp_json.temp[H_arr[ii]])-9.5);}
-					else 
-					{j_H+=parseFloat(temp_json.temp[H_arr[ii]]);}
-				}
-				if(ii<P_arr.length && parseFloat(temp_json.temp[P_arr[ii]]) != NaN && temp_json.temp[P_arr[ii]] != "#ERR")
-				{
-					j_P+=parseFloat(temp_json.temp[P_arr[ii]]);P_cnt++;
-				}	
-					ii++;
-				}
-				catch (e) 
-				{
-					console.log(e);
-				}
-				$("#" + maOBJ[i].name).val(temp_json.temp[i - 3]);
-				}
-			}
-
-			j_T=(j_T*j)/T_cnt; j_H=j_H/H_cnt; j_P=j_P/P_cnt;
-			*/
-//$('.mcu_tus').text(temp_json.time[0].toString());
-//$('.ptime').text(temp_json.time[1].toString());
-/*	var j=0,ii=0;
-	var tmpf = 0.0;
-	//var jT = 0;
-	//var jH = 0;
-	//var jP = 0;
-	var T_cnt = 1
-	var H_cnt = 1
-	var P_cnt = 1
-//    console.log(d);
-    if (s != 200) {
-        as0.removeClass("badge-success");
-        as0.addClass("badge-danger");
-        as0.text("Нет связи");
-        as1.removeClass("badge-success");
-        as1.addClass("badge-danger");
-        as1.text("Нет связи");
-        $(".swdeb").removeAttr("disabled");
-        ftmpd();
-        //console.log("Connection proplem!");
-        return 0;
-        //clearTimeout(rs.handle);
-    } else {
-
-        as0.removeClass("badge-danger");
-        as1.removeClass("badge-danger");
-        as0.addClass("badge-success");
-        as1.addClass("badge-success");
-        as0.text("ОК ");
-		as1.text("ОК ");
-        if (typeof d === "string") {
-            console.log("priem ok!");
-            try {
-                temp_json = JSON.parse(d);
-                console.log(s, temp_json);
-            } catch (e) {
-                // ftvall - form clear
-                ftvall("");
-                console.log(s, e.message);
-                return 0;
-            }
-        } else {
-            //console.log("d not string");
-            ftvall("");
-            return 0;
-        }
-    }
-    //$(".btns_bme280_1").fadeIn();
-    // posle input BME280: WEB -> ESP
-
-    if (temp_json["LM75_CMP"]) {
-        //$(".btns_bme280_1").removeClass('badge-success');
-        //$(".btns_bme280_1").removeClass('badge-danger');
-        try {
-            var aou1 = parseInt(temp_json.LM75_CMP[0].trim(), 10);
-            var aou2 = parseInt(temp_json.LM75_CMP[1].trim(), 10);
-            //console.log("temp_json.LM75_CMP[0]" + aou1);
-            //console.log("temp_json.LM75_CMP[1]" + aou2);
-            if (aou1 == 1) {
-                $("#lm75_t1_chk").prop("checked", true);
-            } else {
-                $("#lm75_t1_chk").prop("checked", false);
-            }
-            if (aou2 == 1) {
-                $("#lm75_t2_chk").prop("checked", true);
-            } else {
-                $("#lm75_t2_chk").prop("checked", false);
-            }
-        } catch (e) {
-            //console.log(e);
-        }
-    }*/
-	//WSsocket.close();
-
 
 function state_online(state) 
 {
@@ -1421,6 +1309,24 @@ function ENS_AIQf(value)
 		}
 		//default:
 }
+
+function fetch1(url, method, callback, time_out) {
+    //console.log(url);
+    var xhr = new XMLHttpRequest();
+    xhr.onloadend = function () {
+        callback(xhr.status, xhr.responseText);
+    };
+    xhr.ontimeout = function () {
+        callback(-1, null);
+    };
+    xhr.open(method, url, true);
+    xhr.setRequestHeader("Accept", "text/html");
+// text/plain	;charset=UTF-8
+	xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8"); 
+    xhr.timeout = time_out * 200;
+    xhr.send();
+}
+
 
 
 	
