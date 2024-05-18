@@ -799,7 +799,7 @@ else
 
 
 url1 = "/get_cmd_srv_io.json?" + encodeURIComponent(JSON.stringify(httpd_cmd)) + "&";
-fetch1(url1, "GET", TxMAINAJAX, 10);
+//fetch1(url1, "GET", TxMAINAJAX, 10);
 	
 }
 
