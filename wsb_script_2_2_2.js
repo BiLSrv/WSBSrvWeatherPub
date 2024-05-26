@@ -64,13 +64,14 @@ function crc16(buffer,extcrc)
   		//console.log(index, element);
 		//str=buffer[index];
 		//console.log('puu '+buffer[index]);
+		crc = 0xFFFFFFFF;
         for (var j = 0; j < element.length; j++) {
-			
 			crc ^= (element.charCodeAt(j) << 8) & 0x0FFFFFFF;//charCodeAt
+			crc = (crc & 0x8000 ? (crc << 1) ^ POLY_D : crc << 1) & 0x0FFFFFFF;
 		}
 			//console.log('crc ^=  '+crc.toString(16));
-			for (k = 0; k < 8; k++)
-            	crc = (crc & 0x8000 ? (crc << 1) ^ POLY_D : crc << 1) & 0x0FFFFFFF;
+			//for (k = 0; k < 8; k++)
+            	//crc = (crc & 0x8000 ? (crc << 1) ^ POLY_D : crc << 1) & 0x0FFFFFFF;
 		
 	});
 
