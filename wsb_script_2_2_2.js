@@ -53,7 +53,6 @@ function crc16(buffer,extcrc)
 	// var arr = new Uint32Array(1);
     //crc[1] = 0xFFFF;
 	var POLY_D = 0x1021
-	var pcBlock=0;
 	var i=0,j,n1,k;
 	//var str="";
 	/*$(buffer).each((index, element) => {
@@ -64,7 +63,7 @@ function crc16(buffer,extcrc)
   		//console.log(index, element);
 		//str=buffer[index];
 		//console.log('puu '+buffer[index]);
-		crc = 0xFFFFFFFF;
+		//crc = 0xFFFFFFFF;
         for (var j = 0; j < element.length; j++) {
 			crc ^= (element.charCodeAt(j) << 8) & 0x0FFFFFFF;//charCodeAt
 			crc = (crc & 0x8000 ? (crc << 1) ^ POLY_D : crc << 1) & 0x0FFFFFFF;
@@ -118,6 +117,7 @@ function rIAQItem_convertValue(rawValue,_temp,_humd)
 
 function ReconnectWebSocket() 
 {
+	console.log("Reconnect")
 	WSsocket = new WebSocket(gateway);
 	return WSsocket;
 };
