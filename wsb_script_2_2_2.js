@@ -768,6 +768,7 @@ function sub_init()
 
 //rs = setInterval(refr_rtc, 3000);
 initWebSocket();
+ReconnectWebSocket();
 // Initialize GaugeMeter plugin
 }
 
