@@ -800,11 +800,7 @@ if (WSsocket.readyState === 1) {
 	return;
 }
 else
-{waitForSocketConnection(WSsocket, ReconnectWebSocket());}
-	
-
-
-
+{ReconnectWebSocket();}
 	
 }
 
@@ -962,7 +958,8 @@ function onClose(event)
 	{
         console.log('Соединение закрыто чисто');
 	}
-	waitForSocketConnection(WSsocket, ReconnectWebSocket());
+	ReconnectWebSocket();
+	//waitForSocketConnection(WSsocket, ReconnectWebSocket());
 	console.log('ws close');
 	WSsocket.close();
 }
@@ -973,7 +970,7 @@ function onError(event)
 	if(WSsocket.readyState==2 || WSsocket.readyState==3)
 	{
 		state_online(false);
-		waitForSocketConnection(WSsocket, ReconnectWebSocket());
+		ReconnectWebSocket();
 		console.log('ws error'+event);
 	}
 };
