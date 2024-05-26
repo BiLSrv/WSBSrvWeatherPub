@@ -786,8 +786,12 @@ function sub_grad(aa)
 if(aa==0)
 	httpd_cmd.command="get_sens"
 	
-if(aa==1)
+if(aa>=1)
+{
 	httpd_cmd.command="upd_fw"
+	url1 = "/get_cmd_srv_io.json?" + encodeURIComponent(JSON.stringify(httpd_cmd)) + "&";
+	fetch1(url1, "GET", TxMAINAJAX, 10);
+}
 
 	
 if (WSsocket.readyState === 1) {
@@ -799,8 +803,7 @@ else
 	
 
 
-url1 = "/get_cmd_srv_io.json?" + encodeURIComponent(JSON.stringify(httpd_cmd)) + "&";
-//fetch1(url1, "GET", TxMAINAJAX, 10);
+
 	
 }
 
@@ -1016,7 +1019,11 @@ if (json_data["crc16"])
 	}	
 
 	if(crc16(arrbufcrc,crc16_int) != true )
-		return 0;
+		{
+			console.log("crc16(arrbufcrc,crc16_int) ERROR!");
+			return 0;
+		}	
+			
 	//for(i=0;i<json_data.time.length)
 	//	{arrbufcrc[i]=json_data.time[i];j++;}
 	//for(i=0;i<json_data.time.length)
@@ -1322,7 +1329,7 @@ function fetch1(url, method, callback, time_out) {
     };
     xhr.open(method, url, true);
     xhr.setRequestHeader("Accept", "text/html");
-// text/plain	;charset=UTF-8
+	// text/plain	;charset=UTF-8
 	xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8"); 
     xhr.timeout = time_out * 200;
     xhr.send();
