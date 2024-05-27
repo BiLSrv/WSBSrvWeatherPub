@@ -791,7 +791,7 @@ if(aa==0)
 if(aa>=1)
 {
 	httpd_cmd.command="upd_fw"
-	url1 = "/get_cmd_srv_io.json?" + encodeURIComponent(JSON.stringify(httpd_cmd)) + "&";
+	url1 = "/get_cmd_srv_io.json?n=" + encodeURIComponent(JSON.stringify(httpd_cmd)) + "&";
 	fetch1(url1, "GET", TxMAINAJAX, 10);
 }
 
