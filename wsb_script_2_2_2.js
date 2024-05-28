@@ -1330,7 +1330,7 @@ function fetch1(url, method, callback, time_out) {
     xhr.setRequestHeader("Accept", "text/html");
 	xhr.responseType = 'json';
 	//xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8"); 
-	xhr.getResponseHeader('Content-Length',url.length);
+	//xhr.getResponseHeader('Content-Length',url.length);
 	// text/plain	;charset=UTF-8
     xhr.timeout = time_out * 200;
     xhr.send();
