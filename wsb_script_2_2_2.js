@@ -4,7 +4,6 @@
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
 var httpd_cmd = 
 {
-	content_type: "application/json",
 	command: "get_sens",
 	data_out: "NULL",
 	data_in: "NULL",
@@ -792,6 +791,7 @@ if(aa>=1)
 {
 	httpd_cmd.command="upd_fw"
 	url1 = "/get_cmd_srv_io.json?n=" + encodeURIComponent(JSON.stringify(httpd_cmd)) + "&";
+	console.log(url1);
 	fetch1(url1, "GET", TxMAINAJAX, 10);
 }
 
