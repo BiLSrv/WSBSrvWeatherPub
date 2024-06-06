@@ -787,9 +787,17 @@ function sub_grad(aa)
 if(aa==0)
 	httpd_cmd.command="get_sens"
 	
-if(aa>=1)
+if(aa==1)
 {
 	httpd_cmd.command="upd_fw"
+	url1 = "/get_cmd_srv_io.json?n=" + encodeURIComponent(JSON.stringify(httpd_cmd)) + "&";
+	console.log(url1);
+	fetch1(url1, "GET", TxMAINAJAX, 10);
+}
+	
+if(aa==1)
+{
+	httpd_cmd.command="rd_fw"
 	url1 = "/get_cmd_srv_io.json?n=" + encodeURIComponent(JSON.stringify(httpd_cmd)) + "&";
 	console.log(url1);
 	fetch1(url1, "GET", TxMAINAJAX, 10);
@@ -1004,32 +1012,7 @@ try {
 }
 else
 	return 0;
-//
-//	2.1 CRC
-//
-if (json_data["crc16"]) 
-{
-	arrbufcrc=[].concat(json_data.sensors).concat(json_data.time);
-	crc16_int=parseInt(json_data.crc16, 16);
-	//console.log("crc16_int"+crc16_int);
-	
-	if (isNaN(crc16_int)) {
-    	return NaN;
-	}	
 
-	if(crc16(arrbufcrc,crc16_int) != true )
-		{
-			console.log("crc16(arrbufcrc,crc16_int) ERROR!");
-			return 0;
-		}	
-			
-	//for(i=0;i<json_data.time.length)
-	//	{arrbufcrc[i]=json_data.time[i];j++;}
-	//for(i=0;i<json_data.time.length)
-	//	{arrbufcrc[i]=json_data.time[i];}
-}
-else
-	{return 0;}
 	
 //
 //	2.3 Times from mcu
@@ -1044,7 +1027,28 @@ $('.ptime').text(json_data.time[1].toString());
 //
 if (json_data["sensors"]) 
 {
-	console.log(CanvGaugeArrOther);
+
+//
+//	2.1 CRC
+//
+if (json_data["crc16"]) 
+{
+	arrbufcrc=[].concat(json_data.sensors).concat(json_data.time);
+	crc16_int=parseInt(json_data.crc16, 16);
+	//console.log("crc16_int"+crc16_int);
+
+	if(crc16(arrbufcrc,crc16_int) != true || isNaN(crc16_int) )
+	{
+		console.log("crc16(arrbufcrc,crc16_int) ERROR!");
+		return 0;
+	}	
+	//for(i=0;i<json_data.time.length)
+	//	{arrbufcrc[i]=json_data.time[i];j++;}
+	//for(i=0;i<json_data.time.length)
+	//	{arrbufcrc[i]=json_data.time[i];}
+}
+else
+{return 0;}
 	
 	//
 	//	2.3 Scope RMS scope sensors
