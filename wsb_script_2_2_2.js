@@ -790,17 +790,17 @@ if(aa==0)
 if(aa==1)
 {
 	httpd_cmd.command="upd_fw"
-	url1 = "/get_cmd_srv_io.json?n=" + encodeURIComponent(JSON.stringify(httpd_cmd)) + "&";
-	console.log(url1);
-	fetch1(url1, "GET", TxMAINAJAX, 10);
+	//url1 = "/get_cmd_srv_io.json?n=" + encodeURIComponent(JSON.stringify(httpd_cmd)) + "&";
+	//console.log(url1);
+	//fetch1(url1, "GET", TxMAINAJAX, 10);
 }
 	
-if(aa==1)
+if(aa==2)
 {
 	httpd_cmd.command="rd_fw"
-	url1 = "/get_cmd_srv_io.json?n=" + encodeURIComponent(JSON.stringify(httpd_cmd)) + "&";
-	console.log(url1);
-	fetch1(url1, "GET", TxMAINAJAX, 10);
+	//url1 = "/get_cmd_srv_io.json?n=" + encodeURIComponent(JSON.stringify(httpd_cmd)) + "&";
+	//console.log(url1);
+	//fetch1(url1, "GET", TxMAINAJAX, 10);
 }
 
 	
