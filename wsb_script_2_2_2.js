@@ -1021,6 +1021,14 @@ else
 $('.mcu_tus').text((parseFloat(json_data.time[0])).toString());
 $('.ptime').text(json_data.time[1].toString());
 	
+//
+//	2.4 temp_json["sensors"]
+//
+if (json_data["rd_fw"]) 
+{
+	alert("ok! "+json_data.rd_fw);
+	console.log("ok! "+json_data.rd_fw);
+}
 
 //
 //	2.4 temp_json["sensors"]
