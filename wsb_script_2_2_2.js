@@ -2,13 +2,15 @@
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
+
 var httpd_cmd = 
 {
+	content_type: "application/json",
 	command: "get_sens",
-	data_out: "NULL",
-	data_in: "NULL",
+	data: "get_data",
 	crc16: "ANY"
 }
+
 var temp_json = {};
 sds = $(".sideset");
 mds = $(".macnt");
@@ -813,13 +815,7 @@ else
 	
 }
 
-var httpd_cmd = 
-{
-	content_type: "application/json",
-	command: "get_sens",
-	data: "get_data",
-	crc16: "ANY"
-}
+
 
 
 function txjs_ua(s, d) {
