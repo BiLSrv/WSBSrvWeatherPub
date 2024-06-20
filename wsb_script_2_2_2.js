@@ -1022,8 +1022,8 @@ $('.ptime').text(json_data.time[1].toString());
 //
 if (json_data["rd_fw"]) 
 {
-	alert("ok! "+json_data.rd_fw);
-	console.log("ok! "+json_data.rd_fw);
+	$("#esp_urx").val(temp_json["rd_fw"].toString()+"\r\n"+temp_json["data"].toString()+"\r\n");
+	console.log("ok!");
 }
 
 //
@@ -1224,7 +1224,7 @@ function TxMAINAJAX(s, d)
     }
 	
     if (temp_json["upd_fw"]) {
-	    alert("Start FW!");
+	    $("#esp_urx").val(temp_json["data"].toString());
 		return;
 	}
 	console.log("Invaild cmd");
