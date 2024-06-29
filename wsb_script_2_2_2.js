@@ -1196,6 +1196,15 @@ console.log("Width "+Math.round((0.0244*parseInt(json_data.sensors[26+ind]))).to
 		}
 	});
 }
+	
+//
+//	2.3 temp_json["sensors"]
+//
+if (json_data["rd_fw"] && (json_data.rd_fw.toString()=="RD_FW")) 
+{
+	$("#esp_urx").val(temp_json.data.toString())
+}
+	
 };
 
 
