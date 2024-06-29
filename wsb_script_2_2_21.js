@@ -56,7 +56,7 @@ function crc16(buffer,extcrc)
 	// var arr = new Uint32Array(1);
     //crc[1] = 0xFFFF;
 	var POLY_D = 0x1021
-	var pcBlock=0;
+	//var pcBlock=0;
 	var i=0,j,n1,k;
 	//var str="";
 	/*$(buffer).each((index, element) => {
@@ -80,7 +80,7 @@ function crc16(buffer,extcrc)
 		{return true;}
 	else
 		{return false;}
-};
+}
 
 function refr_rtc() {
     //if (subwdeb == false && $("#autmp").prop("checked")) {
@@ -91,10 +91,9 @@ function refr_rtc() {
 }
 
 
+$('body').delay(500).queue(function() 
+{
 
-
-$('body').delay(500).queue(function() {
-	
     //$(this).load('myPage.php');
 WSsocket = new WebSocket(gateway);
 // Canvas .each Default Settings 
@@ -131,7 +130,7 @@ $('canvas').each(function(index){
 	animationDuration: 250
 }).draw());
 	
-	
+
 	
 $('canvas').each(function(index){	
     CanvGaugeArr.push(new LinearGauge({
@@ -461,7 +460,7 @@ function onError(event) {
 		waitForSocketConnection(WSsocket, null);
 		console.log('ws error'+event);
 	}
-};
+}
  
 
 function onMessage(event)
@@ -469,12 +468,7 @@ function onMessage(event)
 arrbufcrc="";
 i=0,j=0,crc16_int=0;
 Pdat=0.0,Pdt=0.0;
-//canvasOBJ = $( ".canvasT" ).get();
 
-//console.log(maOBJ);
-//console.log(GuageMeterOBJ);
-//console.log(canvasOBJ);
-//console.log(CanvGaugeArr);
 //
 //	2.1	Processing 'onMessage'
 //
@@ -492,6 +486,8 @@ try {
 }
 else
 	return 0;
+}
+	
 //
 //	2.1 CRC
 //
@@ -521,7 +517,7 @@ else
 	
 $('.mcu_tus').text((parseFloat(json_data.time[0])*10^-6).toString());
 $('.ptime').text(json_data.time[1].toString());
-	
+
 //
 //	2.3 temp_json["sensors"]
 //
@@ -576,144 +572,15 @@ $($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:Pdat.toString(),a
 		{return true;}
 	});
 	
+
 	
-	/*for(var i=0;i<GuageMeterOBJ.length;i++)
-	{
-	//$(".GaugeMeter1P").each(function(index){
-		GuageMeter.text=json_data.sensors[i+18].toString();
-		GuageMeter.percent=parseInt(json_data.sensors[i+18],10)/100;
-		console.log($(GuageMeterOBJ[i].attr('class')));
-		$(GuageMeterOBJ[i].attr('class')).gaugeMeter(GuageMeter);
-	}*/
-} 
-
+//
+//	2.3 temp_json["sensors"]
+//
+if (json_data["rd_fw"]) 
+{
+	$("#esp_urx").val(temp_json.data.toString())
 }
-//} 
-/*catch (err) 
-{throw BreakError;	
-if (err !== BreakError) throw err;}}*/
-
-/*
-if (temp_json["temp"]) {
-	    console.log(temp_json["temp"]);
-		j_T = 0.0; j_H = 0.0; j_P = 0.0;
-		T_cnt = 0; H_cnt = 0; P_cnt = 0;
-        for (i = 3; i <= maOBJ.length && (i - 3) <= temp_json.temp.length; i++) {
-            try {
-		console.log("temp_json:", parseFloat(temp_json.temp[T_arr[ii]]));
-            
-				if(ii<T_arr.length && parseFloat(temp_json.temp[T_arr[ii]]) != NaN && temp_json.temp[T_arr[ii]] != "#ERR")
-				{
-					tmpf = parseFloat(temp_json.temp[T_arr[ii]]);
-					if(tmpf<0)
-					{j=-1;}
-					else
-					{j=j*j}
-					j_T+=Math.abs(tmpf);T_cnt++; 
-					//console.log("a5 "+" "+ii+" "+parseFloat(temp_json.temp[T_arr[ii]])+" "+T_arr[ii]+" "+temp_arr[ii]+" "+T_arr+" "+T_cnt);
-				}
-				if(ii<H_arr.length && parseFloat(temp_json.temp[H_arr[ii]]) != NaN && temp_json.temp[H_arr[ii]] != "#ERR")
-				{
-					tmpf = parseFloat(temp_json.temp[H_arr[ii]]);
-					H_cnt++;
-					if(tmpf>=99.0)
-					{H_cnt--;}
-					else if(H_arr[ii] == 3)
-					{j_H+=(parseFloat(temp_json.temp[H_arr[ii]])-9.5);}
-					else 
-					{j_H+=parseFloat(temp_json.temp[H_arr[ii]]);}
-				}
-				if(ii<P_arr.length && parseFloat(temp_json.temp[P_arr[ii]]) != NaN && temp_json.temp[P_arr[ii]] != "#ERR")
-				{
-					j_P+=parseFloat(temp_json.temp[P_arr[ii]]);P_cnt++;
-				}	
-					ii++;
-				}
-				catch (e) 
-				{
-					console.log(e);
-				}
-				$("#" + maOBJ[i].name).val(temp_json.temp[i - 3]);
-				}
-			}
-
-			j_T=(j_T*j)/T_cnt; j_H=j_H/H_cnt; j_P=j_P/P_cnt;
-			*/
-//$('.mcu_tus').text(temp_json.time[0].toString());
-//$('.ptime').text(temp_json.time[1].toString());
-/*	var j=0,ii=0;
-	var tmpf = 0.0;
-	//var jT = 0;
-	//var jH = 0;
-	//var jP = 0;
-	var T_cnt = 1
-	var H_cnt = 1
-	var P_cnt = 1
-//    console.log(d);
-    if (s != 200) {
-        as0.removeClass("badge-success");
-        as0.addClass("badge-danger");
-        as0.text("Нет связи");
-        as1.removeClass("badge-success");
-        as1.addClass("badge-danger");
-        as1.text("Нет связи");
-        $(".swdeb").removeAttr("disabled");
-        ftmpd();
-        //console.log("Connection proplem!");
-        return 0;
-        //clearTimeout(rs.handle);
-    } else {
-
-        as0.removeClass("badge-danger");
-        as1.removeClass("badge-danger");
-        as0.addClass("badge-success");
-        as1.addClass("badge-success");
-        as0.text("ОК ");
-		as1.text("ОК ");
-        if (typeof d === "string") {
-            console.log("priem ok!");
-            try {
-                temp_json = JSON.parse(d);
-                console.log(s, temp_json);
-            } catch (e) {
-                // ftvall - form clear
-                ftvall("");
-                console.log(s, e.message);
-                return 0;
-            }
-        } else {
-            //console.log("d not string");
-            ftvall("");
-            return 0;
-        }
-    }
-    //$(".btns_bme280_1").fadeIn();
-    // posle input BME280: WEB -> ESP
-
-    if (temp_json["LM75_CMP"]) {
-        //$(".btns_bme280_1").removeClass('badge-success');
-        //$(".btns_bme280_1").removeClass('badge-danger');
-        try {
-            var aou1 = parseInt(temp_json.LM75_CMP[0].trim(), 10);
-            var aou2 = parseInt(temp_json.LM75_CMP[1].trim(), 10);
-            //console.log("temp_json.LM75_CMP[0]" + aou1);
-            //console.log("temp_json.LM75_CMP[1]" + aou2);
-            if (aou1 == 1) {
-                $("#lm75_t1_chk").prop("checked", true);
-            } else {
-                $("#lm75_t1_chk").prop("checked", false);
-            }
-            if (aou2 == 1) {
-                $("#lm75_t2_chk").prop("checked", true);
-            } else {
-                $("#lm75_t2_chk").prop("checked", false);
-            }
-        } catch (e) {
-            //console.log(e);
-        }
-    }*/
-	//WSsocket.close();
-
 
 function state_online(state) 
 {
@@ -722,13 +589,12 @@ function state_online(state)
 	else
 	{$(".tst0").removeClass("bg-success");$(".tst0").addClass("bg-danger").text("off")};
 }
-
-
+}
 	
+}) 
+
 window.onload = function () {
 
-
-	
 $(".bt0st").attr("value", "off");
 $(".navia").addClass("list-group-item list-group-item-action bg-light border");
 $("#esp_tx").val("wsbuser.prints(node.heap());");
@@ -886,5 +752,7 @@ rs = setInterval(refr_rtc, 3000);
       }, false)
     })
   }
+
+	
 
 }
