@@ -575,7 +575,7 @@ $($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:Pdat.toString(),a
 //
 //	2.3 temp_json["sensors"]
 //
-if (json_data["rd_fw"]) 
+if (json_data["sensors"] && (json_data.rd_fw.toString()=="RD_FW")) 
 {
 	$("#esp_urx").val(temp_json.data.toString())
 }
