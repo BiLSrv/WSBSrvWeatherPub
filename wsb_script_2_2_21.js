@@ -486,8 +486,8 @@ try {
 }
 else
 	return 0;
-}
 	
+
 //
 //	2.1 CRC
 //
@@ -571,9 +571,7 @@ $($("."+$(this).attr('class').split(" ")[1])).gaugeMeter({text:Pdat.toString(),a
 		if(index>3)
 		{return true;}
 	});
-	
-
-	
+}
 //
 //	2.3 temp_json["sensors"]
 //
@@ -581,6 +579,10 @@ if (json_data["rd_fw"])
 {
 	$("#esp_urx").val(temp_json.data.toString())
 }
+	
+	
+}
+	
 
 function state_online(state) 
 {
@@ -588,7 +590,6 @@ function state_online(state)
 	{$(".tst0").removeClass("bg-danger");$(".tst0").addClass("bg-success").text("ОК")}
 	else
 	{$(".tst0").removeClass("bg-success");$(".tst0").addClass("bg-danger").text("off")};
-}
 }
 	
 }) 
