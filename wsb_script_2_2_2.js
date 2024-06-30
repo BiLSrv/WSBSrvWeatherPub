@@ -1023,8 +1023,13 @@ $('.ptime').text(json_data.time[1].toString());
 //
 if (json_data["rd_fw"]) 
 {
+	
+if (json_data.rd_fw[0].toString()=="RD_FW") 
+{
+	if()
 	$("#esp_urx").val(json_data.rd_fw[0].toString()+"\r\n"+json_data.data[0].toString()+"\r\n");
 	console.log("ok!");
+}
 }
 
 //
