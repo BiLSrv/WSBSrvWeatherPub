@@ -1003,6 +1003,7 @@ try {
 	console.log(json_data);
 	} catch (e) {
 		console.log(e.message);
+		console.log(event.data);
 		return 0;
 	}
 }
