@@ -1197,7 +1197,7 @@ console.log("Width "+Math.round((0.0244*parseInt(json_data.sensors[26+ind]))).to
 //
 if (json_data["rd_fw"]) 
 {
-if (String(json_data.rd_fw[0].toString())==String("RD_FW")) 
+if (String(json_data.rd_fw[0].toString())==String("RD_FW") && String(json_data.data[1].toString())!="NULL" 
 {
 	$("#esp_urx").val(json_data.rd_fw[0].toString()+"\r\n"+json_data.data[1].toString()+"\r\n");
 	console.log("ok!");
