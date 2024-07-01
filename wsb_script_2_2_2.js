@@ -1372,7 +1372,7 @@ $(".navia").addClass("list-group-item list-group-item-action bg-light border");
 $("#esp_tx").val("wsbuser.prints(node.heap());");
 $("#esp_urx").val("");
 
-rs = setInterval(refr_rtc, 1000);
+rs = setInterval(refr_rtc, 3000);
 
 
 }
