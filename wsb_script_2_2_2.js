@@ -85,7 +85,7 @@ function refr_rtc() {
 
 		if($('input[name="autmp"]').is(':checked'))
 		{
-			//sub_grad(0);
+			sub_grad(0);
     		console.log("refr_rtc");
 		}
 	 //if (subwdeb == false && $("#autmp").prop("checked")) {
