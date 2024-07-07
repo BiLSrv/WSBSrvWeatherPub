@@ -807,6 +807,14 @@ else if(aa==2)
 	//console.log(url1);
 	//fetch1(url1, "GET", TxMAINAJAX, 10);
 }
+	
+else if(aa==3)
+{
+	httpd_cmd.command="sw_fw"
+	//url1 = "/get_cmd_srv_io.json?n=" + encodeURIComponent(JSON.stringify(httpd_cmd)) + "&";
+	//console.log(url1);
+	//fetch1(url1, "GET", TxMAINAJAX, 10);
+}
 
 if (WSsocket.readyState === 1) {
 	WSsocket.send(JSON.stringify(httpd_cmd));
