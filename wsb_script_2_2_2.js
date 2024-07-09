@@ -113,7 +113,7 @@ function rIAQItem_convertValue(rawValue,_temp,_humd)
     comp_gas = rawValue * Math.exp(_hum_ratio * hum_abs);
 	//console.log("IAQ T"+_temp+"IAQ H"+_humd+"IAQ adc"+rawValue)
 	  // +_min_U
-	IAQ=(comp_gas-_min_T)/(_max_T-_min_T)*(_max_U-_min_U);
+	IAQ=_min_U+(comp_gas-_min_T)/(_max_T-_min_T)*(_max_U-_min_U);
     // Recalculation in IAQ from 0 to 500 with inversion
     return IAQ;
   };
