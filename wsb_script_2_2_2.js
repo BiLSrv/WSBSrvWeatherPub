@@ -1048,7 +1048,7 @@ if (json_data["crc16"])
 
 	if(crc16(arrbufcrc,crc16_int) != true || isNaN(crc16_int) )
 	{
-		console.log("crc16(arrbufcrc,crc16_int) ERROR!");
+		console.log("crc16(arrbufcrc,crc16_int) ERROR! arrbufcrc",arrbufcrc,"crc16_int",crc16_int);
 		return 0;
 	}	
 	//for(i=0;i<json_data.time.length)
