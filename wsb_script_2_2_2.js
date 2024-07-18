@@ -7,7 +7,6 @@ var httpd_cmd =
 {
 	content_type: "application/json",
 	command: "get_sens",
-	data: "get_data",
 	crc16: "ANY"
 }
 

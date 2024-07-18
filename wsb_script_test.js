@@ -7,7 +7,6 @@ var httpd_cmd =
 {
 	content_type: "application/json",
 	command: "get_sens",
-	data: "get_data",
 	crc16: "ANY"
 }
 
@@ -829,36 +828,38 @@ else
 
 
 
-function txjs_ua(s, d) {
-    seOBJ = $("#scntf").serializeArray();
+function txjs_ua(s, d) 
+{
+
     $("#btn1").prop("disabled", false);
     if (s != 200) {
         str_out1 += "Send command error" + "\n";
-        //clearTimeout(rs.handle);
+        clearTimeout(rs.handle);
         //console.log("Connection proplem!");
     } 
 	else if (typeof d === "string") 
 	{
-            //console.log("priem ok!");
+            console.log("priem ok!");
             try {
-                httpd_cmd.data = JSON.parse(d);
+                uart_json = JSON.parse(d);
             } catch (e) {
                 //console.log(e);
                 return -1;
             }
         } else {
             uart_json.uart_out = "null";
-            uart_json.uart_in = "null";
         }
-        //console.log(uart_json);
+	
+if (uart_json["uart_out"]) 
+{
+	    //console.log(uart_json);
         if (uart_json.uart_out == "") {
             str_out1 += "ACK" + "\n";
         } else {
             str_out1 += uart_json.uart_out + "\n";
         }
-        //console.log(uart_json.uart_out);
-    
-    var esp_uart_out_val = $("#esp_urx");
+ var esp_uart_out_val = $("#esp_urx");
+	
     if (esp_uart_out_val.val() != "") {
         esp_uart_out_val.val(esp_uart_out_val.val() + str_out1);
     } else {
@@ -870,6 +871,7 @@ function txjs_ua(s, d) {
     //clearTimeout(rs.handle);
     //rs = to(refr, 3);
     //refr();
+}
 }
 
 function submit_uart() {
