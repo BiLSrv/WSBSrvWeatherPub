@@ -107,12 +107,14 @@ function rIAQItem_convertValue(rawValue,_temp,_humd)
   if (!isNaN(_temp) && !isNaN(_humd)) {
     // Calculate stauration density and absolute humidity
     // double hum_abs = _humd * 10 * ((6.112 * 100.0 * exp((17.67 * _temp)/(243.12 + _temp)))/(461.52 * (_temp + 273.15)));
-    hum_abs = 6.112 * Math.exp((17.67 * _temp)/(_temp + 243.5)) * _humd * 2.1674 / (273.15 + _temp);
+    //hum_abs = 6.112 * Math.exp((17.67 * _temp)/(_temp + 243.5)) * _humd * 2.1674 / (273.15 + _temp);
+	hum_abs = (6.112 * 100  * Math.exp((17.67 * _temp)/(_temp + 243.5))) / (461.52 * (273.15 + _temp));  
     // Calculate the compensated value
     comp_gas = rawValue * Math.exp(_hum_ratio * hum_abs);
 	//console.log("IAQ T"+_temp+"IAQ H"+_humd+"IAQ adc"+rawValue)
 	  // (comp_gas-_min_T)/(_max_T-_min_T)*(_max_U-_min_U)+_min_U
-	IAQ=Math.abs((comp_gas-_min_T)/(_max_T-_min_T)*(_max_U-_min_U)+_min_U);
+	//IAQ=Math.abs((comp_gas-_min_T)/(_max_T-_min_T)*(_max_U-_min_U)+_min_U);
+	  IAQ = (100-(hum_abs+comp_gas))*5
     // Recalculation in IAQ from 0 to 500 with inversion
     return IAQ;
   };
