@@ -114,9 +114,9 @@ function rIAQItem_convertValue(rawValue,_temp,_humd)
    comp_gas = rawValue * Math.exp(_hum_ratio * hum_abs);
 	//comp_gas = ((1-)/()*1-(1*1((1-1)/(1-1))))*100   
 	  
-	//console.log("IAQ T "+_temp+"IAQ H "+_humd+"IAQ adc "+rawValue+"comp_gas "+comp_gas)
+	console.log("IAQ T "+_temp+"IAQ H "+_humd+"IAQ adc "+rawValue+"comp_gas "+comp_gas)
 	  // (comp_gas-_min_T)/(_max_T-_min_T)*(_max_U-_min_U)+_min_U
-	//console.log("hum_abs "+hum_abs)
+	console.log("hum_abs "+hum_abs)
 	IAQ=Math.abs((comp_gas-_min_T)/(_max_T-_min_T)*(_max_U-_min_U)+_min_U);
 	//IAQ = (100-(hum_abs+comp_gas))*5
     // Recalculation in IAQ from 0 to 500 with inversion
