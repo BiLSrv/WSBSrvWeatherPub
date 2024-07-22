@@ -1037,7 +1037,7 @@ $(".srvmode").text(json_data.data[0].toString());
 //	2.4 temp_json["sensors"]
 //
 if (json_data["sensors"]) 
-{
+{ 
 
 //
 //	2.1 CRC
