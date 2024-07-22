@@ -93,7 +93,7 @@ function refr_rtc() {
 	//}
 }
 
-
+//https://kotyara12.ru/iot/bme680/
 function rIAQItem_convertValue(rawValue,_temp,_humd)
 {
   // Get temperature & humidity
@@ -101,7 +101,7 @@ function rIAQItem_convertValue(rawValue,_temp,_humd)
 	_min_T=0;
 	_min_U=500;
 	//1600000;
-	_max_T=1000000;
+	_max_T=1600000;
 	_max_U=0;
 	
  // Compensate exponential impact of humidity on resistance
