@@ -1029,7 +1029,17 @@ $('.mcu_tus').text(json_data.time[0].toString());
 $('.ptime').text(json_data.time[1].toString());
 $(".srvmode").text(json_data.data[0].toString());
 
-
+//	2.4 temp_json["sensors"]
+//
+if (json_data["rd_fw"]) 
+{
+if (String(json_data.rd_fw[0].toString())==String("RD_FW") && String(json_data.data[1].toString())!=String("NULL")) 
+{
+	$("#esp_urx").val(json_data.data[1].toString()+"\r\n");
+	console.log("ok!");
+}
+	
+};
 //
 //	2.4 temp_json["sensors"]
 //
@@ -1202,18 +1212,7 @@ console.log("Width "+Math.round((0.0244*parseInt(json_data.sensors[26+ind]))).to
 }
 	
 
-//
-//	2.4 temp_json["sensors"]
-//
-if (json_data["rd_fw"]) 
-{
-if (String(json_data.rd_fw[0].toString())==String("RD_FW") && String(json_data.data[1].toString())!=String("NULL")) 
-{
-	$("#esp_urx").val(json_data.data[1].toString()+"\r\n");
-	console.log("ok!");
-}
-	
-};
+
 }
 
 
