@@ -128,7 +128,7 @@ function ReconnectWebSocket()
 
 
 
-$('body').delay(500).queue(function() {
+$('body').delay(1000).queue(function() {
 WSsocket = new WebSocket(gateway);
     //$(this).load('myPage.php');
 	maOBJ = $('*').get();
@@ -939,7 +939,7 @@ function waitForSocketConnection(socket, callback)
                 if (callback != null)
 					waitForSocketConnection(socket, callback);
             }
-        }, 500); // wait 5 milisecond for the connection...
+        }, 5000); // wait 5 milisecond for the connection...
 }
 
 
