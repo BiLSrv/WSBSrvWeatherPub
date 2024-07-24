@@ -1034,8 +1034,8 @@ $(".srvmode").text(json_data.data[0].toString());
 if (json_data["rd_fw"]) 
 {
 	console.log("rd_fw");
-	console.log(String(json_data.rd_fw[0].toString()));
-if (String(json_data.rd_fw[0].toString())==String("RD_FW") && String(json_data.data[1].toString())!=String("NULL")) 
+	console.log(String(json_data.rd_fw.toString()));
+if (String(json_data.rd_fw.toString())==String("RD_FW") && String(json_data.data[1].toString())!=String("NULL")) 
 {
 	$("#esp_urx").val(json_data.data[1].toString()+"\r\n");
 	console.log("ok!");
