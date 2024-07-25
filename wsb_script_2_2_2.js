@@ -128,7 +128,7 @@ function ReconnectWebSocket()
 
 
 
-$('body').delay(500).queue(function() {
+$('body').delay(1000).queue(function() {
 WSsocket = new WebSocket(gateway);
     //$(this).load('myPage.php');
 	maOBJ = $('*').get();
