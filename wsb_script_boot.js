@@ -23,7 +23,7 @@ var CanvGaugeArrOther = [];
 	
 //$(document).ready(function() {  
 //var gateway = 'wss://weather32.bilymo.keenetic.pro/ws'
-var gateway = 'wss://wtest32.bilymo.keenetic.pro/ws'
+var gateway = 'wss://weather32.bilymo.keenetic.pro/ws'
 /*
 var gateway = 
 {
