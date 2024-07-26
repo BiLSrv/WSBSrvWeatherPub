@@ -1178,7 +1178,7 @@ console.log("Width "+Math.round((0.0244*parseInt(json_data.sensors[26+ind]))).to
 			CanvGaugeArrP[j].update({ value: (parseFloat(json_data.sensors[j+17])*0.750062).toFixed(2)});
 			}
 			else
-			{CanvGaugeArrP[j].update({ value: (parseFloat(json_data.sensors[j+17])*0.750062).toFixed(2)});}
+			{CanvGaugeArrP[j].update({ value: (parseFloat(json_data.sensors[j+17])*0.750062*0.01).toFixed(2)});}
 			j++;
 		}
 		
