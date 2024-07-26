@@ -1077,7 +1077,12 @@ else
 	RMSh=RMSh*0.14286;
 	for(j=0;j<=3;j++)
 	{
+	if((j+17)!=19)
+	{
 	RMSp+=parseFloat(json_data.sensors[j+17])
+	}
+		else
+	{RMSp+=parseFloat(json_data.sensors[j+17])*0.01}		
 	}
 	RMSp=RMSp*0.25;
 
@@ -1173,7 +1178,7 @@ console.log("Width "+Math.round((0.0244*parseInt(json_data.sensors[26+ind]))).to
 			CanvGaugeArrP[j].update({ value: (parseFloat(json_data.sensors[j+17])*0.750062).toFixed(2)});
 			}
 			else
-			{CanvGaugeArrP[j].update({ value: ((parseFloat(json_data.sensors[j+17])*0.750062)*0.01).toFixed(2)});}
+			{CanvGaugeArrP[j].update({ value: (parseFloat(json_data.sensors[j+17])*0.750062).toFixed(2)});}
 			j++;
 		}
 		
