@@ -1077,7 +1077,7 @@ else
 	RMSh=RMSh*0.14286;
 	for(j=0;j<=3;j++)
 	{
-	if((j+17)!=19)
+	if((j+17)!=20)
 	{
 	RMSp+=parseFloat(json_data.sensors[j+17])
 	}
