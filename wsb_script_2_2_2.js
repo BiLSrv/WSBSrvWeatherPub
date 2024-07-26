@@ -1082,13 +1082,12 @@ else
 	RMSp+=parseFloat(json_data.sensors[j+17])
 	}
 	else
-	{RMSp+=(Math.round(parseFloat(json_data.sensors[j+17])*0.01)+(Math.trunc(parseFloat(json_data.sensors[j+17]))-(parseFloat(json_data.sensors[j+17]))))
-	 
-	console.log("RMSbme"+(Math.round(parseFloat(json_data.sensors[j+17])*0.01)+(Math.trunc(parseFloat(json_data.sensors[j+17]))-(parseFloat(json_data.sensors[j+17])))));
+	{RMSp+=(Math.round(parseFloat(json_data.sensors[j+17])*0.01)+(Math.trunc(parseFloat(json_data.sensors[j+17]))-(parseFloat(json_data.sensors[j+17]))));
+
 	}		
 	}
 	console.log("RMSp"+RMSp);
-	RMSp=RMSp*0.750062;
+	RMSp=RMSp*0.00750062;
 
 	console.log("RMSp mmPtct"+RMSp);
 	//console.log($("canvas[data-type='radial-gauge']").attr("i"));
