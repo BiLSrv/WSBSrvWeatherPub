@@ -1083,7 +1083,9 @@ else
 	}
 	else
 	{RMSp+=(Math.round(parseFloat(json_data.sensors[j+17])*0.01)+(Math.trunc(parseFloat(json_data.sensors[j+17]))-(parseFloat(json_data.sensors[j+17]))));
-
+	 
+	 	console.log("RMSpbme"+(Math.round(parseFloat(json_data.sensors[j+17])*0.01)+(Math.trunc(parseFloat(json_data.sensors[j+17]))-(parseFloat(json_data.sensors[j+17])))));
+	 
 	}		
 	}
 	console.log("RMSp"+RMSp);
