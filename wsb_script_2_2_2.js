@@ -1084,7 +1084,7 @@ else
 		else
 	{RMSp+=parseFloat(json_data.sensors[j+17])*0.01}		
 	}
-	RMSp=RMSp*0.25;
+	RMSp=RMSp*0.750062;
 
 	//console.log($("canvas[data-type='radial-gauge']"));
 	//console.log($("canvas[data-type='radial-gauge']").attr("i"));
