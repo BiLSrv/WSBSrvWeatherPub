@@ -1167,8 +1167,13 @@ console.log("Width "+Math.round((0.0244*parseInt(json_data.sensors[26+ind]))).to
 		{
 			//console.log(CanvGaugeArrP[ind]," indP ",ind," class ",$(this).attr('class'));
 			//console.log(" Pdat "+Pdat+" jd_sens "+json_data.sensors[j+17]);
-			Pdat = (parseFloat(json_data.sensors[j+17])*0.750062).toFixed(2);
+			if((j+17)!=19)
+			{
+			//Pdat = (parseFloat(json_data.sensors[j+17])*0.750062).toFixed(2);
 			CanvGaugeArrP[j].update({ value: (parseFloat(json_data.sensors[j+17])*0.750062).toFixed(2)});
+			}
+			else
+			{CanvGaugeArrP[j].update({ value: ((parseFloat(json_data.sensors[j+17])*0.750062)*0.01).toFixed(2)});}
 			j++;
 		}
 		
