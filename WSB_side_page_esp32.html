@@ -53,34 +53,7 @@
 	</div>
 <div class="row flex-nowrap-xl">
 <div id=sidebar_sensor class="bsn0 col-md-4 col-xl-4 px-2 shadow rounded border-end container-fluid collapse show" style=background-color:#DFDBDB>
-		<div id="sidebar" class="card shadow p-1 mb-5 bg-white rounded">
-		<ul class="navbar-nav navbar-nav-scroll list-group list-group-flush">
-			<li class="nav-item bg-primary rounded">
-			<span class="text-light">Режим:</span><span class="text-light srvmode"></span>
-			</li>
-			<li class=nav-item>
-			<span class="text-dark">Статус сервера:<span class="navbar-brand badge mb-0 text-bg-success tst0"></span></span>
-			<span class="won navbar-brand badge mb-0 text-white"></span>
-			</li>
-			<br>
-			<hr class="border border-secondary-subtle border-1 opacity-50 mt-0">
-			<div class="card">
-			  <ul class="list-group list-group-flush">
-				<li class="list-group-item list-group-item-action"><a href="#" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">A second link item</a></li>
-				<li class="list-group-item list-group-item-action"><a href="#" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">A second link item</a></li>
-				<li class="list-group-item list-group-item-action"><a href="#" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">A second link item</a></li>
-			  </ul>
-			</div>
-			<hr class="border border-secondary-subtle border-1 opacity-50 mt-0">
-			<li class=nav-item>
-			<p class="lead mb-0 text-dark">Время сервера:<p class="lead mb-0 text-dark ptime"></p></p>
-			</li>
-			<li class=nav-item>
-			<span class="lead mb-0 text-dark">Время работы: <span class="lead mb-0 mcu_tus"></span></span>
-			</li>
-		</ul>
-		</div>
-	</div>
+</div>
 <main class="mc1 bd-content col ps-md-1 pt-2 row-*-* mx-auto shadow border ">
 <div class="macnt text-white row-*-*">
 </div>
@@ -135,6 +108,7 @@ build Official version by <strong> Farid_WSB&copy;Rakosel&trade;</strong> &copy;
 </html>
 
 <script type="text/javascript">
+	$("sidebar").load('https://bilsrv.github.io/WSBSrvWeatherPub/WSB_side_page_esp32_side.html').html();
 	$(".macnt").load('https://bilsrv.github.io/WSBSrvWeatherPub/WSB_page_main.html').html();
 </script>
 <!--<script type=text/javascript charset=utf-8 src=https://rakosel.github.io/wsb_script_2_2_1.js></script>!-->
