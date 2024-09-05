@@ -1,4 +1,4 @@
-// upda7a2 test
+// upda7a2
 // https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js
 // reverse panelki dlya debug 
 var sds, mds, sets, maOBJ, canvasOBJ, GuageMeterOBJ;
@@ -22,7 +22,7 @@ var CanvGaugeArrH = [];
 var CanvGaugeArrOther = [];
 	
 //$(document).ready(function() {  
-var gateway = 'wss://weather32.bilymo.keenetic.pro/ws'
+var gateway = 'wss://wtest32.bilymo.keenetic.pro/ws'
 //var gateway = 'wss://192.168.1.48/ws'
 /*
 var gateway = 
@@ -93,7 +93,7 @@ function refr_rtc() {
 	//}
 }
 
-//https://kotyara12.ru/iot/bme680/
+
 function rIAQItem_convertValue(rawValue,_temp,_humd)
 {
   // Get temperature & humidity
@@ -128,7 +128,7 @@ function ReconnectWebSocket()
 
 
 
-$('body').delay(1000).queue(function() {
+$('body').delay(500).queue(function() {
 WSsocket = new WebSocket(gateway);
     //$(this).load('myPage.php');
 	maOBJ = $('*').get();
@@ -828,36 +828,38 @@ else
 
 
 
-function txjs_ua(s, d) {
-    seOBJ = $("#scntf").serializeArray();
+function txjs_ua(s, d) 
+{
+
     $("#btn1").prop("disabled", false);
     if (s != 200) {
         str_out1 += "Send command error" + "\n";
-        //clearTimeout(rs.handle);
+        clearTimeout(rs.handle);
         //console.log("Connection proplem!");
     } 
 	else if (typeof d === "string") 
 	{
-            //console.log("priem ok!");
+            console.log("priem ok!");
             try {
-                httpd_cmd.data = JSON.parse(d);
+                uart_json = JSON.parse(d);
             } catch (e) {
                 //console.log(e);
                 return -1;
             }
         } else {
             uart_json.uart_out = "null";
-            uart_json.uart_in = "null";
         }
-        //console.log(uart_json);
+	
+if (uart_json["uart_out"]) 
+{
+	    //console.log(uart_json);
         if (uart_json.uart_out == "") {
             str_out1 += "ACK" + "\n";
         } else {
             str_out1 += uart_json.uart_out + "\n";
         }
-        //console.log(uart_json.uart_out);
-    
-    var esp_uart_out_val = $("#esp_urx");
+ var esp_uart_out_val = $("#esp_urx");
+	
     if (esp_uart_out_val.val() != "") {
         esp_uart_out_val.val(esp_uart_out_val.val() + str_out1);
     } else {
@@ -869,6 +871,7 @@ function txjs_ua(s, d) {
     //clearTimeout(rs.handle);
     //rs = to(refr, 3);
     //refr();
+}
 }
 
 function submit_uart() {
@@ -1034,7 +1037,7 @@ $(".srvmode").text(json_data.data[0].toString());
 //	2.4 temp_json["sensors"]
 //
 if (json_data["sensors"]) 
-{
+{ 
 
 //
 //	2.1 CRC
@@ -1077,22 +1080,11 @@ else
 	RMSh=RMSh*0.14286;
 	for(j=0;j<=3;j++)
 	{
-	if((j+17)!=20)
-	{
 	RMSp+=parseFloat(json_data.sensors[j+17])
 	}
-	else
-	{RMSp+=(Math.round(parseFloat(json_data.sensors[j+17])*0.01)+(Math.trunc(parseFloat(json_data.sensors[j+17]))-(parseFloat(json_data.sensors[j+17]))));
-	 
-	 	console.log("RMSpbme"+(Math.round(parseFloat(json_data.sensors[j+17])*0.01)+(Math.trunc(parseFloat(json_data.sensors[j+17]))-(parseFloat(json_data.sensors[j+17])))));
-	 
-	}
-		console.log("RMSp"+json_data.sensors[j+17]);
-	}
-	console.log("RMSp"+RMSp);
-	RMSp=RMSp*0.00750062;
+	RMSp=RMSp*0.25;
 
-	console.log("RMSp mmPtct"+RMSp);
+	//console.log($("canvas[data-type='radial-gauge']"));
 	//console.log($("canvas[data-type='radial-gauge']").attr("i"));
 	if(parseInt(json_data.sensors[30],10))
 		$("#lm75_t1_chk").prop("checked", true);
@@ -1178,13 +1170,8 @@ console.log("Width "+Math.round((0.0244*parseInt(json_data.sensors[26+ind]))).to
 		{
 			//console.log(CanvGaugeArrP[ind]," indP ",ind," class ",$(this).attr('class'));
 			//console.log(" Pdat "+Pdat+" jd_sens "+json_data.sensors[j+17]);
-			if((j+17)!=19)
-			{
-			//Pdat = (parseFloat(json_data.sensors[j+17])*0.750062).toFixed(2);
+			Pdat = (parseFloat(json_data.sensors[j+17])*0.750062).toFixed(2);
 			CanvGaugeArrP[j].update({ value: (parseFloat(json_data.sensors[j+17])*0.750062).toFixed(2)});
-			}
-			else
-			{CanvGaugeArrP[j].update({ value: (parseFloat(json_data.sensors[j+17])*0.750062*0.01).toFixed(2)});}
 			j++;
 		}
 		
@@ -1390,7 +1377,7 @@ $(".navia").addClass("list-group-item list-group-item-action bg-light border");
 $("#esp_tx").val("wsbuser.prints(node.heap());");
 $("#esp_urx").val("");
 
-rs = setInterval(refr_rtc, 2000);
+rs = setInterval(refr_rtc, 3000);
 
 
 }
