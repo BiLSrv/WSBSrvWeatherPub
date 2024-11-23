@@ -4,14 +4,12 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://rawgit.com/Mikhus/canvas-gauges/master/fonts/fonts.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <link rel="stylesheet" href="https://atuin.ru/demo/ui-slider/jquery-ui.css">
 <link rel="stylesheet" href="https://bilsrv.github.io/WSBSrvWeatherPub/WSB_side_loaded_css.css">
-	
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -20,122 +18,24 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
 <script src=https://unpkg.com/current-device/umd/current-device.min.js></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery-touch-events/2.0.0/jquery.mobile-events.min.js></script>
-
-	
 <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-
   <!-- cdnjs.com / libraries / fontawesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" charset="utf-8"></script>
-	
-	
 <script src="https://rawgit.com/Mikhus/canvas-gauges/master/gauge.min.js"></script>
 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://bilsrv.github.io/WSBSrvWeatherPub/GaugeMeter.js"></script>
 <title>WSB_Server</title>
 </head>
 <body class="p-0 m-0 border-1">
-<div class="container-fluid">
-	<div class="shadow p-3 mb-1 rounded navbar sb_nav bg-gradient border-bottom">
-		<button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
-			<a class="navbar-brand align-items-center text-white" href="#">
-			<span>Меню:</span>
-			</a>
-			<span class="visually-hidden"></span>
-			<span class="navbar-toggler-icon text-white"></span>
-        </button>
-<li class="nav-item d-block">
-		<a class="navbar-brand mb-0 text-warning text-center">WSB_Server</a>
-</li>
-<li class="nav-item d-block">
-<span class="navbar text-white">Статус сервера:<span class="navbar-brand badge lead text-white tst0"></span></span>
-</li>
-	</div>
-<div class="row flex-nowrap-xl">
-<div id=sidebar_sensor class="bsn0 col-md-4 col-xl-4 px-2 shadow rounded border-end container-fluid collapse show" style=background-color:#DFDBDB>
-		<div id="sidebar" class="card shadow p-1 mb-5 bg-white rounded">
-		<ul class="navbar-nav navbar-nav-scroll list-group list-group-flush">
-			<li class="nav-item bg-primary rounded">
-			<span class="text-light">Режим:</span><span class="text-light srvmode"></span>
-			</li>
-			<li class=nav-item>
-			<span class="text-dark">Статус сервера:<span class="navbar-brand badge mb-0 text-bg-success tst0"></span></span>
-			<span class="won navbar-brand badge mb-0 text-white"></span>
-			</li>
-			<br>
-			<hr class="border border-secondary-subtle border-1 opacity-50 mt-0">
-			<div class="card">
-			  <ul class="list-group list-group-flush">
-				<li class="list-group-item list-group-item-action"><a href="#" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">A second link item</a></li>
-				<li class="list-group-item list-group-item-action"><a href="#" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">A second link item</a></li>
-				<li class="list-group-item list-group-item-action"><a href="#" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">A second link item</a></li>
-			  </ul>
-			</div>
-			<hr class="border border-secondary-subtle border-1 opacity-50 mt-0">
-			<li class=nav-item>
-			<p class="lead mb-0 text-dark">Время сервера:<p class="lead mb-0 text-dark ptime"></p></p>
-			</li>
-			<li class=nav-item>
-			<span class="lead mb-0 text-dark">Время работы: <span class="lead mb-0 mcu_tus"></span></span>
-			</li>
-		</ul>
-		</div>
-	</div>
-<main class="mc1 bd-content col ps-md-1 pt-2 row-*-* mx-auto shadow border ">
-<div class="macnt text-white row-*-*">
-</div>
-<div class="setcnt text-white row-*-* shadow border mb-5 mx-auto collapse hide">
-</div>
-<div class="container-fluid shadow border">
-<p class="h5 modal-title text-center" id=esp_uart>Обмен по WEB-UART</p>
-<hr>
-<form id=esp_uart_form class=mb- novalidate>
-<p>
-Input</p>
-<div class="form-group col">
-<button type=button id=btn0 class="btn btn-primary" onclick=erxclr_uart()>
-Очистить Input</button>
-</div>
-<textarea id=esp_tx rows=10 cols=80 class=form-control>
-</textarea>
-<br>
-<div class="form-group col">
-<button type=button id=btn1 class="btn btn-primary" onclick=submit_uart()>
-SEND UART(D8)</button>
-<span>
-Передавать команды без LUA </span>
-<input type=checkbox name=uart_get_ch id=uart_get_ch>
-</div>
-<div class="form-group col">
-<button type=button id=btn2 class="btn btn-primary" onclick=etxclr_uart()>
-Очистить OUTPUT</button>
-</div>
-<p>
-Output</p>
-<textarea id=esp_urx rows=10 cols=80 class=form-control>
-</textarea>
-<br>
-</form>
-<div class=container>
-<div class=row>
-<div class="card border-light mb-3 col-md-9 offset-md-2 border shadow">
-<div class="card-header text-center">
-Version & about</div>
-<p class=card-text>
-WSB_Server<strong>&reg; </strong><span class="srvbuild"></span>, дата компиляции: <span class="srvdate"></span>
-build Official version by <strong> Farid_WSB&copy;Rakosel&trade;</strong> &copy; 2018 - 2024</p> 
-</div>
-</div>
-</div>
-</div>
-</main>
-</div>
+<div class="container-fluid main">
 </div>
 </body>
 </html>
-
 <script type="text/javascript">
-	$(".macnt").load('https://bilsrv.github.io/WSBSrvWeatherPub/WSB_page_main.html').html();
+$(".main").load('https://bilsrv.github.io/WSBSrvWeatherPub/WSB_side_page_esp32_main.html').html();
+//$("#sidebar_sensor").load('https://bilsrv.github.io/WSBSrvWeatherPub/WSB_side_page_esp32_side.html').html();
+$(".macnt").load('https://bilsrv.github.io/WSBSrvWeatherPub/WSB_page_main.html').html();
 </script>
 <!--<script type=text/javascript charset=utf-8 src=https://rakosel.github.io/wsb_script_2_2_1.js></script>!-->
 <script type="text/javascript" src="https://bilsrv.github.io/WSBSrvWeatherPub/wsb_script_2_2_2.js" defer></script>
