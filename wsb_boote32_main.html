@@ -49,31 +49,6 @@ SEND UART(D8)</button>
 <button type=button id=btn2 class="btn btn-primary" onclick=etxclr_uart()>
 Очистить OUTPUT</button>
 </div>
-<br>
-</form>
-<p class="h5 modal-title text-center" id=esp_uart>Обмен по WEB-UART</p>
-<hr>
-<form id=esp_uart_form class=mb- novalidate>
-<p>
-Input</p>
-<div class="form-group col">
-<button type=button id=btn0 class="btn btn-primary" onclick=erxclr_uart()>
-Очистить Input</button>
-</div>
-<textarea id=esp_tx rows=10 cols=80 class=form-control>
-</textarea>
-<br>
-<div class="form-group col">
-<button type=button id=btn1 class="btn btn-primary" onclick=submit_uart()>
-SEND UART(D8)</button>
-<span>
-Передавать команды без LUA </span>
-<input type=checkbox name=uart_get_ch id=uart_get_ch>
-</div>
-<div class="form-group col">
-<button type=button id=btn2 class="btn btn-primary" onclick=etxclr_uart()>
-Очистить OUTPUT</button>
-</div>
 <p>
 Output</p>
 <textarea id=esp_urx rows=10 cols=80 class=form-control>
@@ -85,7 +60,6 @@ Output</p>
 <div class="card border-light mb-3 col-md-9 offset-md-2 border shadow">
 <div class="card-header text-center">Version & about</div>
 <p class=card-text>WSB_Server<strong>&reg;</strong> 2.3.2 a02 build Official version by <strong>Farid_WSB&copy;Rakosel&trade;</strong> beta version from 30.09.2018-09.03.2019 based by Lua 5.1.4 on SDK 2.2.1 with NodeMCU 2.2.1 &copy; 2018 - 2024</p>
-</div>
 </div>
 </div>
 </div>
