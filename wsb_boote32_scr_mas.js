@@ -1052,11 +1052,6 @@ if (String(json_data.rd_fw.toString())==String("RD_FW") && String(json_data.data
 	console.log("ok!");
 }
 	
-};
-if (json_data["upd_slave"]) 
-{
-	console.log("upd_slave");
-	//console.log(String(json_data.rd_fw.toString()));
 if (String(json_data.rd_fw.toString())==String("UPD_SLAVE") && String(json_data.data[1].toString())!=String("NULL")) 
 {
 	$("#esp_urx").val(String(json_data.data[1])+"\r\n");
