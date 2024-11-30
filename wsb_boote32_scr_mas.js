@@ -1015,12 +1015,14 @@ RMSh=0.0,RMSp=0.0;
 //console.log("onMessage"+event.data);
 if(WSsocket.readyState==1)
 {
+	console.log(event.data);
+	
 try {
 	json_data = JSON.parse(event.data);
 	
 	console.log(json_data);
 	} catch (e) {
-		console.log(json_data);
+		
 		console.log(e.message);
 		console.log(event.data);
 		return 0;
