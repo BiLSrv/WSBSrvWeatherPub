@@ -1015,12 +1015,12 @@ RMSh=0.0,RMSp=0.0;
 //console.log("onMessage"+event.data);
 if(WSsocket.readyState==1)
 {
-	console.log(event.data);
+	//console.log(event.data);
 	
 try {
 	json_data = JSON.parse(event.data);
 	
-	console.log(json_data);
+	//console.log(json_data);
 	} catch (e) {
 		
 		console.log(e.message);
@@ -1055,7 +1055,7 @@ if (String(json_data.rd_fw.toString())==String("RD_FW") && String(json_data.data
 };
 if (json_data["upd_slave"]) 
 {
-	//console.log("rd_fw");
+	console.log("upd_slave");
 	//console.log(String(json_data.rd_fw.toString()));
 if (String(json_data.rd_fw.toString())==String("UPD_SLAVE") && String(json_data.data[1].toString())!=String("NULL")) 
 {
